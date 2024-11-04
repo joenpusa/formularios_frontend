@@ -3,6 +3,9 @@ import App from "./App.vue";
 import "./registerServiceWorker";
 import router from "./router";
 import { getAllFormData, clearFormData } from "./services/db";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 async function syncDataWithBackend() {
   // Obtener datos de IndexedDB
