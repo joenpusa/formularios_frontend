@@ -17,7 +17,7 @@ const routes = [
     ],
   },
   {
-    path: "/",
+    path: "/home",
     component: MainLayout,
     children: [
       {
@@ -27,6 +27,10 @@ const routes = [
       },
       // Otras rutas de tu aplicación
     ],
+  },
+  {
+    path: "/",
+    redirect: "/login",
   },
 ];
 
