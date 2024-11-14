@@ -32,7 +32,7 @@ export default {
   },
   data() {
     return {
-      show: true,
+      show: false,
     };
   },
   methods: {
@@ -41,8 +41,13 @@ export default {
     },
   },
   watch: {
-    message() {
-      this.show = true;
+    message(newMessage) {
+      if (newMessage) {
+        this.show = true;
+        setTimeout(() => {
+          this.show = false;
+        }, 5000);
+      }
     },
   },
 };

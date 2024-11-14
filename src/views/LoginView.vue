@@ -82,18 +82,25 @@ export default {
       toastType: "",
     };
   },
+  created() {
+    const token =
+      localStorage.getItem("authToken") || sessionStorage.getItem("authToken");
+    if (token) {
+      this.$router.push("/home");
+    }
+  },
   methods: {
     async handleLogin() {
       this.isLoading = true;
       this.toastMessage = "";
       try {
-        const apiUrl = import.meta.env.VITE_API_BASE_URL;
-        const response = await axios.post(`${apiUrl}/login`, {
+        const apiUrl = process.env.VUE_APP_API_BASE_URL;
+        const response = await axios.post(`${apiUrl}/api/login`, {
           email: this.email,
           password: this.password,
         });
 
-        const token = response.data.token;
+        const token = response.data.access_token;
         if (token) {
           if (this.rememberMe) {
             localStorage.setItem("authToken", token);
@@ -104,10 +111,18 @@ export default {
           this.$router.push("/home");
         }
       } catch (error) {
-        this.showToast(
-          "Error al iniciar sesión. Verifique sus credenciales.",
-          "danger"
-        );
+        console.log("entre al catch");
+        if (error.response && error.response.status === 401) {
+          this.showToast(
+            error.response.data.message || "Credenciales incorrectas",
+            "danger"
+          );
+        } else {
+          this.showToast(
+            "Error al iniciar sesión. Intente nuevamente.",
+            "danger"
+          );
+        }
       } finally {
         this.isLoading = false;
       }
