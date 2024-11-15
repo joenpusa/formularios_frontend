@@ -5,14 +5,14 @@ import router from "./router";
 import { getAllFormData, clearFormData } from "./services/db";
 
 // Importar jQuery para plantilla
-// import jQuery from "jquery";
-// window.$ = window.jQuery = jQuery;
+import jQuery from "jquery";
+window.$ = window.jQuery = jQuery;
 
 // // Importar AdminLTE CSS y JavaScript
 // import "admin-lte/dist/css/adminlte.min.css";
-import "admin-lte/dist/js/adminlte.min.js";
+// import "admin-lte/dist/js/adminlte.min.js";
 
-// Importar Bootstrap y FontAwesome
+// // Importar Bootstrap y FontAwesome
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 

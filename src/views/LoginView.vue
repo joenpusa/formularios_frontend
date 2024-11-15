@@ -5,6 +5,7 @@
       v-if="toastMessage"
       :message="toastMessage"
       :type="toastType"
+      @clear-message="clearMessage"
     />
     <div class="login-box">
       <div class="login-logo">
@@ -19,9 +20,9 @@
               <input
                 type="email"
                 class="form-control"
+                :class="{ 'is-invalid': isEmailInvalid }"
                 v-model="email"
                 placeholder="Email"
-                required
               />
             </div>
             <div class="mb-3">
@@ -29,9 +30,9 @@
               <input
                 type="password"
                 class="form-control"
+                :class="{ 'is-invalid': isPasswordInvalid }"
                 placeholder="Password"
                 v-model="password"
-                required
               />
             </div>
             <div class="row">
@@ -44,13 +45,17 @@
                     id="flexCheckDefault"
                   />
                   <label class="form-check-label" for="flexCheckDefault">
-                    Mantemer sesión
+                    Mantener sesión
                   </label>
                 </div>
               </div>
               <div class="col-4">
                 <div class="d-grid gap-2">
-                  <button type="submit" class="btn btn-primary">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    @click="validateForm"
+                  >
                     Ingresar
                   </button>
                 </div>
@@ -80,6 +85,8 @@ export default {
       isLoading: false,
       toastMessage: "",
       toastType: "",
+      isEmailInvalid: false,
+      isPasswordInvalid: false,
     };
   },
   created() {
@@ -90,6 +97,21 @@ export default {
     }
   },
   methods: {
+    validateForm() {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      this.isEmailInvalid = !this.email || !emailRegex.test(this.email);
+      this.isPasswordInvalid = !this.password;
+
+      if (!this.isEmailInvalid && !this.isPasswordInvalid) {
+        this.handleLogin();
+      } else {
+        this.showToast(
+          "Por favor, complete todos los campos correctamente.",
+          "danger"
+        );
+      }
+    },
     async handleLogin() {
       this.isLoading = true;
       this.toastMessage = "";
@@ -111,7 +133,6 @@ export default {
           this.$router.push("/home");
         }
       } catch (error) {
-        console.log("entre al catch");
         if (error.response && error.response.status === 401) {
           this.showToast(
             error.response.data.message || "Credenciales incorrectas",
@@ -131,10 +152,15 @@ export default {
       this.toastMessage = message;
       this.toastType = type;
     },
+    clearMessage() {
+      this.toastMessage = "";
+    },
   },
 };
 </script>
 
 <style>
-/* Agrega aquí cualquier estilo adicional si es necesario */
+.is-invalid {
+  border-color: red;
+}
 </style>
