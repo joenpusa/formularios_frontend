@@ -9,11 +9,12 @@ import jQuery from "jquery";
 window.$ = window.jQuery = jQuery;
 
 // // Importar AdminLTE CSS y JavaScript
-// import "admin-lte/dist/css/adminlte.min.css";
-// import "admin-lte/dist/js/adminlte.min.js";
+import "admin-lte/dist/css/adminlte.min.css";
+import "admin-lte/dist/js/adminlte.min.js";
 
-// // Importar Bootstrap y FontAwesome
-// import "bootstrap/dist/css/bootstrap.min.css";
+// Importar Bootstrap y FontAwesome
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 async function syncDataWithBackend() {

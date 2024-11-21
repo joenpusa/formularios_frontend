@@ -5,10 +5,16 @@ module.exports = defineConfig({
   transpileDependencies: true,
   configureWebpack: {
     plugins: [
-      // Definimos el feature flag para desactivarlo en producción
+      // Plugin para desactivar el feature flag en producción
       new webpack.DefinePlugin({
         __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(false),
       }),
     ],
+    resolve: {
+      alias: {
+        // Alias para asegurar rutas correctas
+        overlayscrollbars: "overlayscrollbars/js/OverlayScrollbars.js",
+      },
+    },
   },
 });
