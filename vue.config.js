@@ -3,6 +3,7 @@ const webpack = require("webpack");
 
 module.exports = defineConfig({
   transpileDependencies: true,
+  lintOnSave: false, 
   configureWebpack: {
     plugins: [
       // Plugin para desactivar el feature flag en producción
@@ -10,11 +11,5 @@ module.exports = defineConfig({
         __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(false),
       }),
     ],
-    resolve: {
-      alias: {
-        // Alias para asegurar rutas correctas
-        overlayscrollbars: "overlayscrollbars/js/OverlayScrollbars.js",
-      },
-    },
   },
 });

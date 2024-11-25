@@ -1,70 +1,60 @@
 <template>
-  <div class="login-page bg-body-secondary">
-    <LoadingSpinner :isLoading="isLoading" />
-    <ToastNotification
-      v-if="toastMessage"
-      :message="toastMessage"
-      :type="toastType"
-      @clear-message="clearMessage"
-    />
-    <div class="login-box">
-      <div class="login-logo">
-        <img src="../assets/logo.png" alt="logo" />
+  <LoadingSpinner :isLoading="isLoading" />
+  <ToastNotification
+    v-if="toastMessage"
+    :message="toastMessage"
+    :type="toastType"
+    @clear-message="clearMessage"
+  />
+  <div class="text-center">
+    <img src="../../public/assets/logo.png" alt="logo" />
+  </div>
+  <div class="card-body login-card-body">
+    <p class="login-box-msg">Ingresa con tus credenciales</p>
+    <form @submit.prevent="handleLogin">
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          :class="{ 'is-invalid': isEmailInvalid }"
+          v-model="email"
+          placeholder="Email"
+        />
       </div>
-      <div class="card">
-        <div class="card-body login-card-body">
-          <p class="login-box-msg">Ingresa con tus credenciales</p>
-          <form @submit.prevent="handleLogin">
-            <div class="mb-3">
-              <label class="form-label">Email</label>
-              <input
-                type="email"
-                class="form-control"
-                :class="{ 'is-invalid': isEmailInvalid }"
-                v-model="email"
-                placeholder="Email"
-              />
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Password</label>
-              <input
-                type="password"
-                class="form-control"
-                :class="{ 'is-invalid': isPasswordInvalid }"
-                placeholder="Password"
-                v-model="password"
-              />
-            </div>
-            <div class="row">
-              <div class="col-8">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    v-model="rememberMe"
-                    id="flexCheckDefault"
-                  />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Mantener sesión
-                  </label>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="d-grid gap-2">
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    @click="validateForm"
-                  >
-                    Ingresar
-                  </button>
-                </div>
-              </div>
-            </div>
-          </form>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          :class="{ 'is-invalid': isPasswordInvalid }"
+          placeholder="Password"
+          v-model="password"
+        />
+      </div>
+      <div class="row">
+        <div class="col-8">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              v-model="rememberMe"
+              id="flexCheckDefault"
+            />
+            <label class="form-check-label" for="flexCheckDefault">
+              Mantener sesión
+            </label>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="d-grid gap-2">
+            <button type="button" class="btn btn-primary" @click="validateForm">
+              Ingresar
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 </template>
 <script>

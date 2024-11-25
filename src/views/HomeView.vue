@@ -1,17 +1,13 @@
 <template>
-  <div class="card card-primary card-outline mb-4">
-    <div class="card-header">
-      <div class="card-title">Sistema de Formularios Seguimiento</div>
-    </div>
-    <div class="card-body">
-      <div class="mb-3">
-        <p>
-          Este sistema esta diseñado para la recolección de datos que seran
-          soporte de las visitas realizadas por el operador para el cumplimiento
-          de las metas pactadas por la entidad pública contratante. Es de vital
-          importancia que toda la información recolectada sea correcta y
-          completa.
-        </p>
+  <div class="pb-5">
+    <div class="row g-4">
+      <div class="col-12 col-xxl-6">
+        <div class="mb-8">
+          <h2 class="mb-2">Ecommerce Dashboard</h2>
+          <h5 class="text-body-tertiary fw-semibold">
+            Hergoing on at your business right now
+          </h5>
+        </div>
       </div>
     </div>
   </div>

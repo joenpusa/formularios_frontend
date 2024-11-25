@@ -1,3 +1,4 @@
 module.exports = {
-  "*.{js,jsx,vue}": "vue-cli-service lint",
+  "*.{jsx,vue}": "vue-cli-service lint",
+  "!src/assets/**/*": [] // Ignora todos los archivos en src/assets
 };
