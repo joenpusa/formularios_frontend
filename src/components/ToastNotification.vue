@@ -1,7 +1,7 @@
 <template>
   <div
-    v-if="show"
-    class="toast align-items-center text-bg-{{ type }} border-0"
+    v-if="message"
+    :class="['toast card card-outline', `card-${type}`, 'show']"
     role="alert"
     aria-live="assertive"
     aria-atomic="true"
@@ -13,10 +13,12 @@
       </div>
       <button
         type="button"
-        class="btn-close btn-close-white me-2 m-auto"
+        class="btn btn-xs me-2 m-auto"
         aria-label="Close"
         @click="hide"
-      ></button>
+      >
+        X
+      </button>
     </div>
   </div>
 </template>
@@ -32,17 +34,24 @@ export default {
   },
   data() {
     return {
-      show: true,
+      show: false,
     };
   },
   methods: {
     hide() {
       this.show = false;
+      this.$emit("clear-message");
     },
   },
   watch: {
-    message() {
-      this.show = true;
+    message(newMessage) {
+      if (newMessage) {
+        this.show = true;
+        setTimeout(() => {
+          this.show = false;
+          this.$emit("clear-message");
+        }, 5000);
+      }
     },
   },
 };
@@ -51,8 +60,9 @@ export default {
 <style scoped>
 .toast {
   position: fixed;
-  top: 1rem;
+  bottom: 1rem;
   right: 1rem;
-  z-index: 1100;
+  z-index: 2000;
+  transition: opacity 0.5s ease;
 }
 </style>
