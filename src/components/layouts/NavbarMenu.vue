@@ -1,25 +1,29 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Mi Proyecto</a>
+  <div class="collapse navbar-collapse justify-content-between">
+    <div class="navbar-logo">
       <button
-        class="navbar-toggler"
-        @click="toggleSidebar"
+        class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#navbarContent"
+        data-bs-target="#navbarVerticalCollapse"
+        aria-controls="navbarVerticalCollapse"
+        aria-expanded="false"
+        aria-label="Toggle Navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggle-icon"
+          ><span class="toggle-line"></span
+        ></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Cerrar sesión</a>
-          </li>
-        </ul>
-      </div>
+      <a class="navbar-brand me-1 me-sm-3" href="#">
+        <div class="d-flex align-items-center">
+          <div class="d-flex align-items-center">
+            <img src="assets/img/icons/logo.png" alt="phoenix" width="27" />
+            <h5 class="logo-text ms-2 d-none d-sm-block">phoenix</h5>
+          </div>
+        </div>
+      </a>
     </div>
-  </nav>
+  </div>
 </template>
 
 <script>
