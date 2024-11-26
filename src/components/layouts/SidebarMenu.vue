@@ -22,7 +22,7 @@
                     ></span>
                   </div>
                   <span class="nav-link-icon"
-                    ><span data-feather="pie-chart"></span></span
+                    ><span class="bi bi-1-square"></span></span
                   ><span class="nav-link-text">Home</span>
                 </div>
               </a>
@@ -32,7 +32,7 @@
                   data-bs-parent="#navbarVerticalCollapse"
                   id="nv-home"
                 >
-                  <li class="collapsed-nav-item-title d-none">Formatos</li>
+                  <li class="collapsed-nav-item-title d-none">Home</li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">
                       <div class="d-flex align-items-center">
@@ -51,6 +51,25 @@
                   </li>
                 </ul>
               </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-item-wrapper">
+              <a
+                class="nav-link label-1"
+                href="#"
+                role="button"
+                data-bs-toggle=""
+                aria-expanded="false"
+              >
+                <div class="d-flex align-items-center">
+                  <span class="nav-link-icon"
+                    ><span class="bi bi-person-circle"></span></span
+                  ><span class="nav-link-text-wrapper"
+                    ><span class="nav-link-text">Usuarios</span></span
+                  >
+                </div>
+              </a>
             </div>
           </li>
         </ul>

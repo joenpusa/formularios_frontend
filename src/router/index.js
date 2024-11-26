@@ -39,4 +39,16 @@ const router = createRouter({
   routes,
 });
 
+router.beforeEach((to, from, next) => {
+  const token =
+    localStorage.getItem("authToken") || sessionStorage.getItem("authToken");
+
+  if (!token && to.path !== "/login") {
+    next("/login");
+    console.log("No hay token, redirigiendo al login");
+  } else {
+    next();
+  }
+});
+
 export default router;

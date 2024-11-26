@@ -23,6 +23,7 @@ import "./assets/vendors/dayjs/dayjs.min.js";
 import "./assets/vendors/leaflet/leaflet.js";
 import "./assets/vendors/leaflet.markercluster/leaflet.markercluster.js";
 import "./assets/vendors/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js";
+import "bootstrap-icons/font/bootstrap-icons.css";
 // import "./assets/vendors/echarts/echarts.min.js";
 
 async function syncDataWithBackend() {
