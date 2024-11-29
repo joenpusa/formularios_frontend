@@ -4,14 +4,13 @@
     v-if="toastMessage"
     :message="toastMessage"
     :type="toastType"
-    @clear-message="clearMessage"
   />
   <div class="text-center">
     <img src="../../public/assets/logo.png" alt="logo" />
   </div>
   <div class="card-body login-card-body">
     <p class="login-box-msg">Ingresa con tus credenciales</p>
-    <form @submit.prevent="handleLogin">
+    <form @submit.prevent="validateForm" novalidate>
       <div class="mb-3">
         <label class="form-label">Email</label>
         <input
@@ -23,7 +22,7 @@
         />
       </div>
       <div class="mb-3">
-        <label class="form-label">Password</label>
+        <label class="form-label">Contraseña</label>
         <input
           type="password"
           class="form-control"
@@ -48,9 +47,7 @@
         </div>
         <div class="col-4">
           <div class="d-grid gap-2">
-            <button type="button" class="btn btn-primary" @click="validateForm">
-              Ingresar
-            </button>
+            <button type="submit" class="btn btn-primary">Ingresar</button>
           </div>
         </div>
       </div>
@@ -141,9 +138,9 @@ export default {
     showToast(message, type) {
       this.toastMessage = message;
       this.toastType = type;
-    },
-    clearMessage() {
-      this.toastMessage = "";
+      setTimeout(() => {
+        this.toastMessage = "";
+      }, 5000);
     },
   },
 };
