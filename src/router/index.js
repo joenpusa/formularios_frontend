@@ -3,6 +3,8 @@ import AuthLayout from "@/components/layouts/AuthLayout.vue";
 import MainLayout from "@/components/layouts/MainLayout.vue";
 import Login from "@/views/LoginView.vue";
 import Home from "@/views/HomeView.vue";
+import HomeSocial from "@/views/ComSocial/HomeSocialView.vue";
+import HomeTecnico from "@/views/ComTecnico/HomeTecnicoView.vue";
 
 const routes = [
   {
@@ -25,7 +27,16 @@ const routes = [
         name: "Home",
         component: Home,
       },
-      // Otras rutas de tu aplicación
+      {
+        path: "/comsocial",
+        name: "HomeSocial",
+        component: HomeSocial,
+      },
+      {
+        path: "/comtecnico",
+        name: "HomeTecnico",
+        component: HomeTecnico,
+      },
     ],
   },
   {

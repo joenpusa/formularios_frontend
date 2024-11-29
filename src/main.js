@@ -4,6 +4,7 @@ import "./registerServiceWorker";
 import router from "./router";
 import { getAllFormData, clearFormData } from "./services/db";
 
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/vendors/simplebar/simplebar.min.css";
 import "./assets/css/theme.css";
 import "./assets/css/user.min.css";
@@ -11,8 +12,9 @@ import "./assets/vendors/leaflet/leaflet.css";
 import "./assets/vendors/leaflet.markercluster/MarkerCluster.css";
 import "./assets/vendors/leaflet.markercluster/MarkerCluster.Default.css";
 
-import "./assets/vendors/popper/popper.min.js";
-import "./assets/vendors/bootstrap/bootstrap.min.js";
+// import "./assets/vendors/popper/popper.min.js";
+// import "./assets/vendors/bootstrap/bootstrap.min.js";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./assets/vendors/anchorjs/anchor.min.js";
 import "./assets/vendors/is/is.min.js";
 import "./assets/vendors/fontawesome/all.min.js";

@@ -4,8 +4,7 @@
       <!-- scrollbar removed-->
       <div class="navbar-vertical-content">
         <ul class="navbar-nav flex-column" id="navbarVerticalNav">
-          <li class="nav-item">
-            <!-- parent pages-->
+          <!-- <li class="nav-item">
             <div class="nav-item-wrapper">
               <a
                 class="nav-link dropdown-indicator label-1"
@@ -39,7 +38,6 @@
                         <span class="nav-link-text">Formato 1</span>
                       </div>
                     </a>
-                    <!-- more inner pages-->
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">
@@ -47,10 +45,85 @@
                         <span class="nav-link-text">Formato 2</span>
                       </div>
                     </a>
-                    <!-- more inner pages-->
                   </li>
                 </ul>
               </div>
+            </div>
+          </li> -->
+          <li class="nav-item">
+            <div class="nav-item-wrapper">
+              <a
+                class="nav-link label-1"
+                href="#"
+                role="button"
+                data-bs-toggle=""
+                aria-expanded="false"
+              >
+                <div class="d-flex align-items-center">
+                  <span class="nav-link-icon"
+                    ><span class="bi bi-house"></span></span
+                  ><span class="nav-link-text-wrapper"
+                    ><span class="nav-link-text">Inicio</span></span
+                  >
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-item-wrapper">
+              <a
+                class="nav-link label-1"
+                href="#"
+                role="button"
+                data-bs-toggle=""
+                aria-expanded="false"
+              >
+                <div class="d-flex align-items-center">
+                  <span class="nav-link-icon"
+                    ><span class="bi bi-person-rolodex"></span></span
+                  ><span class="nav-link-text-wrapper"
+                    ><span class="nav-link-text">Componente social</span></span
+                  >
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-item-wrapper">
+              <a
+                class="nav-link label-1"
+                href="#"
+                role="button"
+                data-bs-toggle=""
+                aria-expanded="false"
+              >
+                <div class="d-flex align-items-center">
+                  <span class="nav-link-icon"
+                    ><span class="bi bi-check-circle"></span></span
+                  ><span class="nav-link-text-wrapper"
+                    ><span class="nav-link-text">Componente tecnico</span></span
+                  >
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-item-wrapper">
+              <a
+                class="nav-link label-1"
+                href="#"
+                role="button"
+                data-bs-toggle=""
+                aria-expanded="false"
+              >
+                <div class="d-flex align-items-center">
+                  <span class="nav-link-icon"
+                    ><span class="bi bi-file-earmark-bar-graph"></span></span
+                  ><span class="nav-link-text-wrapper"
+                    ><span class="nav-link-text">Reportes</span></span
+                  >
+                </div>
+              </a>
             </div>
           </li>
           <li class="nav-item">
@@ -67,6 +140,25 @@
                     ><span class="bi bi-person-circle"></span></span
                   ><span class="nav-link-text-wrapper"
                     ><span class="nav-link-text">Usuarios</span></span
+                  >
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-item-wrapper">
+              <a
+                class="nav-link label-1"
+                href="#"
+                role="button"
+                data-bs-toggle=""
+                aria-expanded="false"
+              >
+                <div class="d-flex align-items-center">
+                  <span class="nav-link-icon"
+                    ><span class="bi bi-images"></span></span
+                  ><span class="nav-link-text-wrapper"
+                    ><span class="nav-link-text">Galeria</span></span
                   >
                 </div>
               </a>
