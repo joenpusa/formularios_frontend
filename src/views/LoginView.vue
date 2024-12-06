@@ -104,7 +104,7 @@ export default {
       this.toastMessage = "";
       try {
         const apiUrl = process.env.VUE_APP_API_BASE_URL;
-        const response = await axios.post(`${apiUrl}/api/login`, {
+        const response = await axios.post(`${apiUrl}/login`, {
           email: this.email,
           password: this.password,
         });

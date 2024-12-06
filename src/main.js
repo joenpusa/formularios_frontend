@@ -11,6 +11,7 @@ import "./assets/css/user.min.css";
 import "./assets/vendors/leaflet/leaflet.css";
 import "./assets/vendors/leaflet.markercluster/MarkerCluster.css";
 import "./assets/vendors/leaflet.markercluster/MarkerCluster.Default.css";
+import "./assets/vendors/flatpickr/flatpickr.min.css";
 
 // import "./assets/vendors/popper/popper.min.js";
 // import "./assets/vendors/bootstrap/bootstrap.min.js";
@@ -26,6 +27,7 @@ import "./assets/vendors/leaflet/leaflet.js";
 import "./assets/vendors/leaflet.markercluster/leaflet.markercluster.js";
 import "./assets/vendors/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import "./assets/vendors/flatpickr/flatpickr.min.js";
 // import "./assets/vendors/echarts/echarts.min.js";
 
 async function syncDataWithBackend() {

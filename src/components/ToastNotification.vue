@@ -61,7 +61,7 @@ export default {
 <style scoped>
 .toast {
   position: fixed;
-  top: 1rem;
+  bottom: 1rem;
   right: 1rem;
   z-index: 2000;
   transition: opacity 0.5s ease;

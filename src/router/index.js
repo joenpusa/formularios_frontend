@@ -3,7 +3,12 @@ import AuthLayout from "@/components/layouts/AuthLayout.vue";
 import MainLayout from "@/components/layouts/MainLayout.vue";
 import Login from "@/views/LoginView.vue";
 import Home from "@/views/HomeView.vue";
+// area de componente social
 import HomeSocial from "@/views/ComSocial/HomeSocialView.vue";
+import FormVisita from "@/views/ComSocial/FormVisita.vue";
+import FormAsistencia from "@/views/ComSocial/FormAsistencia.vue";
+import FormVerificacionPersonal from "@/views/ComSocial/FormVerificacionPersonal.vue";
+// area de componente tecnico
 import HomeTecnico from "@/views/ComTecnico/HomeTecnicoView.vue";
 
 const routes = [
@@ -27,11 +32,28 @@ const routes = [
         name: "Home",
         component: Home,
       },
+      // inicio componente social
       {
         path: "/comsocial",
         name: "HomeSocial",
         component: HomeSocial,
       },
+      {
+        path: "/comsocial/formvisita",
+        name: "FormVisita",
+        component: FormVisita,
+      },
+      {
+        path: "/comsocial/formasistencia",
+        name: "FormAsistencia",
+        component: FormAsistencia,
+      },
+      {
+        path: "/comsocial/form-verificacion-personal",
+        name: "FormVerificacionPersonal",
+        component: FormVerificacionPersonal,
+      },
+      // inicio componente tecnico
       {
         path: "/comtecnico",
         name: "HomeTecnico",
