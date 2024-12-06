@@ -25,7 +25,7 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
-            <router-link to="/comsocial">
+            <router-link to="/comsocial/formasistencia">
               <div class="card text-dark bg-light border border-warning">
                 <div class="card-body text-center">
                   <h4 class="text-dark">F. asistencia EAN</h4>
@@ -34,7 +34,7 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
-            <router-link to="/comsocial">
+            <router-link to="/comsocial/form-verificacion-personal">
               <div class="card text-dark bg-light border border-warning">
                 <div class="card-body text-center">
                   <h4 class="text-dark">F. personal manipulador</h4>

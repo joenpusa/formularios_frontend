@@ -71,9 +71,9 @@
           </li>
           <li class="nav-item">
             <div class="nav-item-wrapper">
-              <a
+              <router-link
+                to="/comsocial"
                 class="nav-link label-1"
-                href="#"
                 role="button"
                 data-bs-toggle=""
                 aria-expanded="false"
@@ -85,14 +85,14 @@
                     ><span class="nav-link-text">Componente social</span></span
                   >
                 </div>
-              </a>
+              </router-link>
             </div>
           </li>
           <li class="nav-item">
             <div class="nav-item-wrapper">
-              <a
+              <router-link
+                to="/comtecnico"
                 class="nav-link label-1"
-                href="#"
                 role="button"
                 data-bs-toggle=""
                 aria-expanded="false"
@@ -104,7 +104,7 @@
                     ><span class="nav-link-text">Componente tecnico</span></span
                   >
                 </div>
-              </a>
+              </router-link>
             </div>
           </li>
           <li class="nav-item">
