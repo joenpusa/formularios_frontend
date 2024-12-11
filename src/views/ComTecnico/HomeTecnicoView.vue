@@ -15,28 +15,233 @@
           <hr />
         </div>
         <div class="row">
-          <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+          <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+            <h3>Administrativo</h3>
+            <hr />
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
             <router-link to="/comtecnico">
-              <div class="card text-dark bg-light border border-warning">
-                <div class="card-body text-center">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
+                  <h4 class="text-dark">Etapa de alistamiento</h4>
+                </div>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
+            <router-link to="/comtecnico">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
+                  <h4 class="text-dark">Etapa de orientación</h4>
+                </div>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
+            <router-link to="/comtecnico">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
+                  <h4 class="text-dark">
+                    Verificación rotulado bodega APS, CCT y RI
+                  </h4>
+                </div>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
+            <router-link to="/comtecnico">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
+                  <h4 class="text-dark">
+                    Verificación caracteristicas de calidad de productos
+                  </h4>
+                </div>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
+            <router-link to="/comtecnico">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
+                  <h4 class="text-dark">Toma muestra pollo</h4>
+                </div>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
+            <router-link to="/comtecnico">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
+                  <h4 class="text-dark">Toma muestra carne de res</h4>
+                </div>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
+            <router-link to="/comtecnico">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
+                  <h4 class="text-dark">Toma muestra carne de cerdo</h4>
+                </div>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-12 mb-3 flex-wrap">
+            <h3>Coordinadores en campo</h3>
+            <hr />
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
+            <router-link to="/comtecnico">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
+                  <h4 class="text-dark">
+                    Formato de verificación materia prima CCT
+                  </h4>
+                </div>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
+            <router-link to="/comtecnico">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
+                  <h4 class="text-dark">
+                    Formato de verificación modalidad CCT
+                  </h4>
+                </div>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
+            <router-link to="/comtecnico">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
+                  <h4 class="text-dark">
+                    Formato de verificación materia prima RPS
+                  </h4>
+                </div>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
+            <router-link to="/comtecnico">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
+                  <h4 class="text-dark">
+                    Formato de verificación modalidad RPS
+                  </h4>
+                </div>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
+            <router-link to="/comtecnico">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
+                  <h4 class="text-dark">
+                    Formato de verificación materia prima RI
+                  </h4>
+                </div>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
+            <router-link to="/comtecnico">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
+                  <h4 class="text-dark">
+                    Formato de verificación modalidad RI
+                  </h4>
+                </div>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+            <h3>Supervisores en campo</h3>
+            <hr />
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
+            <router-link to="/comtecnico">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
+                  <h4 class="text-dark">Formato de seguimiento local</h4>
+                </div>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
+            <router-link to="/comtecnico">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
+                  <h4 class="text-dark">
+                    Formato de rotulado de seguimiento local
+                  </h4>
+                </div>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+            <h3>General</h3>
+            <hr />
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
+            <router-link to="/comtecnico">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
                   <h4 class="text-dark">SPQR</h4>
                 </div>
               </div>
             </router-link>
           </div>
-          <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
             <router-link to="/comtecnico">
-              <div class="card text-dark bg-light border border-warning">
-                <div class="card-body text-center">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
                   <h4 class="text-dark">Acta de reunión</h4>
                 </div>
               </div>
             </router-link>
           </div>
-          <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
             <router-link to="/comtecnico">
-              <div class="card text-dark bg-light border border-warning">
-                <div class="card-body text-center">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
                   <h4 class="text-dark">Listado asistencia reunión</h4>
                 </div>
               </div>
