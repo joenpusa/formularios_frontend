@@ -10,8 +10,10 @@ import FormAsistencia from "@/views/ComSocial/FormAsistencia.vue";
 import FormVerificacionPersonal from "@/views/ComSocial/FormVerificacionPersonal.vue";
 // area de componente tecnico
 import HomeTecnico from "@/views/ComTecnico/HomeTecnicoView.vue";
+import FormEtapaAlistamiento from "@/views/ComTecnico/FormAdministrativos/FormEtapaAlistamiento.vue";
 // area de usuarios
 import GridUsers from "@/views/Users/GridUsers.vue";
+import FormUsers from "@/views/Users/FormUsers.vue";
 // area de Reportes
 import HomeReportes from "@/views/Reportes/HomeReportes.vue";
 // area de galeria
@@ -65,11 +67,21 @@ const routes = [
         name: "HomeTecnico",
         component: HomeTecnico,
       },
+      {
+        path: "/comtecnico/form-etapa-alistamiento",
+        name: "FormEtapaAlistamiento",
+        component: FormEtapaAlistamiento,
+      },
       // Usuarios
       {
         path: "/usuarios",
         name: "GridUsers",
         component: GridUsers,
+      },
+      {
+        path: "/ususarios/form",
+        name: "FormUsers",
+        component: FormUsers,
       },
       // Galeria
       {

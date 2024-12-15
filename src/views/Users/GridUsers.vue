@@ -114,7 +114,7 @@ export default {
       }
     },
     registerUser() {
-      this.$router.push("/users/register");
+      this.$router.push("/ususarios/form");
     },
     editUser(userId) {
       this.$router.push(`/users/edit/${userId}`);

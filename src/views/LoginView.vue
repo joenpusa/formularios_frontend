@@ -5,8 +5,8 @@
     :message="toastMessage"
     :type="toastType"
   />
-  <div class="text-center">
-    <img src="../../public/assets/logo.png" alt="logo" />
+  <div class="text-center p-5">
+    <img src="../../public/img/icons/logo.png" width="100%" alt="logo" />
   </div>
   <div class="card-body login-card-body">
     <p class="login-box-msg">Ingresa con tus credenciales</p>
