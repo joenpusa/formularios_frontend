@@ -7,7 +7,7 @@
   />
   <div class="pb-5">
     <div class="row g-4">
-      <div class="col-12 col-xxl-6">
+      <div class="col-12 col-xxl-9">
         <div class="mb-5">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-3">
@@ -307,6 +307,7 @@
                   <input class="form-control" type="text" />
                 </div>
               </div>
+              <hr />
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 mb-1 mt-2">
               <h5>
@@ -315,7 +316,6 @@
               </h5>
               <hr />
               <div class="row">
-                <hr />
                 <label class="col-sm-6"
                   >14.Se evidencia concepto favorable, emitido por la autoridad
                   de salud competente, una vez verificado el cumplimiento de las

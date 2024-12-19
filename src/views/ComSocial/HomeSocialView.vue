@@ -1,7 +1,7 @@
 <template>
   <div class="pb-5">
     <div class="row g-4">
-      <div class="col-12 col-xxl-6">
+      <div class="col-12 col-xxl-9">
         <div class="mb-5">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-3">
