@@ -8,7 +8,8 @@ import HomeSocial from "@/views/ComSocial/HomeSocialView.vue";
 import FormVisita from "@/views/ComSocial/FormVisita.vue";
 import FormAsistencia from "@/views/ComSocial/FormAsistencia.vue";
 import FormVerificacionPersonal from "@/views/ComSocial/FormVerificacionPersonal.vue";
-// area de componente tecnico
+// #####################area de componente tecnico
+// area de componente tecnico administrativos
 import HomeTecnico from "@/views/ComTecnico/HomeTecnicoView.vue";
 import FormEtapaAlistamiento from "@/views/ComTecnico/FormAdministrativos/FormEtapaAlistamiento.vue";
 import FormEtapaOperacion from "@/views/ComTecnico/FormAdministrativos/FormEtapaOperacion.vue";
@@ -17,6 +18,11 @@ import FormCaracteristicasProductos from "@/views/ComTecnico/FormAdministrativos
 import FormMuestraPollo from "@/views/ComTecnico/FormAdministrativos/FormMuestraPollo.vue";
 import FormMuestraRes from "@/views/ComTecnico/FormAdministrativos/FormMuestraRes.vue";
 import FormMuestraCerdo from "@/views/ComTecnico/FormAdministrativos/FormMuestraCerdo.vue";
+// area de componente tecnico supervisores
+import FormSeguimientoLocal from "@/views/ComTecnico/FormSupervisores/FormSeguimientoLocal.vue";
+// area de componente tecnico general
+import FormSPQR from "@/views/ComTecnico/FormGenerales/FormSPQR.vue";
+// ################################
 // area de usuarios
 import GridUsers from "@/views/Users/GridUsers.vue";
 import FormUsers from "@/views/Users/FormUsers.vue";
@@ -107,6 +113,16 @@ const routes = [
         path: "/comtecnico/form-toma-muestra-cerdo",
         name: "FormMuestraCerdo",
         component: FormMuestraCerdo,
+      },
+      {
+        path: "/comtecnico/form-seguimiento-local",
+        name: "FormSeguimientoLocal",
+        component: FormSeguimientoLocal,
+      },
+      {
+        path: "/comtecnico/form-spqr",
+        name: "FormSPQR",
+        component: FormSPQR,
       },
       // Usuarios
       {

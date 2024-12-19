@@ -187,7 +187,7 @@
             <hr />
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-seguimiento-local">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -215,7 +215,7 @@
             <hr />
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-spqr">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -226,7 +226,10 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <a
+              href="/formatos/acta_de_reunion.pdf"
+              download="Acta de reunión.pdf"
+            >
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -234,10 +237,13 @@
                   <h4 class="text-dark">Acta de reunión</h4>
                 </div>
               </div>
-            </router-link>
+            </a>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <a
+              href="/formatos/listado_asistencia_reunion.pdf"
+              download="Listado asistencia reunión.pdf"
+            >
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -245,7 +251,7 @@
                   <h4 class="text-dark">Listado asistencia reunión</h4>
                 </div>
               </div>
-            </router-link>
+            </a>
           </div>
         </div>
       </div>
