@@ -198,7 +198,7 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-seguimiento-rotulado">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"

@@ -20,6 +20,7 @@ import FormMuestraRes from "@/views/ComTecnico/FormAdministrativos/FormMuestraRe
 import FormMuestraCerdo from "@/views/ComTecnico/FormAdministrativos/FormMuestraCerdo.vue";
 // area de componente tecnico supervisores
 import FormSeguimientoLocal from "@/views/ComTecnico/FormSupervisores/FormSeguimientoLocal.vue";
+import FormSeguimientoRotulado from "@/views/ComTecnico/FormSupervisores/FormSeguimientoRotulado.vue";
 // area de componente tecnico general
 import FormSPQR from "@/views/ComTecnico/FormGenerales/FormSPQR.vue";
 // ################################
@@ -93,6 +94,11 @@ const routes = [
         path: "/comtecnico/form-seguimiento-etiquetado",
         name: "FormSeguimientoEtiquetado",
         component: FormSeguimientoEtiquetado,
+      },
+      {
+        path: "/comtecnico/form-seguimiento-rotulado",
+        name: "FormSeguimientoRotulado",
+        component: FormSeguimientoRotulado,
       },
       {
         path: "/comtecnico/form-caracteristicas-productos",
