@@ -23,6 +23,9 @@ import FormSeguimientoLocal from "@/views/ComTecnico/FormSupervisores/FormSeguim
 import FormSeguimientoRotulado from "@/views/ComTecnico/FormSupervisores/FormSeguimientoRotulado.vue";
 // area de componente tecnico general
 import FormSPQR from "@/views/ComTecnico/FormGenerales/FormSPQR.vue";
+// area de componente tecnico coordinadores
+import FormVerificacionMateriaPrimaCCT from "@/views/ComTecnico/FormCoordinadores/FormVerificacionMateriaPrimaCCT.vue";
+import FormVerificacionModalidadCCT from "@/views/ComTecnico/FormCoordinadores/FormVerificacionModalidadCCT.vue";
 // ################################
 // area de usuarios
 import GridUsers from "@/views/Users/GridUsers.vue";
@@ -120,6 +123,18 @@ const routes = [
         name: "FormMuestraCerdo",
         component: FormMuestraCerdo,
       },
+      // area de componente tecnico coordinadores
+      {
+        path: "/comtecnico/form-verificacion-materia-prima-cct",
+        name: "FormVerificacionMateriaPrimaCCT",
+        component: FormVerificacionMateriaPrimaCCT,
+      },
+      {
+        path: "/comtecnico/form-verificacion-modalidad-cct",
+        name: "FormVerificacionModalidadCCT",
+        component: FormVerificacionModalidadCCT,
+      },
+      // area de componente tecnico supervisores
       {
         path: "/comtecnico/form-seguimiento-local",
         name: "FormSeguimientoLocal",

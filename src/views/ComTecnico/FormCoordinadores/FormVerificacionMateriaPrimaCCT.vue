@@ -18,13 +18,11 @@
                 <router-link to="/comtecnico">Componente tecnico</router-link>
               </li>
               <li class="breadcrumb-item">
-                Formato de seguimiento rotulado y/o etiquetado de los alimentos
+                Formulario de verificación de materia prima CCT
               </li>
             </ol>
           </nav>
-          <h2>
-            FORMATO DE SEGUIMIENTO ROTULADO Y/O ETIQUETADO DE LOS ALIMENTOS
-          </h2>
+          <h2>VERIFICACIÓN DE MATERIA PRIMA CCT</h2>
           <hr />
         </div>
         <form @submit.prevent="guardarFormulario">
@@ -93,7 +91,7 @@
           </div>
 
           <div class="row mb-3">
-            <div class="col-md-4">
+            <div class="col-md-3">
               <label for="horaInicial" class="form-label">Hora Inicial:</label>
               <input
                 type="time"
@@ -103,7 +101,7 @@
                 required
               />
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <label for="horaFinal" class="form-label">Hora Final:</label>
               <input
                 type="time"
@@ -113,29 +111,7 @@
                 required
               />
             </div>
-            <div class="col-md-4">
-              <label for="modalidad" class="form-label">Modalidad:</label>
-              <select
-                class="form-select"
-                id="modalidad"
-                v-model="form.modalidad"
-                required
-              >
-                <option value="racionPreparadaEnSitio">
-                  Ración preparada en sitio
-                </option>
-                <option value="comidaCalienteTransportada">
-                  Comida Caliente Transportada
-                </option>
-                <option value="racionIndustrializada">
-                  Ración Industrializada
-                </option>
-              </select>
-            </div>
-          </div>
-
-          <div class="row mb-3">
-            <div class="col-md-4">
+            <div class="col-md-3">
               <label for="operador" class="form-label">Operador:</label>
               <input
                 type="text"
@@ -146,7 +122,7 @@
                 readonly
               />
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <label for="numeroContrato" class="form-label"
                 >N° Contrato:</label
               >
@@ -159,172 +135,176 @@
                 readonly
               />
             </div>
-            <div class="col-md-4">
-              <label for="supervisor" class="form-label">Supervisor:</label>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-3">
+              <label for="tipoVisita" class="form-label">Tipo de visita:</label>
+              <select
+                class="form-select"
+                id="tipoVisita"
+                v-model="form.tipoVisita"
+                required
+              >
+                <option value="tecnica">Técnica</option>
+                <option value="verificacionETA">Verificación ETA</option>
+                <option value="spqr">SPQR</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="numeroVisita" class="form-label"
+                >Número de visita:</label
+              >
+              <select
+                class="form-select"
+                id="numeroVisita"
+                v-model="form.numeroVisita"
+                required
+              >
+                <option value="1">1ra</option>
+                <option value="2">2da</option>
+                <option value="3">3ra</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="numeroBeneficiarios" class="form-label"
+                >N° Beneficiarios:</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="numeroBeneficiarios"
+                v-model="form.numeroBeneficiarios"
+                required
+              />
+            </div>
+            <div class="col-md-3">
+              <label for="descripcionMenu" class="form-label"
+                >Descripción del Menú:</label
+              >
               <input
                 type="text"
                 class="form-control"
-                id="supervisor"
-                v-model="form.supervisor"
+                id="descripcionMenu"
+                v-model="form.descripcionMenu"
                 required
               />
             </div>
           </div>
 
-          <!-- Prepared on-site / Hot Transported Food Section -->
-          <div v-if="form.modalidad !== 'racionIndustrializada'">
-            <h3 class="mt-4 mb-3">
-              Verificación de materia prima de ración para preparar en sitio /
-              Comida caliente transportada
-            </h3>
-            <div class="table-responsive">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Alimento</th>
-                    <th>Marca</th>
-                    <th>Lote</th>
-                    <th>Fecha de vencimiento</th>
-                    <th>Registro, permiso, notificación sanitaria</th>
-                    <th>Contenido neto</th>
-                    <th>Nombre o dirección del fabricante</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="(item, index) in preparedFoodItems" :key="index">
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.alimento"
-                        :readonly="!item.editable"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.marca"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.lote"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="date"
-                        class="form-control"
-                        v-model="item.fechaVencimiento"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.registroSanitario"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.contenidoNeto"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.fabricante"
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <!-- Industrialized Ration Section -->
-          <div v-if="form.modalidad === 'racionIndustrializada'">
-            <h3 class="mt-4 mb-3">
-              Verificación de componentes de ración industrializada
-            </h3>
-            <div class="table-responsive">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Alimento</th>
-                    <th>Marca</th>
-                    <th>Lote</th>
-                    <th>Fecha de vencimiento</th>
-                    <th>Registro, permiso, notificación sanitaria</th>
-                    <th>Contenido neto</th>
-                    <th>Nombre o dirección del fabricante</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    v-for="(item, index) in industrializedFoodItems"
-                    :key="index"
-                  >
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.alimento"
-                        :readonly="!item.editable"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.marca"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.lote"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="date"
-                        class="form-control"
-                        v-model="item.fechaVencimiento"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.registroSanitario"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.contenidoNeto"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.fabricante"
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <!-- Raw Material Verification Table -->
+          <div class="table-responsive mb-3">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Materia Prima</th>
+                  <th>Lote</th>
+                  <th>Fecha vencimiento</th>
+                  <th>Unidad de medida</th>
+                  <th>Temperatura (productos cárnicos)</th>
+                  <th>Cantidad total según kardex</th>
+                  <th>Cantidad encontrada</th>
+                  <th>Cantidad faltante</th>
+                  <th>Características Organolépticas</th>
+                  <th>Cumplimiento (Cumple / No cumple)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(item, index) in rawMaterials" :key="index">
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="item.nombre"
+                      :readonly="!item.editable"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="item.lote"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="date"
+                      class="form-control"
+                      v-model="item.fechaVencimiento"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="item.unidadMedida"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model="item.temperatura"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model="item.cantidadKardex"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model="item.cantidadEncontrada"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model="item.cantidadFaltante"
+                    />
+                  </td>
+                  <td>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="item.caracteristicas.color"
+                          placeholder="Color"
+                        />
+                      </div>
+                      <div class="col-md-4">
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="item.caracteristicas.olor"
+                          placeholder="Olor"
+                        />
+                      </div>
+                      <div class="col-md-4">
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="item.caracteristicas.textura"
+                          placeholder="Textura"
+                        />
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="item.cumplimiento">
+                      <option value="cumple">Cumple</option>
+                      <option value="noCumple">No cumple</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           <!-- Observations -->
@@ -336,6 +316,20 @@
               v-model="form.observaciones"
               rows="3"
             ></textarea>
+          </div>
+
+          <!-- Compliance Percentage -->
+          <div class="mb-3">
+            <label for="porcentajeCumplimiento" class="form-label"
+              >Porcentaje de cumplimiento:</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="porcentajeCumplimiento"
+              v-model="form.porcentajeCumplimiento"
+              readonly
+            />
           </div>
 
           <!-- Signatures -->
@@ -474,11 +468,14 @@ export default {
         sedeEducativa: "",
         horaInicial: "",
         horaFinal: "",
-        modalidad: "",
         operador: "Unión Temporal Suministros PAE 2024",
         numeroContrato: "LP-SEG-3030-2023 del 12 de enero del 2024",
-        supervisor: "",
+        tipoVisita: "",
+        numeroVisita: "",
+        numeroBeneficiarios: "",
+        descripcionMenu: "",
         observaciones: "",
+        porcentajeCumplimiento: 0,
         firmaEquipoPAE: {
           nombre: "",
           documento: "",
@@ -492,198 +489,253 @@ export default {
           telefono: "",
         },
       },
-      preparedFoodItems: [
+      rawMaterials: [
         {
-          alimento: "Sal",
+          nombre: "Arroz",
           editable: false,
-          marca: "",
           lote: "",
           fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
         },
         {
-          alimento: "Carne de Res",
+          nombre: "Azúcar",
           editable: false,
-          marca: "",
           lote: "",
           fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
         },
         {
-          alimento: "Espaguetis",
+          nombre: "Leche en polvo",
           editable: false,
-          marca: "",
           lote: "",
           fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
         },
         {
-          alimento: "Azúcar",
+          nombre: "Pechuga (pollo)",
           editable: false,
-          marca: "",
           lote: "",
           fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
         },
         {
-          alimento: "Leche en polvo",
+          nombre: "Huevo",
           editable: false,
-          marca: "",
           lote: "",
           fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
         },
         {
-          alimento: "Pechuga",
+          nombre: "Aceite",
           editable: false,
-          marca: "",
           lote: "",
           fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
         },
         {
-          alimento: "Carne de Cerdo",
+          nombre: "Leguminosas",
           editable: false,
-          marca: "",
           lote: "",
           fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
         },
         {
-          alimento: "Aceite",
+          nombre: "Carne (res-cerdo)",
           editable: false,
-          marca: "",
           lote: "",
           fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
         },
         {
-          alimento: "Arroz",
+          nombre: "Cebolla cabezona",
           editable: false,
-          marca: "",
           lote: "",
           fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
         },
         {
-          alimento: "Leguminosa 1",
-          editable: true,
-          marca: "",
+          nombre: "Papa-yuca",
+          editable: false,
           lote: "",
           fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
         },
         {
-          alimento: "Leguminosa 2",
-          editable: true,
-          marca: "",
+          nombre: "Plátano",
+          editable: false,
           lote: "",
           fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
         },
         {
-          alimento: "Leguminosa 3",
-          editable: true,
-          marca: "",
+          nombre: "Pepino",
+          editable: false,
           lote: "",
           fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
         },
         {
-          alimento: "Otro",
-          editable: true,
-          marca: "",
+          nombre: "Remolacha",
+          editable: false,
           lote: "",
           fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
         },
         {
-          alimento: "Otro",
-          editable: true,
-          marca: "",
+          nombre: "Zanahoria",
+          editable: false,
           lote: "",
           fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-      ],
-      industrializedFoodItems: [
-        {
-          alimento: "Cereal 1",
-          editable: true,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
         },
         {
-          alimento: "Cereal 2",
-          editable: true,
-          marca: "",
+          nombre: "Ahuyama",
+          editable: false,
           lote: "",
           fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
         },
         {
-          alimento: "Lácteo 1",
+          nombre: "Fruta 1",
           editable: true,
-          marca: "",
           lote: "",
           fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
         },
         {
-          alimento: "Lácteo 2",
+          nombre: "Fruta 2",
           editable: true,
-          marca: "",
           lote: "",
           fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
         },
         {
-          alimento: "Dulce",
-          editable: true,
-          marca: "",
+          nombre: "Limón-naranja",
+          editable: false,
           lote: "",
           fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
+        },
+        {
+          nombre: "Tomate",
+          editable: false,
+          lote: "",
+          fechaVencimiento: "",
+          unidadMedida: "",
+          temperatura: null,
+          cantidadKardex: null,
+          cantidadEncontrada: null,
+          cantidadFaltante: null,
+          caracteristicas: { color: "", olor: "", textura: "" },
+          cumplimiento: "",
         },
       ],
       formulariosOffline: [], // Para almacenar temporalmente los formularios en localStorage
