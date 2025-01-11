@@ -131,7 +131,7 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-verificacion-materia-prima-rps">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -144,7 +144,7 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-verificacion-modalidad-rps">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -157,20 +157,20 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-verificacion-rotulado-ri">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
                 >
                   <h4 class="text-dark">
-                    Formato de verificación materia prima RI
+                    Formato de verificación de rotulado RI
                   </h4>
                 </div>
               </div>
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-verificacion-modalidad-ri">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"

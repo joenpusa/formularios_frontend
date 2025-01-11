@@ -26,6 +26,10 @@ import FormSPQR from "@/views/ComTecnico/FormGenerales/FormSPQR.vue";
 // area de componente tecnico coordinadores
 import FormVerificacionMateriaPrimaCCT from "@/views/ComTecnico/FormCoordinadores/FormVerificacionMateriaPrimaCCT.vue";
 import FormVerificacionModalidadCCT from "@/views/ComTecnico/FormCoordinadores/FormVerificacionModalidadCCT.vue";
+import FormVerificacionMateriaPrimaRPS from "@/views/ComTecnico/FormCoordinadores/FormVerificacionMateriaPrimaRPS.vue";
+import FormVerificacionModalidadRPS from "@/views/ComTecnico/FormCoordinadores/FormVerificacionModalidadRPS.vue";
+import FormVerificacionRotuladoRI from "@/views/ComTecnico/FormCoordinadores/FormVerificacionRotuladoRI.vue";
+import FormVerificacionModalidadRI from "@/views/ComTecnico/FormCoordinadores/FormVerificacionModalidadRI.vue";
 // ################################
 // area de usuarios
 import GridUsers from "@/views/Users/GridUsers.vue";
@@ -133,6 +137,26 @@ const routes = [
         path: "/comtecnico/form-verificacion-modalidad-cct",
         name: "FormVerificacionModalidadCCT",
         component: FormVerificacionModalidadCCT,
+      },
+      {
+        path: "/comtecnico/form-verificacion-materia-prima-rps",
+        name: "FormVerificacionMateriaPrimaRPS",
+        component: FormVerificacionMateriaPrimaRPS,
+      },
+      {
+        path: "/comtecnico/form-verificacion-modalidad-rps",
+        name: "FormVerificacionModalidadRPS",
+        component: FormVerificacionModalidadRPS,
+      },
+      {
+        path: "/comtecnico/form-verificacion-rotulado-ri",
+        name: "FormVerificacionRotuladoRI",
+        component: FormVerificacionRotuladoRI,
+      },
+      {
+        path: "/comtecnico/form-verificacion-modalidad-ri",
+        name: "FormVerificacionModalidadRI",
+        component: FormVerificacionModalidadRI,
       },
       // area de componente tecnico supervisores
       {
