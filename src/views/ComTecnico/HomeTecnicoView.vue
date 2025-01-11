@@ -1,7 +1,7 @@
 <template>
   <div class="pb-5">
     <div class="row g-4">
-      <div class="col-12 col-xxl-6">
+      <div class="col-12 col-xxl-9">
         <div class="mb-5">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-3">
@@ -31,31 +31,31 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-etapa-operacion">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
                 >
-                  <h4 class="text-dark">Etapa de orientación</h4>
+                  <h4 class="text-dark">Etapa de operación</h4>
                 </div>
               </div>
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-seguimiento-etiquetado">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
                 >
                   <h4 class="text-dark">
-                    Verificación rotulado bodega APS, CCT y RI
+                    Seguimiento rotulado y/o etiquetado de alimentos
                   </h4>
                 </div>
               </div>
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-caracteristicas-productos">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -68,7 +68,7 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-toma-muestra-pollo">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -79,7 +79,7 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-toma-muestra-res">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -90,7 +90,7 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-toma-muestra-cerdo">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -105,7 +105,7 @@
             <hr />
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-verificacion-materia-prima-cct">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -118,7 +118,7 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-verificacion-modalidad-cct">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -131,7 +131,7 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-verificacion-materia-prima-rps">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -144,7 +144,7 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-verificacion-modalidad-rps">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -157,20 +157,20 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-verificacion-rotulado-ri">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
                 >
                   <h4 class="text-dark">
-                    Formato de verificación materia prima RI
+                    Formato de verificación de rotulado RI
                   </h4>
                 </div>
               </div>
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-verificacion-modalidad-ri">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -187,7 +187,7 @@
             <hr />
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-seguimiento-local">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -198,7 +198,7 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-seguimiento-rotulado">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -215,7 +215,7 @@
             <hr />
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <router-link to="/comtecnico/form-spqr">
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -226,7 +226,10 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <a
+              href="/formatos/acta_de_reunion.pdf"
+              download="Acta de reunión.pdf"
+            >
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -234,10 +237,13 @@
                   <h4 class="text-dark">Acta de reunión</h4>
                 </div>
               </div>
-            </router-link>
+            </a>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
-            <router-link to="/comtecnico">
+            <a
+              href="/formatos/listado_asistencia_reunion.pdf"
+              download="Listado asistencia reunión.pdf"
+            >
               <div class="card text-dark bg-light border border-warning h-100">
                 <div
                   class="card-body text-center d-flex align-items-center justify-content-center"
@@ -245,7 +251,7 @@
                   <h4 class="text-dark">Listado asistencia reunión</h4>
                 </div>
               </div>
-            </router-link>
+            </a>
           </div>
         </div>
       </div>

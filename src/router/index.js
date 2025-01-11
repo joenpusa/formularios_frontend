@@ -8,9 +8,29 @@ import HomeSocial from "@/views/ComSocial/HomeSocialView.vue";
 import FormVisita from "@/views/ComSocial/FormVisita.vue";
 import FormAsistencia from "@/views/ComSocial/FormAsistencia.vue";
 import FormVerificacionPersonal from "@/views/ComSocial/FormVerificacionPersonal.vue";
-// area de componente tecnico
+// #####################area de componente tecnico
+// area de componente tecnico administrativos
 import HomeTecnico from "@/views/ComTecnico/HomeTecnicoView.vue";
 import FormEtapaAlistamiento from "@/views/ComTecnico/FormAdministrativos/FormEtapaAlistamiento.vue";
+import FormEtapaOperacion from "@/views/ComTecnico/FormAdministrativos/FormEtapaOperacion.vue";
+import FormSeguimientoEtiquetado from "@/views/ComTecnico/FormAdministrativos/FormSeguimientoEtiquetado.vue";
+import FormCaracteristicasProductos from "@/views/ComTecnico/FormAdministrativos/FormCaracteristicasProductos.vue";
+import FormMuestraPollo from "@/views/ComTecnico/FormAdministrativos/FormMuestraPollo.vue";
+import FormMuestraRes from "@/views/ComTecnico/FormAdministrativos/FormMuestraRes.vue";
+import FormMuestraCerdo from "@/views/ComTecnico/FormAdministrativos/FormMuestraCerdo.vue";
+// area de componente tecnico supervisores
+import FormSeguimientoLocal from "@/views/ComTecnico/FormSupervisores/FormSeguimientoLocal.vue";
+import FormSeguimientoRotulado from "@/views/ComTecnico/FormSupervisores/FormSeguimientoRotulado.vue";
+// area de componente tecnico general
+import FormSPQR from "@/views/ComTecnico/FormGenerales/FormSPQR.vue";
+// area de componente tecnico coordinadores
+import FormVerificacionMateriaPrimaCCT from "@/views/ComTecnico/FormCoordinadores/FormVerificacionMateriaPrimaCCT.vue";
+import FormVerificacionModalidadCCT from "@/views/ComTecnico/FormCoordinadores/FormVerificacionModalidadCCT.vue";
+import FormVerificacionMateriaPrimaRPS from "@/views/ComTecnico/FormCoordinadores/FormVerificacionMateriaPrimaRPS.vue";
+import FormVerificacionModalidadRPS from "@/views/ComTecnico/FormCoordinadores/FormVerificacionModalidadRPS.vue";
+import FormVerificacionRotuladoRI from "@/views/ComTecnico/FormCoordinadores/FormVerificacionRotuladoRI.vue";
+import FormVerificacionModalidadRI from "@/views/ComTecnico/FormCoordinadores/FormVerificacionModalidadRI.vue";
+// ################################
 // area de usuarios
 import GridUsers from "@/views/Users/GridUsers.vue";
 import FormUsers from "@/views/Users/FormUsers.vue";
@@ -71,6 +91,83 @@ const routes = [
         path: "/comtecnico/form-etapa-alistamiento",
         name: "FormEtapaAlistamiento",
         component: FormEtapaAlistamiento,
+      },
+      {
+        path: "/comtecnico/form-etapa-operacion",
+        name: "FormEtapaOperacion",
+        component: FormEtapaOperacion,
+      },
+      {
+        path: "/comtecnico/form-seguimiento-etiquetado",
+        name: "FormSeguimientoEtiquetado",
+        component: FormSeguimientoEtiquetado,
+      },
+      {
+        path: "/comtecnico/form-seguimiento-rotulado",
+        name: "FormSeguimientoRotulado",
+        component: FormSeguimientoRotulado,
+      },
+      {
+        path: "/comtecnico/form-caracteristicas-productos",
+        name: "FormCaracteristicasProductos",
+        component: FormCaracteristicasProductos,
+      },
+      {
+        path: "/comtecnico/form-toma-muestra-pollo",
+        name: "FormMuestraPollo",
+        component: FormMuestraPollo,
+      },
+      {
+        path: "/comtecnico/form-toma-muestra-res",
+        name: "FormMuestraRes",
+        component: FormMuestraRes,
+      },
+      {
+        path: "/comtecnico/form-toma-muestra-cerdo",
+        name: "FormMuestraCerdo",
+        component: FormMuestraCerdo,
+      },
+      // area de componente tecnico coordinadores
+      {
+        path: "/comtecnico/form-verificacion-materia-prima-cct",
+        name: "FormVerificacionMateriaPrimaCCT",
+        component: FormVerificacionMateriaPrimaCCT,
+      },
+      {
+        path: "/comtecnico/form-verificacion-modalidad-cct",
+        name: "FormVerificacionModalidadCCT",
+        component: FormVerificacionModalidadCCT,
+      },
+      {
+        path: "/comtecnico/form-verificacion-materia-prima-rps",
+        name: "FormVerificacionMateriaPrimaRPS",
+        component: FormVerificacionMateriaPrimaRPS,
+      },
+      {
+        path: "/comtecnico/form-verificacion-modalidad-rps",
+        name: "FormVerificacionModalidadRPS",
+        component: FormVerificacionModalidadRPS,
+      },
+      {
+        path: "/comtecnico/form-verificacion-rotulado-ri",
+        name: "FormVerificacionRotuladoRI",
+        component: FormVerificacionRotuladoRI,
+      },
+      {
+        path: "/comtecnico/form-verificacion-modalidad-ri",
+        name: "FormVerificacionModalidadRI",
+        component: FormVerificacionModalidadRI,
+      },
+      // area de componente tecnico supervisores
+      {
+        path: "/comtecnico/form-seguimiento-local",
+        name: "FormSeguimientoLocal",
+        component: FormSeguimientoLocal,
+      },
+      {
+        path: "/comtecnico/form-spqr",
+        name: "FormSPQR",
+        component: FormSPQR,
       },
       // Usuarios
       {
