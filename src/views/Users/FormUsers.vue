@@ -17,10 +17,12 @@
               <li class="breadcrumb-item">
                 <router-link to="/usuarios">Usuarios</router-link>
               </li>
-              <li class="breadcrumb-item">Formulario de usuario</li>
+              <li class="breadcrumb-item">
+                {{ esNuevoUsuario ? "Registrar Usuario" : "Editar Usuario" }}
+              </li>
             </ol>
           </nav>
-          <h2>Registre nuevo usuario</h2>
+          <h2>{{ esNuevoUsuario ? "Registrar Usuario" : "Editar Usuario" }}</h2>
           <hr />
         </div>
       </div>
@@ -28,15 +30,15 @@
         <div class="row">
           <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
             <label class="form-label">Nombre </label>
-            <input class="form-control" type="text" v-model="form.nombre" />
+            <input class="form-control" type="text" v-model="form.name" />
           </div>
           <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
             <label class="form-label">correo </label>
-            <input class="form-control" type="text" v-model="form.correo" />
+            <input class="form-control" type="text" v-model="form.email" />
           </div>
           <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
             <label class="form-label">Tipo Documento </label>
-            <select class="form-select" v-model="form.tipoDocumento">
+            <select class="form-select" v-model="form.tipo_documento">
               <option value="CC">Cedula de Ciudadania</option>
               <option value="PAS">Pasaporte</option>
               <option value="PEP">PEP</option>
@@ -49,7 +51,7 @@
             <input
               class="form-control"
               type="number"
-              v-model="form.numDocumento"
+              v-model="form.num_documento"
             />
           </div>
           <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
@@ -58,7 +60,7 @@
                 class="form-check-input"
                 id="flexSwitchCheckDefault"
                 type="checkbox"
-                v-model="form.social"
+                v-model="form.chk_social"
               />
               <label class="form-check-label" for="flexSwitchCheckDefault"
                 >Tiene acceso al componente social</label
@@ -71,7 +73,20 @@
                 class="form-check-input"
                 id="flexSwitchCheckDefault"
                 type="checkbox"
-                v-model="form.tecnico"
+                v-model="form.chk_social_all"
+              />
+              <label class="form-check-label" for="flexSwitchCheckDefault"
+                >Tiene acceso total componente social</label
+              >
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input"
+                id="flexSwitchCheckDefault"
+                type="checkbox"
+                v-model="form.chk_tecnico"
               />
               <label class="form-check-label" for="flexSwitchCheckDefault"
                 >Tiene acceso al componente tecnico</label
@@ -84,7 +99,20 @@
                 class="form-check-input"
                 id="flexSwitchCheckDefault"
                 type="checkbox"
-                v-model="form.reportes"
+                v-model="form.chk_tecnico_all"
+              />
+              <label class="form-check-label" for="flexSwitchCheckDefault"
+                >Tiene acceso total al componente tecnico</label
+              >
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input"
+                id="flexSwitchCheckDefault"
+                type="checkbox"
+                v-model="form.chk_reportes"
               />
               <label class="form-check-label" for="flexSwitchCheckDefault"
                 >Tiene acceso a reportes</label
@@ -97,7 +125,20 @@
                 class="form-check-input"
                 id="flexSwitchCheckDefault"
                 type="checkbox"
-                v-model="form.galeria"
+                v-model="form.chk_reportes_all"
+              />
+              <label class="form-check-label" for="flexSwitchCheckDefault"
+                >Tiene acceso total a reportes</label
+              >
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input"
+                id="flexSwitchCheckDefault"
+                type="checkbox"
+                v-model="form.chk_galeria"
               />
               <label class="form-check-label" for="flexSwitchCheckDefault"
                 >Tiene acceso a galeria</label
@@ -110,7 +151,7 @@
                 class="form-check-input"
                 id="flexSwitchCheckDefault"
                 type="checkbox"
-                v-model="form.usuarios"
+                v-model="form.chk_usuarios"
               />
               <label class="form-check-label" for="flexSwitchCheckDefault"
                 >Tiene acceso a usuarios</label
@@ -127,9 +168,9 @@
 </template>
 
 <script>
-// import axios from "axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
+import axios from "@/axios";
 
 export default {
   components: {
@@ -142,26 +183,75 @@ export default {
       toastMessage: "",
       toastType: "",
       form: {
-        tipoDocumento: "",
-        numdocumento: "",
-        nombre: "",
-        correo: "",
+        tipo_documento: "",
+        num_documento: "",
+        name: "",
+        email: "",
+        chk_social: false,
+        chk_social_all: false,
+        chk_tecnico: false,
+        chk_tecnico_all: false,
+        chk_usuarios: false,
+        chk_galeria: false,
+        chk_reportes: false,
+        chk_reportes_all: false,
+        is_active: true,
       },
     };
   },
-  methods: {
-    guardarFormulario() {
-      // Verificar si hay conexión a Internet
-      // if (navigator.onLine) {
-      //   // Enviar formulario al servidor
-      //   this.enviarFormularioAlServidor();
-      // } else {
-      //   // Guardar formulario en localStorage
-      //   this.guardarOffline();
-      //   alert("Sin conexión. El formulario se ha guardado localmente.");
-      // }
-      alert("Formulario a guardar");
+  computed: {
+    esNuevoUsuario() {
+      return this.$route.params.id === "0";
     },
+  },
+  methods: {
+    async cargarUsuario() {
+      if (!this.esNuevoUsuario) {
+        this.isLoading = true;
+        try {
+          const response = await axios.get(`/users/${this.$route.params.id}`);
+          this.form = response.data.data;
+          this.form.chk_galeria = response.data.data.chk_galeria === 1;
+          this.form.chk_reportes = response.data.data.chk_reportes === 1;
+          this.form.chk_reportes_all =
+            response.data.data.chk_reportes_all === 1;
+          this.form.chk_social = response.data.data.chk_social === 1;
+          this.form.chk_social_all = response.data.data.chk_social_all === 1;
+          this.form.chk_tecnico = response.data.data.chk_tecnico === 1;
+          this.form.chk_tecnico_all = response.data.data.chk_tecnico_all === 1;
+          this.form.chk_usuarios = response.data.data.chk_usuarios === 1;
+        } catch (error) {
+          this.toastMessage = "Error al cargar el usuario.";
+          this.toastType = "error";
+        } finally {
+          this.isLoading = false;
+        }
+      }
+    },
+    async guardarFormulario() {
+      try {
+        this.isLoading = true;
+        this.form.num_documento = String(this.form.num_documento);
+        if (this.esNuevoUsuario) {
+          // Crear nuevo usuario
+          await axios.post("/users", this.form);
+          this.toastMessage = "Usuario registrado exitosamente.";
+        } else {
+          // Actualizar usuario existente
+          await axios.put(`/users/${this.$route.params.id}`, this.form);
+          this.toastMessage = "Usuario actualizado exitosamente.";
+        }
+        this.toastType = "success";
+      } catch (error) {
+        this.toastMessage = "Error al guardar el usuario." + error;
+        this.toastType = "error";
+      } finally {
+        this.isLoading = false;
+      }
+    },
+  },
+  created() {
+    this.cargarUsuario();
   },
 };
 </script>

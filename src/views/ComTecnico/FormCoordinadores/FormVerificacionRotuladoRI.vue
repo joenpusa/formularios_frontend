@@ -49,13 +49,7 @@
             </div>
             <div class="col-md-4">
               <label for="municipio" class="form-label">Municipio:</label>
-              <input
-                type="text"
-                id="municipio"
-                v-model="formData.municipio"
-                class="form-control"
-                required
-              />
+              <MunicipioSelect v-model="formData.municipio" />
             </div>
           </div>
           <div class="row mb-3">
@@ -173,182 +167,248 @@
 
           <!-- Verificación Res. 5109/2005 -->
           <h3 class="mt-4 mb-3">Verificación Res. 5109/2005</h3>
-          <div
-            v-for="(product, index) in formData.products5109"
-            :key="index"
-            class="mb-4 p-3 border rounded"
-          >
+          <div class="mb-4 p-3 border rounded">
             <div class="row mb-3">
               <div class="col-md-3">
-                <label :for="`nombreAlimento-${index}`" class="form-label"
-                  >Nombre del alimento:</label
-                >
-                <input
-                  type="text"
-                  :id="`nombreAlimento-${index}`"
-                  v-model="product.nombreAlimento"
-                  class="form-control"
-                  required
-                />
+                <label class="form-label">Nombre del alimento:</label>
+                <input type="text" class="form-control" required />
               </div>
               <div class="col-md-3">
-                <label :for="`fechaFabricacion-${index}`" class="form-label"
-                  >Fecha Fabricación:</label
-                >
-                <input
-                  type="date"
-                  :id="`fechaFabricacion-${index}`"
-                  v-model="product.fechaFabricacion"
-                  class="form-control"
-                  required
-                />
+                <label class="form-label">Fecha Fabricación:</label>
+                <input type="date" class="form-control" required />
               </div>
               <div class="col-md-3">
-                <label :for="`fechaVencimiento-${index}`" class="form-label"
-                  >Fecha Vencimiento:</label
-                >
-                <input
-                  type="date"
-                  :id="`fechaVencimiento-${index}`"
-                  v-model="product.fechaVencimiento"
-                  class="form-control"
-                  required
-                />
+                <label class="form-label">Fecha Vencimiento:</label>
+                <input type="date" class="form-control" required />
               </div>
               <div class="col-md-3">
-                <label :for="`lote-${index}`" class="form-label">Lote:</label>
-                <input
-                  type="text"
-                  :id="`lote-${index}`"
-                  v-model="product.lote"
-                  class="form-control"
-                  required
-                />
+                <label class="form-label">Lote:</label>
+                <input type="text" class="form-control" required />
               </div>
-            </div>
-            <div class="row mb-3">
-              <div
-                v-for="(criterion, criterionIndex) in criterios5109"
-                :key="criterionIndex"
-                class="col-md-3 mb-2"
-              >
-                <label
-                  :for="`criterion-${index}-${criterionIndex}`"
-                  class="form-label"
-                  >{{ criterion }}:</label
-                >
-                <select
-                  :id="`criterion-${index}-${criterionIndex}`"
-                  v-model="product[criterion]"
-                  class="form-select"
-                  required
-                >
+              <div class="col-md-3">
+                <label class="form-label">Nombre del alistamiento</label>
+                <select class="form-select">
                   <option value="C">Cumple</option>
-                  <option value="NC">No cumple</option>
-                  <option value="NO">No observado</option>
-                  <option value="NA">No aplica</option>
+                  <option value="NC">No Cumple</option>
+                  <option value="NO">No Observado</option>
+                  <option value="NA">No Aplica</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Lista de ingredientes</label>
+                <select class="form-select">
+                  <option value="C">Cumple</option>
+                  <option value="NC">No Cumple</option>
+                  <option value="NO">No Observado</option>
+                  <option value="NA">No Aplica</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Lote</label>
+                <select class="form-select">
+                  <option value="C">Cumple</option>
+                  <option value="NC">No Cumple</option>
+                  <option value="NO">No Observado</option>
+                  <option value="NA">No Aplica</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Contenido neto</label>
+                <select class="form-select">
+                  <option value="C">Cumple</option>
+                  <option value="NC">No Cumple</option>
+                  <option value="NO">No Observado</option>
+                  <option value="NA">No Aplica</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label"
+                  >Nombre y dirección del fabricante</label
+                >
+                <select class="form-select">
+                  <option value="C">Cumple</option>
+                  <option value="NC">No Cumple</option>
+                  <option value="NO">No Observado</option>
+                  <option value="NA">No Aplica</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Instrucciones de conservación</label>
+                <select class="form-select">
+                  <option value="C">Cumple</option>
+                  <option value="NC">No Cumple</option>
+                  <option value="NO">No Observado</option>
+                  <option value="NA">No Aplica</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Fecha de Vencimiento</label>
+                <select class="form-select">
+                  <option value="C">Cumple</option>
+                  <option value="NC">No Cumple</option>
+                  <option value="NO">No Observado</option>
+                  <option value="NA">No Aplica</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Instrucciones de uso</label>
+                <select class="form-select">
+                  <option value="C">Cumple</option>
+                  <option value="NC">No Cumple</option>
+                  <option value="NO">No Observado</option>
+                  <option value="NA">No Aplica</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Registro sanitario</label>
+                <select class="form-select">
+                  <option value="C">Cumple</option>
+                  <option value="NC">No Cumple</option>
+                  <option value="NO">No Observado</option>
+                  <option value="NA">No Aplica</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label"
+                  >Condiciones de empaque primario</label
+                >
+                <select class="form-select">
+                  <option value="C">Cumple</option>
+                  <option value="NC">No Cumple</option>
+                  <option value="NO">No Observado</option>
+                  <option value="NA">No Aplica</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label"
+                  >Declaración de tabla nutricional</label
+                >
+                <select class="form-select">
+                  <option value="C">Cumple</option>
+                  <option value="NC">No Cumple</option>
+                  <option value="NO">No Observado</option>
+                  <option value="NA">No Aplica</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label"><strong>Cumplimieto</strong></label>
+                <select class="form-select">
+                  <option value="C">Cumple</option>
+                  <option value="NC">No Cumple</option>
                 </select>
               </div>
             </div>
+            <button
+              type="button"
+              @click="addProduct5109()"
+              class="btn btn-secondary mb-3"
+            >
+              Agregar Producto
+            </button>
           </div>
-          <button
-            type="button"
-            @click="addProduct('products5109')"
-            class="btn btn-secondary mb-3"
-          >
-            Agregar Producto
-          </button>
 
           <!-- Verificación Res. 810 de 2021 y Res 2492 de 2022 -->
           <h3 class="mt-4 mb-3">
             Verificación Res. 810 de 2021 y Res 2492 de 2022
           </h3>
-          <div
-            v-for="(product, index) in formData.products810"
-            :key="index"
-            class="mb-4 p-3 border rounded"
-          >
+          <div class="mb-4 p-3 border rounded">
             <div class="row mb-3">
               <div class="col-md-3">
-                <label :for="`producto-${index}`" class="form-label"
-                  >Producto:</label
-                >
-                <input
-                  type="text"
-                  :id="`producto-${index}`"
-                  v-model="product.producto"
-                  class="form-control"
-                  required
-                />
+                <label class="form-label">Producto:</label>
+                <input type="text" class="form-control" required />
               </div>
               <div class="col-md-3">
-                <label :for="`fechaFabricacion810-${index}`" class="form-label"
-                  >Fecha Fabricación:</label
-                >
-                <input
-                  type="date"
-                  :id="`fechaFabricacion810-${index}`"
-                  v-model="product.fechaFabricacion"
-                  class="form-control"
-                  required
-                />
+                <label class="form-label">Fecha Fabricación:</label>
+                <input type="date" class="form-control" required />
               </div>
               <div class="col-md-3">
-                <label :for="`fechaVencimiento810-${index}`" class="form-label"
-                  >Fecha Vencimiento:</label
-                >
-                <input
-                  type="date"
-                  :id="`fechaVencimiento810-${index}`"
-                  v-model="product.fechaVencimiento"
-                  class="form-control"
-                  required
-                />
+                <label class="form-label">Fecha Vencimiento:</label>
+                <input type="date" class="form-control" required />
               </div>
               <div class="col-md-3">
-                <label :for="`lote810-${index}`" class="form-label"
-                  >Lote:</label
-                >
-                <input
-                  type="text"
-                  :id="`lote810-${index}`"
-                  v-model="product.lote"
-                  class="form-control"
-                  required
-                />
+                <label class="form-label">Lote:</label>
+                <input type="text" class="form-control" required />
               </div>
-            </div>
-            <div class="row mb-3">
-              <div
-                v-for="(criterion, criterionIndex) in criterios810"
-                :key="criterionIndex"
-                class="col-md-6 mb-2"
-              >
-                <label
-                  :for="`criterion810-${index}-${criterionIndex}`"
-                  class="form-label"
-                  >{{ criterion }}:</label
+
+              <div class="col-md-3">
+                <label class="form-label"
+                  >Declaración de tabla nutricional</label
                 >
-                <select
-                  :id="`criterion810-${index}-${criterionIndex}`"
-                  v-model="product[criterion]"
-                  class="form-select"
-                  required
+                <select class="form-select">
+                  <option value="C">Cumple</option>
+                  <option value="NC">No Cumple</option>
+                  <option value="NO">No Observado</option>
+                  <option value="NA">No Aplica</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label"
+                  >Tamaño y caracteristicas de las porciones</label
                 >
-                  <option value="Cumple">Cumple</option>
-                  <option value="No cumple">No cumple</option>
+                <select class="form-select">
+                  <option value="C">Cumple</option>
+                  <option value="NC">No Cumple</option>
+                  <option value="NO">No Observado</option>
+                  <option value="NA">No Aplica</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label"
+                  >Declaración de las medidas caseras</label
+                >
+                <select class="form-select">
+                  <option value="C">Cumple</option>
+                  <option value="NC">No Cumple</option>
+                  <option value="NO">No Observado</option>
+                  <option value="NA">No Aplica</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Número de porciones por envase</label>
+                <select class="form-select">
+                  <option value="C">Cumple</option>
+                  <option value="NC">No Cumple</option>
+                  <option value="NO">No Observado</option>
+                  <option value="NA">No Aplica</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Equivalencia a medidas caseras</label>
+                <select class="form-select">
+                  <option value="C">Cumple</option>
+                  <option value="NC">No Cumple</option>
+                  <option value="NO">No Observado</option>
+                  <option value="NA">No Aplica</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label"><strong>Cumplimieto</strong></label>
+                <select class="form-select">
+                  <option value="C">Cumple</option>
+                  <option value="NC">No Cumple</option>
                 </select>
               </div>
             </div>
+            <button
+              type="button"
+              @click="addProduct810()"
+              class="btn btn-secondary mb-3"
+            >
+              Agregar Producto
+            </button>
           </div>
-          <button
-            type="button"
-            @click="addProduct('products810')"
-            class="btn btn-secondary mb-3"
-          >
-            Agregar Producto
-          </button>
-
+          <div class="mb-3">
+            <label for="nombreVisita" class="form-label"
+              >Porcentaje de cumplimiento:</label
+            >
+            <input
+              type="number"
+              id="nombreVisita"
+              v-model="formData.firmaVisita.nombre"
+              class="form-control"
+              required
+            />
+          </div>
           <!-- Observaciones -->
           <div class="mb-3">
             <label for="observaciones" class="form-label">Observaciones:</label>
@@ -363,7 +423,16 @@
           <!-- Firmas -->
           <div class="row mb-3">
             <div class="col-md-6">
-              <h3>FIRMA EQUIPO PAE /APOYO A LA SUPERVISIÓN</h3>
+              <label class="form-label"
+                >FIRMA EQUIPO PAE /APOYO A LA SUPERVISIÓN</label
+              >
+              <div class="mb-2">
+                <SignaturePad
+                  ref="firstSignaturePad"
+                  @signatureSaved="handleFirstSignature"
+                  @signatureCleared="handleFirstSignatureCleared"
+                />
+              </div>
               <div class="mb-2">
                 <label for="nombreEquipo" class="form-label">Nombre:</label>
                 <input
@@ -408,7 +477,14 @@
               </div>
             </div>
             <div class="col-md-6">
-              <h3>FIRMA QUIEN ATIENDE LA VISITA</h3>
+              <label class="form-label">FIRMA QUIEN ATIENDE LA VISITA</label>
+              <div class="mb-2">
+                <SignaturePad
+                  ref="secondSignaturePad"
+                  @signatureSaved="handleSecondSignature"
+                  @signatureCleared="handleSecondSignatureCleared"
+                />
+              </div>
               <div class="mb-2">
                 <label for="nombreVisita" class="form-label">Nombre:</label>
                 <input
@@ -467,10 +543,14 @@
 import axios from "axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
+import SignaturePad from "@/components/SignaturePad.vue";
+import MunicipioSelect from "@/components/MunicipioSelect.vue";
 export default {
   components: {
     LoadingSpinner,
     ToastNotification,
+    SignaturePad,
+    MunicipioSelect,
   },
   data() {
     return {
@@ -490,8 +570,8 @@ export default {
         numeroBeneficiarios: "",
         operador: "UT Suministros PAE 2024 del 12/01/2024",
         numeroContrato: "LP-SEG-3030-2023 del 12 de enero  del 2024",
-        products5109: [{}],
-        products810: [{}],
+        products5109: [],
+        products810: [],
         observaciones: "",
         firmaEquipo: { nombre: "", documento: "", cargo: "", telefono: "" },
         firmaVisita: { nombre: "", documento: "", cargo: "", telefono: "" },
@@ -517,6 +597,25 @@ export default {
     };
   },
   methods: {
+    handleFirstSignature(signature) {
+      this.form.firstSignature = signature;
+      this.signatures.firstSignature = true; // La firma ha sido realizada
+    },
+    handleSecondSignature(signature) {
+      this.form.secondSignature = signature;
+      this.signatures.secondSignature = true; // La firma ha sido realizada
+    },
+    handleFirstSignatureCleared() {
+      this.signatures.firstSignature = false; // Marca como no firmada
+    },
+    handleSecondSignatureCleared() {
+      this.signatures.secondSignature = false; // Marca como no firmada
+    },
+    saveSignatures() {
+      // Llamamos a los métodos saveSignature de ambos componentes
+      this.$refs.firstSignaturePad.saveSignature();
+      this.$refs.secondSignaturePad.saveSignature();
+    },
     guardarFormulario() {
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {

@@ -15,28 +15,34 @@
           <hr />
         </div>
         <div class="row">
-          <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
             <router-link to="/comsocial/formvisita">
-              <div class="card text-dark bg-light border border-warning">
-                <div class="card-body text-center">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
                   <h4 class="text-dark">F. de visita</h4>
                 </div>
               </div>
             </router-link>
           </div>
-          <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
             <router-link to="/comsocial/formasistencia">
-              <div class="card text-dark bg-light border border-warning">
-                <div class="card-body text-center">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
                   <h4 class="text-dark">F. asistencia EAN</h4>
                 </div>
               </div>
             </router-link>
           </div>
-          <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3 flex-wrap">
             <router-link to="/comsocial/form-verificacion-personal">
-              <div class="card text-dark bg-light border border-warning">
-                <div class="card-body text-center">
+              <div class="card text-dark bg-light border border-warning h-100">
+                <div
+                  class="card-body text-center d-flex align-items-center justify-content-center"
+                >
                   <h4 class="text-dark">F. personal manipulador</h4>
                 </div>
               </div>

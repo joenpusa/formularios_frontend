@@ -38,13 +38,7 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Minicipio </label>
-              <select class="form-select" v-model="form.municipio">
-                <option value="">Abrego</option>
-                <option value="">Arboledas</option>
-                <option value="">3</option>
-                <option value="">4</option>
-                <option value="">5</option>
-              </select>
+              <MunicipioSelect v-model="form.municipio" />
             </div>
 
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
@@ -124,7 +118,6 @@
               </h5>
               <hr />
               <h5>I. INSTALACIONES FÍSICAS Y SANITARIAS DE LA BODEGA</h5>
-              <hr />
               <div class="row">
                 <hr />
                 <label class="col-sm-6"
@@ -134,7 +127,12 @@
                   de basura, pantanos, charcos, etc.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -148,7 +146,12 @@
                   otros contaminantes.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -162,7 +165,12 @@
                   contaminación para el alimento.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -175,7 +183,12 @@
                   insectos, entre otros).</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -189,7 +202,12 @@
                   instalaciones con el medio exterior.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -202,7 +220,12 @@
                   telarañas y suciedad).</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -215,7 +238,12 @@
                   separadas e identificadas.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -229,7 +257,12 @@
                   desinfestación.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -245,7 +278,12 @@
                   mantenimiento de las áreas respectivas.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -258,7 +296,12 @@
                   no se utilizan como dormitorio.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -271,7 +314,12 @@
                   limpieza y desinfección efectiva.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -288,7 +336,12 @@
                   manos.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -301,7 +354,12 @@
                   de los equipos y utensilios de trabajo.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -323,7 +381,12 @@
                   con la ley 9 de 1979 y su reglamenación.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -340,7 +403,12 @@
                   de plagas y monitoreo de calidad del agua.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -357,7 +425,12 @@
                   entre otros.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -371,7 +444,12 @@
                   en los comedores escolares.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -388,7 +466,12 @@
                   transportada.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -402,7 +485,12 @@
                   de intercambios.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -418,7 +506,12 @@
                   terminos definidos</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -433,7 +526,12 @@
                   operador contratista.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -447,7 +545,12 @@
                   (gas) a cada comedor escolar.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -461,7 +564,12 @@
                   territorial.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -475,7 +583,12 @@
                   educativos.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -490,7 +603,12 @@
                   laboratorio clínico), no mayor a un año.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -506,7 +624,12 @@
                   año).</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -521,7 +644,12 @@
                   del plan de capacitación, entre otros.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -538,7 +666,12 @@
                   del vehiculo transportador.</label
                 >
                 <div class="col-sm-2">
-                  <input class="form-control" type="text" />
+                  <select class="form-select" v-model="form.pre_1">
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
                 </div>
                 <div class="col-sm-4">
                   <input class="form-control" type="text" />
@@ -554,7 +687,11 @@
                   >
                 </div>
                 <div class="col-12 mb-1">
-                  <input class="form-control" type="text" placeholder="Firma" />
+                  <SignaturePad
+                    ref="firstSignaturePad"
+                    @signatureSaved="handleFirstSignature"
+                    @signatureCleared="handleFirstSignatureCleared"
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Nombre</label>
@@ -582,7 +719,11 @@
                   >
                 </div>
                 <div class="col-12 mb-1">
-                  <input class="form-control" type="text" placeholder="Firma" />
+                  <SignaturePad
+                    ref="secondSignaturePad"
+                    @signatureSaved="handleSecondSignature"
+                    @signatureCleared="handleSecondSignatureCleared"
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Nombre</label>
@@ -619,11 +760,15 @@
 import axios from "axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
+import SignaturePad from "@/components/SignaturePad.vue";
+import MunicipioSelect from "@/components/MunicipioSelect.vue";
 
 export default {
   components: {
     LoadingSpinner,
     ToastNotification,
+    SignaturePad,
+    MunicipioSelect,
   },
   data() {
     return {
@@ -650,6 +795,25 @@ export default {
     };
   },
   methods: {
+    handleFirstSignature(signature) {
+      this.form.firstSignature = signature;
+      this.signatures.firstSignature = true; // La firma ha sido realizada
+    },
+    handleSecondSignature(signature) {
+      this.form.secondSignature = signature;
+      this.signatures.secondSignature = true; // La firma ha sido realizada
+    },
+    handleFirstSignatureCleared() {
+      this.signatures.firstSignature = false; // Marca como no firmada
+    },
+    handleSecondSignatureCleared() {
+      this.signatures.secondSignature = false; // Marca como no firmada
+    },
+    saveSignatures() {
+      // Llamamos a los métodos saveSignature de ambos componentes
+      this.$refs.firstSignaturePad.saveSignature();
+      this.$refs.secondSignaturePad.saveSignature();
+    },
     agregarFila() {
       if (this.nuevoNombre && this.nuevoGrado) {
         // Agregar una nueva fila con los valores ingresados

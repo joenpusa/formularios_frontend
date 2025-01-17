@@ -40,7 +40,7 @@
             </div>
             <div class="col-md-4">
               <label class="form-label">Municipio:</label>
-              <input type="text" class="form-control" />
+              <MunicipioSelect v-model="form.municipio" />
             </div>
 
             <div class="col-md-4">
@@ -227,6 +227,13 @@
 
           <h4 class="mt-4 mb-1">Visita Atendida por:</h4>
           <div class="row mb-1">
+            <div class="col-12 mb-1">
+              <SignaturePad
+                ref="firstSignaturePad"
+                @signatureSaved="handleFirstSignature"
+                @signatureCleared="handleFirstSignatureCleared"
+              />
+            </div>
             <div class="col-md-6">
               <label class="form-label">Cargo:</label>
               <input type="text" class="form-control" />
@@ -242,13 +249,20 @@
               <input type="tel" class="form-control" />
             </div>
             <div class="col-md-6">
-              <label class="form-label">Firma:</label>
+              <label class="form-label">Nombre:</label>
               <input type="text" class="form-control" />
             </div>
           </div>
 
           <h4 class="mt-4 mb-1">Visita Realizada por:</h4>
           <div class="row mb-1">
+            <div class="col-12 mb-1">
+              <SignaturePad
+                ref="secondSignaturePad"
+                @signatureSaved="handleSecondSignature"
+                @signatureCleared="handleSecondSignatureCleared"
+              />
+            </div>
             <div class="col-md-6">
               <label class="form-label">Cargo:</label>
               <input type="text" class="form-control" />
@@ -264,7 +278,7 @@
               <input type="tel" class="form-control" />
             </div>
             <div class="col-md-6">
-              <label class="form-label">Firma:</label>
+              <label class="form-label">Nombre:</label>
               <input type="text" class="form-control" />
             </div>
           </div>
@@ -282,11 +296,15 @@
 import axios from "axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
+import SignaturePad from "@/components/SignaturePad.vue";
+import MunicipioSelect from "@/components/MunicipioSelect.vue";
 
 export default {
   components: {
     LoadingSpinner,
     ToastNotification,
+    SignaturePad,
+    MunicipioSelect,
   },
   data() {
     return {
@@ -313,6 +331,25 @@ export default {
     };
   },
   methods: {
+    handleFirstSignature(signature) {
+      this.form.firstSignature = signature;
+      this.signatures.firstSignature = true; // La firma ha sido realizada
+    },
+    handleSecondSignature(signature) {
+      this.form.secondSignature = signature;
+      this.signatures.secondSignature = true; // La firma ha sido realizada
+    },
+    handleFirstSignatureCleared() {
+      this.signatures.firstSignature = false; // Marca como no firmada
+    },
+    handleSecondSignatureCleared() {
+      this.signatures.secondSignature = false; // Marca como no firmada
+    },
+    saveSignatures() {
+      // Llamamos a los métodos saveSignature de ambos componentes
+      this.$refs.firstSignaturePad.saveSignature();
+      this.$refs.secondSignaturePad.saveSignature();
+    },
     agregarFila() {
       if (this.nuevoNombre && this.nuevoGrado) {
         // Agregar una nueva fila con los valores ingresados
