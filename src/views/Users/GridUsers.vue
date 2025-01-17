@@ -14,13 +14,16 @@
         <hr />
       </div>
       <div class="d-flex justify-content-between align-items-center mb-3">
-        <input
-          v-model="searchQuery"
-          @input="fetchUsers"
-          type="text"
-          class="form-control w-50"
-          placeholder="Buscar usuarios"
-        />
+        <div class="input-group w-50">
+          <input
+            v-model="searchQuery"
+            @keyup.enter="fetchUsers"
+            type="text"
+            class="form-control"
+            placeholder="Buscar usuarios"
+          />
+          <button class="btn btn-secondary" @click="fetchUsers">Buscar</button>
+        </div>
         <button class="btn btn-primary" @click="registerUser">
           Registrar Usuario
         </button>
@@ -29,23 +32,19 @@
       <table class="table table-striped table-hover">
         <thead>
           <tr>
-            <th>#</th>
             <th>Nombre</th>
             <th>Email</th>
-            <th>Rol</th>
+            <th>Tipo Documento</th>
+            <th>Documento</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(user, index) in users" :key="user.id">
-            <td>
-              {{
-                index + 1 + (pagination.current_page - 1) * pagination.per_page
-              }}
-            </td>
+          <tr v-for="user in users" :key="user.id">
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
-            <td>{{ user.role }}</td>
+            <td>{{ user.tipo_documento }}</td>
+            <td>{{ user.num_documento }}</td>
             <td>
               <button
                 class="btn btn-sm btn-warning me-2"
@@ -55,9 +54,9 @@
               </button>
               <button
                 class="btn btn-sm btn-danger"
-                @click="deleteUser(user.id)"
+                @click="ActivarDesactivarUsuario(user.id)"
               >
-                Eliminar
+                Activar / Desactivar
               </button>
             </td>
           </tr>
@@ -66,7 +65,6 @@
           </tr>
         </tbody>
       </table>
-
       <!-- Componente de paginación -->
       <Pagination
         v-if="pagination"
@@ -78,7 +76,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "@/axios";
 import Pagination from "@/components/PaginationBasic.vue";
 
 export default {
@@ -98,10 +96,11 @@ export default {
         const response = await axios.get(apiUrl, {
           params: { search: this.searchQuery },
         });
-        this.users = response.data.data;
+        this.users = response.data.data.data; // Usuarios
         this.pagination = response.data;
       } catch (error) {
         console.error("Error al cargar usuarios:", error);
+        this.users = []; // Limpia la lista en caso de error
       }
     },
     async fetchUsersByUrl(url) {
@@ -114,12 +113,12 @@ export default {
       }
     },
     registerUser() {
-      this.$router.push("/ususarios/form");
+      this.$router.push("/usuario/edit/0");
     },
     editUser(userId) {
-      this.$router.push(`/users/edit/${userId}`);
+      this.$router.push(`/usuario/edit/${userId}`);
     },
-    async deleteUser(userId) {
+    async ActivarDesactivarUsuario(userId) {
       if (!confirm("¿Estás seguro de que deseas eliminar este usuario?"))
         return;
 

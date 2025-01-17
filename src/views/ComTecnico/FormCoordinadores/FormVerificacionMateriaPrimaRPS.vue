@@ -52,13 +52,7 @@
           <div class="row mb-3">
             <div class="col-md-6">
               <label for="municipio" class="form-label">Municipio:</label>
-              <input
-                type="text"
-                id="municipio"
-                v-model="formData.municipio"
-                class="form-control"
-                required
-              />
+              <MunicipioSelect v-model="formData.municipio" />
             </div>
             <div class="col-md-3">
               <label for="horaInicial" class="form-label">Hora Inicial:</label>
@@ -337,7 +331,16 @@
 
           <div class="row mb-3">
             <div class="col-md-6">
-              <h3>FIRMA EQUIPO PAE /APOYO A LA SUPERVISIÓN</h3>
+              <label class="form-label"
+                >FIRMA EQUIPO PAE /APOYO A LA SUPERVISIÓN</label
+              >
+              <div class="mb-2">
+                <SignaturePad
+                  ref="firstSignaturePad"
+                  @signatureSaved="handleFirstSignature"
+                  @signatureCleared="handleFirstSignatureCleared"
+                />
+              </div>
               <div class="mb-2">
                 <label for="nombreEquipo" class="form-label">Nombre:</label>
                 <input
@@ -382,7 +385,14 @@
               </div>
             </div>
             <div class="col-md-6">
-              <h3>FIRMA QUIEN ATIENDE LA VISITA</h3>
+              <label class="form-label">FIRMA QUIEN ATIENDE LA VISITA</label>
+              <div class="mb-2">
+                <SignaturePad
+                  ref="secondSignaturePad"
+                  @signatureSaved="handleFSecondSignature"
+                  @signatureCleared="handleSecondSignatureCleared"
+                />
+              </div>
               <div class="mb-2">
                 <label for="nombreVisita" class="form-label">Nombre:</label>
                 <input
@@ -441,11 +451,15 @@
 import axios from "axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
+import SignaturePad from "@/components/SignaturePad.vue";
+import MunicipioSelect from "@/components/MunicipioSelect.vue";
 
 export default {
   components: {
     LoadingSpinner,
     ToastNotification,
+    SignaturePad,
+    MunicipioSelect,
   },
   data() {
     return {
@@ -489,6 +503,25 @@ export default {
     };
   },
   methods: {
+    handleFirstSignature(signature) {
+      this.form.firstSignature = signature;
+      this.signatures.firstSignature = true; // La firma ha sido realizada
+    },
+    handleSecondSignature(signature) {
+      this.form.secondSignature = signature;
+      this.signatures.secondSignature = true; // La firma ha sido realizada
+    },
+    handleFirstSignatureCleared() {
+      this.signatures.firstSignature = false; // Marca como no firmada
+    },
+    handleSecondSignatureCleared() {
+      this.signatures.secondSignature = false; // Marca como no firmada
+    },
+    saveSignatures() {
+      // Llamamos a los métodos saveSignature de ambos componentes
+      this.$refs.firstSignaturePad.saveSignature();
+      this.$refs.secondSignaturePad.saveSignature();
+    },
     guardarFormulario() {
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {

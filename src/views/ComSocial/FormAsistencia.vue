@@ -20,7 +20,7 @@
               <li class="breadcrumb-item">Formulario de asitencia</li>
             </ol>
           </nav>
-          <h2>Formulario de asistencia</h2>
+          <h2>FORMATO DE ASISTENCIA DE EDUCACIÓN ALIMENTARIA Y NUTRICIONAL</h2>
           <hr />
         </div>
         <form @submit.prevent="guardarFormulario">
@@ -44,13 +44,7 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Minicipio </label>
-              <select class="form-select" v-model="form.municipio">
-                <option value="">Abrego</option>
-                <option value="">Arboledas</option>
-                <option value="">3</option>
-                <option value="">4</option>
-                <option value="">5</option>
-              </select>
+              <MunicipioSelect v-model="form.municipio" />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Instutción educativa </label>
@@ -77,28 +71,40 @@
               <label class="form-label">Hora inicio</label>
               <input
                 class="form-control"
-                type="text"
+                type="time"
                 v-model="form.horaInicio"
-                disabled
               />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Hora fin</label>
-              <input
-                class="form-control"
-                type="text"
-                v-model="form.horaFin"
-                disabled
-              />
+              <input class="form-control" type="time" v-model="form.horaFin" />
             </div>
 
             <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
               <label class="form-label">Objetivo </label>
-              <textarea class="form-control" rows="3"> </textarea>
+              <textarea class="form-control" rows="3" v-model="form.objetivo">
+              </textarea>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
               <label class="form-label">Temática abordada </label>
-              <textarea class="form-control" rows="3"> </textarea>
+              <select class="form-select" v-model="form.tematica">
+                <option value="Mi plato Saludable">Mi plato Saludable</option>
+                <option value="Importancia del consumo del agua">
+                  Importancia del consumo del agua
+                </option>
+                <option
+                  value="Efectos adversos del consumo del lavado de manos"
+                >
+                  Efectos adversos del consumo del lavado de manos
+                </option>
+                <option value="Lavado de manos">Lavado de manos</option>
+                <option value="Consumo de frutas y verduras">
+                  Consumo de frutas y verduras
+                </option>
+                <option value="Evita el desperdicio de alimentos">
+                  Evita el desperdicio de alimentos
+                </option>
+              </select>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
               <label class="form-label"
@@ -147,6 +153,12 @@
                     <td>{{ fila.nombre }}</td>
                     <td>{{ fila.grado }}</td>
                   </tr>
+                  <tr>
+                    <td colspan="2" class="text-end fw-bold">
+                      Total de beneficiarios:
+                    </td>
+                    <td class="text-center fw-bold">{{ filas.length }}</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -158,7 +170,11 @@
                   >
                 </div>
                 <div class="col-12 mb-1">
-                  <input class="form-control" type="text" placeholder="Firma" />
+                  <SignaturePad
+                    ref="firstSignaturePad"
+                    @signatureSaved="handleFirstSignature"
+                    @signatureCleared="handleFirstSignatureCleared"
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Nombre</label>
@@ -186,7 +202,11 @@
                   >
                 </div>
                 <div class="col-12 mb-1">
-                  <input class="form-control" type="text" placeholder="Firma" />
+                  <SignaturePad
+                    ref="secondSignaturePad"
+                    @signatureSaved="handleSecondSignature"
+                    @signatureCleared="handleSecondSignatureCleared"
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Nombre</label>
@@ -206,7 +226,8 @@
                 </div>
               </div>
             </div>
-
+            <!-- Componente de carga de archivos -->
+            <FileUploader :files="form.files" @files-updated="updateFiles" />
             <div class="col-sm-12 col-md-12 col-lg-12 mt-3 mb-1">
               <button type="submit" class="btn btn-primary mr-2">
                 Guardar
@@ -223,11 +244,17 @@
 import axios from "axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
+import SignaturePad from "@/components/SignaturePad.vue";
+import MunicipioSelect from "@/components/MunicipioSelect.vue";
+import FileUploader from "@/components/FileUploader.vue";
 
 export default {
   components: {
     LoadingSpinner,
     ToastNotification,
+    SignaturePad,
+    MunicipioSelect,
+    FileUploader,
   },
   data() {
     return {
@@ -243,17 +270,26 @@ export default {
         institucion: "",
         sede: "",
         operador: "",
+        objetivo:
+          "Desarrollar estrategias psicopedagógicas que permitan el fortalecimiento de la cultura de alimentación saludable en la comunidad educativa a través del Programa de Alimentación Escolar.",
         contrato: "",
         numVisita: "",
         modalidad: "",
         numBeneficiarios: "",
         horaInicio: "",
         horaFin: "",
+        firstSignature: "",
+        secondSignature: "",
+        files: [],
       },
       formulariosOffline: [], // Para almacenar temporalmente los formularios en localStorage
     };
   },
   methods: {
+    updateFiles(files) {
+      // Actualiza la lista de archivos en el formulario
+      this.form.files = files;
+    },
     agregarFila() {
       if (this.nuevoNombre && this.nuevoGrado) {
         // Agregar una nueva fila con los valores ingresados
@@ -272,7 +308,32 @@ export default {
         );
       }
     },
+    handleFirstSignature(signature) {
+      this.form.firstSignature = signature;
+      this.signatures.firstSignature = true; // La firma ha sido realizada
+    },
+    handleSecondSignature(signature) {
+      this.form.secondSignature = signature;
+      this.signatures.secondSignature = true; // La firma ha sido realizada
+    },
+    handleFirstSignatureCleared() {
+      this.signatures.firstSignature = false; // Marca como no firmada
+    },
+    handleSecondSignatureCleared() {
+      this.signatures.secondSignature = false; // Marca como no firmada
+    },
+    saveSignatures() {
+      // Llamamos a los métodos saveSignature de ambos componentes
+      this.$refs.firstSignaturePad.saveSignature();
+      this.$refs.secondSignaturePad.saveSignature();
+    },
     guardarFormulario() {
+      // Primero, guardamos las firmas
+      if (!this.signatures.firstSignature || !this.signatures.secondSignature) {
+        return; // Evitamos el envío del formulario
+      }
+      // Primero, guardamos las firmas
+      this.saveSignatures();
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {
         // Enviar formulario al servidor

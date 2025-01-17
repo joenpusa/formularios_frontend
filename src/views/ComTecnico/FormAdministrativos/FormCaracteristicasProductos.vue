@@ -36,7 +36,7 @@
             </div>
             <div class="col-md-3">
               <label for="municipio" class="form-label">Municipio:</label>
-              <input type="text" id="municipio" class="form-control" />
+              <MunicipioSelect v-model="form.municipio" />
             </div>
             <div class="col-md-3">
               <label for="direccion" class="form-label">Dirección:</label>
@@ -818,6 +818,13 @@
             <div class="col-md-6 mb-3">
               <h6>Visita Atendida por:</h6>
               <div class="mb-2">
+                <SignaturePad
+                  ref="firstSignaturePad"
+                  @signatureSaved="handleFirstSignature"
+                  @signatureCleared="handleFirstSignatureCleared"
+                />
+              </div>
+              <div class="mb-2">
                 <input type="text" class="form-control" placeholder="Nombre" />
               </div>
               <div class="mb-2">
@@ -839,6 +846,13 @@
             </div>
             <div class="col-md-6 mb-3">
               <h6>Visita Realizada por:</h6>
+              <div class="mb-2">
+                <SignaturePad
+                  ref="secondSignaturePad"
+                  @signatureSaved="handleSecondSignature"
+                  @signatureCleared="handleSecondSignatureCleared"
+                />
+              </div>
               <div class="mb-2">
                 <input type="text" class="form-control" placeholder="Nombre" />
               </div>
@@ -873,11 +887,15 @@
 import axios from "axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
+import SignaturePad from "@/components/SignaturePad.vue";
+import MunicipioSelect from "@/components/MunicipioSelect.vue";
 
 export default {
   components: {
     LoadingSpinner,
     ToastNotification,
+    SignaturePad,
+    MunicipioSelect,
   },
   data() {
     return {
@@ -899,11 +917,32 @@ export default {
         numBeneficiarios: "",
         horaInicio: "",
         horaFin: "",
+        firstSignature: "",
+        secondSignature: "",
       },
       formulariosOffline: [], // Para almacenar temporalmente los formularios en localStorage
     };
   },
   methods: {
+    handleFirstSignature(signature) {
+      this.form.firstSignature = signature;
+      this.signatures.firstSignature = true; // La firma ha sido realizada
+    },
+    handleSecondSignature(signature) {
+      this.form.secondSignature = signature;
+      this.signatures.secondSignature = true; // La firma ha sido realizada
+    },
+    handleFirstSignatureCleared() {
+      this.signatures.firstSignature = false; // Marca como no firmada
+    },
+    handleSecondSignatureCleared() {
+      this.signatures.secondSignature = false; // Marca como no firmada
+    },
+    saveSignatures() {
+      // Llamamos a los métodos saveSignature de ambos componentes
+      this.$refs.firstSignaturePad.saveSignature();
+      this.$refs.secondSignaturePad.saveSignature();
+    },
     agregarFila() {
       if (this.nuevoNombre && this.nuevoGrado) {
         // Agregar una nueva fila con los valores ingresados

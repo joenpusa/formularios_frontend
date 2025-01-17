@@ -36,7 +36,7 @@
             </div>
             <div class="col-md-4 mb-1">
               <label for="municipio" class="form-label">MUNICIPIO:</label>
-              <input type="text" id="municipio" class="form-control" />
+              <MunicipioSelect v-model="form.municipio" />
             </div>
             <div class="col-md-4 mb-1">
               <label for="direccion" class="form-label"
@@ -99,7 +99,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -123,7 +123,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -147,7 +147,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -171,7 +171,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -195,7 +195,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -219,7 +219,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -243,7 +243,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -267,7 +267,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -291,7 +291,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -315,7 +315,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -339,7 +339,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -363,7 +363,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -387,7 +387,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -411,7 +411,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -435,7 +435,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -459,7 +459,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -483,7 +483,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -507,7 +507,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -531,7 +531,7 @@
                     <input type="text" class="form-control form-control-sm" />
                   </td>
                   <td>
-                    <input type="text" class="form-control form-control-sm" />
+                    <input type="date" class="form-control form-control-sm" />
                   </td>
                   <td>
                     <input type="text" class="form-control form-control-sm" />
@@ -553,10 +553,67 @@
           </div>
 
           <div class="row">
-            <div class="col-md-4 mb-3" v-for="i in 3" :key="i">
-              <h4>
-                {{ i === 1 ? "Visita Atendida por:" : "Visita Realizada por:" }}
-              </h4>
+            <div class="col-md-4 mb-3">
+              <h4>Visita Atendida por:</h4>
+              <div class="mb-2">
+                <SignaturePad
+                  ref="firstSignaturePad"
+                  @signatureSaved="handleFirstSignature"
+                  @signatureCleared="handleFirstSignatureCleared"
+                />
+              </div>
+              <div class="mb-2">
+                <input type="text" class="form-control" placeholder="Nombre" />
+              </div>
+              <div class="mb-2">
+                <input type="text" class="form-control" placeholder="Cargo" />
+              </div>
+              <div class="mb-2">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="N° de Identificación"
+                />
+              </div>
+              <div class="mb-2">
+                <input type="tel" class="form-control" placeholder="Teléfono" />
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <h4>Visita Realizada por:</h4>
+              <div class="mb-2">
+                <SignaturePad
+                  ref="secondSignaturePad"
+                  @signatureSaved="handleSecondSignature"
+                  @signatureCleared="handleSecondSignatureCleared"
+                />
+              </div>
+              <div class="mb-2">
+                <input type="text" class="form-control" placeholder="Nombre" />
+              </div>
+              <div class="mb-2">
+                <input type="text" class="form-control" placeholder="Cargo" />
+              </div>
+              <div class="mb-2">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="N° de Identificación"
+                />
+              </div>
+              <div class="mb-2">
+                <input type="tel" class="form-control" placeholder="Teléfono" />
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <h4>Visita Realizada por:</h4>
+              <div class="mb-2">
+                <SignaturePad
+                  ref="firstSignaturePad"
+                  @signatureSaved="handleThreeSignature"
+                  @signatureCleared="handleThreeSignatureCleared"
+                />
+              </div>
               <div class="mb-2">
                 <input type="text" class="form-control" placeholder="Nombre" />
               </div>
@@ -588,11 +645,15 @@
 import axios from "axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
+import SignaturePad from "@/components/SignaturePad.vue";
+import MunicipioSelect from "@/components/MunicipioSelect.vue";
 
 export default {
   components: {
     LoadingSpinner,
     ToastNotification,
+    SignaturePad,
+    MunicipioSelect,
   },
   data() {
     return {
@@ -619,6 +680,25 @@ export default {
     };
   },
   methods: {
+    handleFirstSignature(signature) {
+      this.form.firstSignature = signature;
+      this.signatures.firstSignature = true; // La firma ha sido realizada
+    },
+    handleSecondSignature(signature) {
+      this.form.secondSignature = signature;
+      this.signatures.secondSignature = true; // La firma ha sido realizada
+    },
+    handleFirstSignatureCleared() {
+      this.signatures.firstSignature = false; // Marca como no firmada
+    },
+    handleSecondSignatureCleared() {
+      this.signatures.secondSignature = false; // Marca como no firmada
+    },
+    saveSignatures() {
+      // Llamamos a los métodos saveSignature de ambos componentes
+      this.$refs.firstSignaturePad.saveSignature();
+      this.$refs.secondSignaturePad.saveSignature();
+    },
     agregarFila() {
       if (this.nuevoNombre && this.nuevoGrado) {
         // Agregar una nueva fila con los valores ingresados

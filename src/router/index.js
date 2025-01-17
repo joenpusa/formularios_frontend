@@ -176,7 +176,7 @@ const routes = [
         component: GridUsers,
       },
       {
-        path: "/ususarios/form",
+        path: "/usuario/edit/:id",
         name: "FormUsers",
         component: FormUsers,
       },

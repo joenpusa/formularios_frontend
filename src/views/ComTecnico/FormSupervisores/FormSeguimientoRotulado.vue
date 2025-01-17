@@ -55,13 +55,7 @@
             </div>
             <div class="col-md-4">
               <label for="municipio" class="form-label">Municipio:</label>
-              <input
-                type="text"
-                class="form-control"
-                id="municipio"
-                v-model="form.municipio"
-                required
-              />
+              <MunicipioSelect v-model="form.municipio" />
             </div>
           </div>
 
@@ -180,7 +174,7 @@
             <div class="table-responsive">
               <table class="table table-bordered">
                 <thead>
-                  <tr>
+                  <tr class="table-primary text-center">
                     <th>Alimento</th>
                     <th>Marca</th>
                     <th>Lote</th>
@@ -192,13 +186,8 @@
                 </thead>
                 <tbody>
                   <tr v-for="(item, index) in preparedFoodItems" :key="index">
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.alimento"
-                        :readonly="!item.editable"
-                      />
+                    <td class="text-center">
+                      <label>{{ item.alimento }}</label>
                     </td>
                     <td>
                       <input
@@ -272,12 +261,7 @@
                     :key="index"
                   >
                     <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.alimento"
-                        :readonly="!item.editable"
-                      />
+                      <label>{{ item.alimento }}</label>
                     </td>
                     <td>
                       <input
@@ -342,6 +326,11 @@
           <div class="row mb-3">
             <div class="col-md-6">
               <h4>FIRMA EQUIPO PAE /APOYO A LA SUPERVISIÓN</h4>
+              <SignaturePad
+                ref="firstSignaturePad"
+                @signatureSaved="handleFirstSignature"
+                @signatureCleared="handleFirstSignatureCleared"
+              />
               <div class="mb-2">
                 <label for="nombreEquipoPAE" class="form-label">Nombre:</label>
                 <input
@@ -389,6 +378,11 @@
             </div>
             <div class="col-md-6">
               <h4>FIRMA QUIEN ATIENDE LA VISITA</h4>
+              <SignaturePad
+                ref="secondSignaturePad"
+                @signatureSaved="handleSecondSignature"
+                @signatureCleared="handleSecondSignatureCleared"
+              />
               <div class="mb-2">
                 <label for="nombreAtiendeVisita" class="form-label"
                   >Nombre:</label
@@ -455,11 +449,15 @@
 import axios from "axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
+import SignaturePad from "@/components/SignaturePad.vue";
+import MunicipioSelect from "@/components/MunicipioSelect.vue";
 
 export default {
   components: {
     LoadingSpinner,
     ToastNotification,
+    SignaturePad,
+    MunicipioSelect,
   },
   data() {
     return {
@@ -690,6 +688,25 @@ export default {
     };
   },
   methods: {
+    handleFirstSignature(signature) {
+      this.form.firstSignature = signature;
+      this.signatures.firstSignature = true; // La firma ha sido realizada
+    },
+    handleSecondSignature(signature) {
+      this.form.secondSignature = signature;
+      this.signatures.secondSignature = true; // La firma ha sido realizada
+    },
+    handleFirstSignatureCleared() {
+      this.signatures.firstSignature = false; // Marca como no firmada
+    },
+    handleSecondSignatureCleared() {
+      this.signatures.secondSignature = false; // Marca como no firmada
+    },
+    saveSignatures() {
+      // Llamamos a los métodos saveSignature de ambos componentes
+      this.$refs.firstSignaturePad.saveSignature();
+      this.$refs.secondSignaturePad.saveSignature();
+    },
     guardarFormulario() {
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {

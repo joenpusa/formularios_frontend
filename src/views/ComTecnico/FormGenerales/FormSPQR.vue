@@ -33,13 +33,7 @@
               <div class="row g-3">
                 <div class="col-md-6">
                   <label for="municipio" class="form-label">Municipio:</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="municipio"
-                    v-model="form.municipio"
-                    required
-                  />
+                  <MunicipioSelect v-model="form.municipio" />
                 </div>
                 <div class="col-md-6">
                   <label for="operador" class="form-label">Operador:</label>
@@ -105,7 +99,7 @@
                     required
                   />
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                   <label for="fechaVisita" class="form-label"
                     >Fecha de la Visita:</label
                   >
@@ -117,7 +111,7 @@
                     required
                   />
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                   <label for="horaInicio" class="form-label"
                     >Hora inicio:</label
                   >
@@ -129,7 +123,7 @@
                     required
                   />
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                   <label for="horaFinal" class="form-label">Hora Final:</label>
                   <input
                     type="time"
@@ -320,77 +314,124 @@
             </div>
             <div class="card-body">
               <div class="row g-3">
-                <div
-                  class="col-md-6"
-                  v-for="(person, index) in form.signatures"
-                  :key="index"
-                >
-                  <h4>
-                    {{
-                      index < 2
-                        ? "Visita Atendida por:"
-                        : "Visita Realizada por:"
-                    }}
-                  </h4>
-                  <div class="mb-3">
-                    <label :for="'nombre' + index" class="form-label"
-                      >Nombre:</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      :id="'nombre' + index"
-                      v-model="person.nombre"
-                      required
-                    />
+                <div class="col-md-6">
+                  <h4>Visita Realizada por</h4>
+                  <SignaturePad
+                    ref="firstSignaturePad"
+                    @signatureSaved="handleFirstSignature"
+                    @signatureCleared="handleFirstSignatureCleared"
+                  />
+                  <div class="mb-1">
+                    <label class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" />
                   </div>
-                  <div class="mb-3">
+                  <div class="mb-1">
                     <label :for="'cargo' + index" class="form-label"
                       >Cargo:</label
                     >
-                    <input
-                      type="text"
-                      class="form-control"
-                      :id="'cargo' + index"
-                      v-model="person.cargo"
-                      required
-                    />
+                    <input type="text" class="form-control" />
                   </div>
-                  <div class="mb-3">
+                  <div class="mb-1">
                     <label :for="'identificacion' + index" class="form-label"
                       >N° de Identificación:</label
                     >
-                    <input
-                      type="text"
-                      class="form-control"
-                      :id="'identificacion' + index"
-                      v-model="person.identificacion"
-                      required
-                    />
+                    <input type="text" class="form-control" />
                   </div>
-                  <div class="mb-3">
+                  <div class="mb-1">
                     <label :for="'telefono' + index" class="form-label"
                       >Teléfono:</label
                     >
-                    <input
-                      type="tel"
-                      class="form-control"
-                      :id="'telefono' + index"
-                      v-model="person.telefono"
-                      required
-                    />
+                    <input type="tel" class="form-control" />
                   </div>
-                  <div class="mb-3">
-                    <label :for="'firma' + index" class="form-label"
-                      >Firma:</label
+                </div>
+                <div class="col-md-6">
+                  <h4>Visita Realizada por</h4>
+                  <SignaturePad
+                    ref="firstSignaturePad"
+                    @signatureSaved="handleFirstSignature"
+                    @signatureCleared="handleFirstSignatureCleared"
+                  />
+                  <div class="mb-1">
+                    <label class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="mb-1">
+                    <label :for="'cargo' + index" class="form-label"
+                      >Cargo:</label
                     >
-                    <input
-                      type="text"
-                      class="form-control"
-                      :id="'firma' + index"
-                      v-model="person.firma"
-                      required
-                    />
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="mb-1">
+                    <label :for="'identificacion' + index" class="form-label"
+                      >N° de Identificación:</label
+                    >
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="mb-1">
+                    <label :for="'telefono' + index" class="form-label"
+                      >Teléfono:</label
+                    >
+                    <input type="tel" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <h4>Visita Atendida por</h4>
+                  <SignaturePad
+                    ref="firstSignaturePad"
+                    @signatureSaved="handleFirstSignature"
+                    @signatureCleared="handleFirstSignatureCleared"
+                  />
+                  <div class="mb-1">
+                    <label class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="mb-1">
+                    <label :for="'cargo' + index" class="form-label"
+                      >Cargo:</label
+                    >
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="mb-1">
+                    <label :for="'identificacion' + index" class="form-label"
+                      >N° de Identificación:</label
+                    >
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="mb-1">
+                    <label :for="'telefono' + index" class="form-label"
+                      >Teléfono:</label
+                    >
+                    <input type="tel" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <h4>Visita Atendida por</h4>
+                  <SignaturePad
+                    ref="firstSignaturePad"
+                    @signatureSaved="handleFirstSignature"
+                    @signatureCleared="handleFirstSignatureCleared"
+                  />
+                  <div class="mb-1">
+                    <label class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="mb-1">
+                    <label :for="'cargo' + index" class="form-label"
+                      >Cargo:</label
+                    >
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="mb-1">
+                    <label :for="'identificacion' + index" class="form-label"
+                      >N° de Identificación:</label
+                    >
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="mb-1">
+                    <label :for="'telefono' + index" class="form-label"
+                      >Teléfono:</label
+                    >
+                    <input type="tel" class="form-control" />
                   </div>
                 </div>
               </div>
@@ -412,11 +453,15 @@
 import axios from "axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
+import SignaturePad from "@/components/SignaturePad.vue";
+import MunicipioSelect from "@/components/MunicipioSelect.vue";
 
 export default {
   components: {
     LoadingSpinner,
     ToastNotification,
+    SignaturePad,
+    MunicipioSelect,
   },
   data() {
     return {
@@ -484,6 +529,25 @@ export default {
     };
   },
   methods: {
+    handleFirstSignature(signature) {
+      this.form.firstSignature = signature;
+      this.signatures.firstSignature = true; // La firma ha sido realizada
+    },
+    handleSecondSignature(signature) {
+      this.form.secondSignature = signature;
+      this.signatures.secondSignature = true; // La firma ha sido realizada
+    },
+    handleFirstSignatureCleared() {
+      this.signatures.firstSignature = false; // Marca como no firmada
+    },
+    handleSecondSignatureCleared() {
+      this.signatures.secondSignature = false; // Marca como no firmada
+    },
+    saveSignatures() {
+      // Llamamos a los métodos saveSignature de ambos componentes
+      this.$refs.firstSignaturePad.saveSignature();
+      this.$refs.secondSignaturePad.saveSignature();
+    },
     guardarFormulario() {
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {

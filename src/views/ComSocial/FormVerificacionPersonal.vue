@@ -22,7 +22,10 @@
               </li>
             </ol>
           </nav>
-          <h2>Formulario de verificación personal manipulador de alimentos</h2>
+          <h2>
+            FORMATO DE VERIFICACIÓN PERSONAL MANIPULADOR DE ALIMENTOS PADRES DE
+            FAMILIA DE LOS BENEFICIARIOS PAE.
+          </h2>
           <hr />
         </div>
         <form @submit.prevent="guardarFormulario">
@@ -46,13 +49,7 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Minicipio </label>
-              <select class="form-select" v-model="form.municipio">
-                <option value="">Abrego</option>
-                <option value="">Arboledas</option>
-                <option value="">3</option>
-                <option value="">4</option>
-                <option value="">5</option>
-              </select>
+              <MunicipioSelect v-model="form.municipio" />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Instutción educativa </label>
@@ -78,68 +75,75 @@
                 las Sedes que conforman el Establecimiento Educativo Principal.
               </label>
             </div>
-
-            <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
-              <div class="row g-3">
-                <div class="col-sm-9">
-                  <label class="form-label">Nombre de la sede educativa</label>
-                  <input
-                    v-model="nombreSede"
-                    class="form-control"
-                    type="text"
-                  />
-                </div>
-                <div class="col-sm-3">
-                  <label class="form-label">Modalidad de atención</label>
-                  <select class="form-select" v-model="modalidad">
-                    <option value="RPS">RPS</option>
-                    <option value="CCT">CCT</option>
-                    <option value="RI">RI</option>
-                  </select>
-                </div>
-                <div class="col-sm-4">
-                  <label class="form-label">Num. total manipuladores RPS</label>
-                  <input v-model="rps1" class="form-control" type="number" />
-                </div>
-                <div class="col-sm-4">
-                  <label class="form-label">Num. total manipuladores CCT</label>
-                  <input v-model="cct1" class="form-control" type="number" />
-                </div>
-                <div class="col-sm-4">
-                  <label class="form-label">Num. total manipuladores RI</label>
-                  <input v-model="ri1" class="form-control" type="number" />
-                </div>
-                <div class="col-sm-4">
-                  <label class="form-label"
-                    >Num. de manipuladores padres RPS</label
-                  >
-                  <input v-model="rps2" class="form-control" type="number" />
-                </div>
-                <div class="col-sm-4">
-                  <label class="form-label"
-                    >Num. de manipuladores padres CCT</label
-                  >
-                  <input v-model="cct2" class="form-control" type="number" />
-                </div>
-                <div class="col-sm-4">
-                  <label class="form-label"
-                    >Num. de manipuladores padres RI</label
-                  >
-                  <input v-model="ri2" class="form-control" type="number" />
-                </div>
-                <div class="col-sm-12">
-                  <button
-                    type="button"
-                    class="btn btn-success"
-                    @click="agregarFila"
-                  >
-                    Agregar
-                  </button>
+            <div class="mb-4 p-3 border rounded">
+              <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
+                <div class="row g-3">
+                  <div class="col-sm-9">
+                    <label class="form-label"
+                      >Nombre de la sede educativa</label
+                    >
+                    <input
+                      v-model="nombreSede"
+                      class="form-control"
+                      type="text"
+                    />
+                  </div>
+                  <div class="col-sm-3">
+                    <label class="form-label">Modalidad de atención</label>
+                    <select class="form-select" v-model="modalidad">
+                      <option value="PS">PS</option>
+                      <option value="CCT">CCT</option>
+                      <option value="I">I</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-4">
+                    <label class="form-label"
+                      >Num. total manipuladores PS</label
+                    >
+                    <input v-model="rps1" class="form-control" type="number" />
+                  </div>
+                  <div class="col-sm-4">
+                    <label class="form-label"
+                      >Num. total manipuladores CCT</label
+                    >
+                    <input v-model="cct1" class="form-control" type="number" />
+                  </div>
+                  <div class="col-sm-4">
+                    <label class="form-label">Num. total manipuladores I</label>
+                    <input v-model="ri1" class="form-control" type="number" />
+                  </div>
+                  <div class="col-sm-4">
+                    <label class="form-label"
+                      >Num. de manipuladores padres PS</label
+                    >
+                    <input v-model="rps2" class="form-control" type="number" />
+                  </div>
+                  <div class="col-sm-4">
+                    <label class="form-label"
+                      >Num. de manipuladores padres CCT</label
+                    >
+                    <input v-model="cct2" class="form-control" type="number" />
+                  </div>
+                  <div class="col-sm-4">
+                    <label class="form-label"
+                      >Num. de manipuladores padres I</label
+                    >
+                    <input v-model="ri2" class="form-control" type="number" />
+                  </div>
+                  <div class="col-sm-12">
+                    <button
+                      type="button"
+                      class="btn btn-secondary mb-3"
+                      @click="agregarFila"
+                    >
+                      Agregar
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
-              <table class="table table-bordered">
+              <table class="table table-bordered table-striped">
                 <thead class="text-center bg-primary-lighter">
                   <tr>
                     <th scope="col" rowspan="2">Nombre de la sede educativa</th>
@@ -152,16 +156,20 @@
                     </th>
                   </tr>
                   <tr>
-                    <th scope="col">RPS</th>
+                    <th scope="col">PS</th>
                     <th scope="col">CCT</th>
-                    <th scope="col">RI</th>
-                    <th scope="col">RPS</th>
+                    <th scope="col">I</th>
+                    <th scope="col">PS</th>
                     <th scope="col">CCT</th>
-                    <th scope="col">RI</th>
+                    <th scope="col">I</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(fila, index) in filas" :key="index">
+                  <tr
+                    v-for="(fila, index) in filas"
+                    :key="index"
+                    class="text-center"
+                  >
                     <td>{{ fila.nombreSede }}</td>
                     <td>{{ fila.modalidad }}</td>
                     <td>{{ fila.rps1 }}</td>
@@ -170,6 +178,22 @@
                     <td>{{ fila.rps2 }}</td>
                     <td>{{ fila.cct2 }}</td>
                     <td>{{ fila.ri2 }}</td>
+                  </tr>
+                  <tr class="text-center fw-bold">
+                    <td colspan="2">Totales</td>
+                    <td>{{ totalRps1 }}</td>
+                    <td>{{ totalCct1 }}</td>
+                    <td>{{ totalRi1 }}</td>
+                    <td>{{ totalRps2 }}</td>
+                    <td>{{ totalCct2 }}</td>
+                    <td>{{ totalRi2 }}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="8" class="small-text-row">
+                      I: Modalidad Industrializada<br />
+                      CCT: Modalidad Comida Caliente Transportada<br />
+                      PS: Modalidad Preparada en Sitio
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -182,7 +206,11 @@
                   >
                 </div>
                 <div class="col-12 mb-1">
-                  <input class="form-control" type="text" placeholder="Firma" />
+                  <SignaturePad
+                    ref="firstSignaturePad"
+                    @signatureSaved="handleFirstSignature"
+                    @signatureCleared="handleFirstSignatureCleared"
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Nombre</label>
@@ -210,7 +238,11 @@
                   >
                 </div>
                 <div class="col-12 mb-1">
-                  <input class="form-control" type="text" placeholder="Firma" />
+                  <SignaturePad
+                    ref="secondSignaturePad"
+                    @signatureSaved="handleSecondSignature"
+                    @signatureCleared="handleSecondSignatureCleared"
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Nombre</label>
@@ -230,7 +262,8 @@
                 </div>
               </div>
             </div>
-
+            <!-- Componente de carga de archivos -->
+            <FileUploader :files="form.files" @files-updated="updateFiles" />
             <div class="col-sm-12 col-md-12 col-lg-12 mt-3 mb-1">
               <button type="submit" class="btn btn-primary mr-2">
                 Guardar
@@ -247,11 +280,17 @@
 import axios from "axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
+import SignaturePad from "@/components/SignaturePad.vue";
+import MunicipioSelect from "@/components/MunicipioSelect.vue";
+import FileUploader from "@/components/FileUploader.vue";
 
 export default {
   components: {
     LoadingSpinner,
     ToastNotification,
+    SignaturePad,
+    MunicipioSelect,
+    FileUploader,
   },
   data() {
     return {
@@ -261,12 +300,12 @@ export default {
       // Input para tabla temporal
       nombreSede: "",
       modalidad: "",
-      rps1: "",
-      cct1: "",
-      ri1: "",
-      rps2: "",
-      cct2: "",
-      ri2: "",
+      rps1: "0",
+      cct1: "0",
+      ri1: "0",
+      rps2: "0",
+      cct2: "0",
+      ri2: "0",
       // fin tabla temporal
       filas: [], //filas de la tabla
       form: {
@@ -281,22 +320,20 @@ export default {
         numBeneficiarios: "",
         horaInicio: "",
         horaFin: "",
+        firstSignature: "",
+        secondSignature: "",
+        files: [],
       },
       formulariosOffline: [], // Para almacenar temporalmente los formularios en localStorage
     };
   },
   methods: {
+    updateFiles(files) {
+      // Actualiza la lista de archivos en el formulario
+      this.form.files = files;
+    },
     agregarFila() {
-      if (
-        this.nombreSede &&
-        this.modalidad &&
-        this.rps1 &&
-        this.cct1 &&
-        this.ri1 &&
-        this.rps2 &&
-        this.cct2 &&
-        this.ri2
-      ) {
+      if (this.nombreSede && this.modalidad) {
         // Agregar una nueva fila con los valores ingresados
         this.filas.push({
           nombreSede: this.nombreSede,
@@ -312,20 +349,45 @@ export default {
         // Limpiar los campos después de agregar
         this.nombreSede = "";
         this.modalidad = "";
-        this.rps1 = "";
-        this.cct1 = "";
-        this.ri1 = "";
-        this.rps2 = "";
-        this.cct2 = "";
-        this.ri2 = "";
+        this.rps1 = "0";
+        this.cct1 = "0";
+        this.ri1 = "0";
+        this.rps2 = "0";
+        this.cct2 = "0";
+        this.ri2 = "0";
       } else {
         this.showToast(
-          "Por favor, complete ambos campos antes de agregar sede.",
+          "Por favor, complete todos los campos antes de agregar sede.",
           "danger"
         );
       }
     },
+    handleFirstSignature(signature) {
+      this.form.firstSignature = signature;
+      this.signatures.firstSignature = true; // La firma ha sido realizada
+    },
+    handleSecondSignature(signature) {
+      this.form.secondSignature = signature;
+      this.signatures.secondSignature = true; // La firma ha sido realizada
+    },
+    handleFirstSignatureCleared() {
+      this.signatures.firstSignature = false; // Marca como no firmada
+    },
+    handleSecondSignatureCleared() {
+      this.signatures.secondSignature = false; // Marca como no firmada
+    },
+    saveSignatures() {
+      // Llamamos a los métodos saveSignature de ambos componentes
+      this.$refs.firstSignaturePad.saveSignature();
+      this.$refs.secondSignaturePad.saveSignature();
+    },
     guardarFormulario() {
+      // Primero, guardamos las firmas
+      if (!this.signatures.firstSignature || !this.signatures.secondSignature) {
+        return; // Evitamos el envío del formulario
+      }
+      // Primero, guardamos las firmas
+      this.saveSignatures();
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {
         // Enviar formulario al servidor
@@ -373,5 +435,48 @@ export default {
       }, 5000);
     },
   },
+  computed: {
+    totalRps1() {
+      return this.filas.reduce(
+        (total, fila) => total + Number(fila.rps1 || 0),
+        0
+      );
+    },
+    totalCct1() {
+      return this.filas.reduce(
+        (total, fila) => total + Number(fila.cct1 || 0),
+        0
+      );
+    },
+    totalRi1() {
+      return this.filas.reduce(
+        (total, fila) => total + Number(fila.ri1 || 0),
+        0
+      );
+    },
+    totalRps2() {
+      return this.filas.reduce(
+        (total, fila) => total + Number(fila.rps2 || 0),
+        0
+      );
+    },
+    totalCct2() {
+      return this.filas.reduce(
+        (total, fila) => total + Number(fila.cct2 || 0),
+        0
+      );
+    },
+    totalRi2() {
+      return this.filas.reduce(
+        (total, fila) => total + Number(fila.ri2 || 0),
+        0
+      );
+    },
+  },
 };
 </script>
+<style scoped>
+.small-text-row {
+  font-size: 10pt;
+}
+</style>

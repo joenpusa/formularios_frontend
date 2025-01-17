@@ -33,7 +33,7 @@
             </div>
             <div class="col-md-6">
               <label class="form-label">Municipio:</label>
-              <input type="text" class="form-control" />
+              <MunicipioSelect v-model="form.municipio" />
             </div>
           </div>
 
@@ -153,11 +153,7 @@
               <tr v-for="n in 14" :key="n">
                 <td class="text-center">{{ n }}</td>
                 <td>
-                  <input
-                    type="text"
-                    class="form-control"
-                    :value="getAspectText(n)"
-                  />
+                  <label>{{ getAspectText(n) }}</label>
                 </td>
                 <td class="text-center">
                   <input type="radio" :name="'aspect' + n" value="si" />
@@ -180,6 +176,11 @@
           <div class="row mb-3">
             <div class="col-md-6">
               <h5>FIRMA EQUIPO PAE /APOYO A LA SUPERVISIÓN</h5>
+              <SignaturePad
+                ref="firstSignaturePad"
+                @signatureSaved="handleFirstSignature"
+                @signatureCleared="handleFirstSignatureCleared"
+              />
               <div class="mb-2">
                 <label class="form-label">Nombre:</label>
                 <input type="text" class="form-control" />
@@ -199,6 +200,11 @@
             </div>
             <div class="col-md-6">
               <h5>FIRMA QUIEN ATIENDE LA VISITA</h5>
+              <SignaturePad
+                ref="secondSignaturePad"
+                @signatureSaved="handleSecondSignature"
+                @signatureCleared="handleSecondSignatureCleared"
+              />
               <div class="mb-2">
                 <label class="form-label">Nombre:</label>
                 <input type="text" class="form-control" />
@@ -229,11 +235,15 @@
 import axios from "axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
+import SignaturePad from "@/components/SignaturePad.vue";
+import MunicipioSelect from "@/components/MunicipioSelect.vue";
 
 export default {
   components: {
     LoadingSpinner,
     ToastNotification,
+    SignaturePad,
+    MunicipioSelect,
   },
   data() {
     return {
@@ -260,6 +270,25 @@ export default {
     };
   },
   methods: {
+    handleFirstSignature(signature) {
+      this.form.firstSignature = signature;
+      this.signatures.firstSignature = true; // La firma ha sido realizada
+    },
+    handleSecondSignature(signature) {
+      this.form.secondSignature = signature;
+      this.signatures.secondSignature = true; // La firma ha sido realizada
+    },
+    handleFirstSignatureCleared() {
+      this.signatures.firstSignature = false; // Marca como no firmada
+    },
+    handleSecondSignatureCleared() {
+      this.signatures.secondSignature = false; // Marca como no firmada
+    },
+    saveSignatures() {
+      // Llamamos a los métodos saveSignature de ambos componentes
+      this.$refs.firstSignaturePad.saveSignature();
+      this.$refs.secondSignaturePad.saveSignature();
+    },
     getAspectText(n) {
       const aspects = [
         "El personal manipulador usa la indumentaria mínima requerida para manipular los alimentos.",
