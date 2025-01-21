@@ -18,11 +18,15 @@
                 <router-link to="/comtecnico">Componente tecnico</router-link>
               </li>
               <li class="breadcrumb-item">
-                Formulario de verificación de materia prima RPS
+                Foramto de verificación de materia prima ración para preparar en
+                sitio - PS
               </li>
             </ol>
           </nav>
-          <h2>VERIFICACIÓN DE MATERIA PRIMA RPS</h2>
+          <h2>
+            FORMATO DE VERIFICACIÓN DE MATERIA PRIMA RACIÓN PARA PREPARAR EN
+            SITIO - PS
+          </h2>
           <hr />
         </div>
         <form @submit.prevent="guardarFormulario">
@@ -169,155 +173,285 @@
                 required
               />
             </div>
+            <div class="col-md-12">
+              <label for="numeroBeneficiarios" class="form-label"
+                >Descripción del Menú</label
+              >
+              <input
+                type="text"
+                id="numeroBeneficiarios"
+                v-model="formData.descripcion_menu"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="col-md-12">
+              <label for="numeroBeneficiarios" class="form-label"
+                >Nota 1: La ETC determina validar todas las materias primas
+                suministradas por el operador para la ejecucion de la semana
+                comprendida entre el</label
+              >
+              <input
+                type="text"
+                id="numeroBeneficiarios"
+                v-model="formData.descripcion_menu"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="col-md-12 mt-3">
+              <label class="form-label"
+                >Nota 2: Para evaluar la temperatura y características
+                organolépticas se debe tener en cuenta las fichas técnicas
+                determinadas en el anexo de calidad e inocuidad de la Resolución
+                00335 de 2021.</label
+              >
+            </div>
+            <div class="col-md-12 mt-3">
+              <table class="table table-bordered text-center">
+                <thead class="table-info">
+                  <tr>
+                    <th rowspan="2">Materia Prima</th>
+                    <th rowspan="2">Lote</th>
+                    <th rowspan="2">Fecha vencimiento</th>
+                    <th rowspan="2">Unidad de medida</th>
+                    <th rowspan="2">Temperatura (productos cárnicos)</th>
+                    <th rowspan="2">Cantidad total según kardex</th>
+                    <th rowspan="2">Cantidad encontrada</th>
+                    <th rowspan="2">Cantidad faltante</th>
+                    <th colspan="3">Características Organolépticas</th>
+                    <th rowspan="2">Cumplimiento (Cumple / No cumple)</th>
+                  </tr>
+                  <tr>
+                    <th>Color</th>
+                    <th>Olor</th>
+                    <th>Textura</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Remolacha</td>
+                    <td>
+                      <input type="text" class="form-control" />
+                    </td>
+                    <td><input type="date" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <select class="form-select">
+                        <option value="cumple">Cumple</option>
+                        <option value="noCumple">No cumple</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Zanahoria</td>
+                    <td>
+                      <input type="text" class="form-control" />
+                    </td>
+                    <td><input type="date" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <select class="form-select">
+                        <option value="cumple">Cumple</option>
+                        <option value="noCumple">No cumple</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Ahuyama</td>
+                    <td>
+                      <input type="text" class="form-control" />
+                    </td>
+                    <td><input type="date" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <select class="form-select">
+                        <option value="cumple">Cumple</option>
+                        <option value="noCumple">No cumple</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Fruta 1</td>
+                    <td>
+                      <input type="text" class="form-control" />
+                    </td>
+                    <td><input type="date" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <select class="form-select">
+                        <option value="cumple">Cumple</option>
+                        <option value="noCumple">No cumple</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Fruta 2</td>
+                    <td>
+                      <input type="text" class="form-control" />
+                    </td>
+                    <td><input type="date" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <select class="form-select">
+                        <option value="cumple">Cumple</option>
+                        <option value="noCumple">No cumple</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Limón-naranja</td>
+                    <td>
+                      <input type="text" class="form-control" />
+                    </td>
+                    <td><input type="date" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <select class="form-select">
+                        <option value="cumple">Cumple</option>
+                        <option value="noCumple">No cumple</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <input type="text" class="form-control" />
+                    </td>
+                    <td><input type="date" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <select class="form-select">
+                        <option value="cumple">Cumple</option>
+                        <option value="noCumple">No cumple</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <input type="text" class="form-control" />
+                    </td>
+                    <td><input type="date" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <select class="form-select">
+                        <option value="cumple">Cumple</option>
+                        <option value="noCumple">No cumple</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <input type="text" class="form-control" />
+                    </td>
+                    <td><input type="date" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <select class="form-select">
+                        <option value="cumple">Cumple</option>
+                        <option value="noCumple">No cumple</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <input type="text" class="form-control" />
+                    </td>
+                    <td><input type="date" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="number" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <select class="form-select">
+                        <option value="cumple">Cumple</option>
+                        <option value="noCumple">No cumple</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="9">
+                      INDICADOR: No de materias primas que cumplen los criterios
+                      de calidad de aceptación / Número de materias verificadas
+                    </td>
+                    <td colspan="3">
+                      <input type="text" class="form-control" placeholder="%" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-
-          <h2 class="mt-4 mb-3">Verificación de materia prima</h2>
-          <div
-            v-for="(item, index) in formData.materiasPrimas"
-            :key="index"
-            class="mb-4 p-3 border rounded"
-          >
-            <div class="row mb-3">
-              <div class="col-md-4">
-                <label :for="'materiaPrima' + index" class="form-label"
-                  >Materia Prima:</label
-                >
-                <input
-                  type="text"
-                  :id="'materiaPrima' + index"
-                  v-model="item.nombre"
-                  class="form-control"
-                  required
-                />
-              </div>
-              <div class="col-md-4">
-                <label :for="'lote' + index" class="form-label">Lote:</label>
-                <input
-                  type="text"
-                  :id="'lote' + index"
-                  v-model="item.lote"
-                  class="form-control"
-                  required
-                />
-              </div>
-              <div class="col-md-4">
-                <label :for="'fechaVencimiento' + index" class="form-label"
-                  >Fecha vencimiento:</label
-                >
-                <input
-                  type="date"
-                  :id="'fechaVencimiento' + index"
-                  v-model="item.fechaVencimiento"
-                  class="form-control"
-                  required
-                />
-              </div>
-            </div>
-            <div class="row mb-3">
-              <div class="col-md-3">
-                <label :for="'unidadMedida' + index" class="form-label"
-                  >Unidad de medida:</label
-                >
-                <input
-                  type="text"
-                  :id="'unidadMedida' + index"
-                  v-model="item.unidadMedida"
-                  class="form-control"
-                  required
-                />
-              </div>
-              <div class="col-md-3">
-                <label :for="'temperatura' + index" class="form-label"
-                  >Temperatura:</label
-                >
-                <input
-                  type="number"
-                  :id="'temperatura' + index"
-                  v-model="item.temperatura"
-                  class="form-control"
-                />
-              </div>
-              <div class="col-md-3">
-                <label :for="'cantidadTotal' + index" class="form-label"
-                  >Cantidad total según kardex:</label
-                >
-                <input
-                  type="number"
-                  :id="'cantidadTotal' + index"
-                  v-model="item.cantidadTotal"
-                  class="form-control"
-                  required
-                />
-              </div>
-              <div class="col-md-3">
-                <label :for="'cantidadEncontrada' + index" class="form-label"
-                  >Cantidad encontrada:</label
-                >
-                <input
-                  type="number"
-                  :id="'cantidadEncontrada' + index"
-                  v-model="item.cantidadEncontrada"
-                  class="form-control"
-                  required
-                />
-              </div>
-            </div>
-            <div class="row mb-3">
-              <div class="col-md-3">
-                <label :for="'color' + index" class="form-label">Color:</label>
-                <input
-                  type="text"
-                  :id="'color' + index"
-                  v-model="item.color"
-                  class="form-control"
-                  required
-                />
-              </div>
-              <div class="col-md-3">
-                <label :for="'olor' + index" class="form-label">Olor:</label>
-                <input
-                  type="text"
-                  :id="'olor' + index"
-                  v-model="item.olor"
-                  class="form-control"
-                  required
-                />
-              </div>
-              <div class="col-md-3">
-                <label :for="'textura' + index" class="form-label"
-                  >Textura:</label
-                >
-                <input
-                  type="text"
-                  :id="'textura' + index"
-                  v-model="item.textura"
-                  class="form-control"
-                  required
-                />
-              </div>
-              <div class="col-md-3">
-                <label :for="'cumplimiento' + index" class="form-label"
-                  >Cumplimiento:</label
-                >
-                <select
-                  :id="'cumplimiento' + index"
-                  v-model="item.cumplimiento"
-                  class="form-select"
-                  required
-                >
-                  <option value="Cumple">Cumple</option>
-                  <option value="No cumple">No cumple</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <button
-            type="button"
-            @click="addMateriaPrima"
-            class="btn btn-secondary mb-3"
-          >
-            Agregar Materia Prima
-          </button>
 
           <div class="mb-3">
             <label for="observaciones" class="form-label">Observaciones:</label>
@@ -474,8 +608,8 @@ export default {
         horaFinal: "",
         institucionEducativa: "",
         sedeEducativa: "",
-        operador: "Unión Temporal Suministros PAE 2024",
-        numeroContrato: "LP-SEG-3030-2023 del 12 de enero  del 2024",
+        operador: "",
+        numeroContrato: "",
         numeroVisita: "",
         tipoVisita: "",
         numeroBeneficiarios: "",
@@ -541,21 +675,7 @@ export default {
       localStorage.setItem("formulariosOffline", JSON.stringify(guardados));
       this.resetFormulario();
     },
-    addMateriaPrima() {
-      // formData.value.materiasPrimas.push({
-      //   nombre: "",
-      //   lote: "",
-      //   fechaVencimiento: "",
-      //   unidadMedida: "",
-      //   temperatura: "",
-      //   cantidadTotal: "",
-      //   cantidadEncontrada: "",
-      //   color: "",
-      //   olor: "",
-      //   textura: "",
-      //   cumplimiento: "",
-      // });
-    },
+
     async enviarFormularioAlServidor() {
       try {
         this.isLoading = true;

@@ -18,11 +18,15 @@
                 <router-link to="/comtecnico">Componente tecnico</router-link>
               </li>
               <li class="breadcrumb-item">
-                Formulario de verificación etapa alistamiento
+                Verificación técnica a etapa preoperativa bodega de
+                almacenamiento y modalidades PS, CCT y I
               </li>
             </ol>
           </nav>
-          <h2>Formulario de verificación etapa alistamiento</h2>
+          <h2>
+            VERIFICACIÓN TÉCNICA A ETAPA PREOPERATIVA BODEGA DE ALMACENAMIENTO Y
+            MODALIDADES PS, CCT Y I
+          </h2>
           <hr />
         </div>
         <form @submit.prevent="guardarFormulario">
@@ -33,7 +37,6 @@
                 class="form-control"
                 type="text"
                 value="Norte de Santander"
-                disabled
               />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
@@ -75,17 +78,11 @@
                 class="form-control"
                 type="text"
                 v-model="form.horaInicio"
-                disabled
               />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Hora fin</label>
-              <input
-                class="form-control"
-                type="text"
-                v-model="form.horaFin"
-                disabled
-              />
+              <input class="form-control" type="text" v-model="form.horaFin" />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Número de visita </label>
@@ -135,7 +132,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -154,7 +155,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -173,7 +178,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -191,7 +200,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -210,7 +223,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -228,7 +245,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -246,7 +267,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -265,7 +290,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -274,7 +303,7 @@
                   >9.El tamaño de la bodega o las areas son proporcionales a los
                   volúmenes de alimentos manipulados, disponiendo además de
                   espacios libres para la circulación del personal, el traslado
-                  de materiales o productos y para realizar la limpieza y el
+                  de materiales o productos para realizar la limpieza y el
                   mantenimiento de las áreas respectivas.</label
                 >
                 <div class="col-sm-2">
@@ -286,7 +315,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -304,7 +337,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -322,7 +359,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -344,7 +385,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -362,7 +407,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <hr />
@@ -370,7 +419,7 @@
             <div class="col-sm-12 col-md-12 col-lg-12 mb-1 mt-2">
               <h5>
                 II. VERIFICACIÓN DOCUMENTAL BODEGA Y ESTABLECIMIENTOS CON
-                MODALIDAD APS, CCT Y RI
+                MODALIDAD PS, CCT Y I
               </h5>
               <hr />
               <div class="row">
@@ -389,15 +438,22 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  Fecha de visita y/o certificado
+                  <input class="form-control" type="date" />
+                  Concepto sanitaria
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
                 <hr />
                 <label class="col-sm-6"
                   >15. Existe un plan de saneamiento aplicable a la bodega y a
-                  los establecimientos educativos con modalidad RPS, CCT y RI,
-                  de acuerdo con la normatividad vigente, donde incluya
+                  los establecimientos educativos con modalidad PS, CCT y I, de
+                  acuerdo con la normatividad vigente, donde incluya
                   procedimientos, formatos de registros y los siguientes
                   programas: Limpieza y desinfección, desechos solidos, control
                   de plagas y monitoreo de calidad del agua.</label
@@ -411,7 +467,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -419,8 +479,8 @@
                 <label class="col-sm-6"
                   >16.Se cuenta con un programa de mantenimiento preventivo y
                   correctivo de equipos, aplicable a la bodega y a los
-                  establecimientos educativos con modalidad RPS, CCT y RI, en
-                  cuyo contenido se relaciona formato hoja de vida de equipos,
+                  establecimientos educativos con modalidad PS, CCT y I, en cuyo
+                  contenido se relaciona formato hoja de vida de equipos,
                   cronograma, responsables de las actividades de mantenimiento,
                   entre otros.</label
                 >
@@ -433,7 +493,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -452,7 +516,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -474,7 +542,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -493,7 +565,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -502,7 +578,7 @@
                   >20.Se cuenta con un plan de muestreo microbiologico, para los
                   grupos de alimentos seleccionados por la entidad territorial,
                   de las diferentes modalidades de suministro en los
-                  establecimienteos y comedores escolares, con la periodicidad y
+                  establecimientos y comedores escolares, con la periodicidad y
                   terminos definidos</label
                 >
                 <div class="col-sm-2">
@@ -514,7 +590,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -534,7 +614,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -553,7 +637,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -572,7 +660,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -591,7 +683,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -611,7 +707,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -632,7 +732,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -640,7 +744,7 @@
                 <label class="col-sm-6"
                   >27.Se cuenta con un programa de capacitación continua al
                   personal manipulador de alimentos (bodega y E.E), documentado
-                  en físico, donde incluye cronograma, responsables, medodologia
+                  en físico, donde incluye cronograma, responsables, metodologia
                   del plan de capacitación, entre otros.</label
                 >
                 <div class="col-sm-2">
@@ -652,7 +756,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -674,8 +782,49 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
+              </div>
+              <hr />
+            </div>
+            <div class="row">
+              <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
+                <label class="form-label">Puntaje Esperado</label>
+                <input class="form-control" type="text" />
+              </div>
+              <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
+                <label class="form-label">Puntaje Obtenido</label>
+                <input class="form-control" type="text" />
+              </div>
+              <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
+                <label class="form-label">Porcentaje</label>
+                <input class="form-control" type="text" />
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
+                <label class="form-label"
+                  >Conclusiones / Observaciones / Recomendaciones</label
+                >
+                <textarea
+                  class="form-control"
+                  v-model="form.observaciones"
+                  rows="3"
+                >
+                </textarea>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
+                <label class="form-label"
+                  >Observaciones de quien recibe lla visita</label
+                >
+                <textarea
+                  class="form-control"
+                  v-model="form.observaciones"
+                  rows="3"
+                >
+                </textarea>
               </div>
             </div>
 
@@ -743,6 +892,8 @@
                 </div>
               </div>
             </div>
+            <!-- Componente de carga de archivos -->
+            <FileUploader :files="form.files" @files-updated="updateFiles" />
 
             <div class="col-sm-12 col-md-12 col-lg-12 mt-3 mb-1">
               <button type="submit" class="btn btn-primary mr-2">
@@ -762,6 +913,7 @@ import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 import SignaturePad from "@/components/SignaturePad.vue";
 import MunicipioSelect from "@/components/MunicipioSelect.vue";
+import FileUploader from "@/components/FileUploader.vue";
 
 export default {
   components: {
@@ -769,6 +921,7 @@ export default {
     ToastNotification,
     SignaturePad,
     MunicipioSelect,
+    FileUploader,
   },
   data() {
     return {
@@ -781,8 +934,6 @@ export default {
       form: {
         fechaVisita: "",
         municipio: "",
-        institucion: "",
-        sede: "",
         operador: "",
         contrato: "",
         numVisita: "",
@@ -790,11 +941,16 @@ export default {
         numBeneficiarios: "",
         horaInicio: "",
         horaFin: "",
+        files: [],
       },
       formulariosOffline: [], // Para almacenar temporalmente los formularios en localStorage
     };
   },
   methods: {
+    updateFiles(files) {
+      // Actualiza la lista de archivos en el formulario
+      this.form.files = files;
+    },
     handleFirstSignature(signature) {
       this.form.firstSignature = signature;
       this.signatures.firstSignature = true; // La firma ha sido realizada
@@ -813,24 +969,6 @@ export default {
       // Llamamos a los métodos saveSignature de ambos componentes
       this.$refs.firstSignaturePad.saveSignature();
       this.$refs.secondSignaturePad.saveSignature();
-    },
-    agregarFila() {
-      if (this.nuevoNombre && this.nuevoGrado) {
-        // Agregar una nueva fila con los valores ingresados
-        this.filas.push({
-          nombre: this.nuevoNombre,
-          grado: this.nuevoGrado,
-        });
-
-        // Limpiar los campos después de agregar
-        this.nuevoNombre = "";
-        this.nuevoGrado = "";
-      } else {
-        this.showToast(
-          "Por favor, complete ambos campos antes de agregar.",
-          "danger"
-        );
-      }
     },
     guardarFormulario() {
       // Verificar si hay conexión a Internet

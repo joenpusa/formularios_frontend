@@ -18,11 +18,15 @@
                 <router-link to="/comtecnico">Componente tecnico</router-link>
               </li>
               <li class="breadcrumb-item">
-                Formulario de verificación etapa de operación
+                VERIFICACIÓN TÉCNICA A ETAPA OPERATIVA BODEGA DE ALMACENAMIENTO
+                Y MODALIDADES PS, CCT Y I
               </li>
             </ol>
           </nav>
-          <h2>Formulario de verificación etapa de operación</h2>
+          <h2>
+            VERIFICACIÓN TÉCNICA A ETAPA OPERATIVA BODEGA DE ALMACENAMIENTO Y
+            MODALIDADES PS, CCT Y I
+          </h2>
           <hr />
         </div>
         <form @submit.prevent="guardarFormulario">
@@ -75,17 +79,11 @@
                 class="form-control"
                 type="text"
                 v-model="form.horaInicio"
-                disabled
               />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Hora fin</label>
-              <input
-                class="form-control"
-                type="text"
-                v-model="form.horaFin"
-                disabled
-              />
+              <input class="form-control" type="text" v-model="form.horaFin" />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Número de visita </label>
@@ -137,7 +135,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -155,7 +157,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -175,7 +181,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -197,7 +207,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -218,7 +232,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <hr />
@@ -240,7 +258,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -248,7 +270,7 @@
                 <label class="col-sm-6"
                   >7. La presentación personal de los manipuladores es adecuada
                   (uñas cortas, limpias y sin esmalte, cabello recogido, sin uso
-                  de joyas, accesorios y portan el uniforme limpio.</label
+                  de joyas, accesorios y portan el uniforme limpio.)</label
                 >
                 <div class="col-sm-2">
                   <select class="form-select" v-model="form.pre_1">
@@ -259,7 +281,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -277,7 +303,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <hr />
@@ -303,7 +333,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -322,7 +356,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -341,7 +379,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -360,7 +402,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <hr />
@@ -382,7 +428,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
             </div>
@@ -406,7 +456,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -428,7 +482,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -447,7 +505,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -466,7 +528,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -486,7 +552,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -505,7 +575,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -524,7 +598,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -542,7 +620,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -560,7 +642,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -578,7 +664,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -596,7 +686,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -614,7 +708,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -633,7 +731,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -654,7 +756,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -673,7 +779,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -691,7 +801,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <hr />
@@ -711,7 +825,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -730,7 +848,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <hr />
@@ -753,7 +875,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -772,7 +898,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -791,7 +921,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -810,7 +944,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <hr />
@@ -835,7 +973,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -854,7 +996,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -874,7 +1020,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -893,7 +1043,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -913,7 +1067,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -933,7 +1091,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -953,7 +1115,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -971,7 +1137,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -990,7 +1160,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -1009,7 +1183,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -1029,7 +1207,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -1047,7 +1229,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -1065,13 +1251,17 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <hr />
               <h5>
                 VIII. VERIFICACIÓN DOCUMENTAL / REGISTROS / SOPORTES DE
-                OPERACIÓN PAE MODALIDADES APS, CCT Y RI
+                OPERACIÓN PAE MODALIDADES PS, CCT Y I
               </h5>
               <hr />
               <div class="row">
@@ -1091,7 +1281,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -1100,7 +1294,7 @@
                   >50. Se cuenta con los soportes, sobre las actividades de
                   mantenimiento preventivo de equipos (licuadora, estufa,
                   nevera, olla a presión), para la totalidad de unidades de
-                  servicio con modalidad APS, CCT y RI de acuerdo al programa
+                  servicio con modalidad PS, CCT y I de acuerdo al programa
                   establecido y según APU correspondiente.</label
                 >
                 <div class="col-sm-2">
@@ -1112,7 +1306,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -1121,8 +1319,8 @@
                   >51. Se cuenta con los soportes, sobre las actividades de
                   mantenimiento correctivo de equipos (licuadora, estufa,
                   nevera, olla a presión), realizadas al 40% del total de las
-                  unidades de servicio con modalidad APS, CCT y RI, de acuerdo
-                  al programa establecido y según APU correspondiente.</label
+                  unidades de servicio con modalidad PS, CCT y I, de acuerdo al
+                  programa establecido y según APU correspondiente.</label
                 >
                 <div class="col-sm-2">
                   <select class="form-select" v-model="form.pre_1">
@@ -1133,7 +1331,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -1142,7 +1344,7 @@
                   >52. Se cuenta con los soportes sobre las actividades de
                   calibración de equipos e instrumentos de medición
                   (termometros, grameras) realizadas en las unidades de servicio
-                  con modalidad APS, CCT y RI, de acuerdo al programa
+                  con modalidad PS, CCT y I, de acuerdo al programa
                   establecido.</label
                 >
                 <div class="col-sm-2">
@@ -1154,7 +1356,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -1164,7 +1370,7 @@
                   elementos de protección en material antifluido:1 pantalon, 1
                   camisa, 1 delantal, 1 gorro, 1 tapabocas, 1 par calzado
                   cerrado, al personal manipulador de alimentos en los comedores
-                  escolares con modalidad APS, de acuerdo a las cantidades
+                  escolares con modalidad PS, de acuerdo a las cantidades
                   establecidas por la entidad según APU correspondiente (una (1)
                   dotación completa).</label
                 >
@@ -1177,7 +1383,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -1201,7 +1411,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -1210,7 +1424,7 @@
                   >55. Cuenta con los soportes de entrega de la dotación y
                   elementos de protección en material antifluido: 1 delantal, 1
                   gorro, 1 tapabocas, al personal manipulador de alimentos en
-                  los establecimientos educativos con modalidad RI, de acuerdo a
+                  los establecimientos educativos con modalidad I, de acuerdo a
                   las cantidades establecidas por la entidad según APU
                   correspondiente (una (1) dotación completa).
                 </label>
@@ -1223,7 +1437,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -1244,7 +1462,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -1265,30 +1487,20 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
-              <div class="row">
-                <hr />
-                <label class="col-sm-6">37. </label>
-                <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
-                    <option value="1">Cumple</option>
-                    <option value="0">No Cumple</option>
-                    <option value="NA">No Aplica</option>
-                    <option value="NO">No Observado</option>
-                  </select>
-                </div>
-                <div class="col-sm-4">
-                  <input class="form-control" type="text" />
-                </div>
-              </div>
+
               <div class="row">
                 <hr />
                 <label class="col-sm-6"
                   >58. Se cuenta con las actas de soporte de la entrega de
                   insumos e implementos de aseo, conforme a las cantidades y
-                  periodicidad por modalidad de atención (APS, CCT, RI),
+                  periodicidad por modalidad de atención (PS, CCT, I),
                   correspondientes a cada uno de las instituciones y sedes
                   educativas beneficiarias del Programa, donde se desarrollan
                   actividades de limpieza y desinfección. Lo anterior según APU
@@ -1303,7 +1515,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -1322,14 +1538,18 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
                 <hr />
                 <label class="col-sm-6"
                   >60.La carpeta de cada una de las manipuladoras de alimentos
-                  por modalidad de atención (APS, CCT, RI) cuentan con los
+                  por modalidad de atención (PS, CCT, I) cuentan con los
                   examenes medicos (coprológico, KOH (uñas), frotis de
                   garganta), certificados medicos y certificación de asistencia
                   a curso de manipulacion, buenas practicas de manufactura e
@@ -1344,7 +1564,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -1352,7 +1576,7 @@
                 <label class="col-sm-6"
                   >61.Se reporta a la ETC, los resultados de analisis
                   microbiologicos de las muestras de alimentos: ensalada, jugo,
-                  seco y leche en polvo, por modalidad de atención (APS y CCT),
+                  seco y leche en polvo, por modalidad de atención (PS y CCT),
                   conforme al numero de muestras indicadas en el APU
                   correspondiente.
                 </label>
@@ -1365,7 +1589,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -1373,7 +1601,7 @@
                 <label class="col-sm-6"
                   >62. Se reporta a la ETC, los resultados de analisis
                   microbiologicos de las muestras de alimentos: lacteo y cereal,
-                  para la modalidad de atención RI, conforme al numero de
+                  para la modalidad de atención I, conforme al numero de
                   muestras indicadas en el APU correspondiente.
                 </label>
                 <div class="col-sm-2">
@@ -1385,7 +1613,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -1427,7 +1659,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -1451,7 +1687,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
               </div>
               <div class="row">
@@ -1469,7 +1709,11 @@
                   </select>
                 </div>
                 <div class="col-sm-4">
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                  />
                 </div>
                 <hr />
               </div>
@@ -1480,7 +1724,6 @@
                     class="form-control"
                     type="text"
                     v-model="form.horaFin"
-                    disabled
                   />
                 </div>
                 <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
@@ -1489,7 +1732,6 @@
                     class="form-control"
                     type="text"
                     v-model="form.horaFin"
-                    disabled
                   />
                 </div>
                 <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
@@ -1498,30 +1740,29 @@
                     class="form-control"
                     type="text"
                     v-model="form.horaFin"
-                    disabled
                   />
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
                   <label class="form-label"
                     >CONCLUSIONES / OBSERVACIONES / RECOMENDACIONES</label
                   >
-                  <input
+                  <textarea
                     class="form-control"
-                    type="text"
-                    v-model="form.horaFin"
-                    disabled
-                  />
+                    v-model="form.observaciones"
+                    rows="3"
+                  >
+                  </textarea>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
                   <label class="form-label"
                     >OBSERVACIONES DE QUIEN RECIBE LA VISITA</label
                   >
-                  <input
+                  <textarea
                     class="form-control"
-                    type="text"
-                    v-model="form.horaFin"
-                    disabled
-                  />
+                    v-model="form.observaciones"
+                    rows="3"
+                  >
+                  </textarea>
                 </div>
               </div>
             </div>
@@ -1589,7 +1830,8 @@
                 </div>
               </div>
             </div>
-
+            <!-- Componente de carga de archivos -->
+            <FileUploader :files="form.files" @files-updated="updateFiles" />
             <div class="col-sm-12 col-md-12 col-lg-12 mt-3 mb-1">
               <button type="submit" class="btn btn-primary mr-2">
                 Guardar
@@ -1608,6 +1850,7 @@ import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 import SignaturePad from "@/components/SignaturePad.vue";
 import MunicipioSelect from "@/components/MunicipioSelect.vue";
+import FileUploader from "@/components/FileUploader.vue";
 
 export default {
   components: {
@@ -1615,6 +1858,7 @@ export default {
     ToastNotification,
     SignaturePad,
     MunicipioSelect,
+    FileUploader,
   },
   data() {
     return {
@@ -1636,6 +1880,7 @@ export default {
         numBeneficiarios: "",
         horaInicio: "",
         horaFin: "",
+        files: [],
       },
       formulariosOffline: [], // Para almacenar temporalmente los formularios en localStorage
     };

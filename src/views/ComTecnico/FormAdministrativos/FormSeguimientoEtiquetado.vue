@@ -63,7 +63,7 @@
               <thead class="table-light">
                 <tr class="text-center">
                   <th colspan="8" class="text-center">
-                    ALIMENTOS MODALIDADES RACIÓN PREPARADA EN SITIO - RPS Y
+                    ALIMENTOS MODALIDADES RACIÓN PREPARADA EN SITIO - PS Y
                     COMIDA CALIENTE TRANSPORTADA
                   </th>
                 </tr>

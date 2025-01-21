@@ -17,10 +17,14 @@
               <li class="breadcrumb-item">
                 <router-link to="/comtecnico">Componente tecnico</router-link>
               </li>
-              <li class="breadcrumb-item">Toma de muestra carne de cerdo</li>
+              <li class="breadcrumb-item">
+                Toma de muestra carne de {{ form.tipo }}
+              </li>
             </ol>
           </nav>
-          <h2>TOMA DE MUESTRA PRODUCTO CARNE DE CERDO</h2>
+          <h2 class="text-uppercase">
+            TOMA DE MUESTRA PRODUCTO CARNE DE {{ form.tipo }}
+          </h2>
           <hr />
         </div>
         <form @submit.prevent="guardarFormulario">
@@ -66,6 +70,10 @@
             <div class="col-md-4">
               <label class="form-label">Hora Toma de Muestra:</label>
               <input type="time" class="form-control" />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Cantidad según Kardex:</label>
+              <input type="number" class="form-control" />
             </div>
             <div class="col-md-4">
               <label class="form-label"
@@ -200,24 +208,66 @@
             </div>
           </div>
 
-          <div class="mb-1">
-            <label class="form-label">ROTULADO Y/O ETIQUETADO</label>
-            <textarea class="form-control" rows="3"></textarea>
-          </div>
-
-          <div class="mb-1">
-            <label class="form-label">OBSERVACIONES</label>
-            <textarea class="form-control" rows="3"></textarea>
-          </div>
-
-          <div class="mb-1">
-            <label class="form-label">Cantidad según Kardex:</label>
-            <input type="text" class="form-control" />
-          </div>
-
-          <div class="mb-1">
-            <label class="form-label">Nombre del Operador:</label>
-            <input type="text" class="form-control" />
+          <div class="mt-2 mb-1">
+            <table class="table table-bordered">
+              <thead class="table-primary text-center">
+                <tr>
+                  <th colspan="6" class="text-uppercase">
+                    Rotulado y Etiquetado
+                  </th>
+                </tr>
+                <tr>
+                  <th>Marca</th>
+                  <th>Contenido Neto</th>
+                  <th>Dirección / Lugar Procedencia</th>
+                  <th>Lote - Fecha Empacado - Fecha de Despacho</th>
+                  <th>Fecha de Vencimiento</th>
+                  <th>Observaciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <input type="text" class="form-control form-control-sm" />
+                  </td>
+                  <td>
+                    <input type="text" class="form-control form-control-sm" />
+                  </td>
+                  <td>
+                    <input type="text" class="form-control form-control-sm" />
+                  </td>
+                  <td>
+                    <input type="text" class="form-control form-control-sm" />
+                  </td>
+                  <td>
+                    <input type="text" class="form-control form-control-sm" />
+                  </td>
+                  <td>
+                    <input type="text" class="form-control form-control-sm" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="text" class="form-control form-control-sm" />
+                  </td>
+                  <td>
+                    <input type="text" class="form-control form-control-sm" />
+                  </td>
+                  <td>
+                    <input type="text" class="form-control form-control-sm" />
+                  </td>
+                  <td>
+                    <input type="text" class="form-control form-control-sm" />
+                  </td>
+                  <td>
+                    <input type="text" class="form-control form-control-sm" />
+                  </td>
+                  <td>
+                    <input type="text" class="form-control form-control-sm" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           <div class="mb-1">
@@ -282,7 +332,8 @@
               <input type="text" class="form-control" />
             </div>
           </div>
-
+          <!-- Componente de carga de archivos -->
+          <FileUploader :files="form.files" @files-updated="updateFiles" />
           <div class="col-12 mt-2">
             <button type="submit" class="btn btn-primary">Guardar</button>
           </div>
@@ -298,6 +349,7 @@ import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 import SignaturePad from "@/components/SignaturePad.vue";
 import MunicipioSelect from "@/components/MunicipioSelect.vue";
+import FileUploader from "@/components/FileUploader.vue";
 
 export default {
   components: {
@@ -305,6 +357,7 @@ export default {
     ToastNotification,
     SignaturePad,
     MunicipioSelect,
+    FileUploader,
   },
   data() {
     return {
@@ -315,6 +368,7 @@ export default {
       nuevoGrado: "", // Input para el grado
       filas: [], //filas de la tabla
       form: {
+        tipo: this.$route.params.tipo,
         fechaVisita: "",
         municipio: "",
         institucion: "",
@@ -326,11 +380,16 @@ export default {
         numBeneficiarios: "",
         horaInicio: "",
         horaFin: "",
+        files: [],
       },
       formulariosOffline: [], // Para almacenar temporalmente los formularios en localStorage
     };
   },
   methods: {
+    updateFiles(files) {
+      // Actualiza la lista de archivos en el formulario
+      this.form.files = files;
+    },
     handleFirstSignature(signature) {
       this.form.firstSignature = signature;
       this.signatures.firstSignature = true; // La firma ha sido realizada
