@@ -15,9 +15,7 @@ import FormEtapaAlistamiento from "@/views/ComTecnico/FormAdministrativos/FormEt
 import FormEtapaOperacion from "@/views/ComTecnico/FormAdministrativos/FormEtapaOperacion.vue";
 import FormSeguimientoEtiquetado from "@/views/ComTecnico/FormAdministrativos/FormSeguimientoEtiquetado.vue";
 import FormCaracteristicasProductos from "@/views/ComTecnico/FormAdministrativos/FormCaracteristicasProductos.vue";
-import FormMuestraPollo from "@/views/ComTecnico/FormAdministrativos/FormMuestraPollo.vue";
-import FormMuestraRes from "@/views/ComTecnico/FormAdministrativos/FormMuestraRes.vue";
-import FormMuestraCerdo from "@/views/ComTecnico/FormAdministrativos/FormMuestraCerdo.vue";
+import FormMuestra from "@/views/ComTecnico/FormAdministrativos/FormMuestra.vue";
 // area de componente tecnico supervisores
 import FormSeguimientoLocal from "@/views/ComTecnico/FormSupervisores/FormSeguimientoLocal.vue";
 import FormSeguimientoRotulado from "@/views/ComTecnico/FormSupervisores/FormSeguimientoRotulado.vue";
@@ -113,19 +111,9 @@ const routes = [
         component: FormCaracteristicasProductos,
       },
       {
-        path: "/comtecnico/form-toma-muestra-pollo",
-        name: "FormMuestraPollo",
-        component: FormMuestraPollo,
-      },
-      {
-        path: "/comtecnico/form-toma-muestra-res",
-        name: "FormMuestraRes",
-        component: FormMuestraRes,
-      },
-      {
-        path: "/comtecnico/form-toma-muestra-cerdo",
-        name: "FormMuestraCerdo",
-        component: FormMuestraCerdo,
+        path: "/comtecnico/form-toma-muestra/:tipo",
+        name: "FormMuestra",
+        component: FormMuestra,
       },
       // area de componente tecnico coordinadores
       {

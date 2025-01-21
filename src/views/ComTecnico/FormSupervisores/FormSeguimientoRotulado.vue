@@ -473,8 +473,8 @@ export default {
         horaInicial: "",
         horaFinal: "",
         modalidad: "",
-        operador: "Unión Temporal Suministros PAE 2024",
-        numeroContrato: "LP-SEG-3030-2023 del 12 de enero del 2024",
+        operador: "",
+        numeroContrato: "",
         supervisor: "",
         observaciones: "",
         firmaEquipoPAE: {

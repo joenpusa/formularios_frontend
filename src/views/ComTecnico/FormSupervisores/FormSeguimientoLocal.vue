@@ -49,24 +49,14 @@
             </div>
             <div class="col-md-6">
               <label class="form-label">Operador:</label>
-              <input
-                type="text"
-                class="form-control"
-                value="Unión Temporal Suministros PAE 2024"
-                readonly
-              />
+              <input type="text" class="form-control" />
             </div>
           </div>
 
           <div class="row mb-3">
             <div class="col-md-6">
               <label class="form-label">N° Contrato:</label>
-              <input
-                type="text"
-                class="form-control"
-                value="LP-SEG-3030-2023 del 12 de enero del 2024"
-                readonly
-              />
+              <input type="text" class="form-control" />
             </div>
             <div class="col-md-6">
               <label class="form-label">Supervisor:</label>
@@ -109,7 +99,7 @@
                   id="modalidad1"
                 />
                 <label class="form-check-label" for="modalidad1"
-                  >Ración para preparar en sitio</label
+                  >Modalidad preparada en sitio</label
                 >
               </div>
             </div>

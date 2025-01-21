@@ -1,83 +1,36 @@
 <template>
   <div>
-    <select class="form-select" v-model="selectedMunicipio">
+    <select v-model="selected" class="form-select" @change="emitChange">
       <option value="">Seleccione un municipio</option>
       <option
         v-for="municipio in municipios"
-        :key="municipio"
-        :value="municipio"
+        :key="municipio.key"
+        :value="municipio.key"
       >
-        {{ municipio }}
+        {{ municipio.value }}
       </option>
     </select>
   </div>
 </template>
 
 <script>
+import { municipios } from "@/data/data_municipios.js";
+
 export default {
+  name: "MunicipioSelect",
   props: {
-    value: {
-      // Asociamos el v-model al prop 'value'
-      type: String,
-      default: "",
-    },
+    value: String, // Sincronización con v-model
   },
   data() {
     return {
-      selectedMunicipio: this.value, // Inicializamos con el valor del v-model
-      municipios: [
-        "Abrego",
-        "Arboledas",
-        "Bochalema",
-        "Bucarasica",
-        "Cáchira",
-        "Cácota",
-        "Chinácota",
-        "Chitagá",
-        "Convención",
-        "Cúcuta",
-        "Cucutilla",
-        "Durania",
-        "El Carmen",
-        "El Tarra",
-        "El Zulia",
-        "Gramalote",
-        "Hacarí",
-        "Herrán",
-        "La Esperanza",
-        "La Playa de Belén",
-        "Labateca",
-        "Los Patios",
-        "Lourdes",
-        "Mutiscua",
-        "Ocaña",
-        "Pamplona",
-        "Pamplonita",
-        "Puerto Santander",
-        "Ragonvalia",
-        "Salazar de Las Palmas",
-        "San Calixto",
-        "San Cayetano",
-        "Santiago",
-        "Santo Domingo de Silos",
-        "Sardinata",
-        "Teorama",
-        "Tibú",
-        "Toledo",
-        "Villa Caro",
-        "Villa del Rosario",
-      ],
+      selected: this.value,
+      municipios, // Importa directamente la data de municipios
     };
   },
   watch: {
     selectedMunicipio(newVal) {
-      // Emitimos el valor seleccionado para que se sincronice con el v-model en el componente padre
-      this.$emit("update:value", newVal);
+      this.$emit("update:modelValue", newVal); // Asegúrate de emitir este evento
     },
   },
 };
 </script>
-
-<style scoped>
-/* Puedes personalizar el estilo aquí si lo necesitas */
-</style>

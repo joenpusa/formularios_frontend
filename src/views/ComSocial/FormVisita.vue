@@ -52,20 +52,16 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Institución educativa </label>
-              <input
-                class="form-control"
-                type="text"
+              <InstitucionSelect
                 v-model="form.institucion"
-                required
+                :municipio-id="form.municipio || ''"
               />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Sede educativa </label>
-              <input
-                class="form-control"
-                type="text"
+              <SedeSelect
                 v-model="form.sede"
-                required
+                :institucion-id="form.institucion"
               />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
@@ -902,6 +898,8 @@ import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 import SignaturePad from "@/components/SignaturePad.vue";
 import MunicipioSelect from "@/components/MunicipioSelect.vue";
+import InstitucionSelect from "@/components/InstitucionSelect.vue";
+import SedeSelect from "@/components/SedeSelect.vue";
 import FileUploader from "@/components/FileUploader.vue";
 
 export default {
@@ -910,6 +908,8 @@ export default {
     ToastNotification,
     SignaturePad,
     MunicipioSelect,
+    InstitucionSelect,
+    SedeSelect,
     FileUploader,
   },
   data() {
@@ -1070,6 +1070,11 @@ export default {
       setTimeout(() => {
         this.toastMessage = "";
       }, 5000);
+    },
+  },
+  watch: {
+    "form.municipio"(newVal) {
+      console.log("Municipio seleccionado:", newVal);
     },
   },
 };

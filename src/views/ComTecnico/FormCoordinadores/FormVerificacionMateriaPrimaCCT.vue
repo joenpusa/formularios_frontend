@@ -184,23 +184,45 @@
                 required
               />
             </div>
+            <div class="col-md-12">
+              Nota 1: La ETC determina validar todas las materias primas
+              suministradas por el operador para la ejecucion de la semana
+              comprendida entre el:
+              <input type="text" class="form-control" v-model="form.nota1" />
+            </div>
+            <div class="col-md-12">
+              Nota 2: Para evaluar la temperatura y características
+              organolépticas se debe tener en cuenta las fichas técnicas
+              determinadas en el anexo de calidad e inocuidad de la Resolución
+              00335 de 2021.
+            </div>
           </div>
 
           <!-- Raw Material Verification Table -->
           <div class="table-responsive mb-3">
             <table class="table table-bordered">
-              <thead>
-                <tr class="table-primary text-center">
-                  <th>Materia Prima</th>
-                  <th>Lote</th>
-                  <th>Fecha vencimiento</th>
-                  <th>Unidad de medida</th>
-                  <th>Temperatura (productos cárnicos)</th>
-                  <th>Cantidad total según kardex</th>
-                  <th>Cantidad encontrada</th>
-                  <th>Cantidad faltante</th>
-                  <th>Características Organolépticas</th>
-                  <th>Cumplimiento (Cumple / No cumple)</th>
+              <thead class="table-primary text-center">
+                <tr>
+                  <th colspan="12" class="text-center">
+                    Verificación de materia prima
+                  </th>
+                </tr>
+                <tr>
+                  <th rowspan="2">Materia Prima</th>
+                  <th rowspan="2">Lote</th>
+                  <th rowspan="2">Fecha vencimiento</th>
+                  <th rowspan="2">Unidad de medida</th>
+                  <th rowspan="2">Temperatura (productos cárnicos)</th>
+                  <th rowspan="2">Cantidad total según kardex</th>
+                  <th rowspan="2">Cantidad encontrada</th>
+                  <th rowspan="2">Cantidad faltante</th>
+                  <th colspan="3">Características Organolépticas</th>
+                  <th rowspan="2">Cumplimiento (Cumple / No cumple)</th>
+                </tr>
+                <tr>
+                  <th>Color</th>
+                  <th>Olor</th>
+                  <th>Textura</th>
                 </tr>
               </thead>
               <tbody>
@@ -258,38 +280,48 @@
                     />
                   </td>
                   <td>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <input
-                          type="text"
-                          class="form-control"
-                          v-model="item.caracteristicas.color"
-                          placeholder="Color"
-                        />
-                      </div>
-                      <div class="col-md-4">
-                        <input
-                          type="text"
-                          class="form-control"
-                          v-model="item.caracteristicas.olor"
-                          placeholder="Olor"
-                        />
-                      </div>
-                      <div class="col-md-4">
-                        <input
-                          type="text"
-                          class="form-control"
-                          v-model="item.caracteristicas.textura"
-                          placeholder="Textura"
-                        />
-                      </div>
-                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="item.caracteristicas.color"
+                      placeholder="Color"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="item.caracteristicas.olor"
+                      placeholder="Olor"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="item.caracteristicas.textura"
+                      placeholder="Textura"
+                    />
                   </td>
                   <td>
                     <select class="form-select" v-model="item.cumplimiento">
                       <option value="cumple">Cumple</option>
                       <option value="noCumple">No cumple</option>
                     </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="6">
+                    INDICADOR: No de materias primas que cumplen los criterios
+                    de calidad de aceptación / Número de materias verificadas
+                  </td>
+                  <td colspan="3">Porcentaje de cumplimiento:</td>
+                  <td colspan="3">
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model="form.porcentaje_cumplimiento"
+                    />
                   </td>
                 </tr>
               </tbody>
@@ -436,7 +468,8 @@
               </div>
             </div>
           </div>
-
+          <!-- Componente de carga de archivos -->
+          <FileUploader :files="form.files" @files-updated="updateFiles" />
           <div class="d-grid gap-2">
             <button type="submit" class="btn btn-primary btn-lg">
               Enviar Formulario
@@ -454,6 +487,7 @@ import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 import SignaturePad from "@/components/SignaturePad.vue";
 import MunicipioSelect from "@/components/MunicipioSelect.vue";
+import FileUploader from "@/components/FileUploader.vue";
 
 export default {
   components: {
@@ -461,6 +495,7 @@ export default {
     ToastNotification,
     SignaturePad,
     MunicipioSelect,
+    FileUploader,
   },
   data() {
     return {
@@ -483,6 +518,7 @@ export default {
         descripcionMenu: "",
         observaciones: "",
         porcentajeCumplimiento: 0,
+        files: [],
         firmaEquipoPAE: {
           nombre: "",
           documento: "",
@@ -749,6 +785,10 @@ export default {
     };
   },
   methods: {
+    updateFiles(files) {
+      // Actualiza la lista de archivos en el formulario
+      this.form.files = files;
+    },
     handleFirstSignature(signature) {
       this.form.firstSignature = signature;
       this.signatures.firstSignature = true; // La firma ha sido realizada
