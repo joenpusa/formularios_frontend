@@ -26,7 +26,7 @@
           </h2>
           <hr />
         </div>
-        <form @submit.prevent="guardarFormulario" novalidate>
+        <form @submit.prevent="guardarFormulario">
           <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">ETC </label>
@@ -54,7 +54,7 @@
               <label class="form-label">Institución educativa </label>
               <InstitucionSelect
                 v-model="form.institucion"
-                :municipio-id="form.municipio || ''"
+                :municipio-id="form.municipio"
               />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
@@ -126,414 +126,293 @@
               />
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
-              <div class="accordion" id="accordionExample">
-                <div class="accordion-item border-top">
-                  <h2 class="accordion-header" id="headingOne">
-                    <button
-                      class="accordion-button"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseOne"
-                      aria-expanded="true"
-                      aria-controls="collapseOne"
-                    >
-                      Califique según nivel de cumplimiento: Cumple - No cumple
-                      - No aplica - No observado
-                    </button>
-                  </h2>
-                  <div
-                    class="accordion-collapse collapse show"
-                    id="collapseOne"
-                    aria-labelledby="headingOne"
-                    data-bs-parent="#accordionExample"
-                    style=""
-                  >
-                    <div class="accordion-body pt-0">
-                      <div class="row">
-                        <hr />
-                        <label class="col-sm-8"
-                          >1. Conoce la Resolución 00335 de 2021 - Lineamientos
-                          Generales del Programa de Alimentación Escolar-
-                          PAE.</label
-                        >
-                        <div class="col-sm-4">
-                          <select
-                            class="form-select"
-                            v-model="form.pre_1"
-                            required
-                          >
-                            <option value="Cumple">Cumple</option>
-                            <option value="No cumple">No cumple</option>
-                            <option value="No aplica">No aplica</option>
-                            <option value="No observado">No observado</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <hr />
-                        <label class="col-sm-8"
-                          >2. Conoce los mecanismos de participación ciudadana,
-                          control social y acceso a la información que dispone
-                          la resolución para que la comunidad educativa pueda
-                          realizar acompañamiento y ejercer vigilancia y control
-                          a la operación del Programa de Alimentación Escolar -
-                          PAE.</label
-                        >
-                        <div class="col-sm-4">
-                          <select class="form-select" v-model="form.pre_2">
-                            <option value="Cumple">Cumple</option>
-                            <option value="No cumple">No cumple</option>
-                            <option value="No aplica">No aplica</option>
-                            <option value="No observado">No observado</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingTwo">
-                    <button
-                      class="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseTwo"
-                      aria-expanded="false"
-                      aria-controls="collapseTwo"
-                    >
-                      Verificación Mecanismos de Participación Ciudadana
-                    </button>
-                  </h2>
-                  <div
-                    class="accordion-collapse collapse"
-                    id="collapseTwo"
-                    aria-labelledby="headingTwo"
-                    data-bs-parent="#accordionExample"
-                    style=""
-                  >
-                    <div class="accordion-body pt-0">
-                      <div class="row">
-                        <hr />
-                        <label class="col-sm-8"
-                          >3. Se evidencia soporte de conformación del Comité de
-                          Alimentación Escolar - CAE, en el Establecimiento
-                          Educativo. Adjuntar acta correspondiente del
-                          CAE.</label
-                        >
-                        <div class="col-sm-4">
-                          <select class="form-select" v-model="form.pre_3">
-                            <option value="Cumple">Cumple</option>
-                            <option value="No cumple">No cumple</option>
-                            <option value="No aplica">No aplica</option>
-                            <option value="No observado">No observado</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <hr />
-                        <label class="col-sm-8"
-                          >4. El Comité de Alimentación Escolar - CAE realiza la
-                          totalidad de reuniones de seguimiento y acompañamiento
-                          al adecuado funcionamiento del Programa de
-                          Alimentación Escolar - PAE en la Institución
-                          Educativa, según lo dispuesto en la circular N° 207 de
-                          noviembre del 2024. Adjuntar actas de reunión
-                          correspondientes.</label
-                        >
-                        <div class="col-sm-4">
-                          <select class="form-select" v-model="form.pre_4">
-                            <option value="Cumple">Cumple</option>
-                            <option value="No cumple">No cumple</option>
-                            <option value="No aplica">No aplica</option>
-                            <option value="No observado">No observado</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <hr />
-                        <label class="col-sm-8"
-                          >5. La calidad de la información que contiene las
-                          actas evidenciadas es clara y completa según lo
-                          requiere el modelo de formato Acta de Constitución de
-                          Comité de Alimentación Escolar - CAE.</label
-                        >
-                        <div class="col-sm-4">
-                          <select class="form-select" v-model="form.pre_5">
-                            <option value="Cumple">Cumple</option>
-                            <option value="No cumple">No cumple</option>
-                            <option value="No aplica">No aplica</option>
-                            <option value="No observado">No observado</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <hr />
-                        <label class="col-sm-8"
-                          >6. La Institución Educativa participa y promueve la
-                          asistencia a las mesas públicas convocadas por la ETC
-                          como espacio de dialogo y participación entre los
-                          actores del PAE para el mejoramiento continuo del
-                          programa.</label
-                        >
-                        <div class="col-sm-4">
-                          <select class="form-select" v-model="form.pre_5">
-                            <option value="Cumple">Cumple</option>
-                            <option value="No cumple">No cumple</option>
-                            <option value="No aplica">No aplica</option>
-                            <option value="No observado">No observado</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseThree"
-                        aria-expanded="false"
-                        aria-controls="collapseThree"
-                      >
-                        Verificación Mecanismos de Control Social
-                      </button>
-                    </h2>
-                    <div
-                      class="accordion-collapse collapse"
-                      id="collapseThree"
-                      aria-labelledby="headingThree"
-                      data-bs-parent="#accordionExample"
-                      style=""
-                    >
-                      <div class="accordion-body pt-0">
-                        <div class="row">
-                          <hr />
-                          <label class="col-sm-8"
-                            >7. La Institución Educativa manifiesta realizar
-                            seguimiento a la gestión del Programa de
-                            Alimentación Escolar mediante la rendición de
-                            cuentas que realiza la Entidad Territorial.</label
-                          >
-                          <div class="col-sm-4">
-                            <select class="form-select" v-model="form.pre_7">
-                              <option value="Cumple">Cumple</option>
-                              <option value="No cumple">No cumple</option>
-                              <option value="No aplica">No aplica</option>
-                              <option value="No observado">No observado</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <hr />
-                          <label class="col-sm-8"
-                            >8. Se tiene conocimiento acerca de la constitución
-                            de veedurías ciudadanas en el PAE.</label
-                          >
-                          <div class="col-sm-4">
-                            <select class="form-select" v-model="form.pre_8">
-                              <option value="Cumple">Cumple</option>
-                              <option value="No cumple">No cumple</option>
-                              <option value="No aplica">No aplica</option>
-                              <option value="No observado">No observado</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <hr />
-                          <label class="col-sm-8"
-                            >9. Se tiene conocimiento acerca de la ley 2042 de
-                            2020 por medio de la cual se otrogan herramientas a
-                            los padres de familia realice acompañamiento eficaz
-                            a los recursos del PAE.</label
-                          >
-                          <div class="col-sm-4">
-                            <select class="form-select" v-model="form.pre_9">
-                              <option value="Cumple">Cumple</option>
-                              <option value="No cumple">No cumple</option>
-                              <option value="No aplica">No aplica</option>
-                              <option value="No observado">No observado</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingFour">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseFour"
-                        aria-expanded="false"
-                        aria-controls="collapseFour"
-                      >
-                        Acceso a la Información
-                      </button>
-                    </h2>
-                    <div
-                      class="accordion-collapse collapse"
-                      id="collapseFour"
-                      aria-labelledby="headingFour"
-                      data-bs-parent="#accordionExample"
-                      style=""
-                    >
-                      <div class="accordion-body pt-0">
-                        <div class="row">
-                          <hr />
-                          <label class="col-sm-8"
-                            >10. Se evidencia publicada la ficha técnica de
-                            información del PAE en un lugar visible, de tal
-                            manera que la información mínima requerida pueda ser
-                            consultada por los actores del programa para fines
-                            de seguimiento y vigilancia comunitaria.</label
-                          >
-                          <div class="col-sm-4">
-                            <select class="form-select" v-model="form.pre_10">
-                              <option value="Cumple">Cumple</option>
-                              <option value="No cumple">No cumple</option>
-                              <option value="No aplica">No aplica</option>
-                              <option value="No observado">No observado</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <hr />
-                          <label class="col-sm-8"
-                            >11. Se evidencian publicados los ciclos de menú
-                            establecidos, en un lugar visible a toda la
-                            comunidad educativa para llevar a cabo los procesos
-                            de vigilancia comunitaria y control social.</label
-                          >
-                          <div class="col-sm-4">
-                            <select class="form-select" v-model="form.pre_11">
-                              <option value="Cumple">Cumple</option>
-                              <option value="No cumple">No cumple</option>
-                              <option value="No aplica">No aplica</option>
-                              <option value="No observado">No observado</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <hr />
-                          <label class="col-sm-8"
-                            >12. Se tiene conocimiento de los canales de
-                            atención dispuestos por la ETC y el operador para la
-                            recepción de solicitudes, peticiones, quejas y
-                            reclamos (SPQR).</label
-                          >
-                          <div class="col-sm-4">
-                            <select class="form-select" v-model="form.pre_12">
-                              <option value="Cumple">Cumple</option>
-                              <option value="No cumple">No cumple</option>
-                              <option value="No aplica">No aplica</option>
-                              <option value="No observado">No observado</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingFive">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseFive"
-                        aria-expanded="false"
-                        aria-controls="collapseFive"
-                      >
-                        Beneficiarios
-                      </button>
-                    </h2>
-                    <div
-                      class="accordion-collapse collapse"
-                      id="collapseFive"
-                      aria-labelledby="headingFive"
-                      data-bs-parent="#accordionExample"
-                      style=""
-                    >
-                      <div class="accordion-body pt-0">
-                        <div class="row">
-                          <hr />
-                          <label class="col-sm-8"
-                            >13. Se tiene en cuenta los criterios establecidos
-                            en la resolución para la priorización de los
-                            estudiantes beneficiarios y asignación del
-                            complemento alimentario a entregar.</label
-                          >
-                          <div class="col-sm-4">
-                            <select class="form-select" v-model="form.pre_13">
-                              <option value="Cumple">Cumple</option>
-                              <option value="No cumple">No cumple</option>
-                              <option value="No aplica">No aplica</option>
-                              <option value="No observado">No observado</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <hr />
-                          <label class="col-sm-8"
-                            >14. Se realiza acompañamiento por parte del
-                            Establecimiento Educativo a los estudiantes
-                            beneficiarios en el área de entrega y/o consumo de
-                            los complementos alimentarios entregados.</label
-                          >
-                          <div class="col-sm-4">
-                            <select class="form-select" v-model="form.pre_14">
-                              <option value="Cumple">Cumple</option>
-                              <option value="No cumple">No cumple</option>
-                              <option value="No aplica">No aplica</option>
-                              <option value="No observado">No observado</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <hr />
-                          <label class="col-sm-8"
-                            >15. El comportamiento de los estudiantes
-                            beneficiarios es el adecuado al momento de la
-                            entrega y/o consumo del complemento.</label
-                          >
-                          <div class="col-sm-4">
-                            <select class="form-select" v-model="form.pre_15">
-                              <option value="Cumple">Cumple</option>
-                              <option value="No cumple">No cumple</option>
-                              <option value="No aplica">No aplica</option>
-                              <option value="No observado">No observado</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <hr />
-                          <label class="col-sm-8"
-                            >16. El Establecimiento Educativo fomenta y apoya
-                            las iniciativas pedagógicas que integren procesos
-                            formativos que impulsen las buenas prácticas
-                            higiénicas, los hábitos alimentarios saludables, el
-                            respeto y la tolerancia entre los diferentes
-                            estudiantes beneficiarios, de tal manera que la
-                            alimentación escolar genere condiciones que permitan
-                            el logro de trayectorias educativas completas y el
-                            desarrollo integral de los Niños, Niñas, Jóvenes y
-                            Adolescentes beneficiarios.</label
-                          >
-                          <div class="col-sm-4">
-                            <select class="form-select" v-model="form.pre_16">
-                              <option value="Cumple">Cumple</option>
-                              <option value="No cumple">No cumple</option>
-                              <option value="No aplica">No aplica</option>
-                              <option value="No observado">No observado</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <hr />
+              Califique según nivel de cumplimiento: Cumple - No cumple - No
+              aplica - No observado
+              <div class="row">
+                <hr />
+                <label class="col-sm-8"
+                  >1. Conoce la Resolución 00335 de 2021 - Lineamientos
+                  Generales del Programa de Alimentación Escolar- PAE.</label
+                >
+                <div class="col-sm-4">
+                  <select class="form-select" v-model="form.pre_1" required>
+                    <option value="Cumple">Cumple</option>
+                    <option value="No cumple">No cumple</option>
+                    <option value="No aplica">No aplica</option>
+                    <option value="No observado">No observado</option>
+                  </select>
                 </div>
               </div>
+              <div class="row">
+                <hr />
+                <label class="col-sm-8"
+                  >2. Conoce los mecanismos de participación ciudadana, control
+                  social y acceso a la información que dispone la resolución
+                  para que la comunidad educativa pueda realizar acompañamiento
+                  y ejercer vigilancia y control a la operación del Programa de
+                  Alimentación Escolar - PAE.</label
+                >
+                <div class="col-sm-4">
+                  <select class="form-select" v-model="form.pre_2">
+                    <option value="Cumple">Cumple</option>
+                    <option value="No cumple">No cumple</option>
+                    <option value="No aplica">No aplica</option>
+                    <option value="No observado">No observado</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <hr />
+                <label class="col-sm-8"
+                  >3. Se evidencia soporte de conformación del Comité de
+                  Alimentación Escolar - CAE, en el Establecimiento Educativo.
+                  Adjuntar acta correspondiente del CAE.</label
+                >
+                <div class="col-sm-4">
+                  <select class="form-select" v-model="form.pre_3">
+                    <option value="Cumple">Cumple</option>
+                    <option value="No cumple">No cumple</option>
+                    <option value="No aplica">No aplica</option>
+                    <option value="No observado">No observado</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <hr />
+                <label class="col-sm-8"
+                  >4. El Comité de Alimentación Escolar - CAE realiza la
+                  totalidad de reuniones de seguimiento y acompañamiento al
+                  adecuado funcionamiento del Programa de Alimentación Escolar -
+                  PAE en la Institución Educativa, según lo dispuesto en la
+                  circular N° 207 de noviembre del 2024. Adjuntar actas de
+                  reunión correspondientes.</label
+                >
+                <div class="col-sm-4">
+                  <select class="form-select" v-model="form.pre_4">
+                    <option value="Cumple">Cumple</option>
+                    <option value="No cumple">No cumple</option>
+                    <option value="No aplica">No aplica</option>
+                    <option value="No observado">No observado</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <hr />
+                <label class="col-sm-8"
+                  >5. La calidad de la información que contiene las actas
+                  evidenciadas es clara y completa según lo requiere el modelo
+                  de formato Acta de Constitución de Comité de Alimentación
+                  Escolar - CAE.</label
+                >
+                <div class="col-sm-4">
+                  <select class="form-select" v-model="form.pre_5">
+                    <option value="Cumple">Cumple</option>
+                    <option value="No cumple">No cumple</option>
+                    <option value="No aplica">No aplica</option>
+                    <option value="No observado">No observado</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <hr />
+                <label class="col-sm-8"
+                  >6. La Institución Educativa participa y promueve la
+                  asistencia a las mesas públicas convocadas por la ETC como
+                  espacio de dialogo y participación entre los actores del PAE
+                  para el mejoramiento continuo del programa.</label
+                >
+                <div class="col-sm-4">
+                  <select class="form-select" v-model="form.pre_6">
+                    <option value="Cumple">Cumple</option>
+                    <option value="No cumple">No cumple</option>
+                    <option value="No aplica">No aplica</option>
+                    <option value="No observado">No observado</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <hr />
+                <label class="col-sm-8"
+                  >7. La Institución Educativa manifiesta realizar seguimiento a
+                  la gestión del Programa de Alimentación Escolar mediante la
+                  rendición de cuentas que realiza la Entidad
+                  Territorial.</label
+                >
+                <div class="col-sm-4">
+                  <select class="form-select" v-model="form.pre_7">
+                    <option value="Cumple">Cumple</option>
+                    <option value="No cumple">No cumple</option>
+                    <option value="No aplica">No aplica</option>
+                    <option value="No observado">No observado</option>
+                  </select>
+                </div>
+              </div>
+              <hr />
+              Verificación Mecanismos de Participación Ciudadana
+              <hr />
+              <div class="row">
+                <hr />
+                <label class="col-sm-8"
+                  >8. Se tiene conocimiento acerca de la constitución de
+                  veedurías ciudadanas en el PAE.</label
+                >
+                <div class="col-sm-4">
+                  <select class="form-select" v-model="form.pre_8">
+                    <option value="Cumple">Cumple</option>
+                    <option value="No cumple">No cumple</option>
+                    <option value="No aplica">No aplica</option>
+                    <option value="No observado">No observado</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <hr />
+                <label class="col-sm-8"
+                  >9. Se tiene conocimiento acerca de la ley 2042 de 2020 por
+                  medio de la cual se otrogan herramientas a los padres de
+                  familia realice acompañamiento eficaz a los recursos del
+                  PAE.</label
+                >
+                <div class="col-sm-4">
+                  <select class="form-select" v-model="form.pre_9">
+                    <option value="Cumple">Cumple</option>
+                    <option value="No cumple">No cumple</option>
+                    <option value="No aplica">No aplica</option>
+                    <option value="No observado">No observado</option>
+                  </select>
+                </div>
+              </div>
+              <hr />
+              Verificación Mecanismos de Control Social
+              <hr />
+              <div class="row">
+                <hr />
+                <label class="col-sm-8"
+                  >10. Se evidencia publicada la ficha técnica de información
+                  del PAE en un lugar visible, de tal manera que la información
+                  mínima requerida pueda ser consultada por los actores del
+                  programa para fines de seguimiento y vigilancia
+                  comunitaria.</label
+                >
+                <div class="col-sm-4">
+                  <select class="form-select" v-model="form.pre_10">
+                    <option value="Cumple">Cumple</option>
+                    <option value="No cumple">No cumple</option>
+                    <option value="No aplica">No aplica</option>
+                    <option value="No observado">No observado</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <hr />
+                <label class="col-sm-8"
+                  >11. Se evidencian publicados los ciclos de menú establecidos,
+                  en un lugar visible a toda la comunidad educativa para llevar
+                  a cabo los procesos de vigilancia comunitaria y control
+                  social.</label
+                >
+                <div class="col-sm-4">
+                  <select class="form-select" v-model="form.pre_11">
+                    <option value="Cumple">Cumple</option>
+                    <option value="No cumple">No cumple</option>
+                    <option value="No aplica">No aplica</option>
+                    <option value="No observado">No observado</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <hr />
+                <label class="col-sm-8"
+                  >12. Se tiene conocimiento de los canales de atención
+                  dispuestos por la ETC y el operador para la recepción de
+                  solicitudes, peticiones, quejas y reclamos (SPQR).</label
+                >
+                <div class="col-sm-4">
+                  <select class="form-select" v-model="form.pre_12">
+                    <option value="Cumple">Cumple</option>
+                    <option value="No cumple">No cumple</option>
+                    <option value="No aplica">No aplica</option>
+                    <option value="No observado">No observado</option>
+                  </select>
+                </div>
+              </div>
+              <hr />
+              Acceso a la Información
+              <hr />
+              <div class="row">
+                <hr />
+                <label class="col-sm-8"
+                  >13. Se tiene en cuenta los criterios establecidos en la
+                  resolución para la priorización de los estudiantes
+                  beneficiarios y asignación del complemento alimentario a
+                  entregar.</label
+                >
+                <div class="col-sm-4">
+                  <select class="form-select" v-model="form.pre_13">
+                    <option value="Cumple">Cumple</option>
+                    <option value="No cumple">No cumple</option>
+                    <option value="No aplica">No aplica</option>
+                    <option value="No observado">No observado</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <hr />
+                <label class="col-sm-8"
+                  >14. Se realiza acompañamiento por parte del Establecimiento
+                  Educativo a los estudiantes beneficiarios en el área de
+                  entrega y/o consumo de los complementos alimentarios
+                  entregados.</label
+                >
+                <div class="col-sm-4">
+                  <select class="form-select" v-model="form.pre_14">
+                    <option value="Cumple">Cumple</option>
+                    <option value="No cumple">No cumple</option>
+                    <option value="No aplica">No aplica</option>
+                    <option value="No observado">No observado</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <hr />
+                <label class="col-sm-8"
+                  >15. El comportamiento de los estudiantes beneficiarios es el
+                  adecuado al momento de la entrega y/o consumo del
+                  complemento.</label
+                >
+                <div class="col-sm-4">
+                  <select class="form-select" v-model="form.pre_15">
+                    <option value="Cumple">Cumple</option>
+                    <option value="No cumple">No cumple</option>
+                    <option value="No aplica">No aplica</option>
+                    <option value="No observado">No observado</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <hr />
+                <label class="col-sm-8"
+                  >16. El Establecimiento Educativo fomenta y apoya las
+                  iniciativas pedagógicas que integren procesos formativos que
+                  impulsen las buenas prácticas higiénicas, los hábitos
+                  alimentarios saludables, el respeto y la tolerancia entre los
+                  diferentes estudiantes beneficiarios, de tal manera que la
+                  alimentación escolar genere condiciones que permitan el logro
+                  de trayectorias educativas completas y el desarrollo integral
+                  de los Niños, Niñas, Jóvenes y Adolescentes
+                  beneficiarios.</label
+                >
+                <div class="col-sm-4">
+                  <select class="form-select" v-model="form.pre_16">
+                    <option value="Cumple">Cumple</option>
+                    <option value="No cumple">No cumple</option>
+                    <option value="No aplica">No aplica</option>
+                    <option value="No observado">No observado</option>
+                  </select>
+                </div>
+              </div>
+
               <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
                 <label class="form-label"
                   >INDICADOR: Porcentaje de Cumplimiento Mecanismos de Gestión
@@ -779,9 +658,9 @@
                     </div>
                     <div class="col-12 mb-1">
                       <SignaturePad
-                        ref="firstSignaturePad"
-                        @signatureSaved="handleFirstSignature"
-                        @signatureCleared="handleFirstSignatureCleared"
+                        idFirma="firma1"
+                        :varFirma="form.firma1"
+                        @firmas-updated="actualizarFirmas"
                       />
                     </div>
                     <div class="col-12 mb-1">
@@ -831,9 +710,9 @@
                     </div>
                     <div class="col-12 mb-1">
                       <SignaturePad
-                        ref="secondSignaturePad"
-                        @signatureSaved="handleSecondSignature"
-                        @signatureCleared="handleSecondSignatureCleared"
+                        idFirma="firma2"
+                        :varFirma="form.firma2"
+                        @firmas-updated="actualizarFirmas"
                       />
                     </div>
                     <div class="col-12 mb-1">
@@ -945,6 +824,7 @@ export default {
         pre_13: "",
         pre_14: "",
         pre_15: "",
+        pre_16: "",
         compromiso_1_desc: "",
         compromiso_1_resp: "",
         compromiso_1_fecha: "",
@@ -967,13 +847,9 @@ export default {
         cargo_atiende: "",
         perc_gest_social: 0,
         observaciones: "",
-        firstSignature: "",
-        secondSignature: "",
+        firma1: "",
+        firma2: "",
         files: [],
-      },
-      signatures: {
-        firstSignature: false,
-        secondSignature: false,
       },
       formulariosOffline: [], // Para almacenar temporalmente los formularios en localStorage
     };
@@ -983,48 +859,98 @@ export default {
       // Actualiza la lista de archivos en el formulario
       this.form.files = files;
     },
-    handleFirstSignature(signature) {
-      this.form.firstSignature = signature;
-      this.signatures.firstSignature = true; // La firma ha sido realizada
-    },
-    handleSecondSignature(signature) {
-      this.form.secondSignature = signature;
-      this.signatures.secondSignature = true; // La firma ha sido realizada
-    },
-    handleFirstSignatureCleared() {
-      this.signatures.firstSignature = false; // Marca como no firmada
-    },
-    handleSecondSignatureCleared() {
-      this.signatures.secondSignature = false; // Marca como no firmada
-    },
-    saveSignatures() {
-      // Llamamos a los métodos saveSignature de ambos componentes
-      this.$refs.firstSignaturePad.saveSignature();
-      this.$refs.secondSignaturePad.saveSignature();
+    actualizarFirmas({ idFirma, firma }) {
+      // Actualiza dinámicamente la firma en el formulario
+      this.form[idFirma] = firma;
     },
     async guardarFormulario() {
+      this.isLoading = true;
       // Primero, guardamos las firmas
-      if (!this.signatures.firstSignature || !this.signatures.secondSignature) {
-        return; // Evitamos el envío del formulario
-      }
-      // Primero, guardamos las firmas
-      this.saveSignatures();
-
-      try {
-        const response = await axios.get(`/users/${this.$route.params.id}`);
-        if (response.status === 200) {
-          this.toastMessage = "Formulario guardado exitosamente.";
-          this.toastType = "success";
-        } else {
-          this.toastMessage = "Error al guardar el formulario.";
-          this.toastType = "error";
-        }
-      } catch (error) {
-        this.toastMessage = "Error al cargar el usuario.";
-        this.toastType = "error";
-      } finally {
+      if (this.form.firma1 == "" || this.form.firma2 == "") {
         this.isLoading = false;
+        this.showToast(
+          "Firmas no dilegenciadas. Por favor, complete y guarde las firmas.",
+          "danger"
+        );
+        return;
       }
+      // Validar campos obligatorios
+      if (
+        this.form.etc == "" ||
+        this.form.fecha_visita == "" ||
+        this.form.municipio == "" ||
+        this.form.institucion == "" ||
+        this.form.sede == "" ||
+        this.form.operador == "" ||
+        this.form.contrato == "" ||
+        this.form.num_visita == "" ||
+        this.form.modalidad == "" ||
+        this.form.num_beneficiarios == "" ||
+        this.form.hora_inicio == "" ||
+        this.form.hora_fin == ""
+      ) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan campos obligatorios. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+      // validar que haya seleccionado archivos
+      if (this.form.files.length == 0) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan archivos. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+      // validar que haya llenado preguntas de verificación
+      if (
+        this.form.pre_1 == "" ||
+        this.form.pre_2 == "" ||
+        this.form.pre_3 == "" ||
+        this.form.pre_4 == "" ||
+        this.form.pre_5 == "" ||
+        this.form.pre_6 == "" ||
+        this.form.pre_7 == "" ||
+        this.form.pre_8 == "" ||
+        this.form.pre_9 == "" ||
+        this.form.pre_10 == "" ||
+        this.form.pre_11 == "" ||
+        this.form.pre_12 == "" ||
+        this.form.pre_13 == "" ||
+        this.form.pre_14 == "" ||
+        this.form.pre_15 == "" ||
+        this.form.pre_16 == ""
+      ) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan preguntas de verificación. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+
+      //validar que haya llenado campos de firma apoyo y atendido
+      if (
+        this.form.cedula_apoyo == "" ||
+        this.form.nombre_apoyo == "" ||
+        this.form.telefono_apoyo == "" ||
+        this.form.cargo_apoyo == "" ||
+        this.form.cedula_atiende == "" ||
+        this.form.nombre_atiende == "" ||
+        this.form.telefono_atiende == "" ||
+        this.form.cargo_atiende == ""
+      ) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan datos de las firmas. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {
         // Enviar formulario al servidor
@@ -1041,26 +967,23 @@ export default {
         JSON.parse(localStorage.getItem("formulariosOffline")) || [];
       guardados.push(this.form); // Añadir el formulario actual
       localStorage.setItem("formulariosOffline", JSON.stringify(guardados));
-      this.resetFormulario();
+      this.isLoading = false;
     },
     async enviarFormularioAlServidor() {
       try {
-        this.isLoading = true;
         const apiUrl = process.env.VUE_APP_API_BASE_URL;
         // Enviar datos con una solicitud POST
         const response = await axios.post(`${apiUrl}/visitas`, this.form);
-        console.log(response); //quitar
-        alert("Formulario enviado exitosamente.");
-        this.resetFormulario();
+        console.log("respuesta del servidor: ", response);
         this.isLoading = false;
       } catch (error) {
         this.isLoading = false;
         this.showToast(
-          "No se pudo enviar el formulario" + error.response.data.message,
+          "No se pudo enviar el formulario componente social visita",
           "danger"
         );
-        console.error("Error al enviar el formulario:", error);
       } finally {
+        console.log("finalizado");
         this.isLoading = false;
       }
     },
@@ -1070,11 +993,6 @@ export default {
       setTimeout(() => {
         this.toastMessage = "";
       }, 5000);
-    },
-  },
-  watch: {
-    "form.municipio"(newVal) {
-      console.log("Municipio seleccionado:", newVal);
     },
   },
 };

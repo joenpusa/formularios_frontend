@@ -26,7 +26,11 @@ export default {
   },
   computed: {
     filteredSedes() {
-      return this.sedes.filter((sede) => sede.int_key === this.institucionId);
+      //return this.sedes.filter((sede) => sede.int_key === this.institucionId);
+      const result = this.sedes.filter(
+        (sede) => sede.ins_key === this.institucionId
+      );
+      return result;
     },
   },
   methods: {

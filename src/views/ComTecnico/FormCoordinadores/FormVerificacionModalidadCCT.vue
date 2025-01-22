@@ -148,8 +148,6 @@
                     class="form-control"
                     id="operador"
                     v-model="formData.operador"
-                    value="Unión Temporal Suministros PAE 2024"
-                    readonly
                   />
                 </div>
                 <div class="col-md-4">
@@ -161,8 +159,6 @@
                     class="form-control"
                     id="numeroContrato"
                     v-model="formData.numeroContrato"
-                    value="LP-SEG-3030-2023 del 12 de enero del 2024"
-                    readonly
                   />
                 </div>
                 <div class="col-md-4">
