@@ -116,7 +116,7 @@
                 required
               >
                 <option value="racionPreparadaEnSitio">
-                  Ración preparada en sitio
+                  Modalidad preparada en sitio
                 </option>
                 <option value="comidaCalienteTransportada">
                   Comida Caliente Transportada
@@ -136,8 +136,6 @@
                 class="form-control"
                 id="operador"
                 v-model="form.operador"
-                value="Unión Temporal Suministros PAE 2024"
-                readonly
               />
             </div>
             <div class="col-md-4">
@@ -149,8 +147,6 @@
                 class="form-control"
                 id="numeroContrato"
                 v-model="form.numeroContrato"
-                value="LP-SEG-3030-2023 del 12 de enero del 2024"
-                readonly
               />
             </div>
             <div class="col-md-4">
@@ -168,8 +164,8 @@
           <!-- Prepared on-site / Hot Transported Food Section -->
           <div v-if="form.modalidad !== 'racionIndustrializada'">
             <h3 class="mt-4 mb-3">
-              Verificación de materia prima de ración para preparar en sitio /
-              Comida caliente transportada
+              Verificación de materia prima de modalidad para preparar en sitio
+              / Comida caliente transportada
             </h3>
             <div class="table-responsive">
               <table class="table table-bordered">

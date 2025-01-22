@@ -7,7 +7,16 @@
       :height="150"
     ></canvas>
     <div class="signature-buttons">
-      <button @click="clear" class="btn btn-secondary btn-sm">Limpiar</button>
+      <button type="button" @click="clear" class="btn btn-secondary btn-sm">
+        Limpiar
+      </button>
+      <button
+        type="button"
+        @click="saveSignature"
+        class="btn btn-primary btn-sm"
+      >
+        Guardar
+      </button>
     </div>
   </div>
 </template>
@@ -17,33 +26,47 @@ import SignaturePad from "signature_pad";
 
 export default {
   props: {
-    // Si el contenedor debe ser 100% de ancho, eliminamos width y height aquí
+    idFirma: { type: String, required: true },
+    varFirma: { type: String, default: "" },
   },
   data() {
     return {
       signaturePad: null,
-      canvasWidth: 0, // Inicializamos el ancho
+      canvasWidth: 0,
     };
   },
   mounted() {
-    // Configuramos el canvas para que se ajuste al 100% del ancho del contenedor
     this.canvasWidth = this.$refs.signatureCanvas.parentElement.clientWidth;
 
     const canvas = this.$refs.signatureCanvas;
     this.signaturePad = new SignaturePad(canvas);
+
+    // Detecta cuando el usuario dibuja en el canvas
+    this.signaturePad.onEnd = () => {
+      const dataUrl = this.signaturePad.toDataURL("image/png");
+      this.$emit("inputChanged", { idFirma: this.idFirma, firma: dataUrl });
+    };
+
+    if (this.varFirma) {
+      const img = new Image();
+      img.src = this.varFirma;
+      img.onload = () => {
+        const context = canvas.getContext("2d");
+        context.drawImage(img, 0, 0, canvas.width, canvas.height);
+      };
+    }
   },
   methods: {
     clear() {
       this.signaturePad.clear();
-      this.$emit("signatureCleared"); // Emitimos evento de limpieza
+      this.$emit("firmas-updated", { idFirma: this.idFirma, firma: "" });
     },
     saveSignature() {
       if (this.signaturePad.isEmpty()) {
-        alert("Por favor, dibuje una firma primero.");
         return;
       }
       const dataUrl = this.signaturePad.toDataURL("image/png");
-      this.$emit("signatureSaved", dataUrl);
+      this.$emit("firmas-updated", { idFirma: this.idFirma, firma: dataUrl });
     },
   },
 };
@@ -51,14 +74,14 @@ export default {
 
 <style scoped>
 .signature-container {
-  width: 100%; /* Tomará el 100% del contenedor */
-  height: 150px; /* Fija la altura en 150px */
+  width: 100%;
+  height: 150px;
   position: relative;
 }
 
 .signature-pad {
-  width: 100%; /* Toma el 100% del ancho del contenedor */
-  height: 100%; /* Toma el 100% de la altura del contenedor (150px) */
+  width: 100%;
+  height: 100%;
   border: 1px solid #000;
   background-color: #fff;
 }

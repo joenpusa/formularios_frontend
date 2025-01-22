@@ -27,9 +27,9 @@ export default {
       municipios, // Importa directamente la data de municipios
     };
   },
-  watch: {
-    selectedMunicipio(newVal) {
-      this.$emit("update:modelValue", newVal); // Asegúrate de emitir este evento
+  methods: {
+    emitChange() {
+      this.$emit("update:modelValue", this.selected); // Emitir un evento personalizado
     },
   },
 };
