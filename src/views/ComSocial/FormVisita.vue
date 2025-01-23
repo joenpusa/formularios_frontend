@@ -42,7 +42,7 @@
               <input
                 class="form-control"
                 type="date"
-                v-model="form.fecha_visita"
+                v-model="form.fechaVisita"
                 required
               />
             </div>
@@ -84,7 +84,7 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Número de visita </label>
-              <select class="form-select" v-model="form.num_visita">
+              <select class="form-select" v-model="form.num_visita" required>
                 <option value="1ra">1ra</option>
                 <option value="2da">2da</option>
                 <option value="3ra">3ra</option>
@@ -92,7 +92,7 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Modalidad de atención</label>
-              <select class="form-select" v-model="form.modalidad">
+              <select class="form-select" v-model="form.modalidad" required>
                 <option value="I">I</option>
                 <option value="PS">PS</option>
                 <option value="CCT">CCT</option>
@@ -154,7 +154,7 @@
                   Alimentación Escolar - PAE.</label
                 >
                 <div class="col-sm-4">
-                  <select class="form-select" v-model="form.pre_2">
+                  <select class="form-select" v-model="form.pre_2" required>
                     <option value="Cumple">Cumple</option>
                     <option value="No cumple">No cumple</option>
                     <option value="No aplica">No aplica</option>
@@ -170,7 +170,7 @@
                   Adjuntar acta correspondiente del CAE.</label
                 >
                 <div class="col-sm-4">
-                  <select class="form-select" v-model="form.pre_3">
+                  <select class="form-select" v-model="form.pre_3" required>
                     <option value="Cumple">Cumple</option>
                     <option value="No cumple">No cumple</option>
                     <option value="No aplica">No aplica</option>
@@ -189,7 +189,7 @@
                   reunión correspondientes.</label
                 >
                 <div class="col-sm-4">
-                  <select class="form-select" v-model="form.pre_4">
+                  <select class="form-select" v-model="form.pre_4" required>
                     <option value="Cumple">Cumple</option>
                     <option value="No cumple">No cumple</option>
                     <option value="No aplica">No aplica</option>
@@ -206,7 +206,7 @@
                   Escolar - CAE.</label
                 >
                 <div class="col-sm-4">
-                  <select class="form-select" v-model="form.pre_5">
+                  <select class="form-select" v-model="form.pre_5" required>
                     <option value="Cumple">Cumple</option>
                     <option value="No cumple">No cumple</option>
                     <option value="No aplica">No aplica</option>
@@ -223,7 +223,7 @@
                   para el mejoramiento continuo del programa.</label
                 >
                 <div class="col-sm-4">
-                  <select class="form-select" v-model="form.pre_6">
+                  <select class="form-select" v-model="form.pre_6" required>
                     <option value="Cumple">Cumple</option>
                     <option value="No cumple">No cumple</option>
                     <option value="No aplica">No aplica</option>
@@ -240,7 +240,7 @@
                   Territorial.</label
                 >
                 <div class="col-sm-4">
-                  <select class="form-select" v-model="form.pre_7">
+                  <select class="form-select" v-model="form.pre_7" required>
                     <option value="Cumple">Cumple</option>
                     <option value="No cumple">No cumple</option>
                     <option value="No aplica">No aplica</option>
@@ -258,7 +258,7 @@
                   veedurías ciudadanas en el PAE.</label
                 >
                 <div class="col-sm-4">
-                  <select class="form-select" v-model="form.pre_8">
+                  <select class="form-select" v-model="form.pre_8" required>
                     <option value="Cumple">Cumple</option>
                     <option value="No cumple">No cumple</option>
                     <option value="No aplica">No aplica</option>
@@ -275,7 +275,7 @@
                   PAE.</label
                 >
                 <div class="col-sm-4">
-                  <select class="form-select" v-model="form.pre_9">
+                  <select class="form-select" v-model="form.pre_9" required>
                     <option value="Cumple">Cumple</option>
                     <option value="No cumple">No cumple</option>
                     <option value="No aplica">No aplica</option>
@@ -296,7 +296,7 @@
                   comunitaria.</label
                 >
                 <div class="col-sm-4">
-                  <select class="form-select" v-model="form.pre_10">
+                  <select class="form-select" v-model="form.pre_10" required>
                     <option value="Cumple">Cumple</option>
                     <option value="No cumple">No cumple</option>
                     <option value="No aplica">No aplica</option>
@@ -313,7 +313,7 @@
                   social.</label
                 >
                 <div class="col-sm-4">
-                  <select class="form-select" v-model="form.pre_11">
+                  <select class="form-select" v-model="form.pre_11" required>
                     <option value="Cumple">Cumple</option>
                     <option value="No cumple">No cumple</option>
                     <option value="No aplica">No aplica</option>
@@ -329,7 +329,7 @@
                   solicitudes, peticiones, quejas y reclamos (SPQR).</label
                 >
                 <div class="col-sm-4">
-                  <select class="form-select" v-model="form.pre_12">
+                  <select class="form-select" v-model="form.pre_12" required>
                     <option value="Cumple">Cumple</option>
                     <option value="No cumple">No cumple</option>
                     <option value="No aplica">No aplica</option>
@@ -349,7 +349,7 @@
                   entregar.</label
                 >
                 <div class="col-sm-4">
-                  <select class="form-select" v-model="form.pre_13">
+                  <select class="form-select" v-model="form.pre_13" required>
                     <option value="Cumple">Cumple</option>
                     <option value="No cumple">No cumple</option>
                     <option value="No aplica">No aplica</option>
@@ -366,7 +366,7 @@
                   entregados.</label
                 >
                 <div class="col-sm-4">
-                  <select class="form-select" v-model="form.pre_14">
+                  <select class="form-select" v-model="form.pre_14" required>
                     <option value="Cumple">Cumple</option>
                     <option value="No cumple">No cumple</option>
                     <option value="No aplica">No aplica</option>
@@ -382,7 +382,7 @@
                   complemento.</label
                 >
                 <div class="col-sm-4">
-                  <select class="form-select" v-model="form.pre_15">
+                  <select class="form-select" v-model="form.pre_15" required>
                     <option value="Cumple">Cumple</option>
                     <option value="No cumple">No cumple</option>
                     <option value="No aplica">No aplica</option>
@@ -404,7 +404,7 @@
                   beneficiarios.</label
                 >
                 <div class="col-sm-4">
-                  <select class="form-select" v-model="form.pre_16">
+                  <select class="form-select" v-model="form.pre_16" required>
                     <option value="Cumple">Cumple</option>
                     <option value="No cumple">No cumple</option>
                     <option value="No aplica">No aplica</option>
@@ -759,7 +759,6 @@
                   @files-updated="updateFiles"
                 />
               </div>
-
               <div class="col-sm-12 col-md-12 col-lg-12 mt-3 mb-1">
                 <button type="submit" class="btn btn-primary">Guardar</button>
               </div>
@@ -798,7 +797,7 @@ export default {
       toastType: "",
       form: {
         etc: "Norte de Santander",
-        fecha_visita: "",
+        fechaVisita: "",
         municipio: "",
         institucion: "",
         sede: "",
@@ -877,7 +876,7 @@ export default {
       // Validar campos obligatorios
       if (
         this.form.etc == "" ||
-        this.form.fecha_visita == "" ||
+        this.form.fechaVisita == "" ||
         this.form.municipio == "" ||
         this.form.institucion == "" ||
         this.form.sede == "" ||
@@ -972,9 +971,30 @@ export default {
     async enviarFormularioAlServidor() {
       try {
         const apiUrl = process.env.VUE_APP_API_BASE_URL;
+        // Convertir form a Multipart
+        const formData = new FormData();
+        Object.keys(this.form).forEach((key) => {
+          if (key !== "files") {
+            formData.append(key, this.form[key]);
+          }
+        });
+        this.form.files.forEach((fileObj, index) => {
+          formData.append(`files[${index}]`, fileObj.file);
+        });
         // Enviar datos con una solicitud POST
-        const response = await axios.post(`${apiUrl}/visitas`, this.form);
-        console.log("respuesta del servidor: ", response);
+        const response = await axios.post(
+          `${apiUrl}/social_visitas`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        if (response.status === 201) {
+          this.showToast("Formulario guardado correctamente", "success");
+          this.resetForm(); // Reestablecer los campos del formulario
+        }
         this.isLoading = false;
       } catch (error) {
         this.isLoading = false;
@@ -983,9 +1003,66 @@ export default {
           "danger"
         );
       } finally {
-        console.log("finalizado");
         this.isLoading = false;
       }
+    },
+    resetForm() {
+      // Reestablecer los campos del formulario
+      this.form = {
+        etc: "",
+        fechaVisita: "",
+        municipio: "",
+        institucion: "",
+        sede: "",
+        operador: "",
+        contrato: "",
+        num_visita: "",
+        modalidad: "",
+        num_beneficiarios: "",
+        hora_inicio: "",
+        hora_fin: "",
+        pre_1: "",
+        pre_2: "",
+        pre_3: "",
+        pre_4: "",
+        pre_5: "",
+        pre_6: "",
+        pre_7: "",
+        pre_8: "",
+        pre_9: "",
+        pre_10: "",
+        pre_11: "",
+        pre_12: "",
+        pre_13: "",
+        pre_14: "",
+        pre_15: "",
+        pre_16: "",
+        compromiso_1_desc: "",
+        compromiso_1_resp: "",
+        compromiso_1_fecha: "",
+        compromiso_1_mecanismo: "",
+        compromiso_2_desc: "",
+        compromiso_2_resp: "",
+        compromiso_2_fecha: "",
+        compromiso_2_mecanismo: "",
+        compromiso_3_desc: "",
+        compromiso_3_resp: "",
+        compromiso_3_fecha: "",
+        compromiso_3_mecanismo: "",
+        cedula_apoyo: "",
+        nombre_apoyo: "",
+        telefono_apoyo: "",
+        cargo_apoyo: "",
+        cedula_atiende: "",
+        nombre_atiende: "",
+        telefono_atiende: "",
+        cargo_atiende: "",
+        perc_gest_social: "",
+        observaciones: "",
+        firma1: "",
+        firma2: "",
+        files: [], // Asegúrate de vaciar el arreglo de archivos
+      };
     },
     showToast(message, type) {
       this.toastMessage = message;

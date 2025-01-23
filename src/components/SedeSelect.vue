@@ -36,6 +36,7 @@ export default {
   methods: {
     emitChange() {
       this.$emit("update:value", this.selected); // Actualiza el v-model
+      this.$emit("update:modelValue", this.selected); // Actualiza el v-model
     },
   },
 };
