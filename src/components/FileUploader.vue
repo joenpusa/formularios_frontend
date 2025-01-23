@@ -90,6 +90,7 @@ export default {
           return true;
         })
         .map((file) => ({
+          file,
           nombre_archivo: file.name,
           ruta_archivo: URL.createObjectURL(file),
           tipo: file.type.split("/")[1] || "Desconocido",
