@@ -35,8 +35,8 @@
               <input
                 class="form-control"
                 type="text"
-                value="Norte de Santander"
-                disabled
+                v-model="form.etc"
+                required
               />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
@@ -44,7 +44,8 @@
               <input
                 class="form-control"
                 type="date"
-                v-model="form.fechaVisita"
+                v-model="form.fecha_visita"
+                required
               />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
@@ -53,20 +54,29 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Instutción educativa </label>
-              <input
-                class="form-control"
-                type="text"
+              <InstitucionSelect
                 v-model="form.institucion"
+                :municipio-id="form.municipio"
               />
             </div>
 
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Operador </label>
-              <input class="form-control" type="text" v-model="form.operador" />
+              <input
+                class="form-control"
+                type="text"
+                v-model="form.operador"
+                required
+              />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">N° contrato </label>
-              <input class="form-control" type="text" v-model="form.contrato" />
+              <input
+                class="form-control"
+                type="text"
+                v-model="form.contrato"
+                required
+              />
             </div>
 
             <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
@@ -166,7 +176,7 @@
                 </thead>
                 <tbody>
                   <tr
-                    v-for="(fila, index) in filas"
+                    v-for="(fila, index) in form.filas"
                     :key="index"
                     class="text-center"
                   >
@@ -207,26 +217,46 @@
                 </div>
                 <div class="col-12 mb-1">
                   <SignaturePad
-                    ref="firstSignaturePad"
-                    @signatureSaved="handleFirstSignature"
-                    @signatureCleared="handleFirstSignatureCleared"
+                    idFirma="firma1"
+                    :varFirma="form.firma1"
+                    @firmas-updated="actualizarFirmas"
                   />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Nombre</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.nombre_apoyo"
+                    required
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Cédula</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.cedula_apoyo"
+                    required
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Cargo</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.cargo_apoyo"
+                    required
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Teléfono</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.telefono_apoyo"
+                    required
+                  />
                 </div>
               </div>
             </div>
@@ -239,26 +269,46 @@
                 </div>
                 <div class="col-12 mb-1">
                   <SignaturePad
-                    ref="secondSignaturePad"
-                    @signatureSaved="handleSecondSignature"
-                    @signatureCleared="handleSecondSignatureCleared"
+                    idFirma="firma2"
+                    :varFirma="form.firma2"
+                    @firmas-updated="actualizarFirmas"
                   />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Nombre</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.nombre_atiende"
+                    required
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Cédula</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.cedula_atiende"
+                    required
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Cargo</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.cargo_atiende"
+                    required
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Teléfono</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.telefono_atiende"
+                    required
+                  />
                 </div>
               </div>
             </div>
@@ -277,19 +327,20 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "@/axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 import SignaturePad from "@/components/SignaturePad.vue";
 import MunicipioSelect from "@/components/MunicipioSelect.vue";
+import InstitucionSelect from "@/components/InstitucionSelect.vue";
 import FileUploader from "@/components/FileUploader.vue";
-
 export default {
   components: {
     LoadingSpinner,
     ToastNotification,
     SignaturePad,
     MunicipioSelect,
+    InstitucionSelect,
     FileUploader,
   },
   data() {
@@ -307,22 +358,25 @@ export default {
       cct2: "0",
       ri2: "0",
       // fin tabla temporal
-      filas: [], //filas de la tabla
       form: {
-        fechaVisita: "",
+        etc: "Norte de Santander",
+        fecha_visita: "",
         municipio: "",
         institucion: "",
-        sede: "",
         operador: "",
         contrato: "",
-        numVisita: "",
-        modalidad: "",
-        numBeneficiarios: "",
-        horaInicio: "",
-        horaFin: "",
-        firstSignature: "",
-        secondSignature: "",
-        files: [],
+        nombre_apoyo: "",
+        cedula_apoyo: "",
+        cargo_apoyo: "",
+        telefono_apoyo: "",
+        nombre_atiende: "",
+        cedula_atiende: "",
+        cargo_atiende: "",
+        telefono_atiende: "",
+        firma1: "",
+        firma2: "",
+        files: [], //archivos adjuntos
+        filas: [], //filas de la tabla
       },
       formulariosOffline: [], // Para almacenar temporalmente los formularios en localStorage
     };
@@ -332,10 +386,14 @@ export default {
       // Actualiza la lista de archivos en el formulario
       this.form.files = files;
     },
+    actualizarFirmas({ idFirma, firma }) {
+      // Actualiza dinámicamente la firma en el formulario
+      this.form[idFirma] = firma;
+    },
     agregarFila() {
       if (this.nombreSede && this.modalidad) {
         // Agregar una nueva fila con los valores ingresados
-        this.filas.push({
+        this.form.filas.push({
           nombreSede: this.nombreSede,
           modalidad: this.modalidad,
           rps1: this.rps1,
@@ -362,32 +420,51 @@ export default {
         );
       }
     },
-    handleFirstSignature(signature) {
-      this.form.firstSignature = signature;
-      this.signatures.firstSignature = true; // La firma ha sido realizada
-    },
-    handleSecondSignature(signature) {
-      this.form.secondSignature = signature;
-      this.signatures.secondSignature = true; // La firma ha sido realizada
-    },
-    handleFirstSignatureCleared() {
-      this.signatures.firstSignature = false; // Marca como no firmada
-    },
-    handleSecondSignatureCleared() {
-      this.signatures.secondSignature = false; // Marca como no firmada
-    },
-    saveSignatures() {
-      // Llamamos a los métodos saveSignature de ambos componentes
-      this.$refs.firstSignaturePad.saveSignature();
-      this.$refs.secondSignaturePad.saveSignature();
-    },
+
     guardarFormulario() {
+      this.isLoading = true;
       // Primero, guardamos las firmas
-      if (!this.signatures.firstSignature || !this.signatures.secondSignature) {
-        return; // Evitamos el envío del formulario
+      if (this.form.firma1 == "" || this.form.firma2 == "") {
+        this.isLoading = false;
+        this.showToast(
+          "Firmas no dilegenciadas. Por favor, complete y guarde las firmas.",
+          "danger"
+        );
+        return;
       }
-      // Primero, guardamos las firmas
-      this.saveSignatures();
+      //validar que haya llenado campos de firma apoyo y atendido
+      if (
+        this.form.cedula_apoyo == "" ||
+        this.form.nombre_apoyo == "" ||
+        this.form.telefono_apoyo == "" ||
+        this.form.cargo_apoyo == "" ||
+        this.form.cedula_atiende == "" ||
+        this.form.nombre_atiende == "" ||
+        this.form.telefono_atiende == "" ||
+        this.form.cargo_atiende == ""
+      ) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan datos de las firmas. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+      //validar que haya beneficiarios
+      if (this.form.filas.length <= 0) {
+        this.isLoading = false;
+        this.showToast("Faltan las sedes. Por favor, digitelas.", "danger");
+        return;
+      }
+      // validar que haya seleccionado archivos
+      if (this.form.files.length == 0) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan archivos. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {
         // Enviar formulario al servidor
@@ -404,25 +481,52 @@ export default {
         JSON.parse(localStorage.getItem("formulariosOffline")) || [];
       guardados.push(this.form); // Añadir el formulario actual
       localStorage.setItem("formulariosOffline", JSON.stringify(guardados));
-      this.resetFormulario();
+      this.resetForm();
+      this.isLoading = false;
     },
     async enviarFormularioAlServidor() {
       try {
-        this.isLoading = true;
         const apiUrl = process.env.VUE_APP_API_BASE_URL;
+        // Convertir form a Multipart
+        const formData = new FormData();
+        Object.keys(this.form).forEach((key) => {
+          if (key !== "files") {
+            if (key === "filas") {
+              formData.append(key, JSON.stringify(this.form[key] || [])); // Convierte a JSON
+            } else {
+              formData.append(key, this.form[key]);
+            }
+          }
+        });
+        this.form.files.forEach((fileObj, index) => {
+          formData.append(`files[${index}]`, fileObj.file);
+        });
+
         // Enviar datos con una solicitud POST
-        const response = await axios.post(`${apiUrl}/visitas`, this.form);
-        console.log(response); //quitar
-        alert("Formulario enviado exitosamente.");
-        this.resetFormulario();
+        const response = await axios.post(
+          `${apiUrl}/social_verificacion`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        console.log(response);
+        if (response.status === 201) {
+          this.showToast(
+            "Formulario social de verificacion de personal guardado correctamente",
+            "success"
+          );
+          this.resetForm(); // Reestablecer los campos del formulario
+        }
         this.isLoading = false;
       } catch (error) {
         this.isLoading = false;
         this.showToast(
-          "No se pudo enviar el formulario" + error.response.data.message,
+          "No se pudo enviar el formulario componente social verificación de personal",
           "danger"
         );
-        console.error("Error al enviar el formulario:", error);
       } finally {
         this.isLoading = false;
       }
@@ -434,40 +538,62 @@ export default {
         this.toastMessage = "";
       }, 5000);
     },
+    resetForm() {
+      this.form = {
+        etc: "Norte de Santander",
+        fecha_visita: "",
+        municipio: "",
+        institucion: "",
+        operador: "",
+        contrato: "",
+        nombre_apoyo: "",
+        cedula_apoyo: "",
+        cargo_apoyo: "",
+        telefono_apoyo: "",
+        nombre_atiende: "",
+        cedula_atiende: "",
+        cargo_atiende: "",
+        telefono_atiende: "",
+        firma1: "",
+        firma2: "",
+        files: [], //archivos adjuntos
+        filas: [], //filas de la tabla
+      };
+    },
   },
   computed: {
     totalRps1() {
-      return this.filas.reduce(
+      return this.form.filas.reduce(
         (total, fila) => total + Number(fila.rps1 || 0),
         0
       );
     },
     totalCct1() {
-      return this.filas.reduce(
+      return this.form.filas.reduce(
         (total, fila) => total + Number(fila.cct1 || 0),
         0
       );
     },
     totalRi1() {
-      return this.filas.reduce(
+      return this.form.filas.reduce(
         (total, fila) => total + Number(fila.ri1 || 0),
         0
       );
     },
     totalRps2() {
-      return this.filas.reduce(
+      return this.form.filas.reduce(
         (total, fila) => total + Number(fila.rps2 || 0),
         0
       );
     },
     totalCct2() {
-      return this.filas.reduce(
+      return this.form.filas.reduce(
         (total, fila) => total + Number(fila.cct2 || 0),
         0
       );
     },
     totalRi2() {
-      return this.filas.reduce(
+      return this.form.filas.reduce(
         (total, fila) => total + Number(fila.ri2 || 0),
         0
       );

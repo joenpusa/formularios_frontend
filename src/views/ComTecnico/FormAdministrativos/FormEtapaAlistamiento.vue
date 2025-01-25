@@ -36,7 +36,8 @@
               <input
                 class="form-control"
                 type="text"
-                value="Norte de Santander"
+                v-model="form.etc"
+                required
               />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
@@ -46,11 +47,21 @@
 
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Operador </label>
-              <input class="form-control" type="text" v-model="form.operador" />
+              <input
+                class="form-control"
+                type="text"
+                v-model="form.operador"
+                required
+              />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">N° contrato </label>
-              <input class="form-control" type="text" v-model="form.contrato" />
+              <input
+                class="form-control"
+                type="text"
+                v-model="form.contrato"
+                required
+              />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Dirección </label>
@@ -58,46 +69,59 @@
                 class="form-control"
                 type="text"
                 v-model="form.direccion"
+                required
               />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Telefono / Correo </label>
-              <input class="form-control" type="text" v-model="form.correo" />
+              <input
+                class="form-control"
+                type="text"
+                v-model="form.correo"
+                required
+              />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Fecha visita </label>
               <input
                 class="form-control"
                 type="date"
-                v-model="form.fechaVisita"
+                v-model="form.fecha_visita"
+                required
               />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Hora inicio</label>
               <input
                 class="form-control"
-                type="text"
-                v-model="form.horaInicio"
+                type="time"
+                v-model="form.hora_inicio"
+                required
               />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Hora fin</label>
-              <input class="form-control" type="text" v-model="form.horaFin" />
+              <input
+                class="form-control"
+                type="time"
+                v-model="form.hora_fin"
+                required
+              />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Número de visita </label>
-              <select class="form-select" v-model="form.numVisita">
-                <option value="">1ra</option>
-                <option value="">2da</option>
-                <option value="">3ra</option>
+              <select class="form-select" v-model="form.num_visita" required>
+                <option value="1ra">1ra</option>
+                <option value="2da">2da</option>
+                <option value="3ra">3ra</option>
               </select>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Tipo visita </label>
-              <select class="form-select" v-model="form.tipoVisita">
-                <option value="">Técnica</option>
-                <option value="">Verificación ETA</option>
-                <option value="">SPQRS</option>
+              <select class="form-select" v-model="form.tipo_visita" required>
+                <option value="Técnica">Técnica</option>
+                <option value="Verificación ETA">Verificación ETA</option>
+                <option value="SPQRS">SPQRS</option>
               </select>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 mb-1 mt-2">
@@ -124,7 +148,7 @@
                   de basura, pantanos, charcos, etc.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_1" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -136,6 +160,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_1_obs"
                   />
                 </div>
               </div>
@@ -147,7 +172,7 @@
                   otros contaminantes.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_2" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -159,6 +184,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_2_obs"
                   />
                 </div>
               </div>
@@ -170,7 +196,7 @@
                   contaminación para el alimento.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_3" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -182,6 +208,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_3_obs"
                   />
                 </div>
               </div>
@@ -192,7 +219,7 @@
                   insectos, entre otros).</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_4" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -204,6 +231,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_4_obs"
                   />
                 </div>
               </div>
@@ -215,7 +243,7 @@
                   instalaciones con el medio exterior.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_5" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -227,6 +255,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_5_obs"
                   />
                 </div>
               </div>
@@ -237,7 +266,7 @@
                   telarañas y suciedad).</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_6" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -249,6 +278,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_6_obs"
                   />
                 </div>
               </div>
@@ -259,7 +289,7 @@
                   separadas e identificadas.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_7" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -271,6 +301,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_7_obs"
                   />
                 </div>
               </div>
@@ -282,7 +313,7 @@
                   desinfestación.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_8" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -294,6 +325,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_8_obs"
                   />
                 </div>
               </div>
@@ -307,7 +339,7 @@
                   mantenimiento de las áreas respectivas.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_9" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -319,6 +351,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_9_obs"
                   />
                 </div>
               </div>
@@ -329,7 +362,7 @@
                   no se utilizan como dormitorio.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_10" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -341,6 +374,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_10_obs"
                   />
                 </div>
               </div>
@@ -351,7 +385,7 @@
                   limpieza y desinfección efectiva.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_11" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -363,6 +397,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_11_obs"
                   />
                 </div>
               </div>
@@ -377,7 +412,7 @@
                   manos.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_12" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -389,6 +424,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_12_obs"
                   />
                 </div>
               </div>
@@ -399,7 +435,7 @@
                   de los equipos y utensilios de trabajo.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_13" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -411,6 +447,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_13_obs"
                   />
                 </div>
               </div>
@@ -430,7 +467,7 @@
                   con la ley 9 de 1979 y su reglamenación.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_14" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -439,12 +476,17 @@
                 </div>
                 <div class="col-sm-4">
                   Fecha de visita y/o certificado
-                  <input class="form-control" type="date" />
+                  <input
+                    class="form-control"
+                    type="date"
+                    v-model="form.fecha_certificado"
+                  />
                   Concepto sanitaria
                   <input
                     class="form-control"
-                    placeholder="observaciones"
+                    placeholder="concepto sanitario"
                     type="text"
+                    v-model="form.concepto_sanitario"
                   />
                 </div>
               </div>
@@ -459,7 +501,7 @@
                   de plagas y monitoreo de calidad del agua.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_15" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -471,6 +513,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_15_obs"
                   />
                 </div>
               </div>
@@ -485,7 +528,7 @@
                   entre otros.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_16" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -497,6 +540,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_16_obs"
                   />
                 </div>
               </div>
@@ -508,7 +552,7 @@
                   en los comedores escolares.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_17" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -520,6 +564,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_17_obs"
                   />
                 </div>
               </div>
@@ -534,7 +579,7 @@
                   transportada.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_18" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -546,6 +591,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_18_obs"
                   />
                 </div>
               </div>
@@ -557,7 +603,7 @@
                   de intercambios.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_19" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -569,6 +615,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_19_obs"
                   />
                 </div>
               </div>
@@ -582,7 +629,7 @@
                   terminos definidos</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_20" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -594,6 +641,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_20_obs"
                   />
                 </div>
               </div>
@@ -606,7 +654,7 @@
                   operador contratista.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_21" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -618,6 +666,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_21_obs"
                   />
                 </div>
               </div>
@@ -629,7 +678,7 @@
                   (gas) a cada comedor escolar.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_22" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -641,6 +690,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_22_obs"
                   />
                 </div>
               </div>
@@ -652,7 +702,7 @@
                   territorial.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_23" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -664,6 +714,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_23_obs"
                   />
                 </div>
               </div>
@@ -675,7 +726,7 @@
                   educativos.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_24" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -687,6 +738,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_24_obs"
                   />
                 </div>
               </div>
@@ -699,7 +751,7 @@
                   laboratorio clínico), no mayor a un año.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_25" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -711,6 +763,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_25_obs"
                   />
                 </div>
               </div>
@@ -724,7 +777,7 @@
                   año).</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_26" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -736,6 +789,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_26_obs"
                   />
                 </div>
               </div>
@@ -748,7 +802,7 @@
                   del plan de capacitación, entre otros.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_27" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -760,6 +814,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_27_obs"
                   />
                 </div>
               </div>
@@ -774,7 +829,7 @@
                   del vehiculo transportador.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_28" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -786,6 +841,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_28_obs"
                   />
                 </div>
               </div>
@@ -794,15 +850,30 @@
             <div class="row">
               <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
                 <label class="form-label">Puntaje Esperado</label>
-                <input class="form-control" type="text" />
+                <input
+                  class="form-control"
+                  type="number"
+                  v-model="form.puntaje_esperado"
+                  required
+                />
               </div>
               <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
                 <label class="form-label">Puntaje Obtenido</label>
-                <input class="form-control" type="text" />
+                <input
+                  class="form-control"
+                  type="number"
+                  v-model="form.puntaje_obtenido"
+                  required
+                />
               </div>
               <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
                 <label class="form-label">Porcentaje</label>
-                <input class="form-control" type="text" />
+                <input
+                  class="form-control"
+                  type="number"
+                  v-model="form.porcentaje"
+                  required
+                />
               </div>
               <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
                 <label class="form-label"
@@ -821,7 +892,7 @@
                 >
                 <textarea
                   class="form-control"
-                  v-model="form.observaciones"
+                  v-model="form.observaciones_recibe"
                   rows="3"
                 >
                 </textarea>
@@ -837,26 +908,46 @@
                 </div>
                 <div class="col-12 mb-1">
                   <SignaturePad
-                    ref="firstSignaturePad"
-                    @signatureSaved="handleFirstSignature"
-                    @signatureCleared="handleFirstSignatureCleared"
+                    idFirma="firma1"
+                    :varFirma="form.firma1"
+                    @firmas-updated="actualizarFirmas"
                   />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Nombre</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.nombre_apoyo"
+                    required
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Cédula</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.cedula_apoyo"
+                    required
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Cargo</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.cargo_apoyo"
+                    required
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Teléfono</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.telefono_apoyo"
+                    required
+                  />
                 </div>
               </div>
             </div>
@@ -869,26 +960,46 @@
                 </div>
                 <div class="col-12 mb-1">
                   <SignaturePad
-                    ref="secondSignaturePad"
-                    @signatureSaved="handleSecondSignature"
-                    @signatureCleared="handleSecondSignatureCleared"
+                    idFirma="firma2"
+                    :varFirma="form.firma2"
+                    @firmas-updated="actualizarFirmas"
                   />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Nombre</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.nombre_atiende"
+                    required
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Cédula</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.cedula_atiende"
+                    required
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Cargo</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.cargo_atiende"
+                    required
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Teléfono</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.telefono_atiende"
+                    required
+                  />
                 </div>
               </div>
             </div>
@@ -908,7 +1019,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "@/axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 import SignaturePad from "@/components/SignaturePad.vue";
@@ -928,19 +1039,90 @@ export default {
       isLoading: false,
       toastMessage: "",
       toastType: "",
-      nuevoNombre: "", // Input para el nombre
-      nuevoGrado: "", // Input para el grado
-      filas: [], //filas de la tabla
       form: {
-        fechaVisita: "",
+        etc: "Norte de Santander",
         municipio: "",
         operador: "",
         contrato: "",
-        numVisita: "",
-        modalidad: "",
-        numBeneficiarios: "",
-        horaInicio: "",
-        horaFin: "",
+        direccion: "",
+        correo: "",
+        fecha_visita: "",
+        hora_inicio: "",
+        hora_fin: "",
+        num_visita: "",
+        tipo_visita: "",
+        pre_1: "",
+        pre_1_obs: "",
+        pre_2: "",
+        pre_2_obs: "",
+        pre_3: "",
+        pre_3_obs: "",
+        pre_4: "",
+        pre_4_obs: "",
+        pre_5: "",
+        pre_5_obs: "",
+        pre_6: "",
+        pre_6_obs: "",
+        pre_7: "",
+        pre_7_obs: "",
+        pre_8: "",
+        pre_8_obs: "",
+        pre_9: "",
+        pre_9_obs: "",
+        pre_10: "",
+        pre_10_obs: "",
+        pre_11: "",
+        pre_11_obs: "",
+        pre_12: "",
+        pre_12_obs: "",
+        pre_13: "",
+        pre_13_obs: "",
+        pre_14: "",
+        fecha_certificado: "",
+        concepto_sanitario: "",
+        pre_15: "",
+        pre_15_obs: "",
+        pre_16: "",
+        pre_16_obs: "",
+        pre_17: "",
+        pre_17_obs: "",
+        pre_18: "",
+        pre_18_obs: "",
+        pre_19: "",
+        pre_19_obs: "",
+        pre_20: "",
+        pre_20_obs: "",
+        pre_21: "",
+        pre_21_obs: "",
+        pre_22: "",
+        pre_22_obs: "",
+        pre_23: "",
+        pre_23_obs: "",
+        pre_24: "",
+        pre_24_obs: "",
+        pre_25: "",
+        pre_25_obs: "",
+        pre_26: "",
+        pre_26_obs: "",
+        pre_27: "",
+        pre_27_obs: "",
+        pre_28: "",
+        pre_28_obs: "",
+        puntaje_esperado: 0,
+        puntaje_obtenido: 0,
+        porcentaje: 0,
+        observaciones: "",
+        observaciones_recibe: "",
+        firma1: "",
+        firma2: "",
+        nombre_apoyo: "",
+        cedula_apoyo: "",
+        cargo_apoyo: "",
+        telefono_apoyo: "",
+        nombre_atiende: "",
+        cedula_atiende: "",
+        cargo_atiende: "",
+        telefono_atiende: "",
         files: [],
       },
       formulariosOffline: [], // Para almacenar temporalmente los formularios en localStorage
@@ -951,26 +1133,88 @@ export default {
       // Actualiza la lista de archivos en el formulario
       this.form.files = files;
     },
-    handleFirstSignature(signature) {
-      this.form.firstSignature = signature;
-      this.signatures.firstSignature = true; // La firma ha sido realizada
-    },
-    handleSecondSignature(signature) {
-      this.form.secondSignature = signature;
-      this.signatures.secondSignature = true; // La firma ha sido realizada
-    },
-    handleFirstSignatureCleared() {
-      this.signatures.firstSignature = false; // Marca como no firmada
-    },
-    handleSecondSignatureCleared() {
-      this.signatures.secondSignature = false; // Marca como no firmada
-    },
-    saveSignatures() {
-      // Llamamos a los métodos saveSignature de ambos componentes
-      this.$refs.firstSignaturePad.saveSignature();
-      this.$refs.secondSignaturePad.saveSignature();
+    actualizarFirmas({ idFirma, firma }) {
+      // Actualiza dinámicamente la firma en el formulario
+      this.form[idFirma] = firma;
     },
     guardarFormulario() {
+      this.isLoading = true;
+      // Primero, guardamos las firmas
+      if (this.form.firma1 == "" || this.form.firma2 == "") {
+        this.isLoading = false;
+        this.showToast(
+          "Firmas no dilegenciadas. Por favor, complete y guarde las firmas.",
+          "danger"
+        );
+        return;
+      }
+      // validar que haya seleccionado archivos
+      if (this.form.files.length == 0) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan archivos. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+      // validar que haya llenado preguntas de verificación
+      if (
+        this.form.pre_1 == "" ||
+        this.form.pre_2 == "" ||
+        this.form.pre_3 == "" ||
+        this.form.pre_4 == "" ||
+        this.form.pre_5 == "" ||
+        this.form.pre_6 == "" ||
+        this.form.pre_7 == "" ||
+        this.form.pre_8 == "" ||
+        this.form.pre_9 == "" ||
+        this.form.pre_10 == "" ||
+        this.form.pre_11 == "" ||
+        this.form.pre_12 == "" ||
+        this.form.pre_13 == "" ||
+        this.form.pre_14 == "" ||
+        this.form.pre_15 == "" ||
+        this.form.pre_16 == "" ||
+        this.form.pre_17 == "" ||
+        this.form.pre_18 == "" ||
+        this.form.pre_19 == "" ||
+        this.form.pre_20 == "" ||
+        this.form.pre_21 == "" ||
+        this.form.pre_22 == "" ||
+        this.form.pre_23 == "" ||
+        this.form.pre_24 == "" ||
+        this.form.pre_25 == "" ||
+        this.form.pre_26 == "" ||
+        this.form.pre_27 == "" ||
+        this.form.pre_28 == "" ||
+        this.form.municipio == ""
+      ) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan preguntas por responder. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+
+      //validar que haya llenado campos de firma apoyo y atendido
+      if (
+        this.form.cedula_apoyo == "" ||
+        this.form.nombre_apoyo == "" ||
+        this.form.telefono_apoyo == "" ||
+        this.form.cargo_apoyo == "" ||
+        this.form.cedula_atiende == "" ||
+        this.form.nombre_atiende == "" ||
+        this.form.telefono_atiende == "" ||
+        this.form.cargo_atiende == ""
+      ) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan datos de las firmas. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {
         // Enviar formulario al servidor
@@ -988,27 +1232,123 @@ export default {
       guardados.push(this.form); // Añadir el formulario actual
       localStorage.setItem("formulariosOffline", JSON.stringify(guardados));
       this.resetFormulario();
+      this.isLoading = false;
     },
     async enviarFormularioAlServidor() {
       try {
-        this.isLoading = true;
         const apiUrl = process.env.VUE_APP_API_BASE_URL;
+        // Convertir form a Multipart
+        const formData = new FormData();
+        Object.keys(this.form).forEach((key) => {
+          if (key !== "files") {
+            formData.append(key, this.form[key]);
+          }
+        });
+        this.form.files.forEach((fileObj, index) => {
+          formData.append(`files[${index}]`, fileObj.file);
+        });
         // Enviar datos con una solicitud POST
-        const response = await axios.post(`${apiUrl}/visitas`, this.form);
-        console.log(response); //quitar
-        alert("Formulario enviado exitosamente.");
-        this.resetFormulario();
+        const response = await axios.post(
+          `${apiUrl}/ct_etapa_alistamiento`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        if (response.status === 201) {
+          this.showToast("Formulario guardado correctamente", "success");
+          this.resetFormulario(); // Reestablecer los campos del formulario
+        }
         this.isLoading = false;
       } catch (error) {
         this.isLoading = false;
         this.showToast(
-          "No se pudo enviar el formulario" + error.response.data.message,
+          "No se pudo enviar el formulario componente social visita",
           "danger"
         );
-        console.error("Error al enviar el formulario:", error);
       } finally {
         this.isLoading = false;
       }
+    },
+    resetFormulario() {
+      this.form = {
+        etc: "Norte de Santander",
+        nombre_apoyo: "",
+        cedula_apoyo: "",
+        cargo_apoyo: "",
+        telefono_apoyo: "",
+        nombre_atiende: "",
+        cedula_atiende: "",
+        cargo_atiende: "",
+        telefono_atiende: "",
+        firma1: "",
+        firma2: "",
+        pre_1: "",
+        pre_1_obs: "",
+        pre_2: "",
+        pre_2_obs: "",
+        pre_3: "",
+        pre_3_obs: "",
+        pre_4: "",
+        pre_4_obs: "",
+        pre_5: "",
+        pre_5_obs: "",
+        pre_6: "",
+        pre_6_obs: "",
+        pre_7: "",
+        pre_7_obs: "",
+        pre_8: "",
+        pre_8_obs: "",
+        pre_9: "",
+        pre_9_obs: "",
+        pre_10: "",
+        pre_10_obs: "",
+        pre_11: "",
+        pre_11_obs: "",
+        pre_12: "",
+        pre_12_obs: "",
+        pre_13: "",
+        pre_13_obs: "",
+        pre_14: "",
+        pre_15: "",
+        pre_15_obs: "",
+        pre_16: "",
+        pre_16_obs: "",
+        pre_17: "",
+        pre_17_obs: "",
+        pre_18: "",
+        pre_18_obs: "",
+        pre_19: "",
+        pre_19_obs: "",
+        pre_20: "",
+        pre_20_obs: "",
+        pre_21: "",
+        pre_21_obs: "",
+        pre_22: "",
+        pre_22_obs: "",
+        pre_23: "",
+        pre_23_obs: "",
+        pre_24: "",
+        pre_24_obs: "",
+        pre_25: "",
+        pre_25_obs: "",
+        pre_26: "",
+        pre_26_obs: "",
+        pre_27: "",
+        pre_27_obs: "",
+        pre_28: "",
+        pre_28_obs: "",
+        fecha_certificado: "",
+        concepto_sanitario: "",
+        puntaje_esperado: 0,
+        puntaje_obtenido: 0,
+        porcentaje: 0,
+        observaciones: "",
+        observaciones_recibe: "",
+        files: [], //archivos adjuntos
+      };
     },
     showToast(message, type) {
       this.toastMessage = message;
