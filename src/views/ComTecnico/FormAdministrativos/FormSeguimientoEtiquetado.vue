@@ -32,7 +32,13 @@
           <div class="row mb-4">
             <div class="col-md-4 mb-1">
               <label for="etc" class="form-label">ETC:</label>
-              <input type="text" id="etc" class="form-control" />
+              <input
+                type="text"
+                id="etc"
+                class="form-control"
+                v-model="form.etc"
+                required
+              />
             </div>
             <div class="col-md-4 mb-1">
               <label for="municipio" class="form-label">MUNICIPIO:</label>
@@ -42,19 +48,43 @@
               <label for="direccion" class="form-label"
                 >DIRECCIÓN BODEGA:</label
               >
-              <input type="text" id="direccion" class="form-control" />
+              <input
+                type="text"
+                id="direccion"
+                class="form-control"
+                v-model="form.direccion"
+                required
+              />
             </div>
             <div class="col-md-4 mb-1">
               <label for="operador" class="form-label">OPERADOR:</label>
-              <input type="text" id="operador" class="form-control" />
+              <input
+                type="text"
+                id="operador"
+                class="form-control"
+                v-model="form.operador"
+                required
+              />
             </div>
             <div class="col-md-4 mb-1">
               <label for="contrato" class="form-label">N° CONTRATO:</label>
-              <input type="text" id="contrato" class="form-control" />
+              <input
+                type="text"
+                id="contrato"
+                class="form-control"
+                v-model="form.contrato"
+                required
+              />
             </div>
             <div class="col-md-4 mb-1">
               <label for="fecha" class="form-label">FECHA DE LA VISITA:</label>
-              <input type="date" id="fecha" class="form-control" />
+              <input
+                type="date"
+                id="fecha"
+                class="form-control"
+                v-model="form.fecha_visita"
+                required
+              />
             </div>
           </div>
 
@@ -549,6 +579,7 @@
               id="observaciones"
               class="form-control"
               rows="4"
+              v-model="form.observaciones"
             ></textarea>
           </div>
 
@@ -557,9 +588,9 @@
               <h4>Visita Atendida por:</h4>
               <div class="mb-2">
                 <SignaturePad
-                  ref="firstSignaturePad"
-                  @signatureSaved="handleFirstSignature"
-                  @signatureCleared="handleFirstSignatureCleared"
+                  idFirma="firma1"
+                  :varFirma="form.firma1"
+                  @firmas-updated="actualizarFirmas"
                 />
               </div>
               <div class="mb-2">
@@ -583,9 +614,9 @@
               <h4>Visita Realizada por:</h4>
               <div class="mb-2">
                 <SignaturePad
-                  ref="secondSignaturePad"
-                  @signatureSaved="handleSecondSignature"
-                  @signatureCleared="handleSecondSignatureCleared"
+                  idFirma="firma2"
+                  :varFirma="form.firma2"
+                  @firmas-updated="actualizarFirmas"
                 />
               </div>
               <div class="mb-2">
@@ -609,9 +640,9 @@
               <h4>Visita Realizada por:</h4>
               <div class="mb-2">
                 <SignaturePad
-                  ref="firstSignaturePad"
-                  @signatureSaved="handleThreeSignature"
-                  @signatureCleared="handleThreeSignatureCleared"
+                  idFirma="firma3"
+                  :varFirma="form.firma3"
+                  @firmas-updated="actualizarFirmas"
                 />
               </div>
               <div class="mb-2">

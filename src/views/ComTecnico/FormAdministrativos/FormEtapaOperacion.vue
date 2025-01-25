@@ -36,8 +36,8 @@
               <input
                 class="form-control"
                 type="text"
-                value="Norte de Santander"
-                disabled
+                v-model="form.etc"
+                required
               />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
@@ -47,11 +47,21 @@
 
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Operador </label>
-              <input class="form-control" type="text" v-model="form.operador" />
+              <input
+                class="form-control"
+                type="text"
+                v-model="form.operador"
+                required
+              />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">N° contrato </label>
-              <input class="form-control" type="text" v-model="form.contrato" />
+              <input
+                class="form-control"
+                type="text"
+                v-model="form.contrato"
+                required
+              />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Dirección </label>
@@ -59,18 +69,25 @@
                 class="form-control"
                 type="text"
                 v-model="form.direccion"
+                required
               />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Telefono / Correo </label>
-              <input class="form-control" type="text" v-model="form.correo" />
+              <input
+                class="form-control"
+                type="text"
+                v-model="form.correo"
+                required
+              />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Fecha visita </label>
               <input
                 class="form-control"
                 type="date"
-                v-model="form.fechaVisita"
+                v-model="form.fecha_visita"
+                required
               />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
@@ -78,27 +95,33 @@
               <input
                 class="form-control"
                 type="text"
-                v-model="form.horaInicio"
+                v-model="form.hora_inicio"
+                required
               />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Hora fin</label>
-              <input class="form-control" type="text" v-model="form.horaFin" />
+              <input
+                class="form-control"
+                type="text"
+                v-model="form.hora_fin"
+                required
+              />
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Número de visita </label>
-              <select class="form-select" v-model="form.numVisita">
-                <option value="">1ra</option>
-                <option value="">2da</option>
-                <option value="">3ra</option>
+              <select class="form-select" v-model="form.num_visita" required>
+                <option value="1ra">1ra</option>
+                <option value="2da">2da</option>
+                <option value="3ra">3ra</option>
               </select>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Tipo visita </label>
-              <select class="form-select" v-model="form.tipoVisita">
-                <option value="">Técnica</option>
-                <option value="">Verificación ETA</option>
-                <option value="">SPQRS</option>
+              <select class="form-select" v-model="form.tipo_visita" required>
+                <option value="Técnica">Técnica</option>
+                <option value="Verificación ETA">Verificación ETA</option>
+                <option value="SPQRS">SPQRS</option>
               </select>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 mb-1 mt-2">
@@ -127,7 +150,7 @@
                   sanitarias.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_1" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -139,6 +162,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_1_obs"
                   />
                 </div>
               </div>
@@ -149,7 +173,7 @@
                   bodega.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_2" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -161,6 +185,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_2_obs"
                   />
                 </div>
               </div>
@@ -173,7 +198,7 @@
                   potencial contacto con éste.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_3" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -185,6 +210,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_3_obs"
                   />
                 </div>
               </div>
@@ -199,7 +225,7 @@
                   papeleras.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_4" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -211,6 +237,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_4_obs"
                   />
                 </div>
               </div>
@@ -224,7 +251,7 @@
                   producción.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_5" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -236,6 +263,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_5_obs"
                   />
                 </div>
               </div>
@@ -250,7 +278,7 @@
                   especificaciones de la normatividad legal vigente.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_6" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -262,6 +290,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_6_obs"
                   />
                 </div>
               </div>
@@ -273,7 +302,7 @@
                   de joyas, accesorios y portan el uniforme limpio.)</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_7" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -285,6 +314,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_7_obs"
                   />
                 </div>
               </div>
@@ -295,7 +325,7 @@
                   dotación (tapabocas, cofia y bata).</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_8" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -307,6 +337,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_8_obs"
                   />
                 </div>
               </div>
@@ -325,7 +356,7 @@
                   garanticen su calidad, inocuidad y vida util.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_9" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -337,6 +368,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_9_obs"
                   />
                 </div>
               </div>
@@ -348,7 +380,7 @@
                   consumo.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_10" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -360,6 +392,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_10_obs"
                   />
                 </div>
               </div>
@@ -371,7 +404,7 @@
                   riesgo de contaminación.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_11" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -383,6 +416,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_11_obs"
                   />
                 </div>
               </div>
@@ -394,7 +428,7 @@
                   limpieza y desinfección.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_12" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -406,6 +440,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_12_obs"
                   />
                 </div>
               </div>
@@ -420,7 +455,7 @@
                   del aire que requiere cada alimento.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_13" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -432,6 +467,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_13_obs"
                   />
                 </div>
               </div>
@@ -448,7 +484,7 @@
                   contaminación y garantice sus propiedades fisicas.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_14" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -460,6 +496,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_14_obs"
                   />
                 </div>
               </div>
@@ -474,7 +511,7 @@
                   limpieza y fumigación, si es el caso.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_15" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -486,6 +523,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_15_obs"
                   />
                 </div>
               </div>
@@ -497,7 +535,7 @@
                   cruzada.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_16" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -509,6 +547,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_16_obs"
                   />
                 </div>
               </div>
@@ -520,7 +559,7 @@
                   aislado de los alimentos.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_17" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -532,6 +571,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_17_obs"
                   />
                 </div>
               </div>
@@ -544,7 +584,7 @@
                   embalaje.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_18" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -556,6 +596,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_18_obs"
                   />
                 </div>
               </div>
@@ -567,7 +608,7 @@
                   mismos.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_19" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -579,6 +620,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_19_obs"
                   />
                 </div>
               </div>
@@ -590,7 +632,7 @@
                   almacenadas.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_20" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -602,6 +644,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_20_obs"
                   />
                 </div>
               </div>
@@ -612,7 +655,7 @@
                   desinfección del área de almacenamiento.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_21" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -624,6 +667,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_21_obs"
                   />
                 </div>
               </div>
@@ -634,7 +678,7 @@
                   original.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_22" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -646,6 +690,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_22_obs"
                   />
                 </div>
               </div>
@@ -656,7 +701,7 @@
                   debidamente identificada.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_23" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -668,6 +713,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_23_obs"
                   />
                 </div>
               </div>
@@ -678,7 +724,7 @@
                   abulladuras. (Si aplica)</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_24" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -690,6 +736,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_24_obs"
                   />
                 </div>
               </div>
@@ -700,7 +747,7 @@
                   rotos.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_25" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -712,6 +759,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_25_obs"
                   />
                 </div>
               </div>
@@ -723,7 +771,7 @@
                   (Resolución 5109/2005).</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_26" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -735,6 +783,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_26_obs"
                   />
                 </div>
               </div>
@@ -748,7 +797,7 @@
                   refrigeración o congelación.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_27" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -760,6 +809,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_27_obs"
                   />
                 </div>
               </div>
@@ -771,7 +821,7 @@
                   debidamente rotulados.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_28" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -783,6 +833,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_28_obs"
                   />
                 </div>
               </div>
@@ -793,7 +844,7 @@
                   físico o deterioro</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_29" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -805,6 +856,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_29_obs"
                   />
                 </div>
               </div>
@@ -817,7 +869,7 @@
                   materiales resistentes al uso y a la corrosión.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_30" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -829,6 +881,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_30_obs"
                   />
                 </div>
               </div>
@@ -840,7 +893,7 @@
                   unas adecuadas actividades de limpieza y desinfección.
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_31" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -852,6 +905,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_31_obs"
                   />
                 </div>
               </div>
@@ -867,7 +921,7 @@
                   la normatividad vigente. (si aplica)</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_32" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -879,6 +933,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_32_obs"
                   />
                 </div>
               </div>
@@ -890,7 +945,7 @@
                   alimentos. (Si aplica)</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_33" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -902,6 +957,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_33_obs"
                   />
                 </div>
               </div>
@@ -913,7 +969,7 @@
                   alimentos. (Si aplica)</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_34" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -925,6 +981,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_34_obs"
                   />
                 </div>
               </div>
@@ -936,7 +993,7 @@
                   aplica)</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_35" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -948,6 +1005,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_35_obs"
                   />
                 </div>
               </div>
@@ -965,7 +1023,7 @@
                   actividades realizadas.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_36" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -977,6 +1035,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_36_obs"
                   />
                 </div>
               </div>
@@ -988,7 +1047,7 @@
                   se evidencian registros de las actividades realizadas.
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_37" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1000,6 +1059,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_37_obs"
                   />
                 </div>
               </div>
@@ -1012,7 +1072,7 @@
                   aspectos).
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_38" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1024,6 +1084,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_38_obs"
                   />
                 </div>
               </div>
@@ -1035,7 +1096,7 @@
                   evidencian soportes y registros de control.
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_39" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1047,6 +1108,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_39_obs"
                   />
                 </div>
               </div>
@@ -1059,7 +1121,7 @@
                   programa.
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_40" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1071,6 +1133,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_40_obs"
                   />
                 </div>
               </div>
@@ -1083,7 +1146,7 @@
                   programa.
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_41" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1095,6 +1158,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_41_obs"
                   />
                 </div>
               </div>
@@ -1107,7 +1171,7 @@
                   respectivo programa.
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_42" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1119,6 +1183,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_42_obs"
                   />
                 </div>
               </div>
@@ -1129,7 +1194,7 @@
                   los proveedores de alimentos.
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_43" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1141,6 +1206,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_43_obs"
                   />
                 </div>
               </div>
@@ -1152,7 +1218,7 @@
                   almacenamiento.
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_44" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1164,6 +1230,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_44_obs"
                   />
                 </div>
               </div>
@@ -1175,7 +1242,7 @@
                   criterio de rechazo identificado.
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_45" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1187,6 +1254,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_45_obs"
                   />
                 </div>
               </div>
@@ -1199,7 +1267,7 @@
                   "primeras entradas - primeras salidas" (metodo PEPS).
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_46" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1211,6 +1279,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_46_obs"
                   />
                 </div>
               </div>
@@ -1221,7 +1290,7 @@
                   temperatura de los equipos de refrigeración y congelación.
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_47" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1233,6 +1302,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_47_obs"
                   />
                 </div>
               </div>
@@ -1243,7 +1313,7 @@
                   productos almacenados en bodega.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_48" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1255,6 +1325,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_48_obs"
                   />
                 </div>
               </div>
@@ -1273,7 +1344,7 @@
                   Operador PAE).</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_49" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1285,6 +1356,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_49_obs"
                   />
                 </div>
               </div>
@@ -1298,7 +1370,7 @@
                   establecido y según APU correspondiente.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_50" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1310,6 +1382,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_50_obs"
                   />
                 </div>
               </div>
@@ -1323,7 +1396,7 @@
                   programa establecido y según APU correspondiente.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_51" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1335,6 +1408,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_51_obs"
                   />
                 </div>
               </div>
@@ -1348,7 +1422,7 @@
                   establecido.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_52" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1360,6 +1434,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_52_obs"
                   />
                 </div>
               </div>
@@ -1375,7 +1450,7 @@
                   dotación completa).</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_53" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1387,6 +1462,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_53_obs"
                   />
                 </div>
               </div>
@@ -1403,7 +1479,7 @@
                   correspondiente (una (1) dotación completa).</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_54" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1415,6 +1491,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_54_obs"
                   />
                 </div>
               </div>
@@ -1429,7 +1506,7 @@
                   correspondiente (una (1) dotación completa).
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_55" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1441,6 +1518,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_55_obs"
                   />
                 </div>
               </div>
@@ -1454,7 +1532,7 @@
                   firmas de recibido por parte de los responsables).</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_56" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1466,6 +1544,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_56_obs"
                   />
                 </div>
               </div>
@@ -1479,7 +1558,7 @@
                   firmas).</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_57" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1491,6 +1570,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_57_obs"
                   />
                 </div>
               </div>
@@ -1507,7 +1587,7 @@
                   correspondiente.
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_58" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1519,6 +1599,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_58_obs"
                   />
                 </div>
               </div>
@@ -1530,7 +1611,7 @@
                   supervisión del Programa.</label
                 >
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_59" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1542,6 +1623,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_59_obs"
                   />
                 </div>
               </div>
@@ -1556,7 +1638,7 @@
                   higiene de los alimentos.
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_60" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1568,6 +1650,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_60_obs"
                   />
                 </div>
               </div>
@@ -1581,7 +1664,7 @@
                   correspondiente.
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_61" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1593,6 +1676,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_61_obs"
                   />
                 </div>
               </div>
@@ -1605,7 +1689,7 @@
                   muestras indicadas en el APU correspondiente.
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_62" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1617,6 +1701,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_62_obs"
                   />
                 </div>
               </div>
@@ -1633,25 +1718,7 @@
                   mediante listados de asistencia, fotos y actas.
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
-                    <option value="1">Cumple</option>
-                    <option value="0">No Cumple</option>
-                    <option value="NA">No Aplica</option>
-                    <option value="NO">No Observado</option>
-                  </select>
-                </div>
-                <div class="col-sm-4">
-                  <input class="form-control" type="text" />
-                </div>
-              </div>
-              <div class="row">
-                <hr />
-                <label class="col-sm-6"
-                  >64. La compra de alimentos corresponde a los establecidos en
-                  el ciclo de menús dispuestos y aprobado por la ETC.
-                </label>
-                <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_63" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1663,6 +1730,30 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_63_obs"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <hr />
+                <label class="col-sm-6"
+                  >64. La compra de alimentos corresponde a los establecidos en
+                  el ciclo de menús dispuestos y aprobado por la ETC.
+                </label>
+                <div class="col-sm-2">
+                  <select class="form-select" v-model="form.pre_64" required>
+                    <option value="1">Cumple</option>
+                    <option value="0">No Cumple</option>
+                    <option value="NA">No Aplica</option>
+                    <option value="NO">No Observado</option>
+                  </select>
+                </div>
+                <div class="col-sm-4">
+                  <input
+                    class="form-control"
+                    placeholder="observaciones"
+                    type="text"
+                    v-model="form.pre_64_obs"
                   />
                 </div>
               </div>
@@ -1679,7 +1770,7 @@
                   autorización INVIMA o ETS).
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_65" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1691,6 +1782,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_65_obs"
                   />
                 </div>
               </div>
@@ -1701,7 +1793,7 @@
                   cinco (5) días.
                 </label>
                 <div class="col-sm-2">
-                  <select class="form-select" v-model="form.pre_1">
+                  <select class="form-select" v-model="form.pre_66" required>
                     <option value="1">Cumple</option>
                     <option value="0">No Cumple</option>
                     <option value="NA">No Aplica</option>
@@ -1713,6 +1805,7 @@
                     class="form-control"
                     placeholder="observaciones"
                     type="text"
+                    v-model="form.pre_66_obs"
                   />
                 </div>
                 <hr />
@@ -1722,24 +1815,24 @@
                   <label class="form-label">PUNTAJE ESPERADO</label>
                   <input
                     class="form-control"
-                    type="text"
-                    v-model="form.horaFin"
+                    type="number"
+                    v-model="form.puntaje_esperado"
                   />
                 </div>
                 <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
                   <label class="form-label">PUNTAJE OBTENIDO</label>
                   <input
                     class="form-control"
-                    type="text"
-                    v-model="form.horaFin"
+                    type="number"
+                    v-model="form.puntaje_obtenido"
                   />
                 </div>
                 <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
                   <label class="form-label">PORCENTAJE (%)</label>
                   <input
                     class="form-control"
-                    type="text"
-                    v-model="form.horaFin"
+                    type="number"
+                    v-model="form.porcentaje"
                   />
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
@@ -1759,7 +1852,7 @@
                   >
                   <textarea
                     class="form-control"
-                    v-model="form.observaciones"
+                    v-model="form.observaciones_recibe"
                     rows="3"
                   >
                   </textarea>
@@ -1775,26 +1868,42 @@
                 </div>
                 <div class="col-12 mb-1">
                   <SignaturePad
-                    ref="firstSignaturePad"
-                    @signatureSaved="handleFirstSignature"
-                    @signatureCleared="handleFirstSignatureCleared"
+                    idFirma="firma1"
+                    :varFirma="form.firma1"
+                    @firmas-updated="actualizarFirmas"
                   />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Nombre</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.nombre_apoyo"
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Cédula</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.cedula_apoyo"
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Cargo</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.cargo_apoyo"
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Teléfono</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.telefono_apoyo"
+                  />
                 </div>
               </div>
             </div>
@@ -1807,26 +1916,42 @@
                 </div>
                 <div class="col-12 mb-1">
                   <SignaturePad
-                    ref="secondSignaturePad"
-                    @signatureSaved="handleSecondSignature"
-                    @signatureCleared="handleSecondSignatureCleared"
+                    idFirma="firma2"
+                    :varFirma="form.firma2"
+                    @firmas-updated="actualizarFirmas"
                   />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Nombre</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.nombre_atiende"
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Cédula</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.cedula_atiende"
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Cargo</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.cargo_atiende"
+                  />
                 </div>
                 <div class="col-12 mb-1">
                   <label class="form-label">Teléfono</label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.telefono_atiende"
+                  />
                 </div>
               </div>
             </div>
@@ -1845,7 +1970,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "@/axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 import SignaturePad from "@/components/SignaturePad.vue";
@@ -1869,61 +1994,296 @@ export default {
       nuevoGrado: "", // Input para el grado
       filas: [], //filas de la tabla
       form: {
+        etc: "Norte de Santander",
         fechaVisita: "",
         municipio: "",
-        institucion: "",
-        sede: "",
         operador: "",
         contrato: "",
-        numVisita: "",
-        modalidad: "",
-        numBeneficiarios: "",
-        horaInicio: "",
-        horaFin: "",
+        direccion: "",
+        correo: "",
+        fecha_visita: "",
+        hora_inicio: "",
+        hora_fin: "",
+        num_visita: "",
+        tipo_visita: "",
+        pre_1: "",
+        pre_1_obs: "",
+        pre_2: "",
+        pre_2_obs: "",
+        pre_3: "",
+        pre_3_obs: "",
+        pre_4: "",
+        pre_4_obs: "",
+        pre_5: "",
+        pre_5_obs: "",
+        pre_6: "",
+        pre_6_obs: "",
+        pre_7: "",
+        pre_7_obs: "",
+        pre_8: "",
+        pre_8_obs: "",
+        pre_9: "",
+        pre_9_obs: "",
+        pre_10: "",
+        pre_10_obs: "",
+        pre_11: "",
+        pre_11_obs: "",
+        pre_12: "",
+        pre_12_obs: "",
+        pre_13: "",
+        pre_13_obs: "",
+        pre_14: "",
+        pre_14_obs: "",
+        pre_15: "",
+        pre_15_obs: "",
+        pre_16: "",
+        pre_16_obs: "",
+        pre_17: "",
+        pre_17_obs: "",
+        pre_18: "",
+        pre_18_obs: "",
+        pre_19: "",
+        pre_19_obs: "",
+        pre_20: "",
+        pre_20_obs: "",
+        pre_21: "",
+        pre_21_obs: "",
+        pre_22: "",
+        pre_22_obs: "",
+        pre_23: "",
+        pre_23_obs: "",
+        pre_24: "",
+        pre_24_obs: "",
+        pre_25: "",
+        pre_25_obs: "",
+        pre_26: "",
+        pre_26_obs: "",
+        pre_27: "",
+        pre_27_obs: "",
+        pre_28: "",
+        pre_28_obs: "",
+        pre_29: "",
+        pre_29_obs: "",
+        pre_30: "",
+        pre_30_obs: "",
+        pre_31: "",
+        pre_31_obs: "",
+        pre_32: "",
+        pre_32_obs: "",
+        pre_33: "",
+        pre_33_obs: "",
+        pre_34: "",
+        pre_34_obs: "",
+        pre_35: "",
+        pre_35_obs: "",
+        pre_36: "",
+        pre_36_obs: "",
+        pre_37: "",
+        pre_37_obs: "",
+        pre_38: "",
+        pre_38_obs: "",
+        pre_39: "",
+        pre_39_obs: "",
+        pre_40: "",
+        pre_40_obs: "",
+        pre_41: "",
+        pre_41_obs: "",
+        pre_42: "",
+        pre_42_obs: "",
+        pre_43: "",
+        pre_43_obs: "",
+        pre_44: "",
+        pre_44_obs: "",
+        pre_45: "",
+        pre_45_obs: "",
+        pre_46: "",
+        pre_46_obs: "",
+        pre_47: "",
+        pre_47_obs: "",
+        pre_48: "",
+        pre_48_obs: "",
+        pre_49: "",
+        pre_49_obs: "",
+        pre_50: "",
+        pre_50_obs: "",
+        pre_51: "",
+        pre_51_obs: "",
+        pre_52: "",
+        pre_52_obs: "",
+        pre_53: "",
+        pre_53_obs: "",
+        pre_54: "",
+        pre_54_obs: "",
+        pre_55: "",
+        pre_55_obs: "",
+        pre_56: "",
+        pre_56_obs: "",
+        pre_57: "",
+        pre_57_obs: "",
+        pre_58: "",
+        pre_58_obs: "",
+        pre_59: "",
+        pre_59_obs: "",
+        pre_60: "",
+        pre_60_obs: "",
+        pre_61: "",
+        pre_61_obs: "",
+        pre_62: "",
+        pre_62_obs: "",
+        pre_63: "",
+        pre_63_obs: "",
+        pre_64: "",
+        pre_64_obs: "",
+        pre_65: "",
+        pre_65_obs: "",
+        pre_66: "",
+        pre_66_obs: "",
+        puntaje_esperado: 0,
+        puntaje_obtenido: 0,
+        porcentaje: 0,
+        observaciones: "",
+        observaciones_recibe: "",
+        firma1: "",
+        firma2: "",
+        nombre_apoyo: "",
+        cedula_apoyo: "",
+        cargo_apoyo: "",
+        telefono_apoyo: "",
+        nombre_atiende: "",
+        cedula_atiende: "",
+        cargo_atiende: "",
+        telefono_atiende: "",
         files: [],
       },
       formulariosOffline: [], // Para almacenar temporalmente los formularios en localStorage
     };
   },
   methods: {
-    handleFirstSignature(signature) {
-      this.form.firstSignature = signature;
-      this.signatures.firstSignature = true; // La firma ha sido realizada
+    updateFiles(files) {
+      // Actualiza la lista de archivos en el formulario
+      this.form.files = files;
     },
-    handleSecondSignature(signature) {
-      this.form.secondSignature = signature;
-      this.signatures.secondSignature = true; // La firma ha sido realizada
-    },
-    handleFirstSignatureCleared() {
-      this.signatures.firstSignature = false; // Marca como no firmada
-    },
-    handleSecondSignatureCleared() {
-      this.signatures.secondSignature = false; // Marca como no firmada
-    },
-    saveSignatures() {
-      // Llamamos a los métodos saveSignature de ambos componentes
-      this.$refs.firstSignaturePad.saveSignature();
-      this.$refs.secondSignaturePad.saveSignature();
-    },
-    agregarFila() {
-      if (this.nuevoNombre && this.nuevoGrado) {
-        // Agregar una nueva fila con los valores ingresados
-        this.filas.push({
-          nombre: this.nuevoNombre,
-          grado: this.nuevoGrado,
-        });
-
-        // Limpiar los campos después de agregar
-        this.nuevoNombre = "";
-        this.nuevoGrado = "";
-      } else {
-        this.showToast(
-          "Por favor, complete ambos campos antes de agregar.",
-          "danger"
-        );
-      }
+    actualizarFirmas({ idFirma, firma }) {
+      // Actualiza dinámicamente la firma en el formulario
+      this.form[idFirma] = firma;
     },
     guardarFormulario() {
+      this.isLoading = true;
+
+      // Primero, guardamos las firmas
+      if (this.form.firma1 == "" || this.form.firma2 == "") {
+        this.isLoading = false;
+        this.showToast(
+          "Firmas no dilegenciadas. Por favor, complete y guarde las firmas.",
+          "danger"
+        );
+        return;
+      }
+      // validar que haya seleccionado archivos
+      if (this.form.files.length == 0) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan archivos. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+      // validar que haya llenado preguntas de verificación
+      if (
+        this.form.pre_1 == "" ||
+        this.form.pre_2 == "" ||
+        this.form.pre_3 == "" ||
+        this.form.pre_4 == "" ||
+        this.form.pre_5 == "" ||
+        this.form.pre_6 == "" ||
+        this.form.pre_7 == "" ||
+        this.form.pre_8 == "" ||
+        this.form.pre_9 == "" ||
+        this.form.pre_10 == "" ||
+        this.form.pre_11 == "" ||
+        this.form.pre_12 == "" ||
+        this.form.pre_13 == "" ||
+        this.form.pre_14 == "" ||
+        this.form.pre_15 == "" ||
+        this.form.pre_16 == "" ||
+        this.form.pre_17 == "" ||
+        this.form.pre_18 == "" ||
+        this.form.pre_19 == "" ||
+        this.form.pre_20 == "" ||
+        this.form.pre_21 == "" ||
+        this.form.pre_22 == "" ||
+        this.form.pre_23 == "" ||
+        this.form.pre_24 == "" ||
+        this.form.pre_25 == "" ||
+        this.form.pre_26 == "" ||
+        this.form.pre_27 == "" ||
+        this.form.pre_28 == "" ||
+        this.form.pre_29 == "" ||
+        this.form.pre_30 == "" ||
+        this.form.pre_31 == "" ||
+        this.form.pre_32 == "" ||
+        this.form.pre_33 == "" ||
+        this.form.pre_34 == "" ||
+        this.form.pre_35 == "" ||
+        this.form.pre_36 == "" ||
+        this.form.pre_37 == "" ||
+        this.form.pre_38 == "" ||
+        this.form.pre_39 == "" ||
+        this.form.pre_40 == "" ||
+        this.form.pre_41 == "" ||
+        this.form.pre_42 == "" ||
+        this.form.pre_43 == "" ||
+        this.form.pre_44 == "" ||
+        this.form.pre_45 == "" ||
+        this.form.pre_46 == "" ||
+        this.form.pre_47 == "" ||
+        this.form.pre_48 == "" ||
+        this.form.pre_49 == "" ||
+        this.form.pre_50 == "" ||
+        this.form.pre_51 == "" ||
+        this.form.pre_52 == "" ||
+        this.form.pre_53 == "" ||
+        this.form.pre_54 == "" ||
+        this.form.pre_55 == "" ||
+        this.form.pre_56 == "" ||
+        this.form.pre_57 == "" ||
+        this.form.pre_58 == "" ||
+        this.form.pre_59 == "" ||
+        this.form.pre_60 == "" ||
+        this.form.pre_61 == "" ||
+        this.form.pre_62 == "" ||
+        this.form.pre_63 == "" ||
+        this.form.pre_64 == "" ||
+        this.form.pre_65 == "" ||
+        this.form.pre_66 == "" ||
+        this.form.municipio == ""
+      ) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan preguntas por responder. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+
+      //validar que haya llenado campos de firma apoyo y atendido
+      if (
+        this.form.cedula_apoyo == "" ||
+        this.form.nombre_apoyo == "" ||
+        this.form.telefono_apoyo == "" ||
+        this.form.cargo_apoyo == "" ||
+        this.form.cedula_atiende == "" ||
+        this.form.nombre_atiende == "" ||
+        this.form.telefono_atiende == "" ||
+        this.form.cargo_atiende == ""
+      ) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan datos de las firmas. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {
         // Enviar formulario al servidor
@@ -1944,24 +2304,204 @@ export default {
     },
     async enviarFormularioAlServidor() {
       try {
-        this.isLoading = true;
         const apiUrl = process.env.VUE_APP_API_BASE_URL;
+        // Convertir form a Multipart
+        const formData = new FormData();
+        Object.keys(this.form).forEach((key) => {
+          if (key !== "files") {
+            formData.append(key, this.form[key]);
+          }
+        });
+        this.form.files.forEach((fileObj, index) => {
+          formData.append(`files[${index}]`, fileObj.file);
+        });
         // Enviar datos con una solicitud POST
-        const response = await axios.post(`${apiUrl}/visitas`, this.form);
-        console.log(response); //quitar
-        alert("Formulario enviado exitosamente.");
-        this.resetFormulario();
+        const response = await axios.post(
+          `${apiUrl}/ct_etapa_operaciones`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        if (response.status === 201) {
+          this.showToast("Formulario guardado correctamente", "success");
+          this.resetFormulario(); // Reestablecer los campos del formulario
+        }
         this.isLoading = false;
       } catch (error) {
         this.isLoading = false;
         this.showToast(
-          "No se pudo enviar el formulario" + error.response.data.message,
+          "No se pudo enviar el formulario componente social visita",
           "danger"
         );
-        console.error("Error al enviar el formulario:", error);
       } finally {
         this.isLoading = false;
       }
+    },
+    resetFormulario() {
+      this.form = {
+        etc: "Norte de Santander",
+        municipio: "",
+        operador: "",
+        contrato: "",
+        direccion: "",
+        correo: "",
+        fecha_visita: "",
+        hora_inicio: "",
+        hora_fin: "",
+        num_visita: "",
+        tipo_visita: "",
+        pre_1: "",
+        pre_1_obs: "",
+        pre_2: "",
+        pre_2_obs: "",
+        pre_3: "",
+        pre_3_obs: "",
+        pre_4: "",
+        pre_4_obs: "",
+        pre_5: "",
+        pre_5_obs: "",
+        pre_6: "",
+        pre_6_obs: "",
+        pre_7: "",
+        pre_7_obs: "",
+        pre_8: "",
+        pre_8_obs: "",
+        pre_9: "",
+        pre_9_obs: "",
+        pre_10: "",
+        pre_10_obs: "",
+        pre_11: "",
+        pre_11_obs: "",
+        pre_12: "",
+        pre_12_obs: "",
+        pre_13: "",
+        pre_13_obs: "",
+        pre_14: "",
+        pre_14_obs: "",
+        pre_15: "",
+        pre_15_obs: "",
+        pre_16: "",
+        pre_16_obs: "",
+        pre_17: "",
+        pre_17_obs: "",
+        pre_18: "",
+        pre_18_obs: "",
+        pre_19: "",
+        pre_19_obs: "",
+        pre_20: "",
+        pre_20_obs: "",
+        pre_21: "",
+        pre_21_obs: "",
+        pre_22: "",
+        pre_22_obs: "",
+        pre_23: "",
+        pre_23_obs: "",
+        pre_24: "",
+        pre_24_obs: "",
+        pre_25: "",
+        pre_25_obs: "",
+        pre_26: "",
+        pre_26_obs: "",
+        pre_27: "",
+        pre_27_obs: "",
+        pre_28: "",
+        pre_28_obs: "",
+        pre_29: "",
+        pre_29_obs: "",
+        pre_30: "",
+        pre_30_obs: "",
+        pre_31: "",
+        pre_31_obs: "",
+        pre_32: "",
+        pre_32_obs: "",
+        pre_33: "",
+        pre_33_obs: "",
+        pre_34: "",
+        pre_34_obs: "",
+        pre_35: "",
+        pre_35_obs: "",
+        pre_36: "",
+        pre_36_obs: "",
+        pre_37: "",
+        pre_37_obs: "",
+        pre_38: "",
+        pre_38_obs: "",
+        pre_39: "",
+        pre_39_obs: "",
+        pre_40: "",
+        pre_40_obs: "",
+        pre_41: "",
+        pre_41_obs: "",
+        pre_42: "",
+        pre_42_obs: "",
+        pre_43: "",
+        pre_43_obs: "",
+        pre_44: "",
+        pre_44_obs: "",
+        pre_45: "",
+        pre_45_obs: "",
+        pre_46: "",
+        pre_46_obs: "",
+        pre_47: "",
+        pre_47_obs: "",
+        pre_48: "",
+        pre_48_obs: "",
+        pre_49: "",
+        pre_49_obs: "",
+        pre_50: "",
+        pre_50_obs: "",
+        pre_51: "",
+        pre_51_obs: "",
+        pre_52: "",
+        pre_52_obs: "",
+        pre_53: "",
+        pre_53_obs: "",
+        pre_54: "",
+        pre_54_obs: "",
+        pre_55: "",
+        pre_55_obs: "",
+        pre_56: "",
+        pre_56_obs: "",
+        pre_57: "",
+        pre_57_obs: "",
+        pre_58: "",
+        pre_58_obs: "",
+        pre_59: "",
+        pre_59_obs: "",
+        pre_60: "",
+        pre_60_obs: "",
+        pre_61: "",
+        pre_61_obs: "",
+        pre_62: "",
+        pre_62_obs: "",
+        pre_63: "",
+        pre_63_obs: "",
+        pre_64: "",
+        pre_64_obs: "",
+        pre_65: "",
+        pre_65_obs: "",
+        pre_66: "",
+        pre_66_obs: "",
+        puntaje_esperado: 0,
+        puntaje_obtenido: 0,
+        porcentaje: 0,
+        observaciones: "",
+        observaciones_recibe: "",
+        firma1: "",
+        firma2: "",
+        nombre_apoyo: "",
+        cedula_apoyo: "",
+        cargo_apoyo: "",
+        telefono_apoyo: "",
+        nombre_atiende: "",
+        cedula_atiende: "",
+        cargo_atiende: "",
+        telefono_atiende: "",
+        files: [],
+      };
     },
     showToast(message, type) {
       this.toastMessage = message;

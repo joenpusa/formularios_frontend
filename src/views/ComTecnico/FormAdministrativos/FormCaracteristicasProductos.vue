@@ -32,7 +32,13 @@
           <div class="row mb-3">
             <div class="col-md-3">
               <label for="etc" class="form-label">ETC:</label>
-              <input type="text" id="etc" class="form-control" />
+              <input
+                type="text"
+                id="etc"
+                class="form-control"
+                v-model="form.etc"
+                required
+              />
             </div>
             <div class="col-md-3">
               <label for="municipio" class="form-label">Municipio:</label>
@@ -40,24 +46,48 @@
             </div>
             <div class="col-md-3">
               <label for="direccion" class="form-label">Dirección:</label>
-              <input type="text" id="direccion" class="form-control" />
+              <input
+                type="text"
+                id="direccion"
+                class="form-control"
+                v-model="form.direccion"
+                required
+              />
             </div>
             <div class="col-md-3">
               <label for="fecha-visita" class="form-label"
                 >Fecha de la Visita:</label
               >
-              <input type="date" id="fecha-visita" class="form-control" />
+              <input
+                type="date"
+                id="fecha-visita"
+                class="form-control"
+                v-model="form.fecha_visita"
+                required
+              />
             </div>
           </div>
 
           <div class="row mb-3">
             <div class="col-md-6">
               <label for="operador" class="form-label">Operador:</label>
-              <input type="text" id="operador" class="form-control" />
+              <input
+                type="text"
+                id="operador"
+                class="form-control"
+                v-model="form.operador"
+                required
+              />
             </div>
             <div class="col-md-6">
               <label for="contrato" class="form-label">N° Contrato:</label>
-              <input type="text" id="contrato" class="form-control" />
+              <input
+                type="text"
+                id="contrato"
+                class="form-control"
+                v-model="form.contrato"
+                required
+              />
             </div>
           </div>
 
