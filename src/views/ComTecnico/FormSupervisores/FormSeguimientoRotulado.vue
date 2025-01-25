@@ -37,8 +37,7 @@
                 class="form-control"
                 id="etc"
                 v-model="form.etc"
-                value="Norte de Santander"
-                readonly
+                required
               />
             </div>
             <div class="col-md-4">
@@ -49,7 +48,7 @@
                 type="date"
                 class="form-control"
                 id="fechaVisita"
-                v-model="form.fechaVisita"
+                v-model="form.fecha_visita"
                 required
               />
             </div>
@@ -323,9 +322,9 @@
             <div class="col-md-6">
               <h4>FIRMA EQUIPO PAE /APOYO A LA SUPERVISIÓN</h4>
               <SignaturePad
-                ref="firstSignaturePad"
-                @signatureSaved="handleFirstSignature"
-                @signatureCleared="handleFirstSignatureCleared"
+                idFirma="firma1"
+                :varFirma="form.firma1"
+                @firmas-updated="actualizarFirmas"
               />
               <div class="mb-2">
                 <label for="nombreEquipoPAE" class="form-label">Nombre:</label>
@@ -375,9 +374,9 @@
             <div class="col-md-6">
               <h4>FIRMA QUIEN ATIENDE LA VISITA</h4>
               <SignaturePad
-                ref="secondSignaturePad"
-                @signatureSaved="handleSecondSignature"
-                @signatureCleared="handleSecondSignatureCleared"
+                idFirma="firma2"
+                :varFirma="form.firma2"
+                @firmas-updated="actualizarFirmas"
               />
               <div class="mb-2">
                 <label for="nombreAtiendeVisita" class="form-label"
@@ -684,25 +683,6 @@ export default {
     };
   },
   methods: {
-    handleFirstSignature(signature) {
-      this.form.firstSignature = signature;
-      this.signatures.firstSignature = true; // La firma ha sido realizada
-    },
-    handleSecondSignature(signature) {
-      this.form.secondSignature = signature;
-      this.signatures.secondSignature = true; // La firma ha sido realizada
-    },
-    handleFirstSignatureCleared() {
-      this.signatures.firstSignature = false; // Marca como no firmada
-    },
-    handleSecondSignatureCleared() {
-      this.signatures.secondSignature = false; // Marca como no firmada
-    },
-    saveSignatures() {
-      // Llamamos a los métodos saveSignature de ambos componentes
-      this.$refs.firstSignaturePad.saveSignature();
-      this.$refs.secondSignaturePad.saveSignature();
-    },
     guardarFormulario() {
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {

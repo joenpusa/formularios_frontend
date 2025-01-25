@@ -31,16 +31,31 @@
           <div class="row mb-1">
             <div class="col-md-4">
               <label class="form-label">ETC:</label>
-              <input type="text" class="form-control" />
+              <input
+                type="text"
+                class="form-control"
+                v-model="form.etc"
+                required
+              />
             </div>
             <div class="col-md-4">
               <label class="form-label">Operador:</label>
-              <input type="text" class="form-control" />
+              <input
+                type="text"
+                class="form-control"
+                v-model="form.operador"
+                required
+              />
             </div>
 
             <div class="col-md-4">
               <label class="form-label">N° Contrato:</label>
-              <input type="text" class="form-control" />
+              <input
+                type="text"
+                class="form-control"
+                v-model="form.contrato"
+                required
+              />
             </div>
             <div class="col-md-4">
               <label class="form-label">Municipio:</label>
@@ -49,16 +64,31 @@
 
             <div class="col-md-4">
               <label class="form-label">Dirección:</label>
-              <input type="text" class="form-control" />
+              <input
+                type="text"
+                class="form-control"
+                v-model="form.direccion"
+                required
+              />
             </div>
             <div class="col-md-4">
               <label class="form-label">Fecha:</label>
-              <input type="date" class="form-control" />
+              <input
+                type="date"
+                class="form-control"
+                v-model="form.fecha"
+                required
+              />
             </div>
 
             <div class="col-md-4">
               <label class="form-label">Producto:</label>
-              <input type="text" class="form-control" />
+              <input
+                type="text"
+                class="form-control"
+                v-model="form.producto"
+                required
+              />
             </div>
             <div class="col-md-4">
               <label class="form-label"
