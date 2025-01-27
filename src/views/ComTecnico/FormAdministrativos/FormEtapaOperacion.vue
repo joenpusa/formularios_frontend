@@ -94,7 +94,7 @@
               <label class="form-label">Hora inicio</label>
               <input
                 class="form-control"
-                type="text"
+                type="time"
                 v-model="form.hora_inicio"
                 required
               />
@@ -103,7 +103,7 @@
               <label class="form-label">Hora fin</label>
               <input
                 class="form-control"
-                type="text"
+                type="time"
                 v-model="form.hora_fin"
                 required
               />
@@ -1995,7 +1995,6 @@ export default {
       filas: [], //filas de la tabla
       form: {
         etc: "Norte de Santander",
-        fechaVisita: "",
         municipio: "",
         operador: "",
         contrato: "",
