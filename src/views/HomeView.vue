@@ -33,24 +33,24 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
-            <a href="#">
+            <router-link to="/reportes">
               <div class="card text-dark bg-light border border-warning">
                 <div class="card-body text-center">
                   <span class="bi bi-file-earmark-bar-graph fs-2"></span>
                   <h4 class="card-title text-dark">Reportes</h4>
                 </div>
               </div>
-            </a>
+            </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
-            <a href="#">
+            <router-link to="/galeria">
               <div class="card text-dark bg-light border border-warning">
                 <div class="card-body text-center">
                   <span class="bi bi-images fs-2"></span>
                   <h4 class="card-title text-dark">Galeria</h4>
                 </div>
               </div>
-            </a>
+            </router-link>
           </div>
           <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
             <h3>General</h3>
