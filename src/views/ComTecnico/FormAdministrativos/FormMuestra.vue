@@ -76,7 +76,7 @@
               <input
                 type="date"
                 class="form-control"
-                v-model="form.fecha"
+                v-model="form.fecha_visita"
                 required
               />
             </div>
@@ -94,207 +94,269 @@
               <label class="form-label"
                 >Establecimiento Educativo al que pertenece la Muestra:</label
               >
-              <input type="text" class="form-control" />
+              <input
+                type="text"
+                class="form-control"
+                v-model="form.institucion"
+                required
+              />
             </div>
 
             <div class="col-md-4">
               <label class="form-label">Hora Toma de Muestra:</label>
-              <input type="time" class="form-control" />
+              <input
+                type="time"
+                class="form-control"
+                v-model="form.hora"
+                required
+              />
             </div>
             <div class="col-md-4">
               <label class="form-label">Cantidad según Kardex:</label>
-              <input type="number" class="form-control" />
+              <input
+                type="number"
+                class="form-control"
+                v-model="form.cantidad_kardex"
+                required
+              />
             </div>
             <div class="col-md-4">
               <label class="form-label"
                 >Cantidad de Toma de Muestra en Sitio:</label
               >
-              <input type="number" class="form-control" />
+              <input
+                type="number"
+                class="form-control"
+                v-model="form.cantidad_muestra"
+                required
+              />
             </div>
             <div class="col-md-4">
               <label class="form-label">Nombre del operador:</label>
-              <input type="number" class="form-control" />
+              <input
+                type="text"
+                class="form-control"
+                v-model="form.nombre_operador"
+                required
+              />
             </div>
           </div>
 
-          <div class="mb-1">
-            <label class="form-label">MARCA</label>
-            <input type="text" class="form-control" />
-          </div>
-
-          <div class="mb-1">
-            <label class="form-label">CONTENIDO NETO</label>
-            <input type="text" class="form-control" />
-          </div>
-
-          <div class="mb-1">
-            <label class="form-label">DIRECCION / LUGAR PROCEDENCIA</label>
-            <input type="text" class="form-control" />
-          </div>
-
-          <div class="mb-1">
-            <label class="form-label"
-              >LOTE - FECHA EMPACADO - FECHA DE DESPACHO</label
-            >
-            <input type="text" class="form-control" />
-          </div>
-
-          <div class="mb-1">
-            <label class="form-label">FECHA DE VENCIMIENTO</label>
-            <input type="date" class="form-control" />
-          </div>
-
-          <h4 class="mt-4 mb-1">PROPIEDADES ORGANOLEPTICAS DEL PRODUCTO</h4>
-
-          <div class="mb-1">
-            <label class="form-label">COLOR:</label>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="color1" />
-              <label class="form-check-label" for="color1"
-                >Rosado blanquesino, tonalidad amarillenta</label
-              >
+          <h5 class="mt-3 mb-2">
+            PROPIEDADES ORGANOLEPTICAS CARNE DE {{ form.tipo }}
+          </h5>
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <label class="form-label">OLOR:</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="caracteristico"
+                  v-model="form.olor"
+                />
+                <label class="form-check-label"
+                  >Caracteristico propio de la Especie</label
+                >
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="no-caracteristico"
+                  v-model="form.olor"
+                />
+                <label class="form-check-label"
+                  >No Caracteristico, fuerte, fetido, amoniaco</label
+                >
+              </div>
+              <input
+                type="text"
+                class="form-control mt-2"
+                placeholder="Observación"
+                v-model="form.obs_olor"
+              />
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="color2" />
-              <label class="form-check-label" for="color2"
-                >tonalidades gris verdoso</label
-              >
+            <div class="col-md-4">
+              <label class="form-label">COLOR:</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="caracteristico"
+                  v-model="form.color"
+                />
+                <label class="form-check-label"
+                  >Caracteristico rojo cerezo brillante</label
+                >
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="no-caracteristico"
+                  v-model="form.color"
+                />
+                <label class="form-check-label"
+                  >tonalidades oscuras, verdosas, azuladas</label
+                >
+              </div>
+              <input
+                type="text"
+                class="form-control mt-2"
+                placeholder="Observación"
+                v-model="form.obs_color"
+              />
             </div>
-            <label class="form-label mt-2">Observación:</label>
-            <input type="text" class="form-control" />
+            <div class="col-md-4">
+              <label class="form-label">TEXTURA:</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="firme"
+                  v-model="form.textura"
+                />
+                <label class="form-check-label">Firme al tacto</label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="pegajosa"
+                  v-model="form.textura"
+                />
+                <label class="form-check-label"
+                  >Textura pegajosa, viscosa o babosa</label
+                >
+              </div>
+              <input
+                type="text"
+                class="form-control mt-2"
+                placeholder="Observación"
+                v-model="form.obs_textura"
+              />
+            </div>
           </div>
 
-          <div class="mb-1">
-            <label class="form-label">OLOR:</label>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="olor1" />
-              <label class="form-check-label" for="olor1"
-                >Caracteristico propio de la Especie</label
-              >
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="olor2" />
-              <label class="form-check-label" for="olor2"
-                >fuerte, hedor agrio o similar al azufre</label
-              >
-            </div>
-            <label class="form-label mt-2">Observación:</label>
-            <input type="text" class="form-control" />
-          </div>
-
-          <div class="mb-1">
-            <label class="form-label">TEXTURA:</label>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="textura1" />
-              <label class="form-check-label" for="textura1"
-                >Firme al tacto, piel adherida al musculo</label
-              >
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="textura2" />
-              <label class="form-check-label" for="textura2"
-                >Textura pegajosa, viscosa o babosa</label
-              >
-            </div>
-            <label class="form-label mt-2">Observación:</label>
-            <input type="text" class="form-control" />
-          </div>
-
-          <h4 class="mt-4 mb-1">
-            ALMACENAMIENTO - TEMPERATURAS DE CONSERVACIÓN DEL PRODUCTO
-          </h4>
-
-          <div class="row mb-1">
+          <h5 class="mt-3 mb-2">
+            ALMACENAMIENTO - TEMPERATURAS DE CONSERVACIÓN (CARNE DE
+            {{ form.tipo }})
+          </h5>
+          <div class="row mb-3">
             <div class="col-md-3">
               <label class="form-label">Cuarto Frio:</label>
-              <input type="text" class="form-control" />
+              <input type="text" class="form-control" v-model="form.cuarto" />
             </div>
             <div class="col-md-3">
               <label class="form-label">Tanque:</label>
-              <input type="text" class="form-control" />
+              <input type="text" class="form-control" v-model="form.tanque" />
             </div>
             <div class="col-md-3">
               <label class="form-label">Nevera:</label>
-              <input type="text" class="form-control" />
+              <input type="text" class="form-control" v-model="form.nevera" />
             </div>
             <div class="col-md-3">
               <label class="form-label">Caba:</label>
-              <input type="text" class="form-control" />
+              <input type="text" class="form-control" v-model="form.caba" />
             </div>
           </div>
-
-          <div class="row mb-1">
+          <div class="row mb-3">
             <div class="col-md-4">
               <label class="form-label">T° Refrigeración:</label>
-              <input type="text" class="form-control" />
+              <input
+                type="number"
+                class="form-control"
+                v-model="form.temp_ref"
+              />
             </div>
             <div class="col-md-4">
               <label class="form-label">T° Congelación:</label>
-              <input type="text" class="form-control" />
+              <input
+                type="number"
+                class="form-control"
+                v-model="form.temp_con"
+              />
             </div>
             <div class="col-md-4">
               <label class="form-label">Cantidad Producto Almacenado:</label>
-              <input type="text" class="form-control" />
+              <input
+                type="text"
+                class="form-control"
+                v-model="form.cantidad_alm"
+              />
+            </div>
+          </div>
+          <div class="border rounded p-3 mb-3">
+            <h5 class="mt-3 mb-2">
+              Agregar fila Rotulado/Etiquetado carne de {{ form.tipo }}
+            </h5>
+            <div class="row mb-3">
+              <div class="col-md-3">
+                <label class="form-label">MARCA</label>
+                <input type="text" class="form-control" v-model="marca" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">CONTENIDO NETO</label>
+                <input type="text" class="form-control" v-model="contenido" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">DIRECCION / LUGAR PROCEDENCIA</label>
+                <input type="text" class="form-control" v-model="direccion" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label"
+                  >LOTE - FECHA EMPACADO - FECHA DE DESPACHO</label
+                >
+                <input type="text" class="form-control" v-model="lote" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">FECHA DE VENCIMIENTO</label>
+                <input type="date" class="form-control" v-model="fecha" />
+              </div>
+              <div class="col-md-9">
+                <label class="form-label">OBSERVACION</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="observaciones"
+                />
+              </div>
+              <div class="col-md-12 mt-3">
+                <button
+                  type="button"
+                  class="btn btn-secondary mb-3"
+                  @click="agregarFila"
+                >
+                  Agregar
+                </button>
+              </div>
             </div>
           </div>
 
-          <div class="mt-2 mb-1">
-            <table class="table table-bordered">
-              <thead class="table-primary text-center">
+          <div class="row mb-3">
+            <table class="table table-bordered text-center">
+              <thead class="bg-primary-lighter">
                 <tr>
-                  <th colspan="6" class="text-uppercase">
-                    Rotulado y Etiquetado
-                  </th>
+                  <th colspan="6">ROTULADO Y/O ETIQUETADO</th>
                 </tr>
-                <tr>
-                  <th>Marca</th>
-                  <th>Contenido Neto</th>
-                  <th>Dirección / Lugar Procedencia</th>
-                  <th>Lote - Fecha Empacado - Fecha de Despacho</th>
-                  <th>Fecha de Vencimiento</th>
-                  <th>Observaciones</th>
+                <tr class="bg-light">
+                  <th>MARCA</th>
+                  <th>CONTENIDO NETO</th>
+                  <th>DIRECCIÓN / LUGAR PROCEDENCIA</th>
+                  <th>LOTE - FECHA EMPACADO - FECHA DE DESPACHO</th>
+                  <th>FECHA DE VENCIMIENTO</th>
+                  <th>OBSERVACIONES</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <input type="text" class="form-control form-control-sm" />
-                  </td>
-                  <td>
-                    <input type="text" class="form-control form-control-sm" />
-                  </td>
-                  <td>
-                    <input type="text" class="form-control form-control-sm" />
-                  </td>
-                  <td>
-                    <input type="text" class="form-control form-control-sm" />
-                  </td>
-                  <td>
-                    <input type="text" class="form-control form-control-sm" />
-                  </td>
-                  <td>
-                    <input type="text" class="form-control form-control-sm" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <input type="text" class="form-control form-control-sm" />
-                  </td>
-                  <td>
-                    <input type="text" class="form-control form-control-sm" />
-                  </td>
-                  <td>
-                    <input type="text" class="form-control form-control-sm" />
-                  </td>
-                  <td>
-                    <input type="text" class="form-control form-control-sm" />
-                  </td>
-                  <td>
-                    <input type="text" class="form-control form-control-sm" />
-                  </td>
-                  <td>
-                    <input type="text" class="form-control form-control-sm" />
-                  </td>
+                <tr v-for="(fila, index) in form.filas" :key="index">
+                  <td>{{ fila.marca }}</td>
+                  <td>{{ fila.contenido }}</td>
+                  <td>{{ fila.direccion }}</td>
+                  <td>{{ fila.lote }}</td>
+                  <td>{{ fila.fecha }}</td>
+                  <td>{{ fila.observaciones }}</td>
                 </tr>
               </tbody>
             </table>
@@ -302,64 +364,90 @@
 
           <div class="mb-1">
             <label class="form-label">OBSERVACIONES GENERALES</label>
-            <textarea class="form-control" rows="3"></textarea>
+            <textarea
+              class="form-control"
+              rows="3"
+              v-model="form.observaciones"
+            ></textarea>
           </div>
 
           <h4 class="mt-4 mb-1">Visita Atendida por:</h4>
           <div class="row mb-1">
-            <div class="col-12 mb-1">
+            <div class="col-6 mb-1">
               <SignaturePad
-                ref="firstSignaturePad"
-                @signatureSaved="handleFirstSignature"
-                @signatureCleared="handleFirstSignatureCleared"
+                idFirma="firma1"
+                :varFirma="form.firma1"
+                @firmas-updated="actualizarFirmas"
               />
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Cargo:</label>
-              <input type="text" class="form-control" />
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">N° de Identificación:</label>
-              <input type="text" class="form-control" />
-            </div>
-          </div>
-          <div class="row mb-1">
-            <div class="col-md-6">
-              <label class="form-label">Telefono:</label>
-              <input type="tel" class="form-control" />
-            </div>
-            <div class="col-md-6">
               <label class="form-label">Nombre:</label>
-              <input type="text" class="form-control" />
-            </div>
-          </div>
+              <input
+                type="text"
+                class="form-control"
+                v-model="form.nombre_atiende"
+                required
+              />
 
-          <h4 class="mt-4 mb-1">Visita Realizada por:</h4>
-          <div class="row mb-1">
-            <div class="col-12 mb-1">
-              <SignaturePad
-                ref="secondSignaturePad"
-                @signatureSaved="handleSecondSignature"
-                @signatureCleared="handleSecondSignatureCleared"
+              <label class="form-label">Cargo:</label>
+              <input
+                type="text"
+                class="form-control"
+                v-model="form.cargo_atiende"
+                required
+              />
+
+              <label class="form-label">N° de Identificación:</label>
+              <input
+                type="text"
+                class="form-control"
+                v-model="form.cedula_atiende"
+                required
+              />
+
+              <label class="form-label">Telefono:</label>
+              <input
+                type="tel"
+                class="form-control"
+                v-model="form.telefono_atiende"
+                required
               />
             </div>
-            <div class="col-md-6">
-              <label class="form-label">Cargo:</label>
-              <input type="text" class="form-control" />
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">N° de Identificación:</label>
-              <input type="text" class="form-control" />
-            </div>
-          </div>
-          <div class="row mb-1">
-            <div class="col-md-6">
-              <label class="form-label">Telefono:</label>
-              <input type="tel" class="form-control" />
-            </div>
-            <div class="col-md-6">
+            <div class="col-6 mb-1">
+              <SignaturePad
+                idFirma="firma2"
+                :varFirma="form.firma2"
+                @firmas-updated="actualizarFirmas"
+              />
               <label class="form-label">Nombre:</label>
-              <input type="text" class="form-control" />
+              <input
+                type="text"
+                class="form-control"
+                v-model="form.nombre_apoyo"
+                required
+              />
+
+              <label class="form-label">Cargo:</label>
+              <input
+                type="text"
+                class="form-control"
+                v-model="form.cargo_apoyo"
+                required
+              />
+
+              <label class="form-label">N° de Identificación:</label>
+              <input
+                type="text"
+                class="form-control"
+                v-model="form.cedula_apoyo"
+                required
+              />
+
+              <label class="form-label">Telefono:</label>
+              <input
+                type="tel"
+                class="form-control"
+                v-model="form.telefono_apoyo"
+                required
+              />
             </div>
           </div>
           <!-- Componente de carga de archivos -->
@@ -374,7 +462,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "@/axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 import SignaturePad from "@/components/SignaturePad.vue";
@@ -394,23 +482,54 @@ export default {
       isLoading: false,
       toastMessage: "",
       toastType: "",
-      nuevoNombre: "", // Input para el nombre
-      nuevoGrado: "", // Input para el grado
+      // Input para tabla temporal
+      marca: "",
+      contenido: "",
+      direccion: "",
+      lote: "",
+      fecha: "",
+      observaciones: "",
       filas: [], //filas de la tabla
       form: {
         tipo: this.$route.params.tipo,
-        fechaVisita: "",
-        municipio: "",
-        institucion: "",
-        sede: "",
+        etc: "Norte de Santander",
         operador: "",
         contrato: "",
-        numVisita: "",
-        modalidad: "",
-        numBeneficiarios: "",
-        horaInicio: "",
-        horaFin: "",
+        municipio: "",
+        direccion: "",
+        fecha_visita: "",
+        producto: "",
+        institucion: "",
+        hora: "",
+        cantidad_kardex: "",
+        cantidad_muestra: "",
+        nombre_operador: "",
+        olor: "",
+        color: "",
+        textura: "",
+        obs_olor: "",
+        obs_color: "",
+        obs_textura: "",
+        cuarto: "",
+        tanque: "",
+        nevera: "",
+        caba: "",
+        temp_ref: "",
+        temp_con: "",
+        cantidad_alm: "",
+        observaciones: "",
+        firma1: "",
+        firma2: "",
+        nombre_atiende: "",
+        cedula_atiende: "",
+        cargo_atiende: "",
+        telefono_atiende: "",
+        nombre_apoyo: "",
+        cedula_apoyo: "",
+        cargo_apoyo: "",
+        telefono_apoyo: "",
         files: [],
+        filas: [],
       },
       formulariosOffline: [], // Para almacenar temporalmente los formularios en localStorage
     };
@@ -420,44 +539,88 @@ export default {
       // Actualiza la lista de archivos en el formulario
       this.form.files = files;
     },
-    handleFirstSignature(signature) {
-      this.form.firstSignature = signature;
-      this.signatures.firstSignature = true; // La firma ha sido realizada
-    },
-    handleSecondSignature(signature) {
-      this.form.secondSignature = signature;
-      this.signatures.secondSignature = true; // La firma ha sido realizada
-    },
-    handleFirstSignatureCleared() {
-      this.signatures.firstSignature = false; // Marca como no firmada
-    },
-    handleSecondSignatureCleared() {
-      this.signatures.secondSignature = false; // Marca como no firmada
-    },
-    saveSignatures() {
-      // Llamamos a los métodos saveSignature de ambos componentes
-      this.$refs.firstSignaturePad.saveSignature();
-      this.$refs.secondSignaturePad.saveSignature();
+    actualizarFirmas({ idFirma, firma }) {
+      // Actualiza dinámicamente la firma en el formulario
+      this.form[idFirma] = firma;
     },
     agregarFila() {
-      if (this.nuevoNombre && this.nuevoGrado) {
+      if (
+        this.marca &&
+        this.contenido &&
+        this.direccion &&
+        this.lote &&
+        this.fecha
+      ) {
         // Agregar una nueva fila con los valores ingresados
-        this.filas.push({
-          nombre: this.nuevoNombre,
-          grado: this.nuevoGrado,
+        this.form.filas.push({
+          marca: this.marca,
+          contenido: this.contenido,
+          direccion: this.direccion,
+          lote: this.lote,
+          fecha: this.fecha,
+          observaciones: this.observaciones,
         });
 
         // Limpiar los campos después de agregar
-        this.nuevoNombre = "";
-        this.nuevoGrado = "";
+        this.marca = "";
+        this.contenido = "";
+        this.direccion = "";
+        this.lote = "";
+        this.fecha = "";
+        this.observaciones = "";
       } else {
         this.showToast(
-          "Por favor, complete ambos campos antes de agregar.",
+          "Por favor, complete todos los campos antes de agregar.",
           "danger"
         );
       }
     },
     guardarFormulario() {
+      this.isLoading = true;
+      // Primero, guardamos las firmas
+      if (this.form.firma1 == "" || this.form.firma2 == "") {
+        this.isLoading = false;
+        this.showToast(
+          "Firmas no dilegenciadas. Por favor, complete y guarde las firmas.",
+          "danger"
+        );
+        return;
+      }
+      // validar que haya seleccionado archivos
+      if (this.form.files.length == 0) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan archivos. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+      if (this.form.filas.length == 0) {
+        this.isLoading = false;
+        this.showToast(
+          "Debe registrar al menos un rotulado. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+      //validar que haya llenado campos de firma apoyo y atendido
+      if (
+        this.form.cedula_apoyo == "" ||
+        this.form.nombre_apoyo == "" ||
+        this.form.telefono_apoyo == "" ||
+        this.form.cargo_apoyo == "" ||
+        this.form.cedula_atiende == "" ||
+        this.form.nombre_atiende == "" ||
+        this.form.telefono_atiende == "" ||
+        this.form.cargo_atiende == ""
+      ) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan datos de las firmas. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {
         // Enviar formulario al servidor
@@ -474,28 +637,95 @@ export default {
         JSON.parse(localStorage.getItem("formulariosOffline")) || [];
       guardados.push(this.form); // Añadir el formulario actual
       localStorage.setItem("formulariosOffline", JSON.stringify(guardados));
-      this.resetFormulario();
+      this.resetForm();
+      this.isLoading = false;
     },
     async enviarFormularioAlServidor() {
       try {
         this.isLoading = true;
         const apiUrl = process.env.VUE_APP_API_BASE_URL;
+        const formData = new FormData();
+        Object.keys(this.form).forEach((key) => {
+          if (key !== "files") {
+            if (key === "filas") {
+              formData.append(key, JSON.stringify(this.form[key] || [])); // Convierte a JSON
+            } else {
+              formData.append(key, this.form[key]);
+            }
+          }
+        });
+
+        this.form.files.forEach((fileObj, index) => {
+          formData.append(`files[${index}]`, fileObj.file);
+        });
         // Enviar datos con una solicitud POST
-        const response = await axios.post(`${apiUrl}/visitas`, this.form);
-        console.log(response); //quitar
-        alert("Formulario enviado exitosamente.");
-        this.resetFormulario();
+        const response = await axios.post(
+          `${apiUrl}/ct_toma_muestras`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        console.log(response);
+        if (response.status === 201) {
+          this.showToast(
+            "Formulario de toma de muestra guardado correctamente",
+            "success"
+          );
+          this.resetForm(); // Reestablecer los campos del formulario
+        }
         this.isLoading = false;
       } catch (error) {
         this.isLoading = false;
-        this.showToast(
-          "No se pudo enviar el formulario" + error.response.data.message,
-          "danger"
-        );
-        console.error("Error al enviar el formulario:", error);
+        this.showToast("No se pudo enviar el formulario" + error, "danger");
       } finally {
         this.isLoading = false;
       }
+    },
+    resetForm() {
+      this.form = {
+        tipo: this.$route.params.tipo,
+        etc: "Norte de Santander",
+        operador: "",
+        contrato: "",
+        municipio: "",
+        direccion: "",
+        fecha_visita: "",
+        producto: "",
+        institucion: "",
+        hora: "",
+        cantidad_kardex: "",
+        cantidad_muestra: "",
+        nombre_operador: "",
+        olor: "",
+        color: "",
+        textura: "",
+        obs_olor: "",
+        obs_color: "",
+        obs_textura: "",
+        cuarto: "",
+        tanque: "",
+        nevera: "",
+        caba: "",
+        temp_ref: "",
+        temp_con: "",
+        cantidad_alm: "",
+        observaciones: "",
+        firma1: "",
+        firma2: "",
+        nombre_atiende: "",
+        cedula_atiende: "",
+        cargo_atiende: "",
+        telefono_atiende: "",
+        nombre_apoyo: "",
+        cedula_apoyo: "",
+        cargo_apoyo: "",
+        telefono_apoyo: "",
+        files: [],
+        filas: [],
+      };
     },
     showToast(message, type) {
       this.toastMessage = message;
