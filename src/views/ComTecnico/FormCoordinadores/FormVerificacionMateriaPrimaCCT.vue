@@ -29,25 +29,21 @@
           <!-- Header Information -->
           <div class="row mb-3">
             <div class="col-md-4">
-              <label for="etc" class="form-label">ETC:</label>
+              <label class="form-label">ETC:</label>
               <input
                 type="text"
                 class="form-control"
-                id="etc"
                 v-model="form.etc"
-                value="Norte de Santander"
-                readonly
+                required
               />
             </div>
             <div class="col-md-4">
-              <label for="fechaVisita" class="form-label"
-                >Fecha de la visita:</label
-              >
+              <label class="form-label">Fecha de la visita:</label>
               <input
                 type="date"
                 class="form-control"
                 id="fechaVisita"
-                v-model="form.fechaVisita"
+                v-model="form.fecha_visita"
                 required
               />
             </div>
@@ -62,24 +58,18 @@
               <label for="institucionEducativa" class="form-label"
                 >Institución Educativa:</label
               >
-              <input
-                type="text"
-                class="form-control"
-                id="institucionEducativa"
-                v-model="form.institucionEducativa"
-                required
+              <InstitucionSelect
+                v-model="form.institucion"
+                :municipio-id="form.municipio"
               />
             </div>
             <div class="col-md-6">
               <label for="sedeEducativa" class="form-label"
                 >Sede Educativa:</label
               >
-              <input
-                type="text"
-                class="form-control"
-                id="sedeEducativa"
-                v-model="form.sedeEducativa"
-                required
+              <SedeSelect
+                v-model="form.sede"
+                :institucion-id="form.institucion"
               />
             </div>
           </div>
@@ -91,7 +81,7 @@
                 type="time"
                 class="form-control"
                 id="horaInicial"
-                v-model="form.horaInicial"
+                v-model="form.hora_inicial"
                 required
               />
             </div>
@@ -101,7 +91,7 @@
                 type="time"
                 class="form-control"
                 id="horaFinal"
-                v-model="form.horaFinal"
+                v-model="form.hora_final"
                 required
               />
             </div>
@@ -112,8 +102,7 @@
                 class="form-control"
                 id="operador"
                 v-model="form.operador"
-                value="Unión Temporal Suministros PAE 2024"
-                readonly
+                required
               />
             </div>
             <div class="col-md-3">
@@ -124,9 +113,8 @@
                 type="text"
                 class="form-control"
                 id="numeroContrato"
-                v-model="form.numeroContrato"
-                value="LP-SEG-3030-2023 del 12 de enero del 2024"
-                readonly
+                v-model="form.contrato"
+                required
               />
             </div>
           </div>
@@ -137,12 +125,12 @@
               <select
                 class="form-select"
                 id="tipoVisita"
-                v-model="form.tipoVisita"
+                v-model="form.tipo_visita"
                 required
               >
-                <option value="tecnica">Técnica</option>
-                <option value="verificacionETA">Verificación ETA</option>
-                <option value="spqr">SPQR</option>
+                <option value="Técnica">Técnica</option>
+                <option value="Verificación ETA">Verificación ETA</option>
+                <option value="SPQR">SPQR</option>
               </select>
             </div>
             <div class="col-md-3">
@@ -152,12 +140,12 @@
               <select
                 class="form-select"
                 id="numeroVisita"
-                v-model="form.numeroVisita"
+                v-model="form.numero_visita"
                 required
               >
-                <option value="1">1ra</option>
-                <option value="2">2da</option>
-                <option value="3">3ra</option>
+                <option value="1ra">1ra</option>
+                <option value="2da">2da</option>
+                <option value="3ra">3ra</option>
               </select>
             </div>
             <div class="col-md-3">
@@ -168,7 +156,7 @@
                 type="number"
                 class="form-control"
                 id="numeroBeneficiarios"
-                v-model="form.numeroBeneficiarios"
+                v-model="form.num_beneficiarios"
                 required
               />
             </div>
@@ -180,7 +168,7 @@
                 type="text"
                 class="form-control"
                 id="descripcionMenu"
-                v-model="form.descripcionMenu"
+                v-model="form.descripcion_menu"
                 required
               />
             </div>
@@ -188,7 +176,12 @@
               Nota 1: La ETC determina validar todas las materias primas
               suministradas por el operador para la ejecucion de la semana
               comprendida entre el:
-              <input type="text" class="form-control" v-model="form.nota1" />
+              <input
+                type="text"
+                class="form-control"
+                v-model="form.nota1"
+                required
+              />
             </div>
             <div class="col-md-12">
               Nota 2: Para evaluar la temperatura y características
@@ -197,7 +190,105 @@
               00335 de 2021.
             </div>
           </div>
-
+          <div class="border rounded p-3 mb-3">
+            <h5>Agregar fila en verificación de materia prima</h5>
+            <div class="row">
+              <div class="col-md-3">
+                <label class="form-label">Materia prima</label>
+                <select class="form-select" v-model="material">
+                  <option
+                    v-for="(i, index) in alimentos"
+                    :key="index"
+                    :value="i"
+                  >
+                    {{ i }}
+                  </option>
+                </select>
+                <!-- Mostrar input si el usuario selecciona "Otro" -->
+                <input
+                  v-if="material === 'Otro'"
+                  type="text"
+                  class="form-control mt-2"
+                  placeholder="Especificar materia prima"
+                  v-model="materialOtro"
+                />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Lote</label>
+                <input type="text" class="form-control" v-model="lote" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Fecha</label>
+                <input type="date" class="form-control" v-model="fecha" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Unidad</label>
+                <input type="text" class="form-control" v-model="unidad" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Temperatura</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  v-model="temperatura"
+                />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Cantidad kardex</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  v-model="cantidadKardex"
+                />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Cantidad encontrada</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  v-model="cantidadEncontrada"
+                />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Cantidad faltante</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  v-model="cantidadFaltante"
+                />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Color</label>
+                <input type="text" class="form-control" v-model="color" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Olor</label>
+                <input type="text" class="form-control" v-model="olor" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Textura</label>
+                <input type="text" class="form-control" v-model="textura" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Cumplimiento</label>
+                <select class="form-select" v-model="cumplimiento">
+                  <option value="cumple">Cumple</option>
+                  <option value="noCumple">No cumple</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 mt-3">
+                <button
+                  type="button"
+                  class="btn btn-secondary mb-3"
+                  @click="agregarFila"
+                >
+                  Agregar
+                </button>
+              </div>
+            </div>
+          </div>
           <!-- Raw Material Verification Table -->
           <div class="table-responsive mb-3">
             <table class="table table-bordered">
@@ -225,89 +316,43 @@
                   <th>Textura</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr v-for="(item, index) in rawMaterials" :key="index">
-                  <td class="text-center">
+              <tbody class="text-center">
+                <tr v-for="(item, index) in form.filas" :key="index">
+                  <td>
                     {{ item.nombre }}
                   </td>
                   <td>
-                    <input
-                      type="text"
-                      class="form-control"
-                      v-model="item.lote"
-                    />
+                    {{ item.lote }}
                   </td>
                   <td>
-                    <input
-                      type="date"
-                      class="form-control"
-                      v-model="item.fechaVencimiento"
-                    />
+                    {{ item.fecha }}
                   </td>
                   <td>
-                    <input
-                      type="text"
-                      class="form-control"
-                      v-model="item.unidadMedida"
-                    />
+                    {{ item.unidadMedida }}
                   </td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      v-model="item.temperatura"
-                    />
+                    {{ item.temperatura }}
                   </td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      v-model="item.cantidadKardex"
-                    />
+                    {{ item.cantidadKardex }}
                   </td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      v-model="item.cantidadEncontrada"
-                    />
+                    {{ item.cantidadEncontrada }}
                   </td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      v-model="item.cantidadFaltante"
-                    />
+                    {{ item.cantidadFaltante }}
                   </td>
                   <td>
-                    <input
-                      type="text"
-                      class="form-control"
-                      v-model="item.caracteristicas.color"
-                      placeholder="Color"
-                    />
+                    {{ item.color }}
                   </td>
                   <td>
-                    <input
-                      type="text"
-                      class="form-control"
-                      v-model="item.caracteristicas.olor"
-                      placeholder="Olor"
-                    />
+                    {{ item.olor }}
                   </td>
                   <td>
-                    <input
-                      type="text"
-                      class="form-control"
-                      v-model="item.caracteristicas.textura"
-                      placeholder="Textura"
-                    />
+                    {{ item.textura }}
                   </td>
                   <td>
-                    <select class="form-select" v-model="item.cumplimiento">
-                      <option value="cumple">Cumple</option>
-                      <option value="noCumple">No cumple</option>
-                    </select>
+                    {{ item.cumplimiento }}
                   </td>
                 </tr>
                 <tr>
@@ -321,6 +366,7 @@
                       type="number"
                       class="form-control"
                       v-model="form.porcentaje_cumplimiento"
+                      required
                     />
                   </td>
                 </tr>
@@ -339,130 +385,97 @@
             ></textarea>
           </div>
 
-          <!-- Compliance Percentage -->
-          <div class="mb-3">
-            <label for="porcentajeCumplimiento" class="form-label"
-              >Porcentaje de cumplimiento:</label
-            >
-            <input
-              type="number"
-              class="form-control"
-              id="porcentajeCumplimiento"
-              v-model="form.porcentajeCumplimiento"
-              readonly
-            />
-          </div>
-
           <!-- Signatures -->
           <div class="row mb-3">
             <div class="col-md-6">
               <h4>FIRMA EQUIPO PAE /APOYO A LA SUPERVISIÓN</h4>
-              <div class="mb-2">
+              <div>
                 <SignaturePad
-                  ref="firstSignaturePad"
-                  @signatureSaved="handleFirstSignature"
-                  @signatureCleared="handleFirstSignatureCleared"
+                  idFirma="firma1"
+                  :varFirma="form.firma1"
+                  @firmas-updated="actualizarFirmas"
                 />
               </div>
-              <div class="mb-2">
-                <label for="nombreEquipoPAE" class="form-label">Nombre:</label>
+              <div>
+                <label class="form-label">Nombre:</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="nombreEquipoPAE"
-                  v-model="form.firmaEquipoPAE.nombre"
+                  id="nombreEquioPAE"
+                  v-model="form.nombre_apoyo"
                   required
                 />
               </div>
-              <div class="mb-2">
-                <label for="documentoEquipoPAE" class="form-label"
-                  >Documento:</label
-                >
+              <div>
+                <label class="form-label">Documento:</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="documentoEquipoPAE"
-                  v-model="form.firmaEquipoPAE.documento"
+                  v-model="form.cedula_apoyo"
                   required
                 />
               </div>
-              <div class="mb-2">
-                <label for="cargoEquipoPAE" class="form-label">Cargo:</label>
+              <div>
+                <label class="form-label">Cargo:</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="cargoEquipoPAE"
-                  v-model="form.firmaEquipoPAE.cargo"
+                  v-model="form.cargo_apoyo"
                   required
                 />
               </div>
-              <div class="mb-2">
-                <label for="telefonoEquipoPAE" class="form-label"
-                  >Teléfono:</label
-                >
+              <div>
+                <label class="form-label">Teléfono:</label>
                 <input
                   type="tel"
                   class="form-control"
-                  id="telefonoEquipoPAE"
-                  v-model="form.firmaEquipoPAE.telefono"
+                  v-model="form.telefono_apoyo"
                   required
                 />
               </div>
             </div>
             <div class="col-md-6">
               <h4>FIRMA QUIEN ATIENDE LA VISITA</h4>
-              <div class="mb-2">
+              <div>
                 <SignaturePad
-                  ref="secondSignaturePad"
-                  @signatureSaved="handleFSecondSignature"
-                  @signatureCleared="handleSecondSignatureCleared"
+                  idFirma="firma2"
+                  :varFirma="form.firma2"
+                  @firmas-updated="actualizarFirmas"
                 />
               </div>
-              <div class="mb-2">
-                <label for="nombreAtiendeVisita" class="form-label"
-                  >Nombre:</label
-                >
+              <div>
+                <label class="form-label">Nombre:</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="nombreAtiendeVisita"
-                  v-model="form.firmaAtiendeVisita.nombre"
+                  v-model="form.nombre_atiende"
                   required
                 />
               </div>
-              <div class="mb-2">
-                <label for="documentoAtiendeVisita" class="form-label"
-                  >Documento:</label
-                >
+              <div>
+                <label class="form-label">Documento:</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="documentoAtiendeVisita"
-                  v-model="form.firmaAtiendeVisita.documento"
+                  v-model="form.cedula_atiende"
                   required
                 />
               </div>
-              <div class="mb-2">
-                <label for="cargoAtiendeVisita" class="form-label"
-                  >Cargo:</label
-                >
+              <div>
+                <label class="form-label">Cargo:</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="cargoAtiendeVisita"
-                  v-model="form.firmaAtiendeVisita.cargo"
+                  v-model="form.cargo_atiende"
                   required
                 />
               </div>
-              <div class="mb-2">
-                <label for="telefonoAtiendeVisita" class="form-label"
-                  >Teléfono:</label
-                >
+              <div>
+                <label class="form-label">Teléfono:</label>
                 <input
                   type="tel"
                   class="form-control"
-                  id="telefonoAtiendeVisita"
-                  v-model="form.firmaAtiendeVisita.telefono"
+                  v-model="form.telefono_atiende"
                   required
                 />
               </div>
@@ -482,12 +495,14 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "@/axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 import SignaturePad from "@/components/SignaturePad.vue";
 import MunicipioSelect from "@/components/MunicipioSelect.vue";
 import FileUploader from "@/components/FileUploader.vue";
+import InstitucionSelect from "@/components/InstitucionSelect.vue";
+import SedeSelect from "@/components/SedeSelect.vue";
 
 export default {
   components: {
@@ -495,6 +510,8 @@ export default {
     ToastNotification,
     SignaturePad,
     MunicipioSelect,
+    InstitucionSelect,
+    SedeSelect,
     FileUploader,
   },
   data() {
@@ -502,284 +519,69 @@ export default {
       isLoading: false,
       toastMessage: "",
       toastType: "",
+      // Input para tabla temporal
+      material: "",
+      materialOtro: "",
+      lote: "",
+      fecha: "",
+      unidad: "",
+      temperatura: "",
+      cantidadKardex: "",
+      cantidadEncontrada: "",
+      cantidadFaltante: "",
+      color: "",
+      olor: "",
+      textura: "",
+      cumplimiento: "",
+
       form: {
         etc: "Norte de Santander",
-        fechaVisita: "",
+        fecha_visita: "",
         municipio: "",
-        institucionEducativa: "",
-        sedeEducativa: "",
-        horaInicial: "",
-        horaFinal: "",
+        institucion: "",
+        sede: "",
+        hora_inicial: "",
+        hora_final: "",
         operador: "",
-        numeroContrato: "",
-        tipoVisita: "",
-        numeroVisita: "",
-        numeroBeneficiarios: "",
-        descripcionMenu: "",
+        contrato: "",
+        tipo_visita: "",
+        numero_visita: "",
+        num_beneficiarios: 0,
+        descripcion_menu: "",
         observaciones: "",
         porcentajeCumplimiento: 0,
         files: [],
-        firmaEquipoPAE: {
-          nombre: "",
-          documento: "",
-          cargo: "",
-          telefono: "",
-        },
-        firmaAtiendeVisita: {
-          nombre: "",
-          documento: "",
-          cargo: "",
-          telefono: "",
-        },
+        filas: [],
+        firma1: "",
+        firma2: "",
+        nombre_apoyo: "",
+        cedula_apoyo: "",
+        cargo_apoyo: "",
+        telefono_apoyo: "",
+        nombre_atiende: "",
+        cedula_atiende: "",
+        cargo_atiende: "",
+        telefono_atiende: "",
       },
-      rawMaterials: [
-        {
-          nombre: "Arroz",
-          editable: false,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
-        {
-          nombre: "Azúcar",
-          editable: false,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
-        {
-          nombre: "Leche en polvo",
-          editable: false,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
-        {
-          nombre: "Pechuga (pollo)",
-          editable: false,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
-        {
-          nombre: "Huevo",
-          editable: false,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
-        {
-          nombre: "Aceite",
-          editable: false,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
-        {
-          nombre: "Leguminosas",
-          editable: false,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
-        {
-          nombre: "Carne (res-cerdo)",
-          editable: false,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
-        {
-          nombre: "Cebolla cabezona",
-          editable: false,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
-        {
-          nombre: "Papa-yuca",
-          editable: false,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
-        {
-          nombre: "Plátano",
-          editable: false,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
-        {
-          nombre: "Pepino",
-          editable: false,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
-        {
-          nombre: "Remolacha",
-          editable: false,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
-        {
-          nombre: "Zanahoria",
-          editable: false,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
-        {
-          nombre: "Ahuyama",
-          editable: false,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
-        {
-          nombre: "Fruta 1",
-          editable: true,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
-        {
-          nombre: "Fruta 2",
-          editable: true,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
-        {
-          nombre: "Limón-naranja",
-          editable: false,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
-        {
-          nombre: "Tomate",
-          editable: false,
-          lote: "",
-          fechaVencimiento: "",
-          unidadMedida: "",
-          temperatura: null,
-          cantidadKardex: null,
-          cantidadEncontrada: null,
-          cantidadFaltante: null,
-          caracteristicas: { color: "", olor: "", textura: "" },
-          cumplimiento: "",
-        },
+      alimentos: [
+        "Arroz",
+        "Azúcar",
+        "Leche en polvo",
+        "Pechuga (pollo)",
+        "Huevo",
+        "Aceite",
+        "Leguminosas",
+        "Carne (res-cerdo)",
+        "Cebolla cabezona",
+        "Papa-yuca",
+        "Plátano",
+        "Pepino",
+        "Remolacha",
+        "Zanahoria",
+        "Ahuyama",
+        "Limón-naranja",
+        "Tomate",
+        "Otro",
       ],
       formulariosOffline: [], // Para almacenar temporalmente los formularios en localStorage
     };
@@ -789,26 +591,121 @@ export default {
       // Actualiza la lista de archivos en el formulario
       this.form.files = files;
     },
-    handleFirstSignature(signature) {
-      this.form.firstSignature = signature;
-      this.signatures.firstSignature = true; // La firma ha sido realizada
+    actualizarFirmas({ idFirma, firma }) {
+      // Actualiza dinámicamente la firma en el formulario
+      this.form[idFirma] = firma;
     },
-    handleSecondSignature(signature) {
-      this.form.secondSignature = signature;
-      this.signatures.secondSignature = true; // La firma ha sido realizada
-    },
-    handleFirstSignatureCleared() {
-      this.signatures.firstSignature = false; // Marca como no firmada
-    },
-    handleSecondSignatureCleared() {
-      this.signatures.secondSignature = false; // Marca como no firmada
-    },
-    saveSignatures() {
-      // Llamamos a los métodos saveSignature de ambos componentes
-      this.$refs.firstSignaturePad.saveSignature();
-      this.$refs.secondSignaturePad.saveSignature();
+    agregarFila() {
+      if (
+        this.material &&
+        this.lote &&
+        this.fecha &&
+        this.unidad &&
+        this.temperatura &&
+        this.cantidadKardex &&
+        this.cantidadEncontrada &&
+        this.cantidadFaltante &&
+        this.color &&
+        this.olor &&
+        this.textura &&
+        this.cumplimiento
+      ) {
+        // Agregar una nueva fila con los valores ingresados
+        if (this.materialOtro) {
+          this.material = this.materialOtro;
+        }
+        this.form.filas.push({
+          nombre: this.material,
+          lote: this.lote,
+          fecha: this.fecha,
+          unidadMedida: this.unidad,
+          temperatura: this.temperatura,
+          cantidadKardex: this.cantidadKardex,
+          cantidadEncontrada: this.cantidadEncontrada,
+          cantidadFaltante: this.cantidadFaltante,
+          color: this.color,
+          olor: this.olor,
+          textura: this.textura,
+          cumplimiento: this.cumplimiento,
+        });
+        // Limpiar los campos después de agregar
+        this.material = "";
+        this.materialOtro = "";
+        this.lote = "";
+        this.fecha = "";
+        this.unidad = "";
+        this.temperatura = "";
+        this.cantidadKardex = "";
+        this.cantidadEncontrada = "";
+        this.cantidadFaltante = "";
+        this.color = "";
+        this.olor = "";
+        this.textura = "";
+        this.cumplimiento = "";
+      } else {
+        this.showToast(
+          "Por favor, complete todos los campos antes de agregar.",
+          "danger"
+        );
+      }
     },
     guardarFormulario() {
+      this.isLoading = true;
+      // Primero, guardamos las firmas
+      if (this.form.firma1 == "" || this.form.firma2 == "") {
+        this.isLoading = false;
+        this.showToast(
+          "Firmas no dilegenciadas. Por favor, complete y guarde las firmas.",
+          "danger"
+        );
+        return;
+      }
+      // validar que haya seleccionado archivos
+      if (this.form.files.length == 0) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan archivos. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+      if (
+        this.form.nombre_apoyo == "" ||
+        this.form.cedula_apoyo == "" ||
+        this.form.telefono_apoyo == "" ||
+        this.form.cargo_apoyo == "" ||
+        this.form.nombre_atiende == "" ||
+        this.form.cedula_atiende == "" ||
+        this.form.telefono_atiende == "" ||
+        this.form.cargo_atiende == ""
+      ) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan datos de las firmas. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+      if (
+        this.form.municipio == "" ||
+        this.form.institucion == "" ||
+        this.form.sede == ""
+      ) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan datos de municipio, institucion o sede. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+      if (this.form.filas.length == 0) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan diligenciar materias primas. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {
         // Enviar formulario al servidor
@@ -825,28 +722,86 @@ export default {
         JSON.parse(localStorage.getItem("formulariosOffline")) || [];
       guardados.push(this.form); // Añadir el formulario actual
       localStorage.setItem("formulariosOffline", JSON.stringify(guardados));
-      this.resetFormulario();
+      this.resetForm();
+      this.isLoading = false;
     },
     async enviarFormularioAlServidor() {
       try {
-        this.isLoading = true;
         const apiUrl = process.env.VUE_APP_API_BASE_URL;
+        // Convertir form a Multipart
+        const formData = new FormData();
+        Object.keys(this.form).forEach((key) => {
+          if (key !== "files") {
+            if (key === "filas") {
+              formData.append(key, JSON.stringify(this.form[key] || [])); // Convierte a JSON
+            } else {
+              formData.append(key, this.form[key]);
+            }
+          }
+        });
+        this.form.files.forEach((fileObj, index) => {
+          formData.append(`files[${index}]`, fileObj.file);
+        });
+
         // Enviar datos con una solicitud POST
-        const response = await axios.post(`${apiUrl}/visitas`, this.form);
-        console.log(response); //quitar
-        alert("Formulario enviado exitosamente.");
-        this.resetFormulario();
+        const response = await axios.post(
+          `${apiUrl}/ct_verificacion_materia_prima`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        console.log(response);
+        if (response.status === 201) {
+          this.showToast(
+            "Formulario de verificación de materia prima guardado correctamente",
+            "success"
+          );
+          this.resetForm(); // Reestablecer los campos del formulario
+        }
         this.isLoading = false;
       } catch (error) {
         this.isLoading = false;
         this.showToast(
-          "No se pudo enviar el formulario" + error.response.data.message,
+          "No se pudo enviar el formulario componente tecnico, verificación de materia prima",
           "danger"
         );
-        console.error("Error al enviar el formulario:", error);
       } finally {
         this.isLoading = false;
       }
+    },
+    resetForm() {
+      this.form = {
+        etc: "Norte de Santander",
+        fecha_visita: "",
+        municipio: "",
+        institucion: "",
+        sede: "",
+        hora_inicial: "",
+        hora_final: "",
+        operador: "",
+        contrato: "",
+        tipo_visita: "",
+        numero_visita: "",
+        num_beneficiarios: 0,
+        descripcion_menu: "",
+        observaciones: "",
+        porcentajeCumplimiento: 0,
+        files: [],
+        filas: [],
+        firma1: "",
+        firma2: "",
+        nombre_apoyo: "",
+        cedula_apoyo: "",
+        cargo_apoyo: "",
+        telefono_apoyo: "",
+        nombre_atiende: "",
+        cedula_atiende: "",
+        cargo_atiende: "",
+        telefono_atiende: "",
+      };
     },
     showToast(message, type) {
       this.toastMessage = message;
