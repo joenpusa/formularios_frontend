@@ -39,8 +39,9 @@
                     type="text"
                     class="form-control"
                     id="etc"
-                    v-model="formData.etc"
+                    v-model="form.etc"
                     value="Norte de Santander"
+                    required
                   />
                 </div>
                 <div class="col-md-4">
@@ -51,13 +52,13 @@
                     type="date"
                     class="form-control"
                     id="fechaVisita"
-                    v-model="formData.fechaVisita"
+                    v-model="form.fechaVisita"
                     required
                   />
                 </div>
                 <div class="col-md-4">
                   <label for="municipio" class="form-label">Municipio:</label>
-                  <MunicipioSelect v-model="formData.municipio" />
+                  <MunicipioSelect v-model="form.municipio" />
                 </div>
               </div>
               <div class="row mb-3">
@@ -65,24 +66,18 @@
                   <label for="institucionEducativa" class="form-label"
                     >Institución Educativa:</label
                   >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="institucionEducativa"
-                    v-model="formData.institucionEducativa"
-                    required
+                  <InstitucionSelect
+                    v-model="form.institucion"
+                    :municipio-id="form.municipio"
                   />
                 </div>
                 <div class="col-md-6">
                   <label for="sedeEducativa" class="form-label"
                     >Sede Educativa:</label
                   >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="sedeEducativa"
-                    v-model="formData.sedeEducativa"
-                    required
+                  <SedeSelect
+                    v-model="form.sede"
+                    :institucion-id="form.institucion"
                   />
                 </div>
               </div>
@@ -95,7 +90,7 @@
                     type="time"
                     class="form-control"
                     id="horaInicial"
-                    v-model="formData.horaInicial"
+                    v-model="form.hora_inicial"
                     required
                   />
                 </div>
@@ -105,7 +100,7 @@
                     type="time"
                     class="form-control"
                     id="horaFinal"
-                    v-model="formData.horaFinal"
+                    v-model="form.hora_final"
                     required
                   />
                 </div>
@@ -116,12 +111,12 @@
                   <select
                     class="form-select"
                     id="tipoVisita"
-                    v-model="formData.tipoVisita"
+                    v-model="form.tipo_visita"
                     required
                   >
-                    <option value="tecnica">Técnica</option>
-                    <option value="verificacionETA">Verificación ETA</option>
-                    <option value="spqr">SPQR</option>
+                    <option value="Técnica">Técnica</option>
+                    <option value="Verificación ETA">Verificación ETA</option>
+                    <option value="SPQR">SPQR</option>
                   </select>
                 </div>
                 <div class="col-md-3">
@@ -131,12 +126,12 @@
                   <select
                     class="form-select"
                     id="numeroVisita"
-                    v-model="formData.numeroVisita"
+                    v-model="form.numero_visita"
                     required
                   >
-                    <option value="1">1ra</option>
-                    <option value="2">2da</option>
-                    <option value="3">3ra</option>
+                    <option value="1ra">1ra</option>
+                    <option value="2da">2da</option>
+                    <option value="3ra">3ra</option>
                   </select>
                 </div>
               </div>
@@ -147,7 +142,8 @@
                     type="text"
                     class="form-control"
                     id="operador"
-                    v-model="formData.operador"
+                    v-model="form.operador"
+                    required
                   />
                 </div>
                 <div class="col-md-4">
@@ -158,7 +154,8 @@
                     type="text"
                     class="form-control"
                     id="numeroContrato"
-                    v-model="formData.numeroContrato"
+                    v-model="form.contrato"
+                    required
                   />
                 </div>
                 <div class="col-md-4">
@@ -169,7 +166,7 @@
                     type="number"
                     class="form-control"
                     id="numeroBeneficiarios"
-                    v-model="formData.numeroBeneficiarios"
+                    v-model="form.num_beneficiarios"
                     required
                   />
                 </div>
@@ -206,7 +203,11 @@
                         limpia y se garantizan condiciones higiénico-sanitarias.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_1"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -216,7 +217,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_1_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -226,7 +231,11 @@
                         limpia y se garantizan condiciones higiénico-sanitarias.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_2"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -236,7 +245,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_2_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -246,7 +259,11 @@
                         y se garantizan condiciones higiénico-sanitarias.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_3"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -256,7 +273,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_3_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -266,7 +287,11 @@
                         manipulador de alimentos.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_4"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -276,7 +301,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_4_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -287,7 +316,11 @@
                         antibacterial, papel higiénico y papeleras con bolsa).
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_5"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -297,7 +330,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_5_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -317,7 +354,11 @@
                         alimentos).
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_6"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -327,7 +368,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_6_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -339,7 +384,11 @@
                         establecido.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_7"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -349,7 +398,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_7_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -360,7 +413,11 @@
                         resistentes al uso y a la corrosión.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_8"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -370,7 +427,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_8_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -381,7 +442,11 @@
                         y desinfección.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_9"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -391,7 +456,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_9_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -405,7 +474,11 @@
                         vectores.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_10"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -415,7 +488,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_10_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -427,10 +504,18 @@
                         documentación de empresa fumigadora, fichas técnicas. Se
                         encuentran diligenciadas de forma adecuada y oportuna.
                         Fecha de la ultima fumigación:
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.fecha_fumigacion"
+                        />
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_11"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -440,7 +525,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_11_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -451,7 +540,11 @@
                         de plagas.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_12"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -461,7 +554,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_12_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -479,7 +576,11 @@
                         norma sanitaria vigente.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_13"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -489,7 +590,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_13_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -502,7 +607,11 @@
                         generación de olores y/o proliferación de plagas.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_14"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -512,7 +621,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_14_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -523,7 +636,11 @@
                         para las superficies en contacto con éstos.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_15"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -533,7 +650,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_15_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -543,7 +664,11 @@
                         disposición de aceite vegetal usado.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_16"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -553,7 +678,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_16_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -564,7 +693,11 @@
                         establecimiento.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_17"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -574,7 +707,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_17_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -585,7 +722,11 @@
                         sólidos y líquidos.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_18"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -595,7 +736,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_18_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -611,7 +756,11 @@
                         un día de producción.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_19"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -621,7 +770,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_19_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -630,10 +783,18 @@
                         Se realiza la limpieza y desinfección periódica del
                         tanque de almacenamiento de agua potable. Fecha de la
                         última limpieza y desinfección realizada:
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.fecha_limpieza_tanque"
+                        />
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_20"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -643,7 +804,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_20_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -656,7 +821,11 @@
                         piel o enfermedades infectocontagiosas.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_21"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -666,7 +835,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_21_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -677,7 +850,11 @@
                         establecido en la normatividad vigente.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_22"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -687,7 +864,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_22_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -698,7 +879,11 @@
                         en la normatividad vigente.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_23"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -708,7 +893,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_23_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -719,7 +908,11 @@
                         los respectivos soportes de los exámenes médicos.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_24"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -729,7 +922,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_24_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -741,7 +938,11 @@
                         alimentos.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_25"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -751,7 +952,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_25_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -772,7 +977,11 @@
                         adecuadas pisos, paredes, techo, estibas, canastillas).
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_26"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -782,7 +991,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_26_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -792,7 +1005,11 @@
                         la autoridad competente con concepto favorable.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_27"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -802,7 +1019,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_27_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -814,7 +1035,11 @@
                         implementan buenas practicas de manufactura.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_28"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -824,7 +1049,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_28_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -836,7 +1065,11 @@
                         propias de cada producto.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_29"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -846,7 +1079,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_29_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -859,7 +1096,11 @@
                         y demás normatividad vigente).
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_30"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -869,7 +1110,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_30_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -880,7 +1125,11 @@
                         congelación.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_31"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -890,7 +1139,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_31_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -905,7 +1158,11 @@
                         sanitaria vigente.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_32"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -915,7 +1172,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_32_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -926,7 +1187,11 @@
                         minimizando el riesgo de contaminación.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_33"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -936,7 +1201,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_33_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -948,7 +1217,11 @@
                         características de calidad o inocuidad de los productos.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_34"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -958,7 +1231,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_34_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -969,7 +1246,11 @@
                         de 2005 y demás normatividad vigente.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_35"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -979,7 +1260,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_35_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -990,7 +1275,11 @@
                         correctamente y se realizan de manera oportuna.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_36"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -1000,7 +1289,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_36_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -1010,7 +1303,11 @@
                         rotación de productos - PEPS.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_37"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -1020,7 +1317,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_37_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -1034,7 +1335,11 @@
                         alimentos de posibles riesgos de contaminación.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_38"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -1044,7 +1349,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_38_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -1057,7 +1366,11 @@
                         desinfección.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_39"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -1067,7 +1380,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_39_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -1079,7 +1396,11 @@
                         materias primas de posibles riesgos de contaminación.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_40"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -1089,7 +1410,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_40_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -1103,7 +1428,11 @@
                         el desarrollo de microorganismos.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_41"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -1113,7 +1442,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_41_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -1124,7 +1457,11 @@
                         características de calidad o inocuidad.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_42"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -1134,7 +1471,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_42_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -1148,7 +1489,11 @@
                         actividades realizadas.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_43"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -1158,7 +1503,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_43_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -1169,7 +1518,11 @@
                         proceso.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_44"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -1179,7 +1532,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_44_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -1190,7 +1547,11 @@
                         rango de seguridad que garantiza inocuidad.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_45"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -1200,7 +1561,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_45_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -1210,7 +1575,11 @@
                         raciones y se encuentra en buen estado.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_46"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -1220,7 +1589,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_46_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -1234,7 +1607,11 @@
                         las normas legales vigentes.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_47"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -1244,7 +1621,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_47_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -1256,7 +1637,11 @@
                         realizadas.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_48"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -1266,7 +1651,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_48_obs"
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -1276,7 +1665,11 @@
                         escolar verificado en la siguiente tabla.
                       </td>
                       <td>
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          v-model="form.pre_49"
+                          required
+                        >
                           <option value="A">Aceptable (A)</option>
                           <option value="AR">
                             Aceptable con Requerimiento (AR)
@@ -1286,7 +1679,11 @@
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="form.pre_49_obs"
+                        />
                       </td>
                     </tr>
                   </tbody>
@@ -1328,7 +1725,7 @@
                       <input
                         type="text"
                         class="form-control"
-                        v-model="formData.foodPreparation[`${index}_grupo`]"
+                        v-model="form.foodPreparation[`${index}_grupo`]"
                       />
                     </td>
                     <td>{{ item.unit }}</td>
@@ -1337,61 +1734,55 @@
                       <input
                         type="number"
                         class="form-control"
-                        v-model="formData.foodPreparation[`${index}_muestra1`]"
+                        v-model="form.foodPreparation[`${index}_muestra1`]"
                       />
                     </td>
                     <td>
                       <input
                         type="number"
                         class="form-control"
-                        v-model="formData.foodPreparation[`${index}_muestra2`]"
+                        v-model="form.foodPreparation[`${index}_muestra2`]"
                       />
                     </td>
                     <td>
                       <input
                         type="number"
                         class="form-control"
-                        v-model="formData.foodPreparation[`${index}_muestra3`]"
+                        v-model="form.foodPreparation[`${index}_muestra3`]"
                       />
                     </td>
                     <td>
                       <input
                         type="number"
                         class="form-control"
-                        v-model="formData.foodPreparation[`${index}_peso`]"
+                        v-model="form.foodPreparation[`${index}_peso`]"
                       />
                     </td>
                     <td>
                       <input
                         type="number"
                         class="form-control"
-                        v-model="formData.foodPreparation[`${index}_tempFinal`]"
+                        v-model="form.foodPreparation[`${index}_tempFinal`]"
                       />
                     </td>
                     <td>
                       <input
                         type="number"
                         class="form-control"
-                        v-model="
-                          formData.foodPreparation[`${index}_tempInicial`]
-                        "
+                        v-model="form.foodPreparation[`${index}_tempInicial`]"
                       />
                     </td>
                     <td>
                       <input
                         type="number"
                         class="form-control"
-                        v-model="
-                          formData.foodPreparation[`${index}_tempFinalDist`]
-                        "
+                        v-model="form.foodPreparation[`${index}_tempFinalDist`]"
                       />
                     </td>
                     <td>
                       <select
                         class="form-select"
-                        v-model="
-                          formData.foodPreparation[`${index}_cumplimiento`]
-                        "
+                        v-model="form.foodPreparation[`${index}_cumplimiento`]"
                       >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
@@ -1430,13 +1821,21 @@
                       multiplicadas por el número de servicios y tipo de menú.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_50"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_50_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -1446,13 +1845,21 @@
                       menus y minuta patron adoptada y aprobada.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_51"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_51_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -1463,13 +1870,21 @@
                       estandarización para el servido.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_52"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_52_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -1479,13 +1894,21 @@
                       técnicas definidas (guías de preparación).
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_53"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_53_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -1496,13 +1919,21 @@
                       documento soporte de aprobación.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_54"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_54_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -1512,13 +1943,21 @@
                       atractivo y buena presentación.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_55"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_55_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -1529,13 +1968,21 @@
                       transportador.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_56"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_56_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -1545,13 +1992,21 @@
                       propias del territorio
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_57"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_57_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -1561,13 +2016,21 @@
                       de hábitos alimentarios en los estudiantes beneficiarios.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_58"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_58_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -1576,13 +2039,21 @@
                       La aceptabilidad de los alimentos preparados es adecuada.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_59"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_59_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -1594,13 +2065,21 @@
                       2019.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_60"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_60_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -2279,7 +2758,7 @@
 
           <!-- Signatures -->
           <div class="card mb-4">
-            <div class="card-header bg-primary text-white">
+            <div class="card-header">
               <h3 class="mb-0">Firmas</h3>
             </div>
             <div class="card-body">
@@ -2288,9 +2767,9 @@
                   <h4>FIRMA EQUIPO PAE /APOYO A LA SUPERVISIÓN</h4>
                   <div class="mb-2">
                     <SignaturePad
-                      ref="firstSignaturePad"
-                      @signatureSaved="handleFirstSignature"
-                      @signatureCleared="handleFirstSignatureCleared"
+                      idFirma="firma1"
+                      :varFirma="form.firma1"
+                      @firmas-updated="actualizarFirmas"
                     />
                   </div>
                   <div class="mb-3">
@@ -2301,7 +2780,7 @@
                       type="text"
                       class="form-control"
                       id="nombreEquipoPAE"
-                      v-model="formData.firmas.equipoPAE.nombre"
+                      v-model="form.nombre_apoyo"
                       required
                     />
                   </div>
@@ -2313,7 +2792,7 @@
                       type="text"
                       class="form-control"
                       id="cedulaEquipoPAE"
-                      v-model="formData.firmas.equipoPAE.cedula"
+                      v-model="form.cedula_apoyo"
                       required
                     />
                   </div>
@@ -2325,7 +2804,7 @@
                       type="text"
                       class="form-control"
                       id="cargoEquipoPAE"
-                      v-model="formData.firmas.equipoPAE.cargo"
+                      v-model="form.cargo_apoyo"
                       required
                     />
                   </div>
@@ -2337,7 +2816,7 @@
                       type="tel"
                       class="form-control"
                       id="telefonoEquipoPAE"
-                      v-model="formData.firmas.equipoPAE.telefono"
+                      v-model="form.telefono_apoyo"
                       required
                     />
                   </div>
@@ -2346,9 +2825,9 @@
                   <h4>FIRMA QUIEN ATIENDE LA VISITA</h4>
                   <div class="mb-2">
                     <SignaturePad
-                      ref="secondSignaturePad"
-                      @signatureSaved="handleSecondSignature"
-                      @signatureCleared="handleSecondSignatureCleared"
+                      idFirma="firma2"
+                      :varFirma="form.firma2"
+                      @firmas-updated="actualizarFirmas"
                     />
                   </div>
                   <div class="mb-3">
@@ -2359,7 +2838,7 @@
                       type="text"
                       class="form-control"
                       id="nombreAtiendeVisita"
-                      v-model="formData.firmas.atiendeVisita.nombre"
+                      v-model="form.nombre_atiende"
                       required
                     />
                   </div>
@@ -2371,7 +2850,7 @@
                       type="text"
                       class="form-control"
                       id="cedulaAtiendeVisita"
-                      v-model="formData.firmas.atiendeVisita.cedula"
+                      v-model="form.cedula_atiende"
                       required
                     />
                   </div>
@@ -2383,7 +2862,7 @@
                       type="text"
                       class="form-control"
                       id="cargoAtiendeVisita"
-                      v-model="formData.firmas.atiendeVisita.cargo"
+                      v-model="form.cargo_atiende"
                       required
                     />
                   </div>
@@ -2395,7 +2874,7 @@
                       type="tel"
                       class="form-control"
                       id="telefonoAtiendeVisita"
-                      v-model="formData.firmas.atiendeVisita.telefono"
+                      v-model="form.telefono_atiende"
                       required
                     />
                   </div>
@@ -2405,10 +2884,7 @@
           </div>
           <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
             <!-- Componente de carga de archivos -->
-            <FileUploader
-              :files="formData.files"
-              @files-updated="updateFiles"
-            />
+            <FileUploader :files="form.files" @files-updated="updateFiles" />
           </div>
           <div class="d-grid gap-2 mt-4">
             <button type="submit" class="btn btn-primary btn-lg">
@@ -2422,11 +2898,13 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "@/axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 import SignaturePad from "@/components/SignaturePad.vue";
 import MunicipioSelect from "@/components/MunicipioSelect.vue";
+import InstitucionSelect from "@/components/InstitucionSelect.vue";
+import SedeSelect from "@/components/SedeSelect.vue";
 import FileUploader from "@/components/FileUploader.vue";
 
 export default {
@@ -2435,6 +2913,8 @@ export default {
     ToastNotification,
     SignaturePad,
     MunicipioSelect,
+    InstitucionSelect,
+    SedeSelect,
     FileUploader,
   },
   data() {
@@ -2442,7 +2922,7 @@ export default {
       isLoading: false,
       toastMessage: "",
       toastType: "",
-      formData: {
+      form: {
         etc: "Norte de Santander",
         fechaVisita: "",
         municipio: "",
@@ -2454,6 +2934,16 @@ export default {
         numeroVisita: "",
         operador: "",
         files: [],
+        firma1: "",
+        firma2: "",
+        nombre_apoyo: "",
+        cedula_apoyo: "",
+        cargo_apoyo: "",
+        telefono_apoyo: "",
+        nombre_atiende: "",
+        cedula_atiende: "",
+        cargo_atiende: "",
+        telefono_atiende: "",
         numeroContrato: "",
         numeroBeneficiarios: "",
         operationConditions: {},
@@ -2463,20 +2953,6 @@ export default {
           cdp: "",
           placaVehiculo: "",
           numeroSedes: "",
-        },
-        firmas: {
-          equipoPAE: {
-            nombre: "",
-            cedula: "",
-            cargo: "",
-            telefono: "",
-          },
-          atiendeVisita: {
-            nombre: "",
-            cedula: "",
-            cargo: "",
-            telefono: "",
-          },
         },
       },
       operationConditions: [
@@ -2573,6 +3049,14 @@ export default {
     };
   },
   methods: {
+    updateFiles(files) {
+      // Actualiza la lista de archivos en el formulario
+      this.form.files = files;
+    },
+    actualizarFirmas({ idFirma, firma }) {
+      // Actualiza dinámicamente la firma en el formulario
+      this.form[idFirma] = firma;
+    },
     guardarFormulario() {
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {
@@ -2581,7 +3065,6 @@ export default {
       } else {
         // Guardar formulario en localStorage
         this.guardarOffline();
-        alert("Sin conexión. El formulario se ha guardado localmente.");
       }
     },
     guardarOffline() {
@@ -2598,8 +3081,10 @@ export default {
         const apiUrl = process.env.VUE_APP_API_BASE_URL;
         // Enviar datos con una solicitud POST
         const response = await axios.post(`${apiUrl}/visitas`, this.form);
-        console.log(response); //quitar
-        alert("Formulario enviado exitosamente.");
+        if (response.status === 201) {
+          this.showToast("Formulario guardado correctamente", "success");
+          this.resetForm(); // Reestablecer los campos del formulario
+        }
         this.resetFormulario();
         this.isLoading = false;
       } catch (error) {

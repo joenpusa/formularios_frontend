@@ -109,9 +109,9 @@
                 class="form-select"
                 required
               >
-                <option value="1">1ra</option>
-                <option value="2">2da</option>
-                <option value="3">3ra</option>
+                <option value="1ra">1ra</option>
+                <option value="2da">2da</option>
+                <option value="3ra">3ra</option>
               </select>
             </div>
             <div class="col-md-3">
@@ -597,25 +597,6 @@ export default {
     };
   },
   methods: {
-    handleFirstSignature(signature) {
-      this.form.firstSignature = signature;
-      this.signatures.firstSignature = true; // La firma ha sido realizada
-    },
-    handleSecondSignature(signature) {
-      this.form.secondSignature = signature;
-      this.signatures.secondSignature = true; // La firma ha sido realizada
-    },
-    handleFirstSignatureCleared() {
-      this.signatures.firstSignature = false; // Marca como no firmada
-    },
-    handleSecondSignatureCleared() {
-      this.signatures.secondSignature = false; // Marca como no firmada
-    },
-    saveSignatures() {
-      // Llamamos a los métodos saveSignature de ambos componentes
-      this.$refs.firstSignaturePad.saveSignature();
-      this.$refs.secondSignaturePad.saveSignature();
-    },
     guardarFormulario() {
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {
@@ -624,7 +605,6 @@ export default {
       } else {
         // Guardar formulario en localStorage
         this.guardarOffline();
-        alert("Sin conexión. El formulario se ha guardado localmente.");
       }
     },
     guardarOffline() {
@@ -642,7 +622,6 @@ export default {
         // Enviar datos con una solicitud POST
         const response = await axios.post(`${apiUrl}/visitas`, this.form);
         console.log(response); //quitar
-        alert("Formulario enviado exitosamente.");
         this.resetFormulario();
         this.isLoading = false;
       } catch (error) {

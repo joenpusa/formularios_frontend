@@ -678,7 +678,6 @@ export default {
       } else {
         // Guardar formulario en localStorage
         this.guardarOffline();
-        alert("Sin conexión. El formulario se ha guardado localmente.");
       }
     },
     guardarOffline() {
@@ -696,7 +695,6 @@ export default {
         // Enviar datos con una solicitud POST
         const response = await axios.post(`${apiUrl}/visitas`, this.form);
         console.log(response); //quitar
-        alert("Formulario enviado exitosamente.");
         this.resetFormulario();
         this.isLoading = false;
       } catch (error) {
