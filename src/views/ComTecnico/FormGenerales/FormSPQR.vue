@@ -59,22 +59,16 @@
                   <label for="institucion" class="form-label"
                     >Institución o Centro Educativo:</label
                   >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="institucion"
+                  <InstitucionSelect
                     v-model="form.institucion"
-                    required
+                    :municipio-id="form.municipio"
                   />
                 </div>
                 <div class="col-md-6">
                   <label for="sede" class="form-label">Sede Educativa:</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="sede"
+                  <SedeSelect
                     v-model="form.sede"
-                    required
+                    :institucion-id="form.institucion"
                   />
                 </div>
                 <div class="col-md-6">
@@ -107,7 +101,7 @@
                     type="date"
                     class="form-control"
                     id="fechaVisita"
-                    v-model="form.fechaVisita"
+                    v-model="form.fecha_visita"
                     required
                   />
                 </div>
@@ -119,7 +113,7 @@
                     type="time"
                     class="form-control"
                     id="horaInicio"
-                    v-model="form.horaInicio"
+                    v-model="form.hora_inicio"
                     required
                   />
                 </div>
@@ -129,7 +123,7 @@
                     type="time"
                     class="form-control"
                     id="horaFinal"
-                    v-model="form.horaFinal"
+                    v-model="form.hora_final"
                     required
                   />
                 </div>
@@ -151,11 +145,11 @@
                   <select
                     class="form-select"
                     id="tipoVisita"
-                    v-model="form.tipoVisita"
+                    v-model="form.tipo_visita"
                     required
                   >
-                    <option value="verificacion">Verificación</option>
-                    <option value="seguimiento">Seguimiento</option>
+                    <option value="Verificación">Verificación</option>
+                    <option value="Seguimiento">Seguimiento</option>
                   </select>
                 </div>
                 <div class="col-md-6">
@@ -164,7 +158,7 @@
                     type="number"
                     class="form-control"
                     id="numeroVisita"
-                    v-model="form.numeroVisita"
+                    v-model="form.num_visita"
                     required
                   />
                 </div>
@@ -177,7 +171,7 @@
                     type="number"
                     class="form-control"
                     id="programados"
-                    v-model="form.programados"
+                    v-model="form.num_programados"
                     required
                   />
                 </div>
@@ -189,7 +183,7 @@
                     type="number"
                     class="form-control"
                     id="atendidos"
-                    v-model="form.atendidos"
+                    v-model="form.num_atendidos"
                     required
                   />
                 </div>
@@ -200,12 +194,12 @@
                   <select
                     class="form-select"
                     id="modalidadAtencion"
-                    v-model="form.modalidadAtencion"
+                    v-model="form.modalidad"
                     required
                   >
-                    <option value="1">RPS</option>
-                    <option value="2">RI</option>
-                    <option value="3">CCT</option>
+                    <option value="PS">PS</option>
+                    <option value="I">I</option>
+                    <option value="CCT">CCT</option>
                   </select>
                 </div>
                 <div class="col-12">
@@ -215,7 +209,7 @@
                   <textarea
                     class="form-control"
                     id="descripcionSPQR"
-                    v-model="form.descripcionSPQR"
+                    v-model="form.descripcion"
                     rows="4"
                     required
                   ></textarea>
@@ -228,7 +222,7 @@
                     type="date"
                     class="form-control"
                     id="fechaReporteSPQR"
-                    v-model="form.fechaReporteSPQR"
+                    v-model="form.fechaReporte"
                     required
                   />
                 </div>
@@ -239,7 +233,7 @@
                   <select
                     class="form-select"
                     id="medioRecepcionSPQR"
-                    v-model="form.medioRecepcionSPQR"
+                    v-model="form.medio_recepcion"
                     required
                   >
                     <option value="1">1. Oficio</option>
@@ -260,7 +254,7 @@
                   <textarea
                     class="form-control"
                     id="situacionEncontrada"
-                    v-model="form.situacionEncontrada"
+                    v-model="form.situacion"
                     rows="4"
                     required
                   ></textarea>
@@ -284,7 +278,7 @@
                   <textarea
                     class="form-control"
                     id="observaciones"
-                    v-model="form.observaciones"
+                    v-model="form.recomendaciones"
                     rows="4"
                     required
                   ></textarea>
@@ -296,7 +290,7 @@
                   <select
                     class="form-select"
                     id="estadoFinal"
-                    v-model="form.estadoFinal"
+                    v-model="form.estado_final"
                     required
                   >
                     <option value="abierto">Abierto</option>
@@ -317,127 +311,202 @@
                 <div class="col-md-6">
                   <h4>Visita Realizada por</h4>
                   <SignaturePad
-                    ref="firstSignaturePad"
-                    @signatureSaved="handleFirstSignature"
-                    @signatureCleared="handleFirstSignatureCleared"
+                    idFirma="firma1"
+                    :varFirma="form.firma1"
+                    @firmas-updated="actualizarFirmas"
                   />
                   <div class="mb-1">
                     <label class="form-label">Nombre:</label>
-                    <input type="text" class="form-control" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.fir_nombre1"
+                      required
+                    />
                   </div>
                   <div class="mb-1">
                     <label :for="'cargo' + index" class="form-label"
                       >Cargo:</label
                     >
-                    <input type="text" class="form-control" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.fir_cargo1"
+                      required
+                    />
                   </div>
                   <div class="mb-1">
                     <label :for="'identificacion' + index" class="form-label"
                       >N° de Identificación:</label
                     >
-                    <input type="text" class="form-control" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.fir_cedula1"
+                      required
+                    />
                   </div>
                   <div class="mb-1">
                     <label :for="'telefono' + index" class="form-label"
                       >Teléfono:</label
                     >
-                    <input type="tel" class="form-control" />
+                    <input
+                      type="tel"
+                      class="form-control"
+                      v-model="form.fir_telefono1"
+                      required
+                    />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <h4>Visita Realizada por</h4>
                   <SignaturePad
-                    ref="firstSignaturePad"
-                    @signatureSaved="handleFirstSignature"
-                    @signatureCleared="handleFirstSignatureCleared"
+                    idFirma="firma2"
+                    :varFirma="form.firma2"
+                    @firmas-updated="actualizarFirmas"
                   />
                   <div class="mb-1">
                     <label class="form-label">Nombre:</label>
-                    <input type="text" class="form-control" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.fir_nombre2"
+                    />
                   </div>
                   <div class="mb-1">
                     <label :for="'cargo' + index" class="form-label"
                       >Cargo:</label
                     >
-                    <input type="text" class="form-control" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.fir_cargo2"
+                    />
                   </div>
                   <div class="mb-1">
                     <label :for="'identificacion' + index" class="form-label"
                       >N° de Identificación:</label
                     >
-                    <input type="text" class="form-control" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.fir_cedula2"
+                    />
                   </div>
                   <div class="mb-1">
                     <label :for="'telefono' + index" class="form-label"
                       >Teléfono:</label
                     >
-                    <input type="tel" class="form-control" />
+                    <input
+                      type="tel"
+                      class="form-control"
+                      v-model="form.fir_telefono2"
+                    />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <h4>Visita Atendida por</h4>
                   <SignaturePad
-                    ref="firstSignaturePad"
-                    @signatureSaved="handleFirstSignature"
-                    @signatureCleared="handleFirstSignatureCleared"
+                    idFirma="firma3"
+                    :varFirma="form.firma3"
+                    @firmas-updated="actualizarFirmas"
                   />
                   <div class="mb-1">
                     <label class="form-label">Nombre:</label>
-                    <input type="text" class="form-control" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.fir_nombre3"
+                      required
+                    />
                   </div>
                   <div class="mb-1">
                     <label :for="'cargo' + index" class="form-label"
                       >Cargo:</label
                     >
-                    <input type="text" class="form-control" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.fir_cargo3"
+                      required
+                    />
                   </div>
                   <div class="mb-1">
                     <label :for="'identificacion' + index" class="form-label"
                       >N° de Identificación:</label
                     >
-                    <input type="text" class="form-control" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.fir_cedula3"
+                      required
+                    />
                   </div>
                   <div class="mb-1">
                     <label :for="'telefono' + index" class="form-label"
                       >Teléfono:</label
                     >
-                    <input type="tel" class="form-control" />
+                    <input
+                      type="tel"
+                      class="form-control"
+                      v-model="form.fir_telefono3"
+                      required
+                    />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <h4>Visita Atendida por</h4>
                   <SignaturePad
-                    ref="firstSignaturePad"
-                    @signatureSaved="handleFirstSignature"
-                    @signatureCleared="handleFirstSignatureCleared"
+                    idFirma="firma4"
+                    :varFirma="form.firma4"
+                    @firmas-updated="actualizarFirmas"
                   />
                   <div class="mb-1">
                     <label class="form-label">Nombre:</label>
-                    <input type="text" class="form-control" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.fir_nombre4"
+                    />
                   </div>
                   <div class="mb-1">
                     <label :for="'cargo' + index" class="form-label"
                       >Cargo:</label
                     >
-                    <input type="text" class="form-control" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.fir_cargo4"
+                    />
                   </div>
                   <div class="mb-1">
                     <label :for="'identificacion' + index" class="form-label"
                       >N° de Identificación:</label
                     >
-                    <input type="text" class="form-control" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.fir_cedula4"
+                    />
                   </div>
                   <div class="mb-1">
                     <label :for="'telefono' + index" class="form-label"
                       >Teléfono:</label
                     >
-                    <input type="tel" class="form-control" />
+                    <input
+                      type="tel"
+                      class="form-control"
+                      v-model="form.fir_telefono4"
+                    />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
+          <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
+            <!-- Componente de carga de archivos -->
+            <FileUploader :files="form.files" @files-updated="updateFiles" />
+          </div>
           <div class="d-grid gap-2">
             <button type="submit" class="btn btn-primary btn-lg">
               Enviar Formulario
@@ -450,11 +519,14 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "@/axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 import SignaturePad from "@/components/SignaturePad.vue";
 import MunicipioSelect from "@/components/MunicipioSelect.vue";
+import InstitucionSelect from "@/components/InstitucionSelect.vue";
+import SedeSelect from "@/components/SedeSelect.vue";
+import FileUploader from "@/components/FileUploader.vue";
 
 export default {
   components: {
@@ -462,6 +534,9 @@ export default {
     ToastNotification,
     SignaturePad,
     MunicipioSelect,
+    InstitucionSelect,
+    SedeSelect,
+    FileUploader,
   },
   data() {
     return {
@@ -476,60 +551,105 @@ export default {
         sede: "",
         direccion: "",
         telefono: "",
-        fechaVisita: "",
-        horaInicio: "",
-        horaFinal: "",
-        tipoVisita: "",
-        numeroVisita: "",
-        rps: "",
-        ricct: "",
-        beneficiarios: "",
-        programados: "",
-        atendidos: "",
-        modalidadAtencion: "",
-        descripcionSPQR: "",
-        fechaReporteSPQR: "",
-        medioRecepcionSPQR: "",
-        situacionEncontrada: "",
+        fecha_visita: "",
+        hora_inicio: "",
+        hora_final: "",
+        tipo_visita: "",
+        num_visita: "",
+        modalidad: "",
+        num_programados: "",
+        num_atendidos: "",
+        descripcion: "",
+        fechaReporte: "",
+        medio_recepcion: "",
+        situacion: "",
         compromisos: "",
-        observaciones: "",
-        estadoFinal: "",
-        signatures: [
-          {
-            nombre: "",
-            cargo: "",
-            identificacion: "",
-            telefono: "",
-            firma: "",
-          },
-          {
-            nombre: "",
-            cargo: "",
-            identificacion: "",
-            telefono: "",
-            firma: "",
-          },
-          {
-            nombre: "",
-            cargo: "",
-            identificacion: "",
-            telefono: "",
-            firma: "",
-          },
-          {
-            nombre: "",
-            cargo: "",
-            identificacion: "",
-            telefono: "",
-            firma: "",
-          },
-        ],
+        recomendaciones: "",
+        estado_final: "",
+        firma1: "",
+        firma2: "",
+        firma3: "",
+        firma4: "",
+        fir_cargo1: "",
+        fir_cargo2: "",
+        fir_cargo3: "",
+        fir_cargo4: "",
+        fir_telefono1: "",
+        fir_telefono2: "",
+        fir_telefono3: "",
+        fir_telefono4: "",
+        fir_cedula1: "",
+        fir_cedula2: "",
+        fir_cedula3: "",
+        fir_cedula4: "",
+        fir_nombre1: "",
+        fir_nombre2: "",
+        fir_nombre3: "",
+        fir_nombre4: "",
+        files: [],
       },
       formulariosOffline: [], // Para almacenar temporalmente los formularios en localStorage
     };
   },
   methods: {
+    updateFiles(files) {
+      // Actualiza la lista de archivos en el formulario
+      this.form.files = files;
+    },
+    actualizarFirmas({ idFirma, firma }) {
+      // Actualiza dinámicamente la firma en el formulario
+      this.form[idFirma] = firma;
+    },
     guardarFormulario() {
+      this.isLoading = true;
+      // Primero, guardamos las firmas
+      if (this.form.firma1 == "" || this.form.firma3 == "") {
+        this.isLoading = false;
+        this.showToast(
+          "Firmas no dilegenciadas. Por favor, complete y guarde las firmas.",
+          "danger"
+        );
+        return;
+      }
+      //validar que haya llenado campos de firma apoyo y atendido
+      if (
+        this.form.fir_cargo1 == "" ||
+        this.form.fir_cargo3 == "" ||
+        this.form.fir_nombre1 == "" ||
+        this.form.fir_nombre3 == "" ||
+        this.form.fir_telefono1 == "" ||
+        this.form.fir_telefono3 == "" ||
+        this.form.fir_cedula1 == "" ||
+        this.form.fir_cedula3 == ""
+      ) {
+        this.isLoading = false;
+        this.showToast(
+          "Debe diligenciar los campos de una firma de apoyo y otra firma de atendido.",
+          "danger"
+        );
+        return;
+      }
+      //validar que haya beneficiarios
+      if (
+        this.form.municipio == "" ||
+        this.form.institucion == "" ||
+        this.form.sede == ""
+      ) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan datos de institucion. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+      if (this.form.num_visita == "" || this.form.tipo_visita == "") {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan datos de visita. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {
         // Enviar formulario al servidor
@@ -537,7 +657,6 @@ export default {
       } else {
         // Guardar formulario en localStorage
         this.guardarOffline();
-        alert("Sin conexión. El formulario se ha guardado localmente.");
       }
     },
     guardarOffline() {
@@ -546,28 +665,89 @@ export default {
         JSON.parse(localStorage.getItem("formulariosOffline")) || [];
       guardados.push(this.form); // Añadir el formulario actual
       localStorage.setItem("formulariosOffline", JSON.stringify(guardados));
-      this.resetFormulario();
+      this.resetForm();
     },
     async enviarFormularioAlServidor() {
       try {
-        this.isLoading = true;
         const apiUrl = process.env.VUE_APP_API_BASE_URL;
+        // Convertir form a Multipart
+        const formData = new FormData();
+        Object.keys(this.form).forEach((key) => {
+          if (key !== "files") {
+            formData.append(key, this.form[key]);
+          }
+        });
+        this.form.files.forEach((fileObj, index) => {
+          formData.append(`files[${index}]`, fileObj.file);
+        });
+
         // Enviar datos con una solicitud POST
-        const response = await axios.post(`${apiUrl}/visitas`, this.form);
-        console.log(response); //quitar
-        alert("Formulario enviado exitosamente.");
-        this.resetFormulario();
+        const response = await axios.post(`${apiUrl}/pqrs`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        console.log(response);
+        if (response.status === 201) {
+          this.showToast(
+            "Formulario de verificación de materia prima guardado correctamente",
+            "success"
+          );
+          this.resetForm(); // Reestablecer los campos del formulario
+        }
         this.isLoading = false;
       } catch (error) {
         this.isLoading = false;
-        this.showToast(
-          "No se pudo enviar el formulario" + error.response.data.message,
-          "danger"
-        );
-        console.error("Error al enviar el formulario:", error);
+        this.showToast("No se pudo enviar el formulario de PQRS", "danger");
       } finally {
         this.isLoading = false;
       }
+    },
+    resetForm() {
+      this.form = {
+        etc: "Norte de Santander",
+        fecha_visita: "",
+        municipio: "",
+        institucion: "",
+        sede: "",
+        hora_inicio: "",
+        hora_final: "",
+        operador: "",
+        contrato: "",
+        tipo_visita: "",
+        num_visita: "",
+        modalidad: "",
+        num_programados: "",
+        num_atendidos: "",
+        descripcion: "",
+        fechaReporte: "",
+        medio_recepcion: "",
+        situacion: "",
+        compromisos: "",
+        recomendaciones: "",
+        estado_final: "",
+        firma1: "",
+        firma2: "",
+        firma3: "",
+        firma4: "",
+        fir_cargo1: "",
+        fir_cargo2: "",
+        fir_cargo3: "",
+        fir_cargo4: "",
+        fir_telefono1: "",
+        fir_telefono2: "",
+        fir_telefono3: "",
+        fir_telefono4: "",
+        fir_cedula1: "",
+        fir_cedula2: "",
+        fir_cedula3: "",
+        fir_cedula4: "",
+        fir_nombre1: "",
+        fir_nombre2: "",
+        fir_nombre3: "",
+        fir_nombre4: "",
+        files: [],
+      };
     },
     showToast(message, type) {
       this.toastMessage = message;

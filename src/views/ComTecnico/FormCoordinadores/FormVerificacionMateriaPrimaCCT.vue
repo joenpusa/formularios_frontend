@@ -18,11 +18,15 @@
                 <router-link to="/comtecnico">Componente tecnico</router-link>
               </li>
               <li class="breadcrumb-item">
-                Formulario de verificación de materia prima CCT
+                Formato de verificación de materia prima comida caliente
+                transportada - CCT (ALMUERZO)
               </li>
             </ol>
           </nav>
-          <h2>VERIFICACIÓN DE MATERIA PRIMA CCT</h2>
+          <h2>
+            FORMATO DE VERIFICACIÓN DE MATERIA PRIMA COMIDA CALIENTE
+            TRANSPORTADA - CCT (ALMUERZO)
+          </h2>
           <hr />
         </div>
         <form @submit.prevent="guardarFormulario">
@@ -713,7 +717,6 @@ export default {
       } else {
         // Guardar formulario en localStorage
         this.guardarOffline();
-        alert("Sin conexión. El formulario se ha guardado localmente.");
       }
     },
     guardarOffline() {

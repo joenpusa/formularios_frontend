@@ -111,7 +111,8 @@
                   class="card-body text-center d-flex align-items-center justify-content-center"
                 >
                   <h4 class="text-dark">
-                    Formato de verificación materia prima CCT
+                    Formato de verificación de materia prima comida caliente
+                    transportada - CCT
                   </h4>
                 </div>
               </div>
@@ -137,7 +138,8 @@
                   class="card-body text-center d-flex align-items-center justify-content-center"
                 >
                   <h4 class="text-dark">
-                    Formato de verificación materia prima RPS
+                    Formato de verificación de materia prima ración para
+                    preparar en sitio - PS
                   </h4>
                 </div>
               </div>
@@ -150,7 +152,7 @@
                   class="card-body text-center d-flex align-items-center justify-content-center"
                 >
                   <h4 class="text-dark">
-                    Formato de verificación modalidad RPS
+                    Formato de verificación modalidad PS
                   </h4>
                 </div>
               </div>
@@ -163,7 +165,7 @@
                   class="card-body text-center d-flex align-items-center justify-content-center"
                 >
                   <h4 class="text-dark">
-                    Formato de verificación de rotulado RI
+                    Formato verificación de rotulado ración industrializada - I
                   </h4>
                 </div>
               </div>
@@ -176,7 +178,7 @@
                   class="card-body text-center d-flex align-items-center justify-content-center"
                 >
                   <h4 class="text-dark">
-                    Formato de verificación modalidad RI
+                    Formato de verificación modalidad ración industrializada - I
                   </h4>
                 </div>
               </div>
