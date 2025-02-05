@@ -608,7 +608,6 @@ export default {
         this.temperatura &&
         this.cantidadKardex &&
         this.cantidadEncontrada &&
-        this.cantidadFaltante &&
         this.color &&
         this.olor &&
         this.textura &&
