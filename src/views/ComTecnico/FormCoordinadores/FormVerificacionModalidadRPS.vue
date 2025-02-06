@@ -58,12 +58,9 @@
               <label for="institucionEducativa" class="form-label"
                 >Institución Educativa:</label
               >
-              <input
-                type="text"
-                id="institucionEducativa"
-                v-model="formData.institucionEducativa"
-                class="form-control"
-                required
+              <InstitucionSelect
+                v-model="form.institucion"
+                :municipio-id="form.municipio"
               />
             </div>
 
@@ -71,12 +68,9 @@
               <label for="sedeEducativa" class="form-label"
                 >Sede Educativa:</label
               >
-              <input
-                type="text"
-                id="sedeEducativa"
-                v-model="formData.sedeEducativa"
-                class="form-control"
-                required
+              <SedeSelect
+                v-model="form.sede"
+                :institucion-id="form.institucion"
               />
             </div>
             <div class="col-md-3">
@@ -2184,7 +2178,8 @@
               </div>
             </div>
           </div>
-
+          <!-- Componente de carga de archivos -->
+          <FileUploader :files="form.files" @files-updated="updateFiles" />
           <button type="submit" class="btn btn-primary">
             Enviar Formulario
           </button>
@@ -2200,6 +2195,9 @@ import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 import SignaturePad from "@/components/SignaturePad.vue";
 import MunicipioSelect from "@/components/MunicipioSelect.vue";
+import InstitucionSelect from "@/components/InstitucionSelect.vue";
+import SedeSelect from "@/components/SedeSelect.vue";
+import FileUploader from "@/components/FileUploader.vue";
 
 export default {
   components: {
@@ -2207,12 +2205,25 @@ export default {
     ToastNotification,
     SignaturePad,
     MunicipioSelect,
+    FileUploader,
+    InstitucionSelect,
+    SedeSelect,
   },
   data() {
     return {
       isLoading: false,
       toastMessage: "",
       toastType: "",
+      form: {
+        etc: "Norte de Santander",
+        files: [],
+        municipio: "",
+        hora_inicial: "",
+        hora_final: "",
+        institucion: "",
+        sede: "",
+        numero_visita: "",
+      },
       formData: {
         etc: "Norte de Santander",
         fecha: "",
@@ -2233,6 +2244,14 @@ export default {
     };
   },
   methods: {
+    updateFiles(files) {
+      // Actualiza la lista de archivos en el formulario
+      this.form.files = files;
+    },
+    actualizarFirmas({ idFirma, firma }) {
+      // Actualiza dinámicamente la firma en el formulario
+      this.form[idFirma] = firma;
+    },
     guardarFormulario() {
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {
