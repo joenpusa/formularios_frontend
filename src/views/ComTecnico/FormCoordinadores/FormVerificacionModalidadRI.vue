@@ -33,7 +33,7 @@
               <input
                 type="text"
                 id="etc"
-                v-model="formData.etc"
+                v-model="form.etc"
                 class="form-control"
                 required
               />
@@ -43,14 +43,14 @@
               <input
                 type="date"
                 id="fecha"
-                v-model="formData.fecha"
+                v-model="form.fecha"
                 class="form-control"
                 required
               />
             </div>
             <div class="col-md-4">
               <label for="municipio" class="form-label">Municipio:</label>
-              <MunicipioSelect v-model="formData.municipio" />
+              <MunicipioSelect v-model="form.municipio" />
             </div>
           </div>
           <div class="row mb-3">
@@ -59,7 +59,7 @@
               <input
                 type="time"
                 id="horaInicial"
-                v-model="formData.horaInicial"
+                v-model="form.hora_inicial"
                 class="form-control"
                 required
               />
@@ -69,7 +69,7 @@
               <input
                 type="time"
                 id="horaFinal"
-                v-model="formData.horaFinal"
+                v-model="form.hora_final"
                 class="form-control"
                 required
               />
@@ -100,20 +100,20 @@
               >
               <select
                 id="numeroVisita"
-                v-model="formData.numeroVisita"
+                v-model="form.numero_visita"
                 class="form-select"
                 required
               >
-                <option value="1">1ra</option>
-                <option value="2">2da</option>
-                <option value="3">3ra</option>
+                <option value="1ra">1ra</option>
+                <option value="2da">2da</option>
+                <option value="3ra">3ra</option>
               </select>
             </div>
             <div class="col-md-2">
               <label for="tipoVisita" class="form-label">Tipo de visita:</label>
               <select
                 id="tipoVisita"
-                v-model="formData.tipoVisita"
+                v-model="form.tipo_visita"
                 class="form-select"
                 required
               >
@@ -129,7 +129,7 @@
               <input
                 type="number"
                 id="numeroBeneficiarios"
-                v-model="formData.numeroBeneficiarios"
+                v-model="form.num_beneficiarios"
                 class="form-control"
                 required
               />
@@ -141,7 +141,7 @@
               <input
                 type="text"
                 id="operador"
-                v-model="formData.operador"
+                v-model="form.operador"
                 class="form-control"
                 required
               />
@@ -153,7 +153,7 @@
               <input
                 type="text"
                 id="numeroContrato"
-                v-model="formData.numeroContrato"
+                v-model="form.numeroContrato"
                 class="form-control"
                 required
               />
@@ -452,7 +452,7 @@
             <label for="observaciones" class="form-label">Observaciones:</label>
             <textarea
               id="observaciones"
-              v-model="formData.observaciones"
+              v-model="form.observaciones"
               class="form-control"
               rows="3"
             ></textarea>
@@ -464,9 +464,9 @@
               <h4>FIRMA EQUIPO PAE /APOYO A LA SUPERVISIÓN</h4>
               <div class="mb-2">
                 <SignaturePad
-                  ref="firstSignaturePad"
-                  @signatureSaved="handleFirstSignature"
-                  @signatureCleared="handleFirstSignatureCleared"
+                  idFirma="firma1"
+                  :varFirma="form.firma1"
+                  @firmas-updated="actualizarFirmas"
                 />
               </div>
               <div class="mb-2">
@@ -474,7 +474,7 @@
                 <input
                   type="text"
                   id="nombreEquipo"
-                  v-model="formData.firmaEquipo.nombre"
+                  v-model="formData.nombre_apoyo"
                   class="form-control"
                   required
                 />
@@ -484,7 +484,7 @@
                 <input
                   type="text"
                   id="cedulaEquipo"
-                  v-model="formData.firmaEquipo.cedula"
+                  v-model="formData.cedula_apoyo"
                   class="form-control"
                   required
                 />
@@ -494,7 +494,7 @@
                 <input
                   type="text"
                   id="cargoEquipo"
-                  v-model="formData.firmaEquipo.cargo"
+                  v-model="formData.cargo_apoyo"
                   class="form-control"
                   required
                 />
@@ -504,7 +504,7 @@
                 <input
                   type="tel"
                   id="telefonoEquipo"
-                  v-model="formData.firmaEquipo.telefono"
+                  v-model="formData.telefono_apoyo"
                   class="form-control"
                   required
                 />
@@ -514,9 +514,9 @@
               <h4>FIRMA QUIEN ATIENDE LA VISITA</h4>
               <div class="mb-2">
                 <SignaturePad
-                  ref="secondSignaturePad"
-                  @signatureSaved="handleSecondSignature"
-                  @signatureCleared="handleSecondSignatureCleared"
+                  idFirma="firma2"
+                  :varFirma="form.firma2"
+                  @firmas-updated="actualizarFirmas"
                 />
               </div>
               <div class="mb-2">
@@ -524,7 +524,7 @@
                 <input
                   type="text"
                   id="nombreVisita"
-                  v-model="formData.firmaVisita.nombre"
+                  v-model="formData.nombre_atiende"
                   class="form-control"
                   required
                 />
@@ -534,7 +534,7 @@
                 <input
                   type="text"
                   id="cedulaVisita"
-                  v-model="formData.firmaVisita.cedula"
+                  v-model="form.cedula_atiende"
                   class="form-control"
                   required
                 />
@@ -544,7 +544,7 @@
                 <input
                   type="text"
                   id="cargoVisita"
-                  v-model="formData.firmaVisita.cargo"
+                  v-model="form.cargo_atiende"
                   class="form-control"
                   required
                 />
@@ -554,7 +554,7 @@
                 <input
                   type="tel"
                   id="telefonoVisita"
-                  v-model="formData.firmaVisita.telefono"
+                  v-model="formData.telefono_atiende"
                   class="form-control"
                   required
                 />
@@ -705,7 +705,7 @@ export default {
         JSON.parse(localStorage.getItem("formulariosOffline")) || [];
       guardados.push(this.form); // Añadir el formulario actual
       localStorage.setItem("formulariosOffline", JSON.stringify(guardados));
-      this.resetFormulario();
+      this.resetForm();
     },
     async enviarFormularioAlServidor() {
       try {
@@ -726,6 +726,11 @@ export default {
       } finally {
         this.isLoading = false;
       }
+    },
+    resetForm() {
+      this.form = {
+        etc: "Norte de Santander",
+      };
     },
     showToast(message, type) {
       this.toastMessage = message;

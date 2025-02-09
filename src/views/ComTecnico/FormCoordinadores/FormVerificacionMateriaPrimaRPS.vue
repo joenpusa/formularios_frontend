@@ -392,7 +392,7 @@
           <!-- Signatures -->
           <div class="row mb-3">
             <div class="col-md-6">
-              <h4>FIRMA EQUIPO PAE /APOYO A LA SUPERVISIÓN</h4>
+              <h5>FIRMA EQUIPO PAE /APOYO A LA SUPERVISIÓN</h5>
               <div>
                 <SignaturePad
                   idFirma="firma1"
@@ -439,7 +439,7 @@
               </div>
             </div>
             <div class="col-md-6">
-              <h4>FIRMA QUIEN ATIENDE LA VISITA</h4>
+              <h5>FIRMA QUIEN ATIENDE LA VISITA</h5>
               <div>
                 <SignaturePad
                   idFirma="firma2"

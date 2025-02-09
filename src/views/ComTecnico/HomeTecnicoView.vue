@@ -125,7 +125,8 @@
                   class="card-body text-center d-flex align-items-center justify-content-center"
                 >
                   <h4 class="text-dark">
-                    Formato de verificación modalidad CCT
+                    Formato de verificación modalidad comida caliente
+                    transportada - CCT
                   </h4>
                 </div>
               </div>
@@ -152,7 +153,8 @@
                   class="card-body text-center d-flex align-items-center justify-content-center"
                 >
                   <h4 class="text-dark">
-                    Formato de verificación modalidad PS
+                    Formato verificación modalidad ración para preparar en sitio
+                    - PS
                   </h4>
                 </div>
               </div>
