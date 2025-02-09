@@ -32,7 +32,7 @@
               <input
                 type="text"
                 id="etc"
-                v-model="formData.etc"
+                v-model="form.etc"
                 class="form-control"
                 required
               />
@@ -42,14 +42,14 @@
               <input
                 type="date"
                 id="fecha"
-                v-model="formData.fecha"
+                v-model="form.fecha_visita"
                 class="form-control"
                 required
               />
             </div>
             <div class="col-md-4">
               <label for="municipio" class="form-label">Municipio:</label>
-              <MunicipioSelect v-model="formData.municipio" />
+              <MunicipioSelect v-model="form.municipio" />
             </div>
           </div>
           <div class="row mb-3">
@@ -58,7 +58,7 @@
               <input
                 type="time"
                 id="horaInicial"
-                v-model="formData.horaInicial"
+                v-model="form.hora_inicial"
                 class="form-control"
                 required
               />
@@ -68,7 +68,7 @@
               <input
                 type="time"
                 id="horaFinal"
-                v-model="formData.horaFinal"
+                v-model="form.hora_final"
                 class="form-control"
                 required
               />
@@ -77,12 +77,9 @@
               <label for="institucionEducativa" class="form-label"
                 >Institución Educativa:</label
               >
-              <input
-                type="text"
-                id="institucionEducativa"
-                v-model="formData.institucionEducativa"
-                class="form-control"
-                required
+              <InstitucionSelect
+                v-model="form.institucion"
+                :municipio-id="form.municipio"
               />
             </div>
           </div>
@@ -91,12 +88,9 @@
               <label for="sedeEducativa" class="form-label"
                 >Sede Educativa:</label
               >
-              <input
-                type="text"
-                id="sedeEducativa"
-                v-model="formData.sedeEducativa"
-                class="form-control"
-                required
+              <SedeSelect
+                v-model="form.sede"
+                :institucion-id="form.institucion"
               />
             </div>
             <div class="col-md-3">
@@ -105,7 +99,7 @@
               >
               <select
                 id="numeroVisita"
-                v-model="formData.numeroVisita"
+                v-model="form.numero_visita"
                 class="form-select"
                 required
               >
@@ -118,7 +112,7 @@
               <label for="tipoVisita" class="form-label">Tipo de visita:</label>
               <select
                 id="tipoVisita"
-                v-model="formData.tipoVisita"
+                v-model="form.tipo_visita"
                 class="form-select"
                 required
               >
@@ -136,7 +130,7 @@
               <input
                 type="number"
                 id="numeroBeneficiarios"
-                v-model="formData.numeroBeneficiarios"
+                v-model="form.num_beneficiarios"
                 class="form-control"
                 required
               />
@@ -146,7 +140,7 @@
               <input
                 type="text"
                 id="operador"
-                v-model="formData.operador"
+                v-model="form.operador"
                 class="form-control"
                 required
               />
@@ -158,7 +152,7 @@
               <input
                 type="text"
                 id="numeroContrato"
-                v-model="formData.numeroContrato"
+                v-model="form.numeroContrato"
                 class="form-control"
                 required
               />
@@ -403,8 +397,8 @@
             >
             <input
               type="number"
-              id="nombreVisita"
-              v-model="formData.firmaVisita.nombre"
+              id="porcentajeCumplimiento"
+              v-model="form.porcentaje_cumplimiento"
               class="form-control"
               required
             />
@@ -414,7 +408,7 @@
             <label for="observaciones" class="form-label">Observaciones:</label>
             <textarea
               id="observaciones"
-              v-model="formData.observaciones"
+              v-model="form.observaciones"
               class="form-control"
               rows="3"
             ></textarea>
@@ -428,9 +422,9 @@
               >
               <div class="mb-2">
                 <SignaturePad
-                  ref="firstSignaturePad"
-                  @signatureSaved="handleFirstSignature"
-                  @signatureCleared="handleFirstSignatureCleared"
+                  idFirma="firma1"
+                  :varFirma="form.firma1"
+                  @firmas-updated="actualizarFirmas"
                 />
               </div>
               <div class="mb-2">
@@ -438,7 +432,7 @@
                 <input
                   type="text"
                   id="nombreEquipo"
-                  v-model="formData.firmaEquipo.nombre"
+                  v-model="form.nombre_apoyo"
                   class="form-control"
                   required
                 />
@@ -450,7 +444,7 @@
                 <input
                   type="text"
                   id="documentoEquipo"
-                  v-model="formData.firmaEquipo.documento"
+                  v-model="form.cedula_apoyo"
                   class="form-control"
                   required
                 />
@@ -460,7 +454,7 @@
                 <input
                   type="text"
                   id="cargoEquipo"
-                  v-model="formData.firmaEquipo.cargo"
+                  v-model="form.cargo_apoyo"
                   class="form-control"
                   required
                 />
@@ -470,7 +464,7 @@
                 <input
                   type="tel"
                   id="telefonoEquipo"
-                  v-model="formData.firmaEquipo.telefono"
+                  v-model="form.telefono_apoyo"
                   class="form-control"
                   required
                 />
@@ -480,9 +474,9 @@
               <label class="form-label">FIRMA QUIEN ATIENDE LA VISITA</label>
               <div class="mb-2">
                 <SignaturePad
-                  ref="secondSignaturePad"
-                  @signatureSaved="handleSecondSignature"
-                  @signatureCleared="handleSecondSignatureCleared"
+                  idFirma="firma2"
+                  :varFirma="form.firma2"
+                  @firmas-updated="actualizarFirmas"
                 />
               </div>
               <div class="mb-2">
@@ -490,7 +484,7 @@
                 <input
                   type="text"
                   id="nombreVisita"
-                  v-model="formData.firmaVisita.nombre"
+                  v-model="form.nombre_atiende"
                   class="form-control"
                   required
                 />
@@ -502,7 +496,7 @@
                 <input
                   type="text"
                   id="documentoVisita"
-                  v-model="formData.firmaVisita.documento"
+                  v-model="form.cedula_atiende"
                   class="form-control"
                   required
                 />
@@ -512,7 +506,7 @@
                 <input
                   type="text"
                   id="cargoVisita"
-                  v-model="formData.firmaVisita.cargo"
+                  v-model="form.cargo_atiende"
                   class="form-control"
                   required
                 />
@@ -522,14 +516,15 @@
                 <input
                   type="tel"
                   id="telefonoVisita"
-                  v-model="formData.firmaVisita.telefono"
+                  v-model="form.telefono_atiende"
                   class="form-control"
                   required
                 />
               </div>
             </div>
           </div>
-
+          <!-- Componente de carga de archivos -->
+          <FileUploader :files="form.files" @files-updated="updateFiles" />
           <button type="submit" class="btn btn-primary">
             Enviar Formulario
           </button>
@@ -540,41 +535,49 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "@/axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 import SignaturePad from "@/components/SignaturePad.vue";
 import MunicipioSelect from "@/components/MunicipioSelect.vue";
+import FileUploader from "@/components/FileUploader.vue";
+import InstitucionSelect from "@/components/InstitucionSelect.vue";
+import SedeSelect from "@/components/SedeSelect.vue";
+
 export default {
   components: {
     LoadingSpinner,
     ToastNotification,
     SignaturePad,
     MunicipioSelect,
+    FileUploader,
+    InstitucionSelect,
+    SedeSelect,
   },
   data() {
     return {
       isLoading: false,
       toastMessage: "",
       toastType: "",
-      formData: {
+      form: {
         etc: "Norte de Santander",
-        fecha: "",
+        files: [],
         municipio: "",
-        horaInicial: "",
-        horaFinal: "",
-        institucionEducativa: "",
-        sedeEducativa: "",
-        numeroVisita: "",
-        tipoVisita: "",
-        numeroBeneficiarios: "",
-        operador: "UT Suministros PAE 2024 del 12/01/2024",
-        numeroContrato: "LP-SEG-3030-2023 del 12 de enero  del 2024",
-        products5109: [],
-        products810: [],
-        observaciones: "",
-        firmaEquipo: { nombre: "", documento: "", cargo: "", telefono: "" },
-        firmaVisita: { nombre: "", documento: "", cargo: "", telefono: "" },
+        hora_inicial: "",
+        hora_final: "",
+        institucion: "",
+        sede: "",
+        numero_visita: "",
+        firma1: "",
+        firma2: "",
+        nombre_apoyo: "",
+        cedula_apoyo: "",
+        cargo_apoyo: "",
+        telefono_apoyo: "",
+        nombre_atiende: "",
+        cedula_atiende: "",
+        cargo_atiende: "",
+        telefono_atiende: "",
         criterios810: [
           "declaracionNutrientes",
           "equivalenciasMedidasCaseras",
@@ -597,6 +600,14 @@ export default {
     };
   },
   methods: {
+    updateFiles(files) {
+      // Actualiza la lista de archivos en el formulario
+      this.form.files = files;
+    },
+    actualizarFirmas({ idFirma, firma }) {
+      // Actualiza dinámicamente la firma en el formulario
+      this.form[idFirma] = firma;
+    },
     guardarFormulario() {
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {

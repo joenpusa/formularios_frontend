@@ -63,24 +63,18 @@
               <label for="institucionEducativa" class="form-label"
                 >Institución Educativa:</label
               >
-              <input
-                type="text"
-                class="form-control"
-                id="institucionEducativa"
-                v-model="form.institucionEducativa"
-                required
+              <InstitucionSelect
+                v-model="form.institucion"
+                :municipio-id="form.municipio"
               />
             </div>
             <div class="col-md-6">
               <label for="sedeEducativa" class="form-label"
                 >Sede Educativa:</label
               >
-              <input
-                type="text"
-                class="form-control"
-                id="sedeEducativa"
-                v-model="form.sedeEducativa"
-                required
+              <SedeSelect
+                v-model="form.sede"
+                :institucion-id="form.institucion"
               />
             </div>
           </div>
@@ -92,7 +86,7 @@
                 type="time"
                 class="form-control"
                 id="horaInicial"
-                v-model="form.horaInicial"
+                v-model="form.hora_inicial"
                 required
               />
             </div>
@@ -102,7 +96,7 @@
                 type="time"
                 class="form-control"
                 id="horaFinal"
-                v-model="form.horaFinal"
+                v-model="form.hora_final"
                 required
               />
             </div>
@@ -114,13 +108,13 @@
                 v-model="form.modalidad"
                 required
               >
-                <option value="racionPreparadaEnSitio">
+                <option value="Modalidad preparada en sitio">
                   Modalidad preparada en sitio
                 </option>
-                <option value="comidaCalienteTransportada">
+                <option value="Comida Caliente Transportada">
                   Comida Caliente Transportada
                 </option>
-                <option value="racionIndustrializada">
+                <option value="Ración Industrializada">
                   Ración Industrializada
                 </option>
               </select>
@@ -135,6 +129,7 @@
                 class="form-control"
                 id="operador"
                 v-model="form.operador"
+                required
               />
             </div>
             <div class="col-md-4">
@@ -145,7 +140,8 @@
                 type="text"
                 class="form-control"
                 id="numeroContrato"
-                v-model="form.numeroContrato"
+                v-model="form.contrato"
+                required
               />
             </div>
             <div class="col-md-4">
@@ -159,88 +155,86 @@
               />
             </div>
           </div>
-
-          <!-- Prepared on-site / Hot Transported Food Section -->
-          <div v-if="form.modalidad !== 'racionIndustrializada'">
-            <h3 class="mt-4 mb-3">
-              Verificación de materia prima de modalidad para preparar en sitio
-              / Comida caliente transportada
-            </h3>
-            <div class="table-responsive">
-              <table class="table table-bordered">
-                <thead>
-                  <tr class="table-primary text-center">
-                    <th>Alimento</th>
-                    <th>Marca</th>
-                    <th>Lote</th>
-                    <th>Fecha de vencimiento</th>
-                    <th>Registro, permiso, notificación sanitaria</th>
-                    <th>Contenido neto</th>
-                    <th>Nombre o dirección del fabricante</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="(item, index) in preparedFoodItems" :key="index">
-                    <td class="text-center">
-                      <label>{{ item.alimento }}</label>
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.marca"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.lote"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="date"
-                        class="form-control"
-                        v-model="item.fechaVencimiento"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.registroSanitario"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.contenidoNeto"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.fabricante"
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+          <div class="border rounded p-3 mb-3">
+            <h5>Agregar fila en tabla de verificación de alimentos</h5>
+            <div class="row">
+              <div class="col-md-3">
+                <label class="form-label">Tipo de alimento</label>
+                <select class="form-select" v-model="tipo_alimento">
+                  <option value="1">Comida caliente transportada</option>
+                  <option value="2">Ración industrializada</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Materia prima</label>
+                <select class="form-select" v-model="material">
+                  <option
+                    v-for="(i, index) in alimentos"
+                    :key="index"
+                    :value="i"
+                  >
+                    {{ i }}
+                  </option>
+                </select>
+                <!-- Mostrar input si el usuario selecciona "Otro" -->
+                <input
+                  v-if="material === 'Otro'"
+                  type="text"
+                  class="form-control mt-2"
+                  placeholder="Especificar alimento"
+                  v-model="materialOtro"
+                />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Marca</label>
+                <input type="text" class="form-control" v-model="marca" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Lote</label>
+                <input type="text" class="form-control" v-model="lote" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Fecha</label>
+                <input type="date" class="form-control" v-model="fecha" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Registro</label>
+                <input type="text" class="form-control" v-model="registro" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Contenido</label>
+                <input type="text" class="form-control" v-model="contenido" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Fabricante</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="dir_fabricante"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 mt-3">
+                <button
+                  type="button"
+                  class="btn btn-secondary mb-3"
+                  @click="agregarFila"
+                >
+                  Agregar
+                </button>
+              </div>
             </div>
           </div>
 
-          <!-- Industrialized Ration Section -->
-          <div v-if="form.modalidad === 'racionIndustrializada'">
+          <div>
             <h3 class="mt-4 mb-3">
               Verificación de componentes de ración industrializada
             </h3>
             <div class="table-responsive">
               <table class="table table-bordered">
                 <thead>
-                  <tr>
+                  <tr class="text-center bg-primary-light">
                     <th>Alimento</th>
                     <th>Marca</th>
                     <th>Lote</th>
@@ -251,55 +245,14 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr
-                    v-for="(item, index) in industrializedFoodItems"
-                    :key="index"
-                  >
-                    <td>
-                      <label>{{ item.alimento }}</label>
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.marca"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.lote"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="date"
-                        class="form-control"
-                        v-model="item.fechaVencimiento"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.registroSanitario"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.contenidoNeto"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="item.fabricante"
-                      />
-                    </td>
+                  <tr v-for="(item, index) in form.filas" :key="index">
+                    <td>{{ item.material }}</td>
+                    <td>{{ item.marca }}</td>
+                    <td>{{ item.lote }}</td>
+                    <td>{{ item.fecha }}</td>
+                    <td>{{ item.registro }}</td>
+                    <td>{{ item.contenido }}</td>
+                    <td>{{ item.dir_fabricante }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -320,7 +273,7 @@
           <!-- Signatures -->
           <div class="row mb-3">
             <div class="col-md-6">
-              <h4>FIRMA EQUIPO PAE /APOYO A LA SUPERVISIÓN</h4>
+              <h5>FIRMA EQUIPO PAE /APOYO A LA SUPERVISIÓN</h5>
               <SignaturePad
                 idFirma="firma1"
                 :varFirma="form.firma1"
@@ -332,7 +285,7 @@
                   type="text"
                   class="form-control"
                   id="nombreEquipoPAE"
-                  v-model="form.firmaEquipoPAE.nombre"
+                  v-model="form.nombre_apoyo"
                   required
                 />
               </div>
@@ -344,7 +297,7 @@
                   type="text"
                   class="form-control"
                   id="documentoEquipoPAE"
-                  v-model="form.firmaEquipoPAE.documento"
+                  v-model="form.cedula_apoyo"
                   required
                 />
               </div>
@@ -354,7 +307,7 @@
                   type="text"
                   class="form-control"
                   id="cargoEquipoPAE"
-                  v-model="form.firmaEquipoPAE.cargo"
+                  v-model="form.cargo_apoyo"
                   required
                 />
               </div>
@@ -366,13 +319,13 @@
                   type="tel"
                   class="form-control"
                   id="telefonoEquipoPAE"
-                  v-model="form.firmaEquipoPAE.telefono"
+                  v-model="form.telefono_apoyo"
                   required
                 />
               </div>
             </div>
             <div class="col-md-6">
-              <h4>FIRMA QUIEN ATIENDE LA VISITA</h4>
+              <h5>FIRMA QUIEN ATIENDE LA VISITA</h5>
               <SignaturePad
                 idFirma="firma2"
                 :varFirma="form.firma2"
@@ -386,7 +339,7 @@
                   type="text"
                   class="form-control"
                   id="nombreAtiendeVisita"
-                  v-model="form.firmaAtiendeVisita.nombre"
+                  v-model="form.nombre_atiende"
                   required
                 />
               </div>
@@ -398,7 +351,7 @@
                   type="text"
                   class="form-control"
                   id="documentoAtiendeVisita"
-                  v-model="form.firmaAtiendeVisita.documento"
+                  v-model="form.cedula_atiende"
                   required
                 />
               </div>
@@ -410,7 +363,7 @@
                   type="text"
                   class="form-control"
                   id="cargoAtiendeVisita"
-                  v-model="form.firmaAtiendeVisita.cargo"
+                  v-model="form.cargo_atiende"
                   required
                 />
               </div>
@@ -422,13 +375,14 @@
                   type="tel"
                   class="form-control"
                   id="telefonoAtiendeVisita"
-                  v-model="form.firmaAtiendeVisita.telefono"
+                  v-model="form.telefono_atiende"
                   required
                 />
               </div>
             </div>
           </div>
-
+          <!-- Componente de carga de archivos -->
+          <FileUploader :files="form.files" @files-updated="updateFiles" />
           <div class="d-grid gap-2">
             <button type="submit" class="btn btn-primary btn-lg">
               Enviar Formulario
@@ -446,6 +400,9 @@ import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 import SignaturePad from "@/components/SignaturePad.vue";
 import MunicipioSelect from "@/components/MunicipioSelect.vue";
+import FileUploader from "@/components/FileUploader.vue";
+import InstitucionSelect from "@/components/InstitucionSelect.vue";
+import SedeSelect from "@/components/SedeSelect.vue";
 
 export default {
   components: {
@@ -453,237 +410,179 @@ export default {
     ToastNotification,
     SignaturePad,
     MunicipioSelect,
+    InstitucionSelect,
+    SedeSelect,
+    FileUploader,
   },
   data() {
     return {
       isLoading: false,
       toastMessage: "",
       toastType: "",
+      // Input para tabla temporal
+      material: "",
+      tipo_alimento: "",
+      materialOtro: "",
+      marca: "",
+      lote: "",
+      fecha: "",
+      registro: "",
+      contenido: "",
+      dir_fabricante: "",
       form: {
         etc: "Norte de Santander",
-        fechaVisita: "",
+        fecha_visita: "",
         municipio: "",
-        institucionEducativa: "",
-        sedeEducativa: "",
-        horaInicial: "",
-        horaFinal: "",
+        institucion: "",
+        sede: "",
+        hora_inicial: "",
+        hora_final: "",
         modalidad: "",
         operador: "",
-        numeroContrato: "",
+        contrato: "",
         supervisor: "",
         observaciones: "",
-        firmaEquipoPAE: {
-          nombre: "",
-          documento: "",
-          cargo: "",
-          telefono: "",
-        },
-        firmaAtiendeVisita: {
-          nombre: "",
-          documento: "",
-          cargo: "",
-          telefono: "",
-        },
+        files: [],
+        filas: [],
+        firma1: "",
+        firma2: "",
+        nombre_apoyo: "",
+        cedula_apoyo: "",
+        cargo_apoyo: "",
+        telefono_apoyo: "",
+        nombre_atiende: "",
+        cedula_atiende: "",
+        cargo_atiende: "",
+        telefono_atiende: "",
       },
-      preparedFoodItems: [
-        {
-          alimento: "Sal",
-          editable: false,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-        {
-          alimento: "Carne de Res",
-          editable: false,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-        {
-          alimento: "Espaguetis",
-          editable: false,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-        {
-          alimento: "Azúcar",
-          editable: false,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-        {
-          alimento: "Leche en polvo",
-          editable: false,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-        {
-          alimento: "Pechuga",
-          editable: false,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-        {
-          alimento: "Carne de Cerdo",
-          editable: false,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-        {
-          alimento: "Aceite",
-          editable: false,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-        {
-          alimento: "Arroz",
-          editable: false,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-        {
-          alimento: "Leguminosa 1",
-          editable: true,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-        {
-          alimento: "Leguminosa 2",
-          editable: true,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-        {
-          alimento: "Leguminosa 3",
-          editable: true,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-        {
-          alimento: "Otro",
-          editable: true,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-        {
-          alimento: "Otro",
-          editable: true,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
+      alimentos: [
+        "Sal",
+        "Carne de Res",
+        "Espaguetis",
+        "Azúcar",
+        "Leche en polvo",
+        "Pechuga",
+        "Carne de Cerdo",
+        "Aceite",
+        "Arroz",
+        "Otro",
       ],
-      industrializedFoodItems: [
-        {
-          alimento: "Cereal 1",
-          editable: true,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-        {
-          alimento: "Cereal 2",
-          editable: true,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-        {
-          alimento: "Lácteo 1",
-          editable: true,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-        {
-          alimento: "Lácteo 2",
-          editable: true,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-        {
-          alimento: "Dulce",
-          editable: true,
-          marca: "",
-          lote: "",
-          fechaVencimiento: "",
-          registroSanitario: "",
-          contenidoNeto: "",
-          fabricante: "",
-        },
-      ],
+
       formulariosOffline: [], // Para almacenar temporalmente los formularios en localStorage
     };
   },
   methods: {
+    updateFiles(files) {
+      // Actualiza la lista de archivos en el formulario
+      this.form.files = files;
+    },
+    actualizarFirmas({ idFirma, firma }) {
+      // Actualiza dinámicamente la firma en el formulario
+      this.form[idFirma] = firma;
+    },
+    agregarFila() {
+      if (
+        this.material &&
+        this.tipo_alimento &&
+        this.marca &&
+        this.lote &&
+        this.fecha &&
+        this.registro &&
+        this.contenido &&
+        this.dir_fabricante
+      ) {
+        // Agregar una nueva fila con los valores ingresados
+        if (this.materialOtro) {
+          this.material = this.materialOtro;
+        }
+        this.form.filas.push({
+          material: this.material,
+          tipo_alimento: this.tipo_alimento,
+          nombre: this.material,
+          marca: this.marca,
+          lote: this.lote,
+          fecha: this.fecha,
+          registro: this.registro,
+          contenido: this.contenido,
+          dir_fabricante: this.dir_fabricante,
+        });
+        // Limpiar los campos después de agregar
+        this.material = "";
+        this.materialOtro = "";
+        this.lote = "";
+        this.fecha = "";
+        this.marca = "";
+        this.temperatura = "";
+        this.registro = "";
+        this.contenido = "";
+        this.dir_fabricante = "";
+      } else {
+        this.showToast(
+          "Por favor, complete todos los campos antes de agregar.",
+          "danger"
+        );
+      }
+    },
     guardarFormulario() {
+      this.isLoading = true;
+      // Primero, guardamos las firmas
+      if (this.form.firma1 == "" || this.form.firma2 == "") {
+        this.isLoading = false;
+        this.showToast(
+          "Firmas no dilegenciadas. Por favor, complete y guarde las firmas.",
+          "danger"
+        );
+        return;
+      }
+      //validar que haya llenado campos de firma apoyo y atendido
+      if (
+        this.form.cedula_apoyo == "" ||
+        this.form.nombre_apoyo == "" ||
+        this.form.telefono_apoyo == "" ||
+        this.form.cargo_apoyo == "" ||
+        this.form.cedula_atiende == "" ||
+        this.form.nombre_atiende == "" ||
+        this.form.telefono_atiende == "" ||
+        this.form.cargo_atiende == ""
+      ) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan datos de las firmas. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+      //validar municipio, sede, institucion
+      if (
+        this.form.municipio == "" ||
+        this.form.institucion == "" ||
+        this.form.sede == ""
+      ) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan datos de institucion. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+      //verificar que haya seleccionado archivos
+      if (this.form.files.length == 0) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan archivos. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+      //validar filas
+      if (this.form.filas.length == 0) {
+        this.isLoading = false;
+        this.showToast(
+          "Faltan filas de los alimentos. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {
         // Enviar formulario al servidor
@@ -699,27 +598,82 @@ export default {
         JSON.parse(localStorage.getItem("formulariosOffline")) || [];
       guardados.push(this.form); // Añadir el formulario actual
       localStorage.setItem("formulariosOffline", JSON.stringify(guardados));
-      this.resetFormulario();
+      this.resetForm();
     },
     async enviarFormularioAlServidor() {
       try {
-        this.isLoading = true;
         const apiUrl = process.env.VUE_APP_API_BASE_URL;
+        // Convertir form a Multipart
+        const formData = new FormData();
+        Object.keys(this.form).forEach((key) => {
+          if (key !== "files") {
+            if (key === "filas") {
+              formData.append(key, JSON.stringify(this.form[key] || [])); // Convierte a JSON
+            } else {
+              formData.append(key, this.form[key]);
+            }
+          }
+        });
+        this.form.files.forEach((fileObj, index) => {
+          formData.append(`files[${index}]`, fileObj.file);
+        });
+
         // Enviar datos con una solicitud POST
-        const response = await axios.post(`${apiUrl}/visitas`, this.form);
-        console.log(response); //quitar
-        this.resetFormulario();
+        const response = await axios.post(
+          `${apiUrl}/ct_seguimiento_rotulado`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        console.log(response);
+        if (response.status === 201) {
+          this.showToast(
+            "Formulario de seguimiento rotulado y/o etiquetado de los alimentos guardado correctamente",
+            "success"
+          );
+          this.resetForm(); // Reestablecer los campos del formulario
+        }
         this.isLoading = false;
       } catch (error) {
         this.isLoading = false;
         this.showToast(
-          "No se pudo enviar el formulario" + error.response.data.message,
+          "No se pudo enviar el formulario componente tecnico, seguimiento rotulado y/o etiquetado de los alimentos",
           "danger"
         );
-        console.error("Error al enviar el formulario:", error);
       } finally {
         this.isLoading = false;
       }
+    },
+    resetForm() {
+      this.form = {
+        etc: "Norte de Santander",
+        fecha_visita: "",
+        municipio: "",
+        institucion: "",
+        sede: "",
+        hora_inicial: "",
+        hora_final: "",
+        modalidad: "",
+        operador: "",
+        contrato: "",
+        supervisor: "",
+        observaciones: "",
+        files: [],
+        filas: [],
+        firma1: "",
+        firma2: "",
+        nombre_apoyo: "",
+        cedula_apoyo: "",
+        cargo_apoyo: "",
+        telefono_apoyo: "",
+        nombre_atiende: "",
+        cedula_atiende: "",
+        cargo_atiende: "",
+        telefono_atiende: "",
+      };
     },
     showToast(message, type) {
       this.toastMessage = message;

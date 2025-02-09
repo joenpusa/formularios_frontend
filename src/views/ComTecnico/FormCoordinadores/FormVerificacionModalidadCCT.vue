@@ -18,11 +18,14 @@
                 <router-link to="/comtecnico">Componente tecnico</router-link>
               </li>
               <li class="breadcrumb-item">
-                Formato de verificación modalidad CCT
+                Formato de verificación modalidad comida caliente transportada -
+                CCT
               </li>
             </ol>
           </nav>
-          <h2>FORMATO DE VERIFICACIÓN MODALIDAD CCT</h2>
+          <h2>
+            FORMATO VERIFICACIÓN MODALIDAD COMIDA CALIENTE TRANSPORTADA - CCT
+          </h2>
           <hr />
         </div>
         <form @submit.prevent="guardarFormulario">
@@ -52,7 +55,7 @@
                     type="date"
                     class="form-control"
                     id="fechaVisita"
-                    v-model="form.fechaVisita"
+                    v-model="form.fecha_visita"
                     required
                   />
                 </div>
@@ -170,6 +173,28 @@
                     required
                   />
                 </div>
+                <div class="col-md-6">
+                  <label class="form-label"
+                    >Fecha de la última visita de la Autoridad Sanitaria:</label
+                  >
+                  <input
+                    type="date"
+                    id="fechaUltimaVisita"
+                    v-model="form.fecha_ultima_visita"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Concepto emitido:</label>
+                  <input
+                    type="text"
+                    id="conceptoEmitido"
+                    v-model="form.concepto_emitido"
+                    class="form-control"
+                    required
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -181,6 +206,41 @@
             </div>
             <div class="card-body">
               <div class="mb-4">
+                <table class="table table-bordered">
+                  <tr>
+                    <td colspan="4">Crterios de evaluación</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Aceptable (A)</td>
+                    <td colspan="2">
+                      Seleccione con un círculo cuando se cumplen la totalidad
+                      de los requisitos descritos en el aspecto a evaluar
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Aceptable con Requerimiento (AR)</td>
+                    <td colspan="2">
+                      Seleccione con un círculo cuando se cumplen parcialmente
+                      los requisitos descritos en el aspecto a evaluar
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Inaceptable (I)</td>
+                    <td colspan="2">
+                      Seleccione con un círculo cuando no cumple ninguno de los
+                      requisitos descritos en el aspecto a evaluar
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">No Aplica (NA)</td>
+                    <td colspan="2">
+                      Marque con una X la casilla "NA" en caso que el aspecto a
+                      verificar no se realice y calificar como Aceptable (A).
+                      Justificar la razón del no aplica en el espacio de
+                      observaciones.
+                    </td>
+                  </tr>
+                </table>
                 <table class="table table-bordered">
                   <tbody>
                     <tr>
@@ -505,7 +565,7 @@
                         encuentran diligenciadas de forma adecuada y oportuna.
                         Fecha de la ultima fumigación:
                         <input
-                          type="text"
+                          type="date"
                           class="form-control"
                           v-model="form.fecha_fumigacion"
                         />
@@ -784,7 +844,7 @@
                         tanque de almacenamiento de agua potable. Fecha de la
                         última limpieza y desinfección realizada:
                         <input
-                          type="text"
+                          type="date"
                           class="form-control"
                           v-model="form.fecha_limpieza_tanque"
                         />
@@ -1699,91 +1759,370 @@
             </div>
             <div class="card-body">
               <table class="table table-bordered">
-                <thead>
+                <thead class="table-primary text-center">
                   <tr>
-                    <th>Componente Preparación</th>
-                    <th>Grupo escolar verificado</th>
-                    <th>Unidad de Medida (g o ml)</th>
-                    <th>Cantidad Porción Servida según Minuta Patrón</th>
+                    <th rowspan="2">Componente</th>
+                    <th rowspan="2">Preparación</th>
+                    <th rowspan="2">Grupo escolar verificado</th>
+                    <th rowspan="2">
+                      Cantidad Porción Servida según Minuta Patrón
+                    </th>
+                    <th colspan="4">Peso o volumen de muestras servidas</th>
+
+                    <th>Cumplimiento</th>
+                  </tr>
+                  <tr>
                     <th>Muestra N° 1</th>
                     <th>Muestra N° 2</th>
                     <th>Muestra N° 3</th>
-                    <th>Peso o volumen de muestras servidas</th>
-                    <th>Temperatura final de cocción</th>
-                    <th>Temperatura distribución inicial</th>
-                    <th>Temperatura distribución final</th>
-                    <th>Cumplimiento</th>
+                    <th>Unidad de Medida (g o ml)</th>
+                    <th>Cumple / No cumple</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr
-                    v-for="(item, index) in foodPreparationItems"
-                    :key="index"
-                  >
-                    <td>{{ item.component }}</td>
+                  <tr>
+                    <td>Proteico</td>
                     <td>
                       <input
                         type="text"
                         class="form-control"
-                        v-model="form.foodPreparation[`${index}_grupo`]"
+                        v-model="form.proteico1"
                       />
                     </td>
-                    <td>{{ item.unit }}</td>
-                    <td>{{ item.standardPortion }}</td>
+
                     <td>
                       <input
-                        type="number"
+                        type="text"
                         class="form-control"
-                        v-model="form.foodPreparation[`${index}_muestra1`]"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="number"
-                        class="form-control"
-                        v-model="form.foodPreparation[`${index}_muestra2`]"
+                        v-model="form.proteico2"
                       />
                     </td>
                     <td>
                       <input
-                        type="number"
+                        type="text"
                         class="form-control"
-                        v-model="form.foodPreparation[`${index}_muestra3`]"
+                        v-model="form.proteico3"
                       />
                     </td>
                     <td>
                       <input
                         type="number"
                         class="form-control"
-                        v-model="form.foodPreparation[`${index}_peso`]"
+                        v-model="form.proteico4"
                       />
                     </td>
                     <td>
                       <input
                         type="number"
                         class="form-control"
-                        v-model="form.foodPreparation[`${index}_tempFinal`]"
+                        v-model="form.proteico5"
                       />
                     </td>
                     <td>
                       <input
                         type="number"
                         class="form-control"
-                        v-model="form.foodPreparation[`${index}_tempInicial`]"
+                        v-model="form.proteico6"
+                      />
+                    </td>
+                    <td>
+                      <select class="form-select" v-model="form.proteico7">
+                        <option value="g">g</option>
+                        <option value="ml">ml</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select" v-model="form.proteico8">
+                        <option value="cumple">Cumple</option>
+                        <option value="noCumple">No cumple</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Leguminosa</td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.leguminosa1"
+                      />
+                    </td>
+
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.leguminosa2"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.leguminosa3"
                       />
                     </td>
                     <td>
                       <input
                         type="number"
                         class="form-control"
-                        v-model="form.foodPreparation[`${index}_tempFinalDist`]"
+                        v-model="form.leguminosa4"
                       />
                     </td>
                     <td>
-                      <select
-                        class="form-select"
-                        v-model="form.foodPreparation[`${index}_cumplimiento`]"
-                      >
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model="form.leguminosa5"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model="form.leguminosa6"
+                      />
+                    </td>
+                    <td>
+                      <select class="form-select" v-model="form.leguminosa7">
+                        <option value="g">g</option>
+                        <option value="ml">ml</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select" v-model="form.leguminosa8">
+                        <option value="cumple">Cumple</option>
+                        <option value="noCumple">No cumple</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Cereal</td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.cereal1"
+                      />
+                    </td>
+
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.cereal2"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.cereal3"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model="form.cereal4"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model="form.cereal5"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model="form.cereal6"
+                      />
+                    </td>
+                    <td>
+                      <select class="form-select" v-model="form.cereal7">
+                        <option value="g">g</option>
+                        <option value="ml">ml</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select" v-model="form.cereal8">
+                        <option value="cumple">Cumple</option>
+                        <option value="noCumple">No cumple</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Tuberculos, platanos, derivados del cereal</td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.tuberculos1"
+                      />
+                    </td>
+
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.tuberculos2"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.tuberculos3"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model="form.tuberculos4"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model="form.tuberculos5"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model="form.tuberculos6"
+                      />
+                    </td>
+                    <td>
+                      <select class="form-select" v-model="form.tuberculos7">
+                        <option value="g">g</option>
+                        <option value="ml">ml</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select" v-model="form.tuberculos8">
+                        <option value="cumple">Cumple</option>
+                        <option value="noCumple">No cumple</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Verdura</td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.verdura1"
+                      />
+                    </td>
+
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.verdura2"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.verdura3"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model="form.verdura4"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model="form.verdura5"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model="form.verdura6"
+                      />
+                    </td>
+                    <td>
+                      <select class="form-select" v-model="form.verdura7">
+                        <option value="g">g</option>
+                        <option value="ml">ml</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select" v-model="form.verdura8">
+                        <option value="cumple">Cumple</option>
+                        <option value="noCumple">No cumple</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Jugo de fruta</td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.jugo1"
+                      />
+                    </td>
+
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.jugo2"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.jugo3"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model="form.jugo4"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model="form.jugo5"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model="form.jugo6"
+                      />
+                    </td>
+                    <td>
+                      <select class="form-select" v-model="form.jugo7">
+                        <option value="g">g</option>
+                        <option value="ml">ml</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select" v-model="form.jugo8">
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
@@ -2088,7 +2427,14 @@
                       alimentarios y nutricionales
                     </td>
                     <td>% de Cumplimiento</td>
-                    <td><input type="number" class="form-control" /></td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model="form.indicador1"
+                        required
+                      />
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -2118,28 +2464,41 @@
                         type="text"
                         class="form-control"
                         placeholder="Preparación"
+                        v-model="form.tb_verificacion1_1"
                       />
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion1_2"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion1_3"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion1_4"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion1_5"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
@@ -2149,6 +2508,7 @@
                         type="number"
                         class="form-control"
                         placeholder="°C"
+                        v-model="form.tb_verificacion1_6"
                       />
                     </td>
                     <td>
@@ -2156,6 +2516,7 @@
                         type="number"
                         class="form-control"
                         placeholder="°C"
+                        v-model="form.tb_verificacion1_7"
                       />
                     </td>
                     <td>
@@ -2163,10 +2524,14 @@
                         type="number"
                         class="form-control"
                         placeholder="°C"
+                        v-model="form.tb_verificacion1_8"
                       />
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion1_9"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
@@ -2178,28 +2543,41 @@
                         type="text"
                         class="form-control"
                         placeholder="Preparación"
+                        v-model="form.tb_verificacion2_1"
                       />
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion2_2"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion2_3"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion2_4"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion2_5"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
@@ -2209,6 +2587,7 @@
                         type="number"
                         class="form-control"
                         placeholder="°C"
+                        v-model="form.tb_verificacion2_6"
                       />
                     </td>
                     <td>
@@ -2216,6 +2595,7 @@
                         type="number"
                         class="form-control"
                         placeholder="°C"
+                        v-model="form.tb_verificacion2_7"
                       />
                     </td>
                     <td>
@@ -2223,10 +2603,14 @@
                         type="number"
                         class="form-control"
                         placeholder="°C"
+                        v-model="form.tb_verificacion2_8"
                       />
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion2_9"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
@@ -2238,28 +2622,41 @@
                         type="text"
                         class="form-control"
                         placeholder="Preparación"
+                        v-model="form.tb_verificacion3_1"
                       />
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion3_2"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion3_3"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion3_4"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion3_5"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
@@ -2269,6 +2666,7 @@
                         type="number"
                         class="form-control"
                         placeholder="°C"
+                        v-model="form.tb_verificacion3_6"
                       />
                     </td>
                     <td>
@@ -2276,6 +2674,7 @@
                         type="number"
                         class="form-control"
                         placeholder="°C"
+                        v-model="form.tb_verificacion3_7"
                       />
                     </td>
                     <td>
@@ -2283,10 +2682,14 @@
                         type="number"
                         class="form-control"
                         placeholder="°C"
+                        v-model="form.tb_verificacion3_8"
                       />
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion3_9"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
@@ -2298,28 +2701,41 @@
                         type="text"
                         class="form-control"
                         placeholder="Preparación"
+                        v-model="form.tb_verificacion4_1"
                       />
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion4_2"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion4_3"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion4_4"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion4_5"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
@@ -2329,6 +2745,7 @@
                         type="number"
                         class="form-control"
                         placeholder="°C"
+                        v-model="form.tb_verificacion4_6"
                       />
                     </td>
                     <td>
@@ -2336,6 +2753,7 @@
                         type="number"
                         class="form-control"
                         placeholder="°C"
+                        v-model="form.tb_verificacion4_7"
                       />
                     </td>
                     <td>
@@ -2343,10 +2761,14 @@
                         type="number"
                         class="form-control"
                         placeholder="°C"
+                        v-model="form.tb_verificacion4_8"
                       />
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion4_9"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
@@ -2358,28 +2780,41 @@
                         type="text"
                         class="form-control"
                         placeholder="Preparación"
+                        v-model="form.tb_verificacion5_1"
                       />
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion5_2"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion5_3"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion5_4"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion5_5"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
@@ -2389,6 +2824,7 @@
                         type="number"
                         class="form-control"
                         placeholder="°C"
+                        v-model="form.tb_verificacion5_6"
                       />
                     </td>
                     <td>
@@ -2396,6 +2832,7 @@
                         type="number"
                         class="form-control"
                         placeholder="°C"
+                        v-model="form.tb_verificacion5_7"
                       />
                     </td>
                     <td>
@@ -2403,10 +2840,14 @@
                         type="number"
                         class="form-control"
                         placeholder="°C"
+                        v-model="form.tb_verificacion5_8"
                       />
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.tb_verificacion5_9"
+                      >
                         <option value="Cumple">Cumple</option>
                         <option value="No Cumple">No Cumple</option>
                       </select>
@@ -2424,6 +2865,8 @@
                         type="number"
                         class="form-control"
                         placeholder="%"
+                        v-model="form.indicador2"
+                        required
                       />
                     </td>
                   </tr>
@@ -2441,59 +2884,224 @@
                   </tr>
                   <tr>
                     <td>Centro de Producción (CDP):</td>
-                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.cdp"
+                        required
+                      />
+                    </td>
                     <td>Placa del vehículo:</td>
-                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.placa_vehiculo"
+                        required
+                      />
+                    </td>
                     <td>N° de sedes:</td>
-                    <td><input type="number" class="form-control" /></td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model="form.numero_sedes"
+                        required
+                      />
+                    </td>
                   </tr>
                   <tr>
                     <td colspan="2" class="text-center table-primary">
                       Nombre del establecimiento educativo
                     </td>
-                    <td><input type="text" class="form-control" /></td>
-                    <td><input type="text" class="form-control" /></td>
-                    <td><input type="text" class="form-control" /></td>
-                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.nombre1"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.nombre2"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.nombre3"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.nombre4"
+                      />
+                    </td>
                   </tr>
                   <tr>
                     <td colspan="2">Hora de salida del CDP.</td>
-                    <td><input type="text" class="form-control" /></td>
-                    <td><input type="text" class="form-control" /></td>
-                    <td><input type="text" class="form-control" /></td>
-                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.hora_salida1"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.hora_salida2"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.hora_salida3"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.hora_salida4"
+                      />
+                    </td>
                   </tr>
                   <tr>
                     <td colspan="2">Temperatura de salida del complemento.</td>
-                    <td><input type="text" class="form-control" /></td>
-                    <td><input type="text" class="form-control" /></td>
-                    <td><input type="text" class="form-control" /></td>
-                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.temperatura_salida1"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.temperatura_salida2"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.temperatura_salida3"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.temperatura_salida4"
+                      />
+                    </td>
                   </tr>
                   <tr>
                     <td colspan="2">
                       Hora de llegada al establecimiento educativo.
                     </td>
-                    <td><input type="text" class="form-control" /></td>
-                    <td><input type="text" class="form-control" /></td>
-                    <td><input type="text" class="form-control" /></td>
-                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.hora_llegada1"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.hora_llegada2"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.hora_llegada3"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.hora_llegada4"
+                      />
+                    </td>
                   </tr>
                   <tr>
                     <td colspan="2">
                       Temperatura del complemento para consumo.
                     </td>
-                    <td><input type="text" class="form-control" /></td>
-                    <td><input type="text" class="form-control" /></td>
-                    <td><input type="text" class="form-control" /></td>
-                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.temperatura_llegada1"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.temperatura_llegada2"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.temperatura_llegada3"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.temperatura_llegada4"
+                      />
+                    </td>
                   </tr>
                   <tr>
                     <td colspan="2">Cantidad de raciones entregadas.</td>
-                    <td><input type="text" class="form-control" /></td>
-                    <td><input type="text" class="form-control" /></td>
-                    <td><input type="text" class="form-control" /></td>
-                    <td><input type="text" class="form-control" /></td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.cantidad_raciones1"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.cantidad_raciones2"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.cantidad_raciones3"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.cantidad_raciones4"
+                      />
+                    </td>
                   </tr>
                   <tr>
                     <td colspan="6">
@@ -2516,13 +3124,21 @@
                       encuentra vigente.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_61"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_61_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -2533,13 +3149,21 @@
                       en la normatividad vigente.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_62"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_62_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -2551,13 +3175,21 @@
                       vigente.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_63"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_63_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -2570,13 +3202,21 @@
                       establecidos por el Ministerio de Transporte.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_64"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_64_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -2586,13 +3226,21 @@
                       por la autoridad competente con concepto favorable.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_65"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_65_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -2603,13 +3251,21 @@
                       material resistente.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_66"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_66_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -2619,13 +3275,21 @@
                       ajusta a las cantidades definidas para la sede educativa.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_67"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_67_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -2636,13 +3300,21 @@
                       practicas de manufactura.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_68"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_68_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -2653,13 +3325,21 @@
                       el consumo.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_69"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_69_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -2670,13 +3350,21 @@
                       encuentran en buen estado.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_70"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_70_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -2687,13 +3375,21 @@
                       condiciones higiénicas y físicas.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_71"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_71_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -2704,13 +3400,21 @@
                       condiciones físicas e higiénicas.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_72"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_72_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -2722,13 +3426,21 @@
                       complementos alimentarios.
                     </td>
                     <td>
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        v-model="form.pre_73"
+                        required
+                      >
                         <option value="cumple">Cumple</option>
                         <option value="noCumple">No cumple</option>
                       </select>
                     </td>
                     <td>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.pre_73_obs"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -2742,6 +3454,8 @@
                         type="number"
                         class="form-control"
                         placeholder="%"
+                        v-model="form.indicador3"
+                        required
                       />
                     </td>
                   </tr>
@@ -2751,7 +3465,11 @@
                 <label class="form-label"
                   >OBSERVACIONES DE QUIEN RECIBE LA VISITA</label
                 >
-                <textarea class="form-control" rows="3"> </textarea>
+                <textarea
+                  class="form-control"
+                  rows="3"
+                  v-model="form.observaciones_recibe"
+                ></textarea>
               </div>
             </div>
           </div>
@@ -2924,15 +3642,291 @@ export default {
       toastType: "",
       form: {
         etc: "Norte de Santander",
-        fechaVisita: "",
+        fecha_visita: "",
         municipio: "",
-        institucionEducativa: "",
-        sedeEducativa: "",
-        horaInicial: "",
-        horaFinal: "",
-        tipoVisita: "",
-        numeroVisita: "",
+        institucion: "",
+        sede: "",
+        hora_inicial: "",
+        hora_final: "",
+        tipo_visita: "",
+        numero_visita: "",
         operador: "",
+        contrato: "",
+        num_beneficiarios: "",
+        fecha_ultima_visita: "",
+        concepto_emitido: "",
+        pre_1: "",
+        pre_1_obs: "",
+        pre_2: "",
+        pre_2_obs: "",
+        pre_3: "",
+        pre_3_obs: "",
+        pre_4: "",
+        pre_4_obs: "",
+        pre_5: "",
+        pre_5_obs: "",
+        pre_6: "",
+        pre_6_obs: "",
+        pre_7: "",
+        pre_7_obs: "",
+        pre_8: "",
+        pre_8_obs: "",
+        pre_9: "",
+        pre_9_obs: "",
+        pre_10: "",
+        pre_10_obs: "",
+        pre_11: "",
+        pre_11_obs: "",
+        pre_12: "",
+        pre_12_obs: "",
+        pre_13: "",
+        pre_13_obs: "",
+        pre_14: "",
+        pre_14_obs: "",
+        pre_15: "",
+        pre_15_obs: "",
+        pre_16: "",
+        pre_16_obs: "",
+        pre_17: "",
+        pre_17_obs: "",
+        pre_18: "",
+        pre_18_obs: "",
+        pre_19: "",
+        pre_19_obs: "",
+        pre_20: "",
+        pre_20_obs: "",
+        pre_21: "",
+        pre_21_obs: "",
+        pre_22: "",
+        pre_22_obs: "",
+        pre_23: "",
+        pre_23_obs: "",
+        pre_24: "",
+        pre_24_obs: "",
+        pre_25: "",
+        pre_25_obs: "",
+        pre_26: "",
+        pre_26_obs: "",
+        pre_27: "",
+        pre_27_obs: "",
+        pre_28: "",
+        pre_28_obs: "",
+        pre_29: "",
+        pre_29_obs: "",
+        pre_30: "",
+        pre_30_obs: "",
+        pre_31: "",
+        pre_31_obs: "",
+        pre_32: "",
+        pre_32_obs: "",
+        pre_33: "",
+        pre_33_obs: "",
+        pre_34: "",
+        pre_34_obs: "",
+        pre_35: "",
+        pre_35_obs: "",
+        pre_36: "",
+        pre_36_obs: "",
+        pre_37: "",
+        pre_37_obs: "",
+        pre_38: "",
+        pre_38_obs: "",
+        pre_39: "",
+        pre_39_obs: "",
+        pre_40: "",
+        pre_40_obs: "",
+        pre_41: "",
+        pre_41_obs: "",
+        pre_42: "",
+        pre_42_obs: "",
+        pre_43: "",
+        pre_43_obs: "",
+        pre_44: "",
+        pre_44_obs: "",
+        pre_45: "",
+        pre_45_obs: "",
+        pre_46: "",
+        pre_46_obs: "",
+        pre_47: "",
+        pre_47_obs: "",
+        pre_48: "",
+        pre_48_obs: "",
+        pre_49: "",
+        pre_49_obs: "",
+        pre_50: "",
+        pre_50_obs: "",
+        pre_51: "",
+        pre_51_obs: "",
+        pre_52: "",
+        pre_52_obs: "",
+        pre_53: "",
+        pre_53_obs: "",
+        pre_54: "",
+        pre_54_obs: "",
+        pre_55: "",
+        pre_55_obs: "",
+        pre_56: "",
+        pre_56_obs: "",
+        pre_57: "",
+        pre_57_obs: "",
+        pre_58: "",
+        pre_58_obs: "",
+        pre_59: "",
+        pre_59_obs: "",
+        pre_60: "",
+        pre_60_obs: "",
+        pre_61: "",
+        pre_61_obs: "",
+        pre_62: "",
+        pre_62_obs: "",
+        pre_63: "",
+        pre_63_obs: "",
+        pre_64: "",
+        pre_64_obs: "",
+        pre_65: "",
+        pre_65_obs: "",
+        pre_66: "",
+        pre_66_obs: "",
+        pre_67: "",
+        pre_67_obs: "",
+        pre_68: "",
+        pre_68_obs: "",
+        pre_69: "",
+        pre_69_obs: "",
+        pre_70: "",
+        pre_70_obs: "",
+        pre_71: "",
+        pre_71_obs: "",
+        pre_72: "",
+        pre_72_obs: "",
+        pre_73: "",
+        pre_73_obs: "",
+        tb_verificacion1_1: "",
+        tb_verificacion1_2: "",
+        tb_verificacion1_3: "",
+        tb_verificacion1_4: "",
+        tb_verificacion1_5: "",
+        tb_verificacion1_6: "",
+        tb_verificacion1_7: "",
+        tb_verificacion1_8: "",
+        tb_verificacion1_9: "",
+        tb_verificacion2_1: "",
+        tb_verificacion2_2: "",
+        tb_verificacion2_3: "",
+        tb_verificacion2_4: "",
+        tb_verificacion2_5: "",
+        tb_verificacion2_6: "",
+        tb_verificacion2_7: "",
+        tb_verificacion2_8: "",
+        tb_verificacion2_9: "",
+        tb_verificacion3_1: "",
+        tb_verificacion3_2: "",
+        tb_verificacion3_3: "",
+        tb_verificacion3_4: "",
+        tb_verificacion3_5: "",
+        tb_verificacion3_6: "",
+        tb_verificacion3_7: "",
+        tb_verificacion3_8: "",
+        tb_verificacion3_9: "",
+        tb_verificacion4_1: "",
+        tb_verificacion4_2: "",
+        tb_verificacion4_3: "",
+        tb_verificacion4_4: "",
+        tb_verificacion4_5: "",
+        tb_verificacion4_6: "",
+        tb_verificacion4_7: "",
+        tb_verificacion4_8: "",
+        tb_verificacion4_9: "",
+        tb_verificacion5_1: "",
+        tb_verificacion5_2: "",
+        tb_verificacion5_3: "",
+        tb_verificacion5_4: "",
+        tb_verificacion5_5: "",
+        tb_verificacion5_6: "",
+        tb_verificacion5_7: "",
+        tb_verificacion5_8: "",
+        tb_verificacion5_9: "",
+        indicador1: "",
+        indicador2: "",
+        indicador3: "",
+        proteico1: "",
+        proteico2: "",
+        proteico3: "",
+        proteico4: "",
+        proteico5: "",
+        proteico6: "",
+        proteico7: "",
+        proteico8: "",
+        leguminosa1: "",
+        leguminosa2: "",
+        leguminosa3: "",
+        leguminosa4: "",
+        leguminosa5: "",
+        leguminosa6: "",
+        leguminosa7: "",
+        leguminosa8: "",
+        cereal1: "",
+        cereal2: "",
+        cereal3: "",
+        cereal4: "",
+        cereal5: "",
+        cereal6: "",
+        cereal7: "",
+        cereal8: "",
+        tuberculos1: "",
+        tuberculos2: "",
+        tuberculos3: "",
+        tuberculos4: "",
+        tuberculos5: "",
+        tuberculos6: "",
+        tuberculos7: "",
+        tuberculos8: "",
+        verdura1: "",
+        verdura2: "",
+        verdura3: "",
+        verdura4: "",
+        verdura5: "",
+        verdura6: "",
+        verdura7: "",
+        verdura8: "",
+        jugo1: "",
+        jugo2: "",
+        jugo3: "",
+        jugo4: "",
+        jugo5: "",
+        jugo6: "",
+        jugo7: "",
+        jugo8: "",
+        cdp: "",
+        placa_vehiculo: "",
+        numero_sedes: "",
+        nombre1: "",
+        nombre2: "",
+        nombre3: "",
+        nombre4: "",
+        hora_salida1: "",
+        hora_salida2: "",
+        hora_salida3: "",
+        hora_salida4: "",
+        temperatura_salida1: "",
+        temperatura_salida2: "",
+        temperatura_salida3: "",
+        temperatura_salida4: "",
+        hora_llegada1: "",
+        hora_llegada2: "",
+        hora_llegada3: "",
+        hora_llegada4: "",
+        temperatura_llegada1: "",
+        temperatura_llegada2: "",
+        temperatura_llegada3: "",
+        temperatura_llegada4: "",
+        cantidad_raciones1: "",
+        cantidad_raciones2: "",
+        cantidad_raciones3: "",
+        cantidad_raciones4: "",
+        observaciones_recibe: "",
+        fecha_fumigacion: "",
+        fecha_limpieza_tanque: "",
         files: [],
         firma1: "",
         firma2: "",
@@ -2944,107 +3938,8 @@ export default {
         cedula_atiende: "",
         cargo_atiende: "",
         telefono_atiende: "",
-        numeroContrato: "",
-        numeroBeneficiarios: "",
-        operationConditions: {},
-        foodPreparation: {},
-        nutritionalRequirements: {},
-        transportDistribution: {
-          cdp: "",
-          placaVehiculo: "",
-          numeroSedes: "",
-        },
       },
-      operationConditions: [
-        {
-          title: "Plan de saneamiento",
-          items: [
-            {
-              number: 1,
-              aspect:
-                "Las Instalaciones sanitarias se encuentran limpias y se cuenta con la dotación adecuada (jabón líquido, gel antibacterial, papel higiénico y papeleras con bolsa).",
-            },
-            {
-              number: 2,
-              aspect:
-                "Existe el documento que soporte el programa de limpieza y desinfección, en su contenido se describen los procedimientos, operaciones y formatos de registros para la periodicidad de los mismos (áreas, equipos, superficies, utensilios, personal manipulador y alimentos).",
-            },
-          ],
-        },
-        {
-          title: "Programa de Limpieza y Desinfección",
-          items: [
-            {
-              number: 3,
-              aspect:
-                "Se llevan los registros actualizados que soportan el cumplimiento de las actividades del programa de limpieza y desinfección.",
-            },
-            {
-              number: 4,
-              aspect:
-                "Los implementos (escobas, traperos, recogedores, guantes entre otros) que se utilizan para el aseo, permanecen en adecuadas condiciones de limpieza y en el lugar establecido.",
-            },
-          ],
-        },
-      ],
-      foodPreparationItems: [
-        { component: "Proteico", unit: "g", standardPortion: 100 },
-        { component: "Cereal", unit: "g", standardPortion: 80 },
-        {
-          component: "Tubérculo, Plátano, Derivado del cereal",
-          unit: "g",
-          standardPortion: 80,
-        },
-        { component: "Verdura", unit: "g", standardPortion: 60 },
-        { component: "Jugo de Fruta", unit: "ml", standardPortion: 200 },
-      ],
-      nutritionalRequirements: [
-        {
-          number: 1,
-          aspect:
-            "El menú del día es acorde a lo establecido en el ciclo de menús y minuta patrón adoptada y aprobada.",
-        },
-        {
-          number: 2,
-          aspect:
-            "Se cuenta con la totalidad de la materia prima correspondientes al cálculo de las minutas aprobadas, multiplicadas por el número de servicios y tipo de menú.",
-        },
-        {
-          number: 3,
-          aspect:
-            "El ciclo de menú se ejecuta bajo las especificaciones técnicas definidas (guías de preparación).",
-        },
-        {
-          number: 4,
-          aspect:
-            "En caso de presentarse intercambios, estos se realizan de acuerdo al componente, a la frecuencia y cuentan con documento soporte de aprobación.",
-        },
-        {
-          number: 5,
-          aspect:
-            "En el ciclo de minutas incluye alimentos y/o preparaciones propias del territorio",
-        },
-        // Add more items as needed
-      ],
 
-      transportDistributionItems: [
-        {
-          number: 1,
-          aspect:
-            "Los vehículos para el transporte de las canastillas que contienen los portacomidas cumplen con la normatividad sanitaria vigente (Resolución 2674 de 2013) y los lineamientos determinados para transporte de alimentos establecidos por el Ministerio de Transporte.",
-        },
-        {
-          number: 2,
-          aspect:
-            "El vehículo cuenta con certificación sanitaria expedida por la autoridad competente con concepto favorable.",
-        },
-        {
-          number: 3,
-          aspect:
-            "Las Canastillas y/o equipos donde son transportados los alimentos se encuentran limpias, en buen estado y son de material resistente.",
-        },
-        // Add more items as needed
-      ],
       formulariosOffline: [], // Para almacenar temporalmente los formularios en localStorage
     };
   },
@@ -3058,6 +3953,33 @@ export default {
       this.form[idFirma] = firma;
     },
     guardarFormulario() {
+      this.isLoading = true;
+      // validar municipio, institucion y sede
+      if (
+        this.form.municipio === "" ||
+        this.form.institucion === "" ||
+        this.form.sede === ""
+      ) {
+        this.showToast(
+          "Debe seleccionar un municipio, institución y sede",
+          "danger"
+        );
+        this.isLoading = false;
+        return;
+      }
+      // firmar formulario
+      if (this.form.firma1 === "" || this.form.firma2 === "") {
+        this.showToast("Debe firmar el formulario", "danger");
+        this.isLoading = false;
+        return;
+      }
+      // validar archivos
+      if (this.form.files.length === 0) {
+        this.showToast("Debe subir al menos un archivo", "danger");
+        this.isLoading = false;
+        return;
+      }
+
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {
         // Enviar formulario al servidor
@@ -3073,30 +3995,355 @@ export default {
         JSON.parse(localStorage.getItem("formulariosOffline")) || [];
       guardados.push(this.form); // Añadir el formulario actual
       localStorage.setItem("formulariosOffline", JSON.stringify(guardados));
-      this.resetFormulario();
+      this.resetForm();
     },
     async enviarFormularioAlServidor() {
       try {
-        this.isLoading = true;
         const apiUrl = process.env.VUE_APP_API_BASE_URL;
+        // Convertir form a Multipart
+        const formData = new FormData();
+        Object.keys(this.form).forEach((key) => {
+          if (key !== "files") {
+            if (key === "filas") {
+              formData.append(key, JSON.stringify(this.form[key] || [])); // Convierte a JSON
+            } else {
+              formData.append(key, this.form[key]);
+            }
+          }
+        });
+        this.form.files.forEach((fileObj, index) => {
+          formData.append(`files[${index}]`, fileObj.file);
+        });
+
         // Enviar datos con una solicitud POST
-        const response = await axios.post(`${apiUrl}/visitas`, this.form);
+        const response = await axios.post(
+          `${apiUrl}/ct_verificacion_cct`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        console.log(response);
         if (response.status === 201) {
-          this.showToast("Formulario guardado correctamente", "success");
+          this.showToast(
+            "Formulario de verificación CCT guardado correctamente",
+            "success"
+          );
           this.resetForm(); // Reestablecer los campos del formulario
         }
-        this.resetFormulario();
         this.isLoading = false;
       } catch (error) {
         this.isLoading = false;
         this.showToast(
-          "No se pudo enviar el formulario" + error.response.data.message,
+          "No se pudo enviar el formulario componente tecnico, verificación CCT",
           "danger"
         );
-        console.error("Error al enviar el formulario:", error);
       } finally {
         this.isLoading = false;
       }
+    },
+    resetForm() {
+      this.form = {
+        etc: "Norte de Santander",
+        fecha_visita: "",
+        municipio: "",
+        institucion: "",
+        sede: "",
+        hora_inicial: "",
+        hora_final: "",
+        tipo_visita: "",
+        numero_visita: "",
+        operador: "",
+        contrato: "",
+        num_beneficiarios: "",
+        fecha_ultima_visita: "",
+        concepto_emitido: "",
+        pre_1: "",
+        pre_1_obs: "",
+        pre_2: "",
+        pre_2_obs: "",
+        pre_3: "",
+        pre_3_obs: "",
+        pre_4: "",
+        pre_4_obs: "",
+        pre_5: "",
+        pre_5_obs: "",
+        pre_6: "",
+        pre_6_obs: "",
+        pre_7: "",
+        pre_7_obs: "",
+        pre_8: "",
+        pre_8_obs: "",
+        pre_9: "",
+        pre_9_obs: "",
+        pre_10: "",
+        pre_10_obs: "",
+        pre_11: "",
+        pre_11_obs: "",
+        pre_12: "",
+        pre_12_obs: "",
+        pre_13: "",
+        pre_13_obs: "",
+        pre_14: "",
+        pre_14_obs: "",
+        pre_15: "",
+        pre_15_obs: "",
+        pre_16: "",
+        pre_16_obs: "",
+        pre_17: "",
+        pre_17_obs: "",
+        pre_18: "",
+        pre_18_obs: "",
+        pre_19: "",
+        pre_19_obs: "",
+        pre_20: "",
+        pre_20_obs: "",
+        pre_21: "",
+        pre_21_obs: "",
+        pre_22: "",
+        pre_22_obs: "",
+        pre_23: "",
+        pre_23_obs: "",
+        pre_24: "",
+        pre_24_obs: "",
+        pre_25: "",
+        pre_25_obs: "",
+        pre_26: "",
+        pre_26_obs: "",
+        pre_27: "",
+        pre_27_obs: "",
+        pre_28: "",
+        pre_28_obs: "",
+        pre_29: "",
+        pre_29_obs: "",
+        pre_30: "",
+        pre_30_obs: "",
+        pre_31: "",
+        pre_31_obs: "",
+        pre_32: "",
+        pre_32_obs: "",
+        pre_33: "",
+        pre_33_obs: "",
+        pre_34: "",
+        pre_34_obs: "",
+        pre_35: "",
+        pre_35_obs: "",
+        pre_36: "",
+        pre_36_obs: "",
+        pre_37: "",
+        pre_37_obs: "",
+        pre_38: "",
+        pre_38_obs: "",
+        pre_39: "",
+        pre_39_obs: "",
+        pre_40: "",
+        pre_40_obs: "",
+        pre_41: "",
+        pre_41_obs: "",
+        pre_42: "",
+        pre_42_obs: "",
+        pre_43: "",
+        pre_43_obs: "",
+        pre_44: "",
+        pre_44_obs: "",
+        pre_45: "",
+        pre_45_obs: "",
+        pre_46: "",
+        pre_46_obs: "",
+        pre_47: "",
+        pre_47_obs: "",
+        pre_48: "",
+        pre_48_obs: "",
+        pre_49: "",
+        pre_49_obs: "",
+        pre_50: "",
+        pre_50_obs: "",
+        pre_51: "",
+        pre_51_obs: "",
+        pre_52: "",
+        pre_52_obs: "",
+        pre_53: "",
+        pre_53_obs: "",
+        pre_54: "",
+        pre_54_obs: "",
+        pre_55: "",
+        pre_55_obs: "",
+        pre_56: "",
+        pre_56_obs: "",
+        pre_57: "",
+        pre_57_obs: "",
+        pre_58: "",
+        pre_58_obs: "",
+        pre_59: "",
+        pre_59_obs: "",
+        pre_60: "",
+        pre_60_obs: "",
+        pre_61: "",
+        pre_61_obs: "",
+        pre_62: "",
+        pre_62_obs: "",
+        pre_63: "",
+        pre_63_obs: "",
+        pre_64: "",
+        pre_64_obs: "",
+        pre_65: "",
+        pre_65_obs: "",
+        pre_66: "",
+        pre_66_obs: "",
+        pre_67: "",
+        pre_67_obs: "",
+        pre_68: "",
+        pre_68_obs: "",
+        pre_69: "",
+        pre_69_obs: "",
+        pre_70: "",
+        pre_70_obs: "",
+        pre_71: "",
+        pre_71_obs: "",
+        pre_72: "",
+        pre_72_obs: "",
+        pre_73: "",
+        pre_73_obs: "",
+        tb_verificacion1_1: "",
+        tb_verificacion1_2: "",
+        tb_verificacion1_3: "",
+        tb_verificacion1_4: "",
+        tb_verificacion1_5: "",
+        tb_verificacion1_6: "",
+        tb_verificacion1_7: "",
+        tb_verificacion1_8: "",
+        tb_verificacion1_9: "",
+        tb_verificacion2_1: "",
+        tb_verificacion2_2: "",
+        tb_verificacion2_3: "",
+        tb_verificacion2_4: "",
+        tb_verificacion2_5: "",
+        tb_verificacion2_6: "",
+        tb_verificacion2_7: "",
+        tb_verificacion2_8: "",
+        tb_verificacion2_9: "",
+        tb_verificacion3_1: "",
+        tb_verificacion3_2: "",
+        tb_verificacion3_3: "",
+        tb_verificacion3_4: "",
+        tb_verificacion3_5: "",
+        tb_verificacion3_6: "",
+        tb_verificacion3_7: "",
+        tb_verificacion3_8: "",
+        tb_verificacion3_9: "",
+        tb_verificacion4_1: "",
+        tb_verificacion4_2: "",
+        tb_verificacion4_3: "",
+        tb_verificacion4_4: "",
+        tb_verificacion4_5: "",
+        tb_verificacion4_6: "",
+        tb_verificacion4_7: "",
+        tb_verificacion4_8: "",
+        tb_verificacion4_9: "",
+        tb_verificacion5_1: "",
+        tb_verificacion5_2: "",
+        tb_verificacion5_3: "",
+        tb_verificacion5_4: "",
+        tb_verificacion5_5: "",
+        tb_verificacion5_6: "",
+        tb_verificacion5_7: "",
+        tb_verificacion5_8: "",
+        tb_verificacion5_9: "",
+        indicador1: "",
+        indicador2: "",
+        indicador3: "",
+        proteico1: "",
+        proteico2: "",
+        proteico3: "",
+        proteico4: "",
+        proteico5: "",
+        proteico6: "",
+        proteico7: "",
+        proteico8: "",
+        leguminosa1: "",
+        leguminosa2: "",
+        leguminosa3: "",
+        leguminosa4: "",
+        leguminosa5: "",
+        leguminosa6: "",
+        leguminosa7: "",
+        leguminosa8: "",
+        cereal1: "",
+        cereal2: "",
+        cereal3: "",
+        cereal4: "",
+        cereal5: "",
+        cereal6: "",
+        cereal7: "",
+        cereal8: "",
+        tuberculos1: "",
+        tuberculos2: "",
+        tuberculos3: "",
+        tuberculos4: "",
+        tuberculos5: "",
+        tuberculos6: "",
+        tuberculos7: "",
+        tuberculos8: "",
+        verdura1: "",
+        verdura2: "",
+        verdura3: "",
+        verdura4: "",
+        verdura5: "",
+        verdura6: "",
+        verdura7: "",
+        verdura8: "",
+        jugo1: "",
+        jugo2: "",
+        jugo3: "",
+        jugo4: "",
+        jugo5: "",
+        jugo6: "",
+        jugo7: "",
+        jugo8: "",
+        cdp: "",
+        placa_vehiculo: "",
+        numero_sedes: "",
+        nombre1: "",
+        nombre2: "",
+        nombre3: "",
+        nombre4: "",
+        hora_salida1: "",
+        hora_salida2: "",
+        hora_salida3: "",
+        hora_salida4: "",
+        temperatura_salida1: "",
+        temperatura_salida2: "",
+        temperatura_salida3: "",
+        temperatura_salida4: "",
+        hora_llegada1: "",
+        hora_llegada2: "",
+        hora_llegada3: "",
+        hora_llegada4: "",
+        temperatura_llegada1: "",
+        temperatura_llegada2: "",
+        temperatura_llegada3: "",
+        temperatura_llegada4: "",
+        cantidad_raciones1: "",
+        cantidad_raciones2: "",
+        cantidad_raciones3: "",
+        cantidad_raciones4: "",
+        observaciones_recibe: "",
+        fecha_fumigacion: "",
+        fecha_limpieza_tanque: "",
+        files: [],
+        firma1: "",
+        firma2: "",
+        nombre_apoyo: "",
+        cedula_apoyo: "",
+        cargo_apoyo: "",
+        telefono_apoyo: "",
+        nombre_atiende: "",
+        cedula_atiende: "",
+        cargo_atiende: "",
+        telefono_atiende: "",
+      };
     },
     showToast(message, type) {
       this.toastMessage = message;
