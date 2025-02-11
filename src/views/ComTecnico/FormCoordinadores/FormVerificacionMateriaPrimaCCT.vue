@@ -600,57 +600,38 @@ export default {
       this.form[idFirma] = firma;
     },
     agregarFila() {
-      if (
-        this.material &&
-        this.lote &&
-        this.fecha &&
-        this.unidad &&
-        this.temperatura &&
-        this.cantidadKardex &&
-        this.cantidadEncontrada &&
-        this.color &&
-        this.olor &&
-        this.textura &&
-        this.cumplimiento
-      ) {
-        // Agregar una nueva fila con los valores ingresados
-        if (this.materialOtro) {
-          this.material = this.materialOtro;
-        }
-        this.form.filas.push({
-          nombre: this.material,
-          lote: this.lote,
-          fecha: this.fecha,
-          unidadMedida: this.unidad,
-          temperatura: this.temperatura,
-          cantidadKardex: this.cantidadKardex,
-          cantidadEncontrada: this.cantidadEncontrada,
-          cantidadFaltante: this.cantidadFaltante,
-          color: this.color,
-          olor: this.olor,
-          textura: this.textura,
-          cumplimiento: this.cumplimiento,
-        });
-        // Limpiar los campos después de agregar
-        this.material = "";
-        this.materialOtro = "";
-        this.lote = "";
-        this.fecha = "";
-        this.unidad = "";
-        this.temperatura = "";
-        this.cantidadKardex = "";
-        this.cantidadEncontrada = "";
-        this.cantidadFaltante = "";
-        this.color = "";
-        this.olor = "";
-        this.textura = "";
-        this.cumplimiento = "";
-      } else {
-        this.showToast(
-          "Por favor, complete todos los campos antes de agregar.",
-          "danger"
-        );
+      // Agregar una nueva fila con los valores ingresados
+      if (this.materialOtro) {
+        this.material = this.materialOtro;
       }
+      this.form.filas.push({
+        nombre: this.material,
+        lote: this.lote || "N/A",
+        fecha: this.fecha || "N/A",
+        unidadMedida: this.unidad || "N/A",
+        temperatura: this.temperatura || "N/A",
+        cantidadKardex: this.cantidadKardex || "N/A",
+        cantidadEncontrada: this.cantidadEncontrada || "N/A",
+        cantidadFaltante: this.cantidadFaltante || "N/A",
+        color: this.color || "N/A",
+        olor: this.olor || "N/A",
+        textura: this.textura || "N/A",
+        cumplimiento: this.cumplimiento,
+      });
+      // Limpiar los campos después de agregar
+      this.material = "";
+      this.materialOtro = "";
+      this.lote = "";
+      this.fecha = "";
+      this.unidad = "";
+      this.temperatura = "";
+      this.cantidadKardex = "";
+      this.cantidadEncontrada = "";
+      this.cantidadFaltante = "";
+      this.color = "";
+      this.olor = "";
+      this.textura = "";
+      this.cumplimiento = "";
     },
     guardarFormulario() {
       this.isLoading = true;

@@ -2165,8 +2165,12 @@
                         v-model="form.pre_50"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -2189,8 +2193,12 @@
                         v-model="form.pre_51"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -2214,8 +2222,12 @@
                         v-model="form.pre_52"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -2238,8 +2250,12 @@
                         v-model="form.pre_53"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -2263,8 +2279,12 @@
                         v-model="form.pre_54"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -2287,8 +2307,12 @@
                         v-model="form.pre_55"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -2312,8 +2336,12 @@
                         v-model="form.pre_56"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -2336,8 +2364,12 @@
                         v-model="form.pre_57"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -2360,8 +2392,12 @@
                         v-model="form.pre_58"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -2383,8 +2419,12 @@
                         v-model="form.pre_59"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -2409,8 +2449,12 @@
                         v-model="form.pre_60"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -2432,6 +2476,7 @@
                         type="number"
                         class="form-control"
                         v-model="form.indicador1"
+                        step="any"
                         required
                       />
                     </td>
@@ -2508,6 +2553,7 @@
                         type="number"
                         class="form-control"
                         placeholder="°C"
+                        step="any"
                         v-model="form.tb_verificacion1_6"
                       />
                     </td>
@@ -2515,6 +2561,7 @@
                       <input
                         type="number"
                         class="form-control"
+                        step="any"
                         placeholder="°C"
                         v-model="form.tb_verificacion1_7"
                       />
@@ -2522,6 +2569,7 @@
                     <td>
                       <input
                         type="number"
+                        step="any"
                         class="form-control"
                         placeholder="°C"
                         v-model="form.tb_verificacion1_8"
@@ -2585,6 +2633,7 @@
                     <td>
                       <input
                         type="number"
+                        step="any"
                         class="form-control"
                         placeholder="°C"
                         v-model="form.tb_verificacion2_6"
@@ -2593,6 +2642,7 @@
                     <td>
                       <input
                         type="number"
+                        step="any"
                         class="form-control"
                         placeholder="°C"
                         v-model="form.tb_verificacion2_7"
@@ -2601,6 +2651,7 @@
                     <td>
                       <input
                         type="number"
+                        step="any"
                         class="form-control"
                         placeholder="°C"
                         v-model="form.tb_verificacion2_8"
@@ -2664,6 +2715,7 @@
                     <td>
                       <input
                         type="number"
+                        step="any"
                         class="form-control"
                         placeholder="°C"
                         v-model="form.tb_verificacion3_6"
@@ -2672,6 +2724,7 @@
                     <td>
                       <input
                         type="number"
+                        step="any"
                         class="form-control"
                         placeholder="°C"
                         v-model="form.tb_verificacion3_7"
@@ -2680,6 +2733,7 @@
                     <td>
                       <input
                         type="number"
+                        step="any"
                         class="form-control"
                         placeholder="°C"
                         v-model="form.tb_verificacion3_8"
@@ -2743,6 +2797,7 @@
                     <td>
                       <input
                         type="number"
+                        step="any"
                         class="form-control"
                         placeholder="°C"
                         v-model="form.tb_verificacion4_6"
@@ -2751,6 +2806,7 @@
                     <td>
                       <input
                         type="number"
+                        step="any"
                         class="form-control"
                         placeholder="°C"
                         v-model="form.tb_verificacion4_7"
@@ -2759,6 +2815,7 @@
                     <td>
                       <input
                         type="number"
+                        step="any"
                         class="form-control"
                         placeholder="°C"
                         v-model="form.tb_verificacion4_8"
@@ -2822,6 +2879,7 @@
                     <td>
                       <input
                         type="number"
+                        step="any"
                         class="form-control"
                         placeholder="°C"
                         v-model="form.tb_verificacion5_6"
@@ -2830,6 +2888,7 @@
                     <td>
                       <input
                         type="number"
+                        step="any"
                         class="form-control"
                         placeholder="°C"
                         v-model="form.tb_verificacion5_7"
@@ -2838,6 +2897,7 @@
                     <td>
                       <input
                         type="number"
+                        step="any"
                         class="form-control"
                         placeholder="°C"
                         v-model="form.tb_verificacion5_8"
@@ -2863,6 +2923,7 @@
                     <td colspan="3">
                       <input
                         type="number"
+                        step="any"
                         class="form-control"
                         placeholder="%"
                         v-model="form.indicador2"
@@ -2948,28 +3009,28 @@
                     <td colspan="2">Hora de salida del CDP.</td>
                     <td>
                       <input
-                        type="text"
+                        type="time"
                         class="form-control"
                         v-model="form.hora_salida1"
                       />
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="time"
                         class="form-control"
                         v-model="form.hora_salida2"
                       />
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="time"
                         class="form-control"
                         v-model="form.hora_salida3"
                       />
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="time"
                         class="form-control"
                         v-model="form.hora_salida4"
                       />
@@ -2979,28 +3040,32 @@
                     <td colspan="2">Temperatura de salida del complemento.</td>
                     <td>
                       <input
-                        type="text"
+                        type="number"
+                        step="any"
                         class="form-control"
                         v-model="form.temperatura_salida1"
                       />
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="number"
+                        step="any"
                         class="form-control"
                         v-model="form.temperatura_salida2"
                       />
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="number"
+                        step="any"
                         class="form-control"
                         v-model="form.temperatura_salida3"
                       />
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="number"
+                        step="any"
                         class="form-control"
                         v-model="form.temperatura_salida4"
                       />
@@ -3012,28 +3077,28 @@
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="time"
                         class="form-control"
                         v-model="form.hora_llegada1"
                       />
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="time"
                         class="form-control"
                         v-model="form.hora_llegada2"
                       />
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="time"
                         class="form-control"
                         v-model="form.hora_llegada3"
                       />
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="time"
                         class="form-control"
                         v-model="form.hora_llegada4"
                       />
@@ -3045,28 +3110,32 @@
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="number"
+                        step="any"
                         class="form-control"
                         v-model="form.temperatura_llegada1"
                       />
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="number"
+                        step="any"
                         class="form-control"
                         v-model="form.temperatura_llegada2"
                       />
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="number"
+                        step="any"
                         class="form-control"
                         v-model="form.temperatura_llegada3"
                       />
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="number"
+                        step="any"
                         class="form-control"
                         v-model="form.temperatura_llegada4"
                       />
@@ -3076,28 +3145,28 @@
                     <td colspan="2">Cantidad de raciones entregadas.</td>
                     <td>
                       <input
-                        type="text"
+                        type="number"
                         class="form-control"
                         v-model="form.cantidad_raciones1"
                       />
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="number"
                         class="form-control"
                         v-model="form.cantidad_raciones2"
                       />
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="number"
                         class="form-control"
                         v-model="form.cantidad_raciones3"
                       />
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="number"
                         class="form-control"
                         v-model="form.cantidad_raciones4"
                       />
@@ -3129,8 +3198,12 @@
                         v-model="form.pre_61"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -3154,8 +3227,12 @@
                         v-model="form.pre_62"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -3180,8 +3257,12 @@
                         v-model="form.pre_63"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -3207,8 +3288,12 @@
                         v-model="form.pre_64"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -3231,8 +3316,12 @@
                         v-model="form.pre_65"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -3256,8 +3345,12 @@
                         v-model="form.pre_66"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -3280,8 +3373,12 @@
                         v-model="form.pre_67"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -3305,8 +3402,12 @@
                         v-model="form.pre_68"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -3330,8 +3431,12 @@
                         v-model="form.pre_69"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -3355,8 +3460,12 @@
                         v-model="form.pre_70"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -3380,8 +3489,12 @@
                         v-model="form.pre_71"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -3405,8 +3518,12 @@
                         v-model="form.pre_72"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -3431,8 +3548,12 @@
                         v-model="form.pre_73"
                         required
                       >
-                        <option value="cumple">Cumple</option>
-                        <option value="noCumple">No cumple</option>
+                        <option value="A">Aceptable (A)</option>
+                        <option value="AR">
+                          Aceptable con Requerimiento (AR)
+                        </option>
+                        <option value="I">Inaceptable (I)</option>
+                        <option value="NA">No Aplica (NA)</option>
                       </select>
                     </td>
                     <td>
@@ -3452,6 +3573,7 @@
                     <td colspan="2">
                       <input
                         type="number"
+                        step="any"
                         class="form-control"
                         placeholder="%"
                         v-model="form.indicador3"
