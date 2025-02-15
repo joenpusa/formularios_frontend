@@ -166,7 +166,7 @@
                 </select>
               </div>
               <div class="col-md-3">
-                <label class="form-label">Materia prima</label>
+                <label class="form-label">Alimento</label>
                 <select class="form-select" v-model="material">
                   <option
                     v-for="(i, index) in alimentos"
@@ -178,7 +178,13 @@
                 </select>
                 <!-- Mostrar input si el usuario selecciona "Otro" -->
                 <input
-                  v-if="material === 'Otro'"
+                  v-if="
+                    material === 'Otro' ||
+                    material === 'Leguminosas' ||
+                    material === 'Cereal' ||
+                    material === 'Dulce' ||
+                    material === 'Lacteo'
+                  "
                   type="text"
                   class="form-control mt-2"
                   placeholder="Especificar alimento"
@@ -194,7 +200,7 @@
                 <input type="text" class="form-control" v-model="lote" />
               </div>
               <div class="col-md-3">
-                <label class="form-label">Fecha</label>
+                <label class="form-label">Fecha de vencimiento</label>
                 <input type="date" class="form-control" v-model="fecha" />
               </div>
               <div class="col-md-3">
@@ -206,7 +212,9 @@
                 <input type="text" class="form-control" v-model="contenido" />
               </div>
               <div class="col-md-3">
-                <label class="form-label">Fabricante</label>
+                <label class="form-label"
+                  >Nombre o dirección del fabricante</label
+                >
                 <input
                   type="text"
                   class="form-control"
@@ -245,7 +253,42 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(item, index) in form.filas" :key="index">
+                  <tr>
+                    <td colspan="7" class="text-center bg-primary-light">
+                      Verificación de materia prima de ración para preparar en
+                      sitio / Comida caliente transportada
+                    </td>
+                  </tr>
+                  <!-- Filas con tipo_alimento === 1 -->
+                  <tr
+                    v-for="(item, index) in form.filas.filter(
+                      (f) => f.tipo_alimento === '1'
+                    )"
+                    :key="'tipo1-' + index"
+                  >
+                    <td>{{ item.material }}</td>
+                    <td>{{ item.marca }}</td>
+                    <td>{{ item.lote }}</td>
+                    <td>{{ item.fecha }}</td>
+                    <td>{{ item.registro }}</td>
+                    <td>{{ item.contenido }}</td>
+                    <td>{{ item.dir_fabricante }}</td>
+                  </tr>
+
+                  <!-- Fila con titulo  -->
+                  <tr>
+                    <td colspan="7" class="text-center bg-primary-light">
+                      Verificación de componentes de ración industrializada
+                    </td>
+                  </tr>
+
+                  <!-- Filas con tipo_alimento === 2 -->
+                  <tr
+                    v-for="(item, index) in form.filas.filter(
+                      (f) => f.tipo_alimento === '2'
+                    )"
+                    :key="'tipo2-' + index"
+                  >
                     <td>{{ item.material }}</td>
                     <td>{{ item.marca }}</td>
                     <td>{{ item.lote }}</td>
@@ -465,6 +508,10 @@ export default {
         "Carne de Cerdo",
         "Aceite",
         "Arroz",
+        "Leguminosas",
+        "Cereal",
+        "Dulce",
+        "Lacteo",
         "Otro",
       ],
 
@@ -481,47 +528,35 @@ export default {
       this.form[idFirma] = firma;
     },
     agregarFila() {
-      if (
-        this.material &&
-        this.tipo_alimento &&
-        this.marca &&
-        this.lote &&
-        this.fecha &&
-        this.registro &&
-        this.contenido &&
-        this.dir_fabricante
-      ) {
-        // Agregar una nueva fila con los valores ingresados
-        if (this.materialOtro) {
+      // Agregar una nueva fila con los valores ingresados
+      if (this.materialOtro) {
+        if (this.material !== "Otro") {
+          this.material = `${this.material} - ${this.materialOtro}`;
+        } else {
           this.material = this.materialOtro;
         }
-        this.form.filas.push({
-          material: this.material,
-          tipo_alimento: this.tipo_alimento,
-          nombre: this.material,
-          marca: this.marca,
-          lote: this.lote,
-          fecha: this.fecha,
-          registro: this.registro,
-          contenido: this.contenido,
-          dir_fabricante: this.dir_fabricante,
-        });
-        // Limpiar los campos después de agregar
-        this.material = "";
-        this.materialOtro = "";
-        this.lote = "";
-        this.fecha = "";
-        this.marca = "";
-        this.temperatura = "";
-        this.registro = "";
-        this.contenido = "";
-        this.dir_fabricante = "";
-      } else {
-        this.showToast(
-          "Por favor, complete todos los campos antes de agregar.",
-          "danger"
-        );
       }
+      this.form.filas.push({
+        material: this.material || "N/A",
+        tipo_alimento: this.tipo_alimento,
+        nombre: this.material || "N/A",
+        marca: this.marca || "N/A",
+        lote: this.lote || "N/A",
+        fecha: this.fecha || "N/A",
+        registro: this.registro || "N/A",
+        contenido: this.contenido || "N/A",
+        dir_fabricante: this.dir_fabricante || "N/A",
+      });
+      // Limpiar los campos después de agregar
+      this.material = "";
+      this.materialOtro = "";
+      this.lote = "";
+      this.fecha = "";
+      this.marca = "";
+      this.temperatura = "";
+      this.registro = "";
+      this.contenido = "";
+      this.dir_fabricante = "";
     },
     guardarFormulario() {
       this.isLoading = true;

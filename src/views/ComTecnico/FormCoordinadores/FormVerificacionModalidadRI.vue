@@ -153,300 +153,825 @@
               <input
                 type="text"
                 id="numeroContrato"
-                v-model="form.numeroContrato"
+                v-model="form.contrato"
                 class="form-control"
                 required
               />
             </div>
           </div>
+          <div class="mb-4">
+            <table class="table table-bordered">
+              <tr>
+                <td colspan="4">Crterios de evaluación</td>
+              </tr>
+              <tr>
+                <td colspan="2">Aceptable (A)</td>
+                <td colspan="2">
+                  Seleccione con un círculo cuando se cumplen la totalidad de
+                  los requisitos descritos en el aspecto a evaluar
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">Aceptable con Requerimiento (AR)</td>
+                <td colspan="2">
+                  Seleccione con un círculo cuando se cumplen parcialmente los
+                  requisitos descritos en el aspecto a evaluar
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">Inaceptable (I)</td>
+                <td colspan="2">
+                  Seleccione con un círculo cuando no cumple ninguno de los
+                  requisitos descritos en el aspecto a evaluar
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">No Aplica (NA)</td>
+                <td colspan="2">
+                  Marque con una X la casilla "NA" en caso que el aspecto a
+                  verificar no se realice y calificar como Aceptable (A).
+                  Justificar la razón del no aplica en el espacio de
+                  observaciones.
+                </td>
+              </tr>
+            </table>
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <th colspan="4">
+                    VERIFICACIÓN DE CONDICIONES DE TRANSPORTE Y DISTRIBUCIÓN
+                  </th>
+                </tr>
+                <tr>
+                  <th colspan="4">Personal manipulador</th>
+                </tr>
+                <tr>
+                  <th>N°</th>
+                  <th>Aspectos a evaluar</th>
+                  <th>Criterios para evaluar</th>
+                  <th>Observaciones</th>
+                </tr>
 
-          <!-- VERIFICACIÓN CONDICIONES DE OPERACIÓN -->
-          <h3 class="mt-4 mb-3">VERIFICACIÓN CONDICIONES DE OPERACIÓN</h3>
-          <div
-            v-for="(section, sectionIndex) in formData.condicionesOperacion"
-            :key="sectionIndex"
-            class="mb-4"
-          >
-            <h4>{{ section.title }}</h4>
-            <div
-              v-for="(item, itemIndex) in section.items"
-              :key="itemIndex"
-              class="mb-3"
-            >
-              <div class="row">
-                <div class="col-md-8">
-                  <p>{{ item.description }}</p>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-check form-check-inline">
+                <tr>
+                  <td>1</td>
+                  <td>
+                    El personal que distribuye los complementos en las sedes
+                    educativas presenta la documentación vigente para la
+                    manipulación de alimentos.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_1" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
                     <input
-                      class="form-check-input"
-                      type="radio"
-                      :id="`item-${sectionIndex}-${itemIndex}-a`"
-                      v-model="item.value"
-                      value="A"
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_1_obs"
                     />
-                    <label
-                      class="form-check-label"
-                      :for="`item-${sectionIndex}-${itemIndex}-a`"
-                      >A</label
-                    >
-                  </div>
-                  <div class="form-check form-check-inline">
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>
+                    El personal que distribuye los complementos en las sedes
+                    educativas aplica las Buenas Practicas de Manufactura y
+                    están dotados con los elementos de protección requeridos.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_2" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
                     <input
-                      class="form-check-input"
-                      type="radio"
-                      :id="`item-${sectionIndex}-${itemIndex}-ar`"
-                      v-model="item.value"
-                      value="AR"
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_2_obs"
                     />
-                    <label
-                      class="form-check-label"
-                      :for="`item-${sectionIndex}-${itemIndex}-ar`"
-                      >AR</label
-                    >
-                  </div>
-                  <div class="form-check form-check-inline">
+                  </td>
+                </tr>
+                <tr>
+                  <th colspan="4">Condiciones de transporte y Recepción</th>
+                </tr>
+                <tr>
+                  <th>N°</th>
+                  <th>Aspectos a evaluar</th>
+                  <th>Criterios para evaluar</th>
+                  <th>Observaciones</th>
+                </tr>
+
+                <tr>
+                  <td>3</td>
+                  <td>
+                    Las canastillas utilizadas para el transporte de los
+                    componentes se observan en buen estado de limpieza y
+                    desinfección.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_3" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
                     <input
-                      class="form-check-input"
-                      type="radio"
-                      :id="`item-${sectionIndex}-${itemIndex}-i`"
-                      v-model="item.value"
-                      value="I"
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_3_obs"
                     />
-                    <label
-                      class="form-check-label"
-                      :for="`item-${sectionIndex}-${itemIndex}-i`"
-                      >I</label
-                    >
-                  </div>
-                  <div class="form-check form-check-inline">
+                  </td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>
+                    El vehículo transportador de los complementos se encuentra
+                    en buen estado, y cumple con las condiciones higiénicas
+                    sanitarias establecidas por la normatividad vigente.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_4" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
                     <input
-                      class="form-check-input"
-                      type="radio"
-                      :id="`item-${sectionIndex}-${itemIndex}-na`"
-                      v-model="item.value"
-                      value="NA"
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_4_obs"
                     />
-                    <label
-                      class="form-check-label"
-                      :for="`item-${sectionIndex}-${itemIndex}-na`"
-                      >NA</label
-                    >
-                  </div>
-                </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>
+                    El vehículo transportador de los complementos presenta
+                    concepto sanitario favorable de acuerdo a los alimentos
+                    transportados.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_5" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_5_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>
+                    El vehículo transportador es de uso exclusivo para el
+                    transporte de los complementos alimentarios.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_6" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_6_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    El personal de transporte de alimentos cuenta con la
+                    dotación mínima requerida.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_7" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_7_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>
+                    El personal del transporte cumple con los horarios
+                    establecidos de entrega de los complementos a las sedes
+                    educativas, de acuerdo con 7 3,5 0 las necesidades de la
+                    sede educativa.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_8" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_8_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>
+                    Durante la recepción de los componentes del complemento en
+                    los establecimientos educativos cumplen con los rangos
+                    establecidos de temperatura en la normatividad sanitaria
+                    vigente; (Temperaturas de refrigeración no mayores 4°C +/-
+                    2) (Bebidas y derivados lácteos). (Si aplica)
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_9" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_9_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>
+                    Se evita el riesgo de contaminación cruzada durante la
+                    entrega de los componentes del suministro, en las sedes
+                    educativas.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_10" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_10_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>11</td>
+                  <td>
+                    El operador entrega la cantidad total de complementos
+                    alimentarios programados.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_11" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_11_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>12</td>
+                  <td>
+                    El rotulado del empaque primario cumplen con las condiciones
+                    estipuladas en la normatividad vigente.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_12" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_12_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>13</td>
+                  <td>
+                    El cierre de los empaques primarios y empaque secundario (si
+                    aplica) se encuentran en perfecto estado.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_13" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_13_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>14</td>
+                  <td>
+                    El operador realiza la entrega de todos los componentes del
+                    complemento alimentario de acuerdo al menú programado.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_14" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_14_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>15</td>
+                  <td>
+                    Los empaques plásticos de los alimentos entregados son
+                    clasificados como residuos inorgánicos y son dispuestos en
+                    canecas.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_15" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_15_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    INDICADOR: Porcentaje de cumplimiento de condiciones de
+                    despacho y suministro
+                  </td>
+                  <td>% de Cumplimiento</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model="form.indicador1"
+                      step="any"
+                      required
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th colspan="4">
+                    VERIFICACIÓN DE REQUERIMIENTOS ALIMENTARIOS Y NUTRICIONALES
+                    - CUMPLIMIENTO MINUTA PATRÓN
+                  </th>
+                </tr>
+                <tr>
+                  <th>N°</th>
+                  <th>Aspectos a evaluar</th>
+                  <th>Criterios para evaluar</th>
+                  <th>Observaciones</th>
+                </tr>
+
+                <tr>
+                  <td>16</td>
+                  <td>
+                    El menu del dia es acorde a lo establecido en el ciclo de
+                    menus y minuta patron adoptada y aprobada.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_16" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_16_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>17</td>
+                  <td>
+                    En caso de presentarse intercambios, estos se realizan de
+                    acuerdo al componente, a la frecuencia y cuentan con
+                    documento soporte de aprobación.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_17" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_17_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>18</td>
+                  <td>
+                    El menú entregado a los estudiantes tiene aspecto atractivo
+                    y buena presentación.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_18" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_18_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>19</td>
+                  <td>
+                    Se cumple con los horarios de distribución establecidos para
+                    el servicio y no se generan retrasos durante el suministro.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_19" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_19_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>20</td>
+                  <td>
+                    En el ciclo de menús se incluye alimentos propios del
+                    territorio
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_20" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_20_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>21</td>
+                  <td>
+                    En la sede de entrega, el operador promocionan practicas
+                    adecuadas de habitos alimentarios en los estudiantes
+                    beneficiarios.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_21" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_21_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>22</td>
+                  <td>La aceptabilidad de los alimentos es adecuada.</td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_22" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_22_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>23</td>
+                  <td>
+                    El desperdicio de alimentos es bajo, de conformidad a la
+                    política para prevenir la pérdida y el desperdicio de
+                    alimentos según la ley 1990 de 2019.
+                  </td>
+                  <td>
+                    <select class="form-select" v-model="form.pre_23" required>
+                      <option value="A">Aceptable (A)</option>
+                      <option value="AR">
+                        Aceptable con Requerimiento (AR)
+                      </option>
+                      <option value="I">Inaceptable (I)</option>
+                      <option value="NA">No Aplica (NA)</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.pre_23_obs"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    INDICADOR: Porcentaje de cumplimiento de Requerimientos
+                    Alimentarios y Nutricionales
+                  </td>
+                  <td>% de Cumplimiento</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model="form.indicador2"
+                      step="any"
+                      required
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- menu de fila dinámica -->
+
+          <div class="mb-4 p-3 border rounded">
+            <h4 class="mb-3">Agregar fila en tabla de verificación</h4>
+            <div class="row mb-3">
+              <div class="col-md-3">
+                <label class="form-label">Componente:</label>
+                <input type="text" class="form-control" v-model="componente" />
               </div>
-              <div class="row mt-2">
-                <div class="col-12">
-                  <label
-                    :for="`observacion-${sectionIndex}-${itemIndex}`"
-                    class="form-label"
-                    >Observaciones:</label
-                  >
-                  <textarea
-                    :id="`observacion-${sectionIndex}-${itemIndex}`"
-                    v-model="item.observacion"
-                    class="form-control"
-                    rows="2"
-                  ></textarea>
-                </div>
+
+              <div class="col-md-3">
+                <label class="form-label">Color:</label>
+                <input type="text" class="form-control" v-model="color" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Olor</label>
+                <input type="text" class="form-control" v-model="olor" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Sabor</label>
+                <input type="text" class="form-control" v-model="sabor" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Textura</label>
+                <input type="text" class="form-control" v-model="textura" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Grupo escolar</label>
+                <input type="text" class="form-control" v-model="grupo" />
+              </div>
+
+              <div class="col-md-3">
+                <label class="form-label">Peso / Vol declarado</label>
+                <input type="text" class="form-control" v-model="declarado" />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Peso / Vol verificado</label>
+                <input type="text" class="form-control" v-model="verificado" />
+              </div>
+
+              <div class="col-md-3">
+                <label class="form-label">Temperatura</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  v-model="temperatura"
+                  step="any"
+                />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label"><strong>Cumplimieto</strong></label>
+                <select class="form-select" v-model="cumplimiento">
+                  <option value="Cumple">Cumple</option>
+                  <option value="No Cumple">No Cumple</option>
+                </select>
               </div>
             </div>
+            <button
+              type="button"
+              @click="addFila()"
+              class="btn btn-secondary mb-3"
+            >
+              Agregar Producto
+            </button>
           </div>
-
-          <!-- VERIFICACIÓN DE REQUERIMIENTOS ALIMENTARIOS Y NUTRICIONALES -->
-          <h3 class="mt-4 mb-3">
-            VERIFICACIÓN DE REQUERIMIENTOS ALIMENTARIOS Y NUTRICIONALES -
-            CUMPLIMIENTO MINUTA PATRÓN
-          </h3>
-          <div class="table-responsive">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Componente Preparación</th>
-                  <th>Grupo escolar verificado</th>
-                  <th>Cantidad Porción Servida según Minuta Patrón</th>
-                  <th>Muestra N° 1</th>
-                  <th>Muestra N° 2</th>
-                  <th>Muestra N° 3</th>
-                  <th>Unidad de Medida (g o ml)</th>
-                  <th>Cumple/No cumple</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  v-for="(item, index) in formData.requerimientosAlimentarios"
-                  :key="index"
-                >
-                  <td>
-                    <input
-                      type="text"
-                      v-model="item.componente"
-                      class="form-control"
-                      required
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      v-model="item.grupoEscolar"
-                      class="form-control"
-                      required
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      v-model="item.cantidadPorcion"
-                      class="form-control"
-                      required
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      v-model="item.muestra1"
-                      class="form-control"
-                      required
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      v-model="item.muestra2"
-                      class="form-control"
-                      required
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      v-model="item.muestra3"
-                      class="form-control"
-                      required
-                    />
-                  </td>
-                  <td>
-                    <select
-                      v-model="item.unidadMedida"
-                      class="form-select"
-                      required
-                    >
-                      <option value="g">g</option>
-                      <option value="ml">ml</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select
-                      v-model="item.cumplimiento"
-                      class="form-select"
-                      required
-                    >
-                      <option value="Cumple">Cumple</option>
-                      <option value="No cumple">No cumple</option>
-                    </select>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <!-- Tabla dinámica -->
+          <div class="mt-4">
+            <div class="table-responsive">
+              <table class="table table-bordered text-center">
+                <thead class="table-success">
+                  <tr>
+                    <th colspan="10">
+                      VERIFICACIÓN DE CARACTERÍSTICAS ORGANOLÉPTICAS Y GRAMAJES
+                    </th>
+                  </tr>
+                  <tr>
+                    <th colspan="5">
+                      Identificación y Características Organolépticas
+                    </th>
+                    <th colspan="5">Verificación Peso / Volumen</th>
+                  </tr>
+                  <tr>
+                    <th>Componente</th>
+                    <th>Color</th>
+                    <th>Olor</th>
+                    <th>Sabor</th>
+                    <th>Textura</th>
+                    <th>Grupo escolar verificado</th>
+                    <th>Peso / Vol declarado</th>
+                    <th>Peso / Vol verificado</th>
+                    <th>Temp °C</th>
+                    <th>Cumplim. Cumple/No cumple</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(fila, index) in form.filas" :key="index">
+                    <td>{{ fila.componente }}</td>
+                    <td>{{ fila.color }}</td>
+                    <td>{{ fila.olor }}</td>
+                    <td>{{ fila.sabor }}</td>
+                    <td>{{ fila.textura }}</td>
+                    <td>{{ fila.grupo }}</td>
+                    <td>{{ fila.declarado }}</td>
+                    <td>{{ fila.verificado }}</td>
+                    <td>{{ fila.temperatura }}</td>
+                    <td>{{ fila.cumplimiento }}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="10">
+                      <label class="form-label"
+                        >Nota: Para evaluar la temperatura y características
+                        organolépticas se debe tener en cuenta las fichas
+                        técnicas determinadas en el anexo de calidad e inocuidad
+                        de la Resolución 00335 de 2021.</label
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="6">
+                      INDICADOR: Número de productos que cumplen criterios de
+                      calidad organolépticos y gramajes / Número de productos
+                      verificados
+                    </td>
+                    <td colspan="2">% de Cumplimiento</td>
+                    <td colspan="2">
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model="form.indicador3"
+                        step="any"
+                        required
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-
-          <!-- VERIFICACIÓN TEMPERATURAS Y CARACTERÍSTICAS ORGANOLÉPTICAS -->
-          <h3 class="mt-4 mb-3">
-            VERIFICACIÓN TEMPERATURAS Y CARACTERÍSTICAS ORGANOLÉPTICAS ALIMENTOS
-            PREPARADOS Y DISTRIBUIDOS
-          </h3>
-          <div class="table-responsive">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Preparación</th>
-                  <th>Temperatura final de cocción</th>
-                  <th>Temperatura distribución inicial</th>
-                  <th>Temperatura distribución final</th>
-                  <th>Apariencia</th>
-                  <th>Color</th>
-                  <th>Olor</th>
-                  <th>Sabor</th>
-                  <th>Textura</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  v-for="(item, index) in formData.verificacionTemperaturas"
-                  :key="index"
-                >
-                  <td>
-                    <input
-                      type="text"
-                      v-model="item.preparacion"
-                      class="form-control"
-                      required
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      v-model="item.tempFinalCoccion"
-                      class="form-control"
-                      required
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      v-model="item.tempDistInicial"
-                      class="form-control"
-                      required
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      v-model="item.tempDistFinal"
-                      class="form-control"
-                      required
-                    />
-                  </td>
-                  <td>
-                    <select
-                      v-model="item.apariencia"
-                      class="form-select"
-                      required
-                    >
-                      <option value="Cumple">Cumple</option>
-                      <option value="No cumple">No cumple</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select v-model="item.color" class="form-select" required>
-                      <option value="Cumple">Cumple</option>
-                      <option value="No cumple">No cumple</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select v-model="item.olor" class="form-select" required>
-                      <option value="Cumple">Cumple</option>
-                      <option value="No cumple">No cumple</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select v-model="item.sabor" class="form-select" required>
-                      <option value="Cumple">Cumple</option>
-                      <option value="No cumple">No cumple</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select v-model="item.textura" class="form-select" required>
-                      <option value="Cumple">Cumple</option>
-                      <option value="No cumple">No cumple</option>
-                    </select>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
           <!-- Observaciones -->
           <div class="mb-3">
             <label for="observaciones" class="form-label">Observaciones:</label>
@@ -461,7 +986,7 @@
           <!-- Firmas -->
           <div class="row mb-3">
             <div class="col-md-6">
-              <h4>FIRMA EQUIPO PAE /APOYO A LA SUPERVISIÓN</h4>
+              <h5>FIRMA EQUIPO PAE /APOYO A LA SUPERVISIÓN</h5>
               <div class="mb-2">
                 <SignaturePad
                   idFirma="firma1"
@@ -474,7 +999,7 @@
                 <input
                   type="text"
                   id="nombreEquipo"
-                  v-model="formData.nombre_apoyo"
+                  v-model="form.nombre_apoyo"
                   class="form-control"
                   required
                 />
@@ -484,7 +1009,7 @@
                 <input
                   type="text"
                   id="cedulaEquipo"
-                  v-model="formData.cedula_apoyo"
+                  v-model="form.cedula_apoyo"
                   class="form-control"
                   required
                 />
@@ -494,7 +1019,7 @@
                 <input
                   type="text"
                   id="cargoEquipo"
-                  v-model="formData.cargo_apoyo"
+                  v-model="form.cargo_apoyo"
                   class="form-control"
                   required
                 />
@@ -504,14 +1029,14 @@
                 <input
                   type="tel"
                   id="telefonoEquipo"
-                  v-model="formData.telefono_apoyo"
+                  v-model="form.telefono_apoyo"
                   class="form-control"
                   required
                 />
               </div>
             </div>
             <div class="col-md-6">
-              <h4>FIRMA QUIEN ATIENDE LA VISITA</h4>
+              <h5>FIRMA QUIEN ATIENDE LA VISITA</h5>
               <div class="mb-2">
                 <SignaturePad
                   idFirma="firma2"
@@ -524,7 +1049,7 @@
                 <input
                   type="text"
                   id="nombreVisita"
-                  v-model="formData.nombre_atiende"
+                  v-model="form.nombre_atiende"
                   class="form-control"
                   required
                 />
@@ -554,7 +1079,7 @@
                 <input
                   type="tel"
                   id="telefonoVisita"
-                  v-model="formData.telefono_atiende"
+                  v-model="form.telefono_atiende"
                   class="form-control"
                   required
                 />
@@ -573,7 +1098,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "@/axios";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 import SignaturePad from "@/components/SignaturePad.vue";
@@ -597,90 +1122,119 @@ export default {
       isLoading: false,
       toastMessage: "",
       toastType: "",
+      componente: "",
+      color: "",
+      olor: "",
+      sabor: "",
+      textura: "",
+      grupo: "",
+      declarado: "",
+      verificado: "",
+      temperatura: "",
+      cumplimiento: "",
       form: {
         etc: "Norte de Santander",
-        files: [],
         municipio: "",
         hora_inicial: "",
         hora_final: "",
         institucion: "",
         sede: "",
         numero_visita: "",
-      },
-      formData: {
-        etc: "Norte de Santander",
-        fecha: "",
-        municipio: "",
-        horaInicial: "",
-        horaFinal: "",
-        institucionEducativa: "",
-        sedeEducativa: "",
-        numeroVisita: "",
-        tipoVisita: "",
-        numeroBeneficiarios: "",
-        operador: "UT Suministros PAE 2024 del 12/01/2024",
-        numeroContrato: "LP-SEG-3030-2023 del 12 de enero  del 2024",
-        condicionesOperacion: [
-          {
-            title: "Plan de saneamiento",
-            items: [
-              {
-                description:
-                  "El área de almacenamiento de los alimentos se encuentra limpia y se garantizan condiciones higiénico-sanitarias.",
-                value: "",
-                observacion: "",
-              },
-              {
-                description:
-                  "El área de preparación de los alimentos se encuentra limpia y se garantizan condiciones higiénico-sanitarias.",
-                value: "",
-                observacion: "",
-              },
-              {
-                description:
-                  "El área de consumo de los alimentos se encuentra limpia y se garantizan condiciones higiénico-sanitarias.",
-                value: "",
-                observacion: "",
-              },
-              // Add more items as needed
-            ],
-          },
-          // Add more sections as needed
-        ],
-        requerimientosAlimentarios: [
-          {
-            componente: "",
-            grupoEscolar: "",
-            cantidadPorcion: "",
-            muestra1: "",
-            muestra2: "",
-            muestra3: "",
-            unidadMedida: "",
-            cumplimiento: "",
-          },
-          // Add more items as needed
-        ],
-        verificacionTemperaturas: [
-          {
-            preparacion: "",
-            tempFinalCoccion: "",
-            tempDistInicial: "",
-            tempDistFinal: "",
-            apariencia: "",
-            color: "",
-            olor: "",
-            sabor: "",
-            textura: "",
-          },
-          // Add more items as needed
-        ],
-        observaciones: "",
-        firmaEquipo: { nombre: "", cedula: "", cargo: "", telefono: "" },
-        firmaVisita: { nombre: "", cedula: "", cargo: "", telefono: "" },
+        operador: "",
+        contrato: "",
+        num_beneficiarios: "",
+        tipo_visita: "",
+        //preguntas
+        pre_1: "",
+        pre_1_obs: "",
+        pre_2: "",
+        pre_2_obs: "",
+        pre_3: "",
+        pre_3_obs: "",
+        pre_4: "",
+        pre_4_obs: "",
+        pre_5: "",
+        pre_5_obs: "",
+        pre_6: "",
+        pre_6_obs: "",
+        pre_7: "",
+        pre_7_obs: "",
+        pre_8: "",
+        pre_8_obs: "",
+        pre_9: "",
+        pre_9_obs: "",
+        pre_10: "",
+        pre_10_obs: "",
+        pre_11: "",
+        pre_11_obs: "",
+        pre_12: "",
+        pre_12_obs: "",
+        pre_13: "",
+        pre_13_obs: "",
+        pre_14: "",
+        pre_14_obs: "",
+        pre_15: "",
+        pre_15_obs: "",
+        pre_16: "",
+        pre_16_obs: "",
+        pre_17: "",
+        pre_17_obs: "",
+        pre_18: "",
+        pre_18_obs: "",
+        pre_19: "",
+        pre_19_obs: "",
+        pre_20: "",
+        pre_20_obs: "",
+        pre_21: "",
+        pre_21_obs: "",
+        pre_22: "",
+        pre_22_obs: "",
+        pre_23: "",
+        pre_23_obs: "",
+        indicador1: "",
+        indicador2: "",
+        //pie formato
+        firma1: "",
+        firma2: "",
+        nombre_apoyo: "",
+        cedula_apoyo: "",
+        cargo_apoyo: "",
+        telefono_apoyo: "",
+        nombre_atiende: "",
+        cedula_atiende: "",
+        cargo_atiende: "",
+        telefono_atiende: "",
+        files: [],
+        filas: [],
       },
     };
   },
   methods: {
+    addFila() {
+      // Agregar fila a la lista de filas
+      this.form.filas.push({
+        componente: this.componente,
+        color: this.color || "N/A",
+        olor: this.olor || "N/A",
+        sabor: this.sabor || "N/A",
+        textura: this.textura || "N/A",
+        grupo: this.grupo || "N/A",
+        declarado: this.declarado || "N/A",
+        verificado: this.verificado || "N/A",
+        temperatura: this.temperatura || "N/A",
+        cumplimiento: this.cumplimiento,
+      });
+      this.componente = "";
+      this.color = "";
+      this.olor = "";
+      this.sabor = "";
+      this.textura = "";
+      this.grupo = "";
+      this.declarado = "";
+      this.verificado = "";
+      this.temperatura = "";
+      this.cumplimiento = "";
+    },
     updateFiles(files) {
       // Actualiza la lista de archivos en el formulario
       this.form.files = files;
@@ -690,6 +1244,38 @@ export default {
       this.form[idFirma] = firma;
     },
     guardarFormulario() {
+      this.isLoading = true;
+      // validar municipio, institucion y sede
+      if (
+        this.form.municipio === "" ||
+        this.form.institucion === "" ||
+        this.form.sede === ""
+      ) {
+        this.showToast(
+          "Debe seleccionar un municipio, institución y sede",
+          "danger"
+        );
+        this.isLoading = false;
+        return;
+      }
+      // firmar formulario
+      if (this.form.firma1 === "" || this.form.firma2 === "") {
+        this.showToast("Debe firmar el formulario", "danger");
+        this.isLoading = false;
+        return;
+      }
+      // validar archivos
+      if (this.form.files.length === 0) {
+        this.showToast("Debe subir al menos un archivo", "danger");
+        this.isLoading = false;
+        return;
+      }
+      // Validar filas
+      if (this.form.filas.length === 0) {
+        this.showToast("Debe agregar al menos una fila", "danger");
+        this.isLoading = false;
+        return;
+      }
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {
         // Enviar formulario al servidor
@@ -709,20 +1295,47 @@ export default {
     },
     async enviarFormularioAlServidor() {
       try {
-        this.isLoading = true;
         const apiUrl = process.env.VUE_APP_API_BASE_URL;
+        // Convertir form a Multipart
+        const formData = new FormData();
+        Object.keys(this.form).forEach((key) => {
+          if (key !== "files") {
+            if (key === "filas") {
+              formData.append(key, JSON.stringify(this.form[key] || [])); // Convierte a JSON
+            } else {
+              formData.append(key, this.form[key]);
+            }
+          }
+        });
+        this.form.files.forEach((fileObj, index) => {
+          formData.append(`files[${index}]`, fileObj.file);
+        });
+
         // Enviar datos con una solicitud POST
-        const response = await axios.post(`${apiUrl}/visitas`, this.form);
-        console.log(response); //quitar
-        this.resetFormulario();
+        const response = await axios.post(
+          `${apiUrl}/ct_verificacion_modalidad_ri`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        console.log(response);
+        if (response.status === 201) {
+          this.showToast(
+            "Formulario de verificación midalidad I guardado correctamente",
+            "success"
+          );
+          this.resetForm(); // Reestablecer los campos del formulario
+        }
         this.isLoading = false;
       } catch (error) {
         this.isLoading = false;
         this.showToast(
-          "No se pudo enviar el formulario" + error.response.data.message,
+          "No se pudo enviar el formulario componente tecnico, verificación modalidad I",
           "danger"
         );
-        console.error("Error al enviar el formulario:", error);
       } finally {
         this.isLoading = false;
       }
@@ -730,6 +1343,78 @@ export default {
     resetForm() {
       this.form = {
         etc: "Norte de Santander",
+        files: [],
+        fecha_visita: "",
+        municipio: "",
+        hora_inicial: "",
+        hora_final: "",
+        institucion: "",
+        sede: "",
+        numero_visita: "",
+        tipo_visita: "",
+        num_beneficiarios: "",
+        operador: "",
+        contrato: "",
+        firma1: "",
+        firma2: "",
+        nombre_apoyo: "",
+        cedula_apoyo: "",
+        cargo_apoyo: "",
+        telefono_apoyo: "",
+        nombre_atiende: "",
+        cedula_atiende: "",
+        cargo_atiende: "",
+        telefono_atiende: "",
+        filas: [],
+        indicador1: "",
+        indicador2: "",
+        indicador3: "",
+        pre_1: "",
+        pre_1_obs: "",
+        pre_2: "",
+        pre_2_obs: "",
+        pre_3: "",
+        pre_3_obs: "",
+        pre_4: "",
+        pre_4_obs: "",
+        pre_5: "",
+        pre_5_obs: "",
+        pre_6: "",
+        pre_6_obs: "",
+        pre_7: "",
+        pre_7_obs: "",
+        pre_8: "",
+        pre_8_obs: "",
+        pre_9: "",
+        pre_9_obs: "",
+        pre_10: "",
+        pre_10_obs: "",
+        pre_11: "",
+        pre_11_obs: "",
+        pre_12: "",
+        pre_12_obs: "",
+        pre_13: "",
+        pre_13_obs: "",
+        pre_14: "",
+        pre_14_obs: "",
+        pre_15: "",
+        pre_15_obs: "",
+        pre_16: "",
+        pre_16_obs: "",
+        pre_17: "",
+        pre_17_obs: "",
+        pre_18: "",
+        pre_18_obs: "",
+        pre_19: "",
+        pre_19_obs: "",
+        pre_20: "",
+        pre_20_obs: "",
+        pre_21: "",
+        pre_21_obs: "",
+        pre_22: "",
+        pre_22_obs: "",
+        pre_23: "",
+        pre_23_obs: "",
       };
     },
     showToast(message, type) {
