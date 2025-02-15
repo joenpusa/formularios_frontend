@@ -22,7 +22,7 @@
           <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
               <label class="form-label">Formato a consutar:</label>
-              <select class="form-select">
+              <select class="form-select" v-model="form.tipo_reporte">
                 <option value="1">REPORTE DIARIO DE VISITAS</option>
                 <option value="2">
                   CONSOLIDADO VISITAS DE VERIFICACIÓN A COMEDORES ESCOLARES CCT
@@ -39,11 +39,19 @@
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
               <label class="form-label">Fecha Inicial:</label>
-              <input type="date" class="form-control" />
+              <input
+                type="date"
+                class="form-control"
+                v-model="form.fecha_incial"
+              />
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
               <label class="form-label">Fecha Final:</label>
-              <input type="date" class="form-control" />
+              <input
+                type="date"
+                class="form-control"
+                v-model="form.fecha_final"
+              />
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
               <label class="form-label">Municipio </label>
@@ -51,7 +59,7 @@
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6 mb-3">
               <label class="form-label">Usuario:</label>
-              <input type="text" class="form-control" />
+              <UserSearch v-model="form.usuario" />
             </div>
           </div>
         </form>
@@ -65,12 +73,14 @@
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 import MunicipioSelect from "@/components/MunicipioSelect.vue";
+import UserSearch from "@/components/UserSearch.vue";
 
 export default {
   components: {
     LoadingSpinner,
     ToastNotification,
     MunicipioSelect,
+    UserSearch,
   },
   data() {
     return {
@@ -78,14 +88,20 @@ export default {
       toastMessage: "",
       toastType: "",
       form: {
-        etc: "Norte de Santander",
-        fecha_visita: "",
         municipio: "",
+        usuario: "",
+        tipo_reporte: "",
+        fecha_incial: "",
+        fecha_final: "",
       },
     };
   },
   methods: {
-    generarReporte() {},
+    generarReporte() {
+      this.isLoading = true;
+      console.log("Reporte generado con:", this.form);
+      this.isLoading = false;
+    },
     showToast(message, type) {
       this.toastMessage = message;
       this.toastType = type;
