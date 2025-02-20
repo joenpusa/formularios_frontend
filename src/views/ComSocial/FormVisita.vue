@@ -126,9 +126,10 @@
               />
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
-              <hr />
-              Califique según nivel de cumplimiento: Cumple - No cumple - No
-              aplica - No observado
+              <div class="row bg-primary-light p-2">
+                Califique según nivel de cumplimiento: Cumple - No cumple - No
+                aplica - No observado
+              </div>
               <div class="row">
                 <hr />
                 <label class="col-sm-8"
@@ -161,6 +162,9 @@
                     <option value="No observado">No observado</option>
                   </select>
                 </div>
+              </div>
+              <div class="row bg-primary-light p-2">
+                Verificación Mecanismos de Participación Ciudadana
               </div>
               <div class="row">
                 <hr />
@@ -231,6 +235,9 @@
                   </select>
                 </div>
               </div>
+              <div class="row bg-primary-light p-2">
+                Verificación Mecanismos de Participación Ciudadana
+              </div>
               <div class="row">
                 <hr />
                 <label class="col-sm-8"
@@ -248,9 +255,6 @@
                   </select>
                 </div>
               </div>
-              <hr />
-              Verificación Mecanismos de Participación Ciudadana
-              <hr />
               <div class="row">
                 <hr />
                 <label class="col-sm-8"
@@ -283,9 +287,9 @@
                   </select>
                 </div>
               </div>
-              <hr />
-              Verificación Mecanismos de Control Social
-              <hr />
+              <div class="row bg-primary-light p-2">
+                Acceso a la Información
+              </div>
               <div class="row">
                 <hr />
                 <label class="col-sm-8"
@@ -321,6 +325,7 @@
                   </select>
                 </div>
               </div>
+
               <div class="row">
                 <hr />
                 <label class="col-sm-8"
@@ -337,9 +342,7 @@
                   </select>
                 </div>
               </div>
-              <hr />
-              Acceso a la Información
-              <hr />
+              <div class="row bg-primary-light p-2">Beneficiarios</div>
               <div class="row">
                 <hr />
                 <label class="col-sm-8"
@@ -411,13 +414,12 @@
                     <option value="No observado">No observado</option>
                   </select>
                 </div>
+                <hr />
               </div>
 
               <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
-                <label class="form-label"
-                  >INDICADOR: Porcentaje de Cumplimiento Mecanismos de Gestión
-                  Social
-                </label>
+                INDICADOR: Porcentaje de Cumplimiento Mecanismos de Gestión
+                Social
                 <div class="input-group">
                   <input
                     class="form-control"
@@ -430,10 +432,8 @@
                 </div>
               </div>
               <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
-                <label class="form-label"
-                  >Observaciones / Recomendaciones / Conclusiones / Acciones de
-                  Mejora
-                </label>
+                Observaciones / Recomendaciones / Conclusiones / Acciones de
+                Mejora
                 <textarea
                   class="form-control"
                   v-model="form.observaciones"
@@ -442,9 +442,9 @@
                 </textarea>
               </div>
               <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
-                <label class="form-label">Compromisos adquiridos </label>
+                Compromisos adquiridos
                 <hr />
-                <label>
+                <label class="form-label">
                   NOTA: Si se generan compromisos en relación a los mecanismos
                   de gestión social por parte del Establecimiento Educativo se
                   dispone el siguiente correo por parte de la Entidad

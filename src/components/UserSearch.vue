@@ -4,13 +4,14 @@
       v-model="selectedUser"
       :options="users"
       :searchable="true"
-      :loading="loading"
+      :loading="loadingSelect"
       :clear-on-select="false"
       :internal-search="false"
       track-by="id"
       label="displayText"
       placeholder="Escribe para buscar..."
       @search-change="fetchUsers"
+      @select="onUserSelected"
     >
       <template #singleLabel="{ option }">
         <span>{{ option.name }} ({{ option.num_documento }})</span>
@@ -19,10 +20,6 @@
         <span>{{ option.name }} ({{ option.num_documento }})</span>
       </template>
     </multiselect>
-
-    <div v-if="loading" class="spinner-border text-primary mt-2" role="status">
-      <span class="visually-hidden">Cargando...</span>
-    </div>
   </div>
 </template>
 
@@ -37,7 +34,7 @@ export default {
     return {
       selectedUser: null,
       users: [],
-      loading: false,
+      loadingSelect: false,
     };
   },
   methods: {
@@ -47,7 +44,7 @@ export default {
         return;
       }
 
-      this.loading = true;
+      this.loadingSelect = true;
       try {
         const apiUrl = `${process.env.VUE_APP_API_BASE_URL}/users`;
         const response = await axios.get(apiUrl, { params: { search: query } });
@@ -64,8 +61,12 @@ export default {
         console.error("Error al buscar usuarios:", error);
         this.users = [];
       } finally {
-        this.loading = false;
+        this.loadingSelect = false;
       }
+    },
+    onUserSelected(user) {
+      this.$emit("update:value", user.id);
+      this.$emit("update:modelValue", user.id);
     },
   },
 };
