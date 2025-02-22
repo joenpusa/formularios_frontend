@@ -591,11 +591,12 @@
                         fumigadora, cronograma, formato de inspección interno,
                         documentación de empresa fumigadora, fichas técnicas. Se
                         encuentran diligenciadas de forma adecuada y oportuna.
-                        Fecha de la ultima fumigación:
+                        <!-- Fecha de la ultima fumigación: -->
                         <input
-                          type="date"
+                          type="hidden"
                           class="form-control"
                           v-model="form.fecha_fumigacion"
+                          value=""
                         />
                       </td>
                       <td>

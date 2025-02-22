@@ -531,12 +531,13 @@
                     siguientes documentos soportes: diagnóstico empresa
                     fumigadora, cronograma, formato de inspección interno,
                     documentación de empresa fumigadora, fichas técnicas. Se
-                    encuentran diligenciadas de forma adecuada y oportuna. Fecha
-                    de la ultima fumigación:
+                    encuentran diligenciadas de forma adecuada y oportuna.
+                    <!-- Fecha de la ultima fumigación: -->
                     <input
-                      type="date"
+                      type="hidden"
                       class="form-control"
                       v-model="form.fecha_ultima_fumiga"
+                      value=""
                     />
                   </td>
                   <td>
@@ -1222,10 +1223,10 @@
                 <tr>
                   <td>32</td>
                   <td>
-                    Las condiciones sanitarias del vehículo transportador de
-                    alimentos, cumple con lo establecido en la normatividad
-                    sanitaria vigente. (Condiciones de higiene y limpieza
-                    adecuadas pisos, paredes, techo, estibas, canastillas).
+                    Se almacenan los alimentos de alto riesgo (lácteos y
+                    cárnicos etc.) dentro de los rangos de temperatura exigidos
+                    en la resolución 2674 de 2013 y normatividad sanitaria
+                    vigente.
                   </td>
                   <td>
                     <select

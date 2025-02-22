@@ -457,6 +457,7 @@ export default {
         return;
       }
       // validar que haya seleccionado archivos
+      /*
       if (this.form.files.length == 0) {
         this.isLoading = false;
         this.showToast(
@@ -465,6 +466,7 @@ export default {
         );
         return;
       }
+      */
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {
         // Enviar formulario al servidor
