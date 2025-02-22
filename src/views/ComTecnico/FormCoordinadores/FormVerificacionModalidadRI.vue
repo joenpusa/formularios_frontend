@@ -22,7 +22,7 @@
               </li>
             </ol>
           </nav>
-          <h2>FORMATO DE VERIFICACIÓN MODALIDAD RI</h2>
+          <h2>FORMATO DE VERIFICACIÓN MODALIDAD RACIÓN INDUSTRIALIZADA - RI</h2>
           <hr />
         </div>
         <form @submit.prevent="guardarFormulario">
@@ -227,6 +227,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -252,6 +253,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -287,6 +289,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -312,6 +315,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -337,6 +341,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -361,6 +366,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -385,6 +391,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -411,6 +418,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -438,6 +446,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -463,6 +472,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -487,6 +497,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -511,6 +522,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -535,6 +547,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -559,6 +572,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -584,6 +598,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -637,6 +652,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -662,6 +678,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -686,6 +703,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -710,6 +728,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -734,6 +753,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -759,6 +779,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -780,6 +801,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -805,6 +827,7 @@
                       </option>
                       <option value="I">Inaceptable (I)</option>
                       <option value="NA">No Aplica (NA)</option>
+                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>

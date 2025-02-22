@@ -368,8 +368,9 @@
                   <td colspan="3">
                     <input
                       type="number"
+                      step="any"
                       class="form-control"
-                      v-model="form.porcentaje_cumplimiento"
+                      v-model="form.porcentajeCumplimiento"
                       required
                     />
                   </td>
@@ -566,6 +567,7 @@ export default {
         cedula_atiende: "",
         cargo_atiende: "",
         telefono_atiende: "",
+        nota1: "",
       },
       alimentos: [
         "Pechuga (pollo)",
@@ -783,6 +785,7 @@ export default {
         cedula_atiende: "",
         cargo_atiende: "",
         telefono_atiende: "",
+        nota1: "",
       };
     },
     showToast(message, type) {

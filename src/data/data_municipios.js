@@ -8,6 +8,7 @@ export const municipios = [
   { key: "7", value: "CHINÁCOTA" },
   { key: "8", value: "CHITAGÁ" },
   { key: "9", value: "CONVENCIÓN" },
+  { key: "40", value: "CÚCUTA" },
   { key: "10", value: "CUCUTILLA" },
   { key: "11", value: "DURANIA" },
   { key: "12", value: "EL CARMEN" },
