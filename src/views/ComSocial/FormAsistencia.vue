@@ -352,6 +352,7 @@ export default {
         firma2: "",
         files: [], //archivos adjuntos
         filas: [], //filas de la tabla
+        tematica: "",
       },
       formulariosOffline: [], // Para almacenar temporalmente los formularios en localStorage
     };
@@ -445,7 +446,7 @@ export default {
         JSON.parse(localStorage.getItem("formulariosOffline")) || [];
       guardados.push(this.form); // Añadir el formulario actual
       localStorage.setItem("formulariosOffline", JSON.stringify(guardados));
-      this.resetFormulario();
+      this.resetForm();
       this.isLoading = false;
     },
     async enviarFormularioAlServidor() {
@@ -524,6 +525,7 @@ export default {
         cedula_atiende: "",
         cargo_atiende: "",
         telefono_atiende: "",
+        tematica: "",
         firma1: "",
         firma2: "",
         files: [], //archivos adjuntos
