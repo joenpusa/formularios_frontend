@@ -166,9 +166,18 @@
                   value="no-caracteristico"
                   v-model="form.olor"
                 />
-                <label class="form-check-label"
-                  >No Caracteristico, fuerte, fetido, amoniaco</label
+                <label class="form-check-label" v-if="form.tipo === 'pollo'">
+                  fuerte, hedor agrio o similar al azufre
+                </label>
+                <label class="form-check-label" v-else-if="form.tipo === 'res'">
+                  No Caracteristico, fuerte, fetido, amoniaco
+                </label>
+                <label
+                  class="form-check-label"
+                  v-else-if="form.tipo === 'cerdo'"
                 >
+                  No Caracteristico, fuerte, fetido, amoniaco
+                </label>
               </div>
               <input
                 type="text"
@@ -186,9 +195,18 @@
                   value="caracteristico"
                   v-model="form.color"
                 />
-                <label class="form-check-label"
-                  >Caracteristico rojo cerezo brillante</label
+                <label class="form-check-label" v-if="form.tipo === 'pollo'">
+                  Rosado blanquesino, tonalidad amarillenta
+                </label>
+                <label class="form-check-label" v-else-if="form.tipo === 'res'">
+                  Caracteristico rojo cerezo brillante
+                </label>
+                <label
+                  class="form-check-label"
+                  v-else-if="form.tipo === 'cerdo'"
                 >
+                  Porcion de carne rosado blanquesino
+                </label>
               </div>
               <div class="form-check">
                 <input
@@ -197,9 +215,18 @@
                   value="no-caracteristico"
                   v-model="form.color"
                 />
-                <label class="form-check-label"
-                  >tonalidades oscuras, verdosas, azuladas</label
+                <label class="form-check-label" v-if="form.tipo === 'pollo'">
+                  tonalidades gris verdoso
+                </label>
+                <label class="form-check-label" v-else-if="form.tipo === 'res'">
+                  tonalidades oscuras, verdosas, azuladas
+                </label>
+                <label
+                  class="form-check-label"
+                  v-else-if="form.tipo === 'cerdo'"
                 >
+                  tonalidades gris verdoso o azulado
+                </label>
               </div>
               <input
                 type="text"
@@ -217,7 +244,18 @@
                   value="firme"
                   v-model="form.textura"
                 />
-                <label class="form-check-label">Firme al tacto</label>
+                <label class="form-check-label" v-if="form.tipo === 'pollo'">
+                  Firme al tacto, piel adherida al musculo
+                </label>
+                <label class="form-check-label" v-else-if="form.tipo === 'res'">
+                  Firme al tacto
+                </label>
+                <label
+                  class="form-check-label"
+                  v-else-if="form.tipo === 'cerdo'"
+                >
+                  Firme al tacto, ligeramente humeda
+                </label>
               </div>
               <div class="form-check">
                 <input
@@ -266,6 +304,7 @@
               <label class="form-label">T° Refrigeración:</label>
               <input
                 type="number"
+                step="any"
                 class="form-control"
                 v-model="form.temp_ref"
               />
@@ -274,6 +313,7 @@
               <label class="form-label">T° Congelación:</label>
               <input
                 type="number"
+                step="any"
                 class="form-control"
                 v-model="form.temp_con"
               />
@@ -325,7 +365,7 @@
               <div class="col-md-12 mt-3">
                 <button
                   type="button"
-                  class="btn btn-secondary mb-3"
+                  class="btn btn-secondary mb-2"
                   @click="agregarFila"
                 >
                   Agregar
@@ -334,7 +374,7 @@
             </div>
           </div>
 
-          <div class="row mb-3">
+          <div class="row mb-2">
             <table class="table table-bordered text-center">
               <thead class="bg-primary-lighter">
                 <tr>
@@ -366,14 +406,14 @@
             <label class="form-label">OBSERVACIONES GENERALES</label>
             <textarea
               class="form-control"
-              rows="3"
+              rows="4"
               v-model="form.observaciones"
             ></textarea>
           </div>
 
-          <h4 class="mt-4 mb-1">Visita Atendida por:</h4>
           <div class="row mb-1">
             <div class="col-6 mb-1">
+              <h4>Visita atendida por:</h4>
               <SignaturePad
                 idFirma="firma1"
                 :varFirma="form.firma1"
@@ -412,6 +452,7 @@
               />
             </div>
             <div class="col-6 mb-1">
+              <h4>Visita realizada por:</h4>
               <SignaturePad
                 idFirma="firma2"
                 :varFirma="form.firma2"
