@@ -31,7 +31,7 @@
         </div>
         <form @submit.prevent="guardarFormulario">
           <div class="row">
-            <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
+            <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
               <label class="form-label">ETC </label>
               <input
                 class="form-control"
@@ -40,12 +40,12 @@
                 required
               />
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
+            <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
               <label class="form-label">Minicipio </label>
               <MunicipioSelect v-model="form.municipio" />
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
+            <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
               <label class="form-label">Operador </label>
               <input
                 class="form-control"
@@ -54,7 +54,7 @@
                 required
               />
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
+            <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
               <label class="form-label">N° contrato </label>
               <input
                 class="form-control"
@@ -63,7 +63,7 @@
                 required
               />
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
+            <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
               <label class="form-label">Dirección </label>
               <input
                 class="form-control"
@@ -72,7 +72,7 @@
                 required
               />
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
+            <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
               <label class="form-label">Telefono / Correo </label>
               <input
                 class="form-control"
@@ -81,8 +81,8 @@
                 required
               />
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
-              <label class="form-label">Fecha visita </label>
+            <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
+              <label class="form-label">Fecha inicio de visita </label>
               <input
                 class="form-control"
                 type="date"
@@ -90,7 +90,7 @@
                 required
               />
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
+            <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
               <label class="form-label">Hora inicio</label>
               <input
                 class="form-control"
@@ -99,8 +99,8 @@
                 required
               />
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
-              <label class="form-label">Hora fin</label>
+            <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
+              <label class="form-label">Hora de terminación</label>
               <input
                 class="form-control"
                 type="time"
@@ -108,7 +108,34 @@
                 required
               />
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
+            <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
+              <label class="form-label">Fecha inicio de visita </label>
+              <input
+                class="form-control"
+                type="date"
+                v-model="form.fecha_visita2"
+                required
+              />
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
+              <label class="form-label">Hora inicio</label>
+              <input
+                class="form-control"
+                type="time"
+                v-model="form.hora_inicio2"
+                required
+              />
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
+              <label class="form-label">Hora de terminación</label>
+              <input
+                class="form-control"
+                type="time"
+                v-model="form.hora_fin2"
+                required
+              />
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
               <label class="form-label">Número de visita </label>
               <select class="form-select" v-model="form.num_visita" required>
                 <option value="1ra">1ra</option>
@@ -116,7 +143,7 @@
                 <option value="3ra">3ra</option>
               </select>
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 mb-1">
+            <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
               <label class="form-label">Tipo visita </label>
               <select class="form-select" v-model="form.tipo_visita" required>
                 <option value="Técnica">Técnica</option>
@@ -1859,12 +1886,10 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
+            <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
               <div class="row">
                 <div class="col-12 mb-1">
-                  <label class="form-label"
-                    >Firma equipo PAE/Apoyo a la supervisión</label
-                  >
+                  <label class="form-label">Visita realizada por:</label>
                 </div>
                 <div class="col-12 mb-1">
                   <SignaturePad
@@ -1907,17 +1932,61 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
+            <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
               <div class="row">
                 <div class="col-12 mb-1">
-                  <label class="form-label"
-                    >Firma quien atiende la visita</label
-                  >
+                  <label class="form-label">Visita realizada por:</label>
                 </div>
                 <div class="col-12 mb-1">
                   <SignaturePad
                     idFirma="firma2"
                     :varFirma="form.firma2"
+                    @firmas-updated="actualizarFirmas"
+                  />
+                </div>
+                <div class="col-12 mb-1">
+                  <label class="form-label">Nombre</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.nombre_apoyo2"
+                  />
+                </div>
+                <div class="col-12 mb-1">
+                  <label class="form-label">Cédula</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.cedula_apoyo2"
+                  />
+                </div>
+                <div class="col-12 mb-1">
+                  <label class="form-label">Cargo</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.cargo_apoyo2"
+                  />
+                </div>
+                <div class="col-12 mb-1">
+                  <label class="form-label">Teléfono</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    v-model="form.telefono_apoyo2"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
+              <div class="row">
+                <div class="col-12 mb-1">
+                  <label class="form-label">Visita atendida por:</label>
+                </div>
+                <div class="col-12 mb-1">
+                  <SignaturePad
+                    idFirma="firma3"
+                    :varFirma="form.firma3"
                     @firmas-updated="actualizarFirmas"
                   />
                 </div>
@@ -2003,6 +2072,9 @@ export default {
         fecha_visita: "",
         hora_inicio: "",
         hora_fin: "",
+        fecha_visita2: "",
+        hora_inicio2: "",
+        hora_fin2: "",
         num_visita: "",
         tipo_visita: "",
         pre_1: "",
@@ -2144,10 +2216,15 @@ export default {
         observaciones_recibe: "",
         firma1: "",
         firma2: "",
+        firma3: "",
         nombre_apoyo: "",
         cedula_apoyo: "",
         cargo_apoyo: "",
         telefono_apoyo: "",
+        nombre_apoyo2: "",
+        cedula_apoyo2: "",
+        cargo_apoyo2: "",
+        telefono_apoyo2: "",
         nombre_atiende: "",
         cedula_atiende: "",
         cargo_atiende: "",
@@ -2170,7 +2247,7 @@ export default {
       this.isLoading = true;
 
       // Primero, guardamos las firmas
-      if (this.form.firma1 == "" || this.form.firma2 == "") {
+      if (this.form.firma1 == "" || this.form.firma3 == "") {
         this.isLoading = false;
         this.showToast(
           "Firmas no dilegenciadas. Por favor, complete y guarde las firmas.",
@@ -2350,6 +2427,9 @@ export default {
         fecha_visita: "",
         hora_inicio: "",
         hora_fin: "",
+        fecha_visita2: "",
+        hora_inicio2: "",
+        hora_fin2: "",
         num_visita: "",
         tipo_visita: "",
         pre_1: "",
@@ -2491,10 +2571,15 @@ export default {
         observaciones_recibe: "",
         firma1: "",
         firma2: "",
+        firma3: "",
         nombre_apoyo: "",
         cedula_apoyo: "",
         cargo_apoyo: "",
         telefono_apoyo: "",
+        nombre_apoyo2: "",
+        cedula_apoyo2: "",
+        cargo_apoyo2: "",
+        telefono_apoyo2: "",
         nombre_atiende: "",
         cedula_atiende: "",
         cargo_atiende: "",
