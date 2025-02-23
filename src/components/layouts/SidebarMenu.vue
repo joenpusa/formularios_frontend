@@ -132,7 +132,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "@/axios";
 
 export default {
   name: "SidebarMenu",
@@ -151,9 +151,9 @@ export default {
 
         if (response.status === 200) {
           // Elimina los tokens de almacenamiento
-          localStorage.removeItem("token");
-          sessionStorage.removeItem("token");
-
+          localStorage.removeItem("authToken");
+          sessionStorage.removeItem("authToken");
+          console.log("Tokens eliminados");
           // Redirige al usuario a la página de inicio de sesión
           this.$router.push("/login");
         } else {
