@@ -104,9 +104,49 @@
               <textarea class="form-control" rows="3" v-model="form.objetivo">
               </textarea>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
-              <label class="form-label">Temática abordada </label>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="form-label">Temática abordada</label>
               <select class="form-select" v-model="form.tematica" required>
+                <option value="Mi plato Saludable">Mi plato Saludable</option>
+                <option value="Importancia del consumo del agua">
+                  Importancia del consumo del agua
+                </option>
+                <option
+                  value="Efectos adversos del consumo del lavado de manos"
+                >
+                  Efectos adversos del consumo del lavado de manos
+                </option>
+                <option value="Lavado de manos">Lavado de manos</option>
+                <option value="Consumo de frutas y verduras">
+                  Consumo de frutas y verduras
+                </option>
+                <option value="Evita el desperdicio de alimentos">
+                  Evita el desperdicio de alimentos
+                </option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <select class="form-select" v-model="tematica2">
+                <option value="Mi plato Saludable">Mi plato Saludable</option>
+                <option value="Importancia del consumo del agua">
+                  Importancia del consumo del agua
+                </option>
+                <option
+                  value="Efectos adversos del consumo del lavado de manos"
+                >
+                  Efectos adversos del consumo del lavado de manos
+                </option>
+                <option value="Lavado de manos">Lavado de manos</option>
+                <option value="Consumo de frutas y verduras">
+                  Consumo de frutas y verduras
+                </option>
+                <option value="Evita el desperdicio de alimentos">
+                  Evita el desperdicio de alimentos
+                </option>
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
+              <select class="form-select" v-model="tematica3">
                 <option value="Mi plato Saludable">Mi plato Saludable</option>
                 <option value="Importancia del consumo del agua">
                   Importancia del consumo del agua
@@ -326,7 +366,8 @@ export default {
       toastType: "",
       nuevoNombre: "", // Input para el nombre
       nuevoGrado: "", // Input para el grado
-
+      tematica2: "",
+      tematica3: "",
       form: {
         etc: "Norte de Santander",
         fecha_visita: "",
@@ -429,6 +470,9 @@ export default {
         );
         return;
       }
+      // Concatenar los campos temática
+      this.form.tematica =
+        this.form.tematica + ", " + this.tematica2 + ", " + this.tematica3;
 
       // Verificar si hay conexión a Internet
       if (navigator.onLine) {
@@ -504,6 +548,8 @@ export default {
       }, 5000);
     },
     resetForm() {
+      this.tematica2 = "";
+      this.tematica3 = "";
       this.form = {
         etc: "Norte de Santander",
         fecha_visita: "",

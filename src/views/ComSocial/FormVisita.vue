@@ -236,7 +236,7 @@
                 </div>
               </div>
               <div class="row bg-primary-light p-2">
-                Verificación Mecanismos de Participación Ciudadana
+                Verificación Mecanismos de Control Social
               </div>
               <div class="row">
                 <hr />

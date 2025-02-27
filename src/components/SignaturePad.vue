@@ -19,6 +19,7 @@
       </button>
     </div>
   </div>
+  <br />
 </template>
 
 <script>
@@ -87,7 +88,7 @@ export default {
 }
 
 .signature-buttons {
-  margin-top: -40px;
+  /*margin-top: -40px;*/
   text-align: right;
 }
 </style>
