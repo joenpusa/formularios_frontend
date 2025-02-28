@@ -621,7 +621,7 @@
                       class="form-control"
                       v-model="form.indicador1"
                       step="any"
-                      readonly
+                      disabled
                     />
                   </td>
                 </tr>
@@ -866,7 +866,7 @@
                       class="form-control"
                       v-model="form.indicador2"
                       step="any"
-                      readonly
+                      disabled
                     />
                   </td>
                 </tr>
@@ -1003,7 +1003,7 @@
                         class="form-control"
                         v-model="form.indicador3"
                         step="any"
-                        readonly
+                        disabled
                       />
                     </td>
                   </tr>
