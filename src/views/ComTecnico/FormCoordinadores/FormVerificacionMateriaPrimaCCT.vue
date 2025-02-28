@@ -287,8 +287,8 @@
               <div class="col-md-3">
                 <label class="form-label">Cumplimiento</label>
                 <select class="form-select" v-model="cumplimiento">
-                  <option value="cumple">Cumple</option>
-                  <option value="noCumple">No cumple</option>
+                  <option value="Cumple">Cumple</option>
+                  <option value="No Cumple">No cumple</option>
                 </select>
               </div>
             </div>
@@ -380,8 +380,8 @@
                     <input
                       type="number"
                       class="form-control"
-                      v-model="form.porcentaje_cumplimiento"
-                      required
+                      v-model="form.porcentajeCumplimiento"
+                      disabled
                     />
                   </td>
                 </tr>
@@ -648,6 +648,14 @@ export default {
       this.olor = "";
       this.textura = "";
       this.cumplimiento = "";
+      //calcular porcentaje
+      const totalFilas = this.form.filas.length;
+      const cumpleFilas = this.form.filas.filter(
+        (fila) => fila.cumplimiento === "Cumple"
+      ).length;
+      this.form.porcentajeCumplimiento =
+        (totalFilas > 0 ? cumpleFilas / totalFilas : 0) * 100;
+      console.log(this.form.porcentajeCumplimiento);
     },
     guardarFormulario() {
       this.isLoading = true;

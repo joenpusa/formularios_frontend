@@ -486,7 +486,7 @@
               id="porcentajeCumplimiento"
               v-model="form.porcentaje"
               class="form-control"
-              required
+              disabled
             />
           </div>
           <!-- Observaciones -->
@@ -747,6 +747,7 @@ export default {
       this.condiciones5109 = "";
       this.declaracion5109 = "";
       this.cumplimiento5109 = "";
+      this.recalcularPorcentaje();
     },
     addProduct810() {
       // Agregar fila a la lista de filas
@@ -772,6 +773,21 @@ export default {
       this.porciones810 = "";
       this.equivalencias810 = "";
       this.cumplimento810 = "";
+      this.recalcularPorcentaje();
+    },
+    recalcularPorcentaje() {
+      // Recalcular el porcentaje de cumplimiento
+      const totalFilas =
+        this.form.filas_810.length + this.form.filas_5109.length;
+      let cumpleFilas = this.form.filas_810.filter(
+        (fila) => fila.cumplimiento === "Cumple"
+      ).length;
+      cumpleFilas += this.form.filas_5109.filter(
+        (fila) => fila.cumplimiento === "Cumple"
+      ).length;
+
+      this.form.porcentaje =
+        (totalFilas > 0 ? cumpleFilas / totalFilas : 0) * 100;
     },
     guardarFormulario() {
       this.isLoading = true;

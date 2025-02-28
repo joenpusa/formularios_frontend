@@ -1844,6 +1844,7 @@
                     class="form-control"
                     type="number"
                     v-model="form.puntaje_esperado"
+                    disabled
                   />
                 </div>
                 <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
@@ -1852,6 +1853,7 @@
                     class="form-control"
                     type="number"
                     v-model="form.puntaje_obtenido"
+                    disabled
                   />
                 </div>
                 <div class="col-sm-4 col-md-4 col-lg-4 mb-1">
@@ -1859,7 +1861,9 @@
                   <input
                     class="form-control"
                     type="number"
+                    step="any"
                     v-model="form.porcentaje"
+                    disabled
                   />
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12 mb-1">
@@ -2243,9 +2247,40 @@ export default {
       // Actualiza dinámicamente la firma en el formulario
       this.form[idFirma] = firma;
     },
+    calcularPuntaje() {
+      let puntajeEsperado = 0;
+      let puntajeObtenido = 0;
+
+      // Recorremos las claves del formulario
+      Object.keys(this.form).forEach((key) => {
+        // Filtramos solo las respuestas de las preguntas (ignoramos las observaciones)
+        if (key.startsWith("pre_") && !key.endsWith("_obs")) {
+          let respuesta = this.form[key];
+
+          // Solo cuentan las respuestas que son "1" o "0" para el puntaje esperado
+          if (respuesta === "1" || respuesta === "0") {
+            puntajeEsperado++;
+
+            // Si la respuesta es "1" (Cumple), suma al puntaje obtenido
+            if (respuesta === "1") {
+              puntajeObtenido++;
+            }
+          }
+        }
+      });
+
+      // Calculamos el porcentaje de cumplimiento
+      let porcentajeCumplimiento =
+        puntajeEsperado > 0 ? (puntajeObtenido / puntajeEsperado) * 100 : 0;
+
+      // Guardamos los resultados en el formulario o mostramos en consola
+      this.form.puntaje_esperado = puntajeEsperado;
+      this.form.puntaje_obtenido = puntajeObtenido;
+      this.form.porcentaje = porcentajeCumplimiento.toFixed(2);
+    },
     guardarFormulario() {
       this.isLoading = true;
-
+      this.calcularPuntaje();
       // Primero, guardamos las firmas
       if (this.form.firma1 == "" || this.form.firma3 == "") {
         this.isLoading = false;
