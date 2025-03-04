@@ -897,10 +897,10 @@
                       <td>20</td>
                       <td>
                         Se realiza la limpieza y desinfección periódica del
-                        tanque de almacenamiento de agua potable. Fecha de la
-                        última limpieza y desinfección realizada:
+                        tanque de almacenamiento de agua potable.
+                        <!-- Fecha de la última limpieza y desinfección realizada: -->
                         <input
-                          type="date"
+                          type="hidden"
                           class="form-control"
                           v-model="form.fecha_limpieza_tanque"
                         />
