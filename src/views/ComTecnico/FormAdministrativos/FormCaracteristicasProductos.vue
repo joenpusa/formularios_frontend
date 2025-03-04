@@ -451,14 +451,14 @@
               </tbody>
             </table>
           </div>
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label class="form-label">OBSERVACIONES</label>
             <textarea
               class="form-control"
               rows="3"
               v-model="form.observaciones_res"
             ></textarea>
-          </div>
+          </div> -->
 
           <h4 class="mt-4 mb-3">PRODUCTO CARNE DE CERDO</h4>
           <div class="row mb-3">
@@ -753,14 +753,14 @@
               </tbody>
             </table>
           </div>
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label class="form-label">OBSERVACIONES</label>
             <textarea
               class="form-control"
               rows="3"
               v-model="form.observaciones_cerdo"
             ></textarea>
-          </div>
+          </div> -->
 
           <h4 class="mt-4 mb-3">PRODUCTO POLLO</h4>
           <div class="row mb-3">
@@ -1044,7 +1044,7 @@
             </table>
           </div>
 
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label for="observaciones-pollo" class="form-label"
               >OBSERVACIONES</label
             >
@@ -1053,7 +1053,7 @@
               rows="3"
               v-model="form.observaciones_pollo"
             ></textarea>
-          </div>
+          </div> -->
 
           <h5 class="mt-4 mb-3">OBSERVACIONES GENERALES</h5>
           <div class="mb-3">

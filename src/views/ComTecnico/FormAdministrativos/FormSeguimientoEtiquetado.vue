@@ -112,7 +112,14 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>A.Leguminosa:</td>
+                  <td>
+                    A.Leguminosa:
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_A_Leguminosa"
+                    />
+                  </td>
                   <td>
                     <input
                       type="text"
@@ -164,7 +171,15 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>B.Leguminosa:</td>
+                  <td>
+                    B.Leguminosa:
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_B_Leguminosa"
+                    />
+                  </td>
+
                   <td>
                     <input
                       type="text"
@@ -216,7 +231,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>C.Leguminosa:</td>
+                  <td>
+                    C.Leguminosa:
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_C_Leguminosa"
+                    />
+                  </td>
                   <td>
                     <input
                       type="text"
@@ -268,7 +290,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>A. Arroz:</td>
+                  <td>
+                    A. Arroz:
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_A_Arroz"
+                    />
+                  </td>
                   <td>
                     <input
                       type="text"
@@ -320,7 +349,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>A. Azucar:</td>
+                  <td>
+                    A. Azucar:
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_A_Azucar"
+                    />
+                  </td>
                   <td>
                     <input
                       type="text"
@@ -372,7 +408,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>A. Sal:</td>
+                  <td>
+                    A. Sal:
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_A_Sal"
+                    />
+                  </td>
                   <td>
                     <input
                       type="text"
@@ -424,7 +467,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>A. Aceite:</td>
+                  <td>
+                    A. Aceite:
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_A_Aceite"
+                    />
+                  </td>
                   <td>
                     <input
                       type="text"
@@ -476,7 +526,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>A. Leche en polvo:</td>
+                  <td>
+                    A. Leche en polvo:
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_A_Lechep"
+                    />
+                  </td>
                   <td>
                     <input
                       type="text"
@@ -528,7 +585,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>A. Spaghetti:</td>
+                  <td>
+                    A. Spaghetti:
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_A_Spaghetti"
+                    />
+                  </td>
                   <td>
                     <input
                       type="text"
@@ -580,7 +644,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>A. Cereal: Pan de Leche:</td>
+                  <td>
+                    A. Cereal: Pan de Leche:
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_A_PanLeche"
+                    />
+                  </td>
                   <td>
                     <input
                       type="text"
@@ -632,7 +703,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>B. Cereal: Pan Mantequilla</td>
+                  <td>
+                    B. Cereal: Pan Mantequilla
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_B_PanMantequilla"
+                    />
+                  </td>
                   <td>
                     <input
                       type="text"
@@ -684,7 +762,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>C. Cereal: Pan Sal:</td>
+                  <td>
+                    C. Cereal: Pan Sal:
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_C_PanSal"
+                    />
+                  </td>
                   <td>
                     <input
                       type="text"
@@ -736,7 +821,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>D. Cereal: Pan Dulce:</td>
+                  <td>
+                    D. Cereal: Pan Dulce:
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_D_PanDulce"
+                    />
+                  </td>
                   <td>
                     <input
                       type="text"
@@ -788,7 +880,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>E. Cereal: Pan Maiz</td>
+                  <td>
+                    E. Cereal: Pan Maiz
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_E_PanMaiz"
+                    />
+                  </td>
                   <td>
                     <input
                       type="text"
@@ -840,7 +939,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>F. Cereal: Glleta Casera</td>
+                  <td>
+                    F. Cereal: Galleta Casera
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_F_GlletaCasera"
+                    />
+                  </td>
                   <td>
                     <input
                       type="text"
@@ -892,7 +998,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>A. Lácteo: Leche Entera</td>
+                  <td>
+                    A. Lácteo: Leche Entera
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_A_LacheEntera"
+                    />
+                  </td>
                   <td>
                     <input
                       type="text"
@@ -944,7 +1057,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>B. Lácteo: Avena</td>
+                  <td>
+                    B. Lácteo: Avena
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_B_LacteoAvena"
+                    />
+                  </td>
                   <td>
                     <input
                       type="text"
@@ -996,7 +1116,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>B. Lácteo: Avena Sabor a Maracuya</td>
+                  <td>
+                    B. Lácteo: Avena Sabor a Maracuya
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_B_LacteoAvenaSaborMaracuya"
+                    />
+                  </td>
                   <td>
                     <input
                       type="text"
@@ -1048,7 +1175,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>B. Dulce: Bocadillo de Guayaba</td>
+                  <td>
+                    B. Dulce: Bocadillo de Guayaba
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      v-model="form.nombre_B_DulceBocadilloGuayaba"
+                    />
+                  </td>
                   <td>
                     <input
                       type="text"
@@ -1289,6 +1423,7 @@ export default {
         operador: "",
         contrato: "",
         fecha_visita: "",
+        nombbre_A_Leguminosa: "",
         marca_A_Leguminosa: "",
         contenido_A_Leguminosa: "",
         pais_A_Leguminosa: "",
@@ -1296,6 +1431,7 @@ export default {
         lote_A_Leguminosa: "",
         fecha_A_Leguminosa: "",
         registro_A_Leguminosa: "",
+        nombre_B_Leguminosa: "",
         marca_B_Leguminosa: "",
         contenido_B_Leguminosa: "",
         pais_B_Leguminosa: "",
@@ -1303,6 +1439,7 @@ export default {
         lote_B_Leguminosa: "",
         fecha_B_Leguminosa: "",
         registro_B_Leguminosa: "",
+        nombre_C_Leguminosa: "",
         marca_C_Leguminosa: "",
         contenido_C_Leguminosa: "",
         pais_C_Leguminosa: "",
@@ -1310,6 +1447,7 @@ export default {
         lote_C_Leguminosa: "",
         fecha_C_Leguminosa: "",
         registro_C_Leguminosa: "",
+        nombre_A_Arroz: "",
         marca_A_Arroz: "",
         contenido_A_Arroz: "",
         pais_A_Arroz: "",
@@ -1317,6 +1455,7 @@ export default {
         lote_A_Arroz: "",
         fecha_A_Arroz: "",
         registro_A_Arroz: "",
+        nombre_A_Azucar: "",
         marca_A_Azucar: "",
         contenido_A_Azucar: "",
         pais_A_Azucar: "",
@@ -1324,6 +1463,7 @@ export default {
         lote_A_Azucar: "",
         fecha_A_Azucar: "",
         registro_A_Azucar: "",
+        nombre_A_Sal: "",
         marca_A_Sal: "",
         contenido_A_Sal: "",
         pais_A_Sal: "",
@@ -1331,6 +1471,7 @@ export default {
         lote_A_Sal: "",
         fecha_A_Sal: "",
         registro_A_Sal: "",
+        nombre_A_Aceite: "",
         marca_A_Aceite: "",
         contenido_A_Aceite: "",
         pais_A_Aceite: "",
@@ -1338,6 +1479,7 @@ export default {
         lote_A_Aceite: "",
         fecha_A_Aceite: "",
         registro_A_Aceite: "",
+        nombre_A_Lechep: "",
         marca_A_Lechep: "",
         contenido_A_Lechep: "",
         pais_A_Lechep: "",
@@ -1345,6 +1487,7 @@ export default {
         lote_A_Lechep: "",
         fecha_A_Lechep: "",
         registro_A_Lechep: "",
+        nombre_A_Spaghetti: "",
         marca_A_Spaghetti: "",
         contenido_A_Spaghetti: "",
         pais_A_Spaghetti: "",
@@ -1352,6 +1495,7 @@ export default {
         lote_A_Spaghetti: "",
         fecha_A_Spaghetti: "",
         registro_A_Spaghetti: "",
+        nombre_A_PanLeche: "",
         marca_A_PanLeche: "",
         contenido_A_PanLeche: "",
         pais_A_PanLeche: "",
@@ -1359,6 +1503,7 @@ export default {
         lote_A_PanLeche: "",
         fecha_A_PanLeche: "",
         registro_A_PanLeche: "",
+        nombre_B_PanMantequilla: "",
         marca_B_PanMantequilla: "",
         contenido_B_PanMantequilla: "",
         pais_B_PanMantequilla: "",
@@ -1366,6 +1511,7 @@ export default {
         lote_B_PanMantequilla: "",
         fecha_B_PanMantequilla: "",
         registro_B_PanMantequilla: "",
+        nombre_C_PanSal: "",
         marca_C_PanSal: "",
         contenido_C_PanSal: "",
         pais_C_PanSal: "",
@@ -1373,6 +1519,7 @@ export default {
         lote_C_PanSal: "",
         fecha_C_PanSal: "",
         registro_C_PanSal: "",
+        nombre_D_PanDulce: "",
         marca_D_PanDulce: "",
         contenido_D_PanDulce: "",
         pais_D_PanDulce: "",
@@ -1380,6 +1527,7 @@ export default {
         lote_D_PanDulce: "",
         fecha_D_PanDulce: "",
         registro_D_PanDulce: "",
+        nombre_E_PanMaiz: "",
         marca_E_PanMaiz: "",
         contenido_E_PanMaiz: "",
         pais_E_PanMaiz: "",
@@ -1387,6 +1535,7 @@ export default {
         lote_E_PanMaiz: "",
         fecha_E_PanMaiz: "",
         registro_E_PanMaiz: "",
+        nombre_F_GlletaCasera: "",
         marca_F_GlletaCasera: "",
         contenido_F_GlletaCasera: "",
         pais_F_GlletaCasera: "",
@@ -1394,6 +1543,7 @@ export default {
         lote_F_GlletaCasera: "",
         fecha_F_GlletaCasera: "",
         registro_F_GlletaCasera: "",
+        nombre_A_LacheEntera: "",
         marca_A_LacheEntera: "",
         contenido_A_LacheEntera: "",
         pais_A_LacheEntera: "",
@@ -1401,6 +1551,7 @@ export default {
         lote_A_LacheEntera: "",
         fecha_A_LacheEntera: "",
         registro_A_LacheEntera: "",
+        nombre_B_LacteoAvena: "",
         marca_B_LacteoAvena: "",
         contenido_B_LacteoAvena: "",
         pais_B_LacteoAvena: "",
@@ -1408,6 +1559,7 @@ export default {
         lote_B_LacteoAvena: "",
         fecha_B_LacteoAvena: "",
         registro_B_LacteoAvena: "",
+        nombre_B_LacteoAvenaSaborMaracuya: "",
         marca_B_LacteoAvenaSaborMaracuya: "",
         contenido_B_LacteoAvenaSaborMaracuya: "",
         pais_B_LacteoAvenaSaborMaracuya: "",
@@ -1415,6 +1567,7 @@ export default {
         lote_B_LacteoAvenaSaborMaracuya: "",
         fecha_B_LacteoAvenaSaborMaracuya: "",
         registro_B_LacteoAvenaSaborMaracuya: "",
+        nombre_B_DulceBocadilloGuayaba: "",
         marca_B_DulceBocadilloGuayaba: "",
         contenido_B_DulceBocadilloGuayaba: "",
         pais_B_DulceBocadilloGuayaba: "",
@@ -1574,6 +1727,7 @@ export default {
         operador: "",
         contrato: "",
         fecha_visita: "",
+        nombbre_A_Leguminosa: "",
         marca_A_Leguminosa: "",
         contenido_A_Leguminosa: "",
         pais_A_Leguminosa: "",
@@ -1581,6 +1735,7 @@ export default {
         lote_A_Leguminosa: "",
         fecha_A_Leguminosa: "",
         registro_A_Leguminosa: "",
+        nombre_B_Leguminosa: "",
         marca_B_Leguminosa: "",
         contenido_B_Leguminosa: "",
         pais_B_Leguminosa: "",
@@ -1588,6 +1743,7 @@ export default {
         lote_B_Leguminosa: "",
         fecha_B_Leguminosa: "",
         registro_B_Leguminosa: "",
+        nombre_C_Leguminosa: "",
         marca_C_Leguminosa: "",
         contenido_C_Leguminosa: "",
         pais_C_Leguminosa: "",
@@ -1595,6 +1751,7 @@ export default {
         lote_C_Leguminosa: "",
         fecha_C_Leguminosa: "",
         registro_C_Leguminosa: "",
+        nombre_A_Arroz: "",
         marca_A_Arroz: "",
         contenido_A_Arroz: "",
         pais_A_Arroz: "",
@@ -1602,6 +1759,7 @@ export default {
         lote_A_Arroz: "",
         fecha_A_Arroz: "",
         registro_A_Arroz: "",
+        nombre_A_Azucar: "",
         marca_A_Azucar: "",
         contenido_A_Azucar: "",
         pais_A_Azucar: "",
@@ -1609,6 +1767,7 @@ export default {
         lote_A_Azucar: "",
         fecha_A_Azucar: "",
         registro_A_Azucar: "",
+        nombre_A_Sal: "",
         marca_A_Sal: "",
         contenido_A_Sal: "",
         pais_A_Sal: "",
@@ -1616,6 +1775,7 @@ export default {
         lote_A_Sal: "",
         fecha_A_Sal: "",
         registro_A_Sal: "",
+        nombre_A_Aceite: "",
         marca_A_Aceite: "",
         contenido_A_Aceite: "",
         pais_A_Aceite: "",
@@ -1623,6 +1783,7 @@ export default {
         lote_A_Aceite: "",
         fecha_A_Aceite: "",
         registro_A_Aceite: "",
+        nombre_A_Lechep: "",
         marca_A_Lechep: "",
         contenido_A_Lechep: "",
         pais_A_Lechep: "",
@@ -1630,6 +1791,7 @@ export default {
         lote_A_Lechep: "",
         fecha_A_Lechep: "",
         registro_A_Lechep: "",
+        nombre_A_Spaghetti: "",
         marca_A_Spaghetti: "",
         contenido_A_Spaghetti: "",
         pais_A_Spaghetti: "",
@@ -1637,6 +1799,7 @@ export default {
         lote_A_Spaghetti: "",
         fecha_A_Spaghetti: "",
         registro_A_Spaghetti: "",
+        nombre_A_PanLeche: "",
         marca_A_PanLeche: "",
         contenido_A_PanLeche: "",
         pais_A_PanLeche: "",
@@ -1644,6 +1807,7 @@ export default {
         lote_A_PanLeche: "",
         fecha_A_PanLeche: "",
         registro_A_PanLeche: "",
+        nombre_B_PanMantequilla: "",
         marca_B_PanMantequilla: "",
         contenido_B_PanMantequilla: "",
         pais_B_PanMantequilla: "",
@@ -1651,6 +1815,7 @@ export default {
         lote_B_PanMantequilla: "",
         fecha_B_PanMantequilla: "",
         registro_B_PanMantequilla: "",
+        nombre_C_PanSal: "",
         marca_C_PanSal: "",
         contenido_C_PanSal: "",
         pais_C_PanSal: "",
@@ -1658,6 +1823,7 @@ export default {
         lote_C_PanSal: "",
         fecha_C_PanSal: "",
         registro_C_PanSal: "",
+        nombre_D_PanDulce: "",
         marca_D_PanDulce: "",
         contenido_D_PanDulce: "",
         pais_D_PanDulce: "",
@@ -1665,6 +1831,7 @@ export default {
         lote_D_PanDulce: "",
         fecha_D_PanDulce: "",
         registro_D_PanDulce: "",
+        nombre_E_PanMaiz: "",
         marca_E_PanMaiz: "",
         contenido_E_PanMaiz: "",
         pais_E_PanMaiz: "",
@@ -1672,6 +1839,7 @@ export default {
         lote_E_PanMaiz: "",
         fecha_E_PanMaiz: "",
         registro_E_PanMaiz: "",
+        nombre_F_GlletaCasera: "",
         marca_F_GlletaCasera: "",
         contenido_F_GlletaCasera: "",
         pais_F_GlletaCasera: "",
@@ -1679,6 +1847,7 @@ export default {
         lote_F_GlletaCasera: "",
         fecha_F_GlletaCasera: "",
         registro_F_GlletaCasera: "",
+        nombre_A_LacheEntera: "",
         marca_A_LacheEntera: "",
         contenido_A_LacheEntera: "",
         pais_A_LacheEntera: "",
@@ -1686,6 +1855,7 @@ export default {
         lote_A_LacheEntera: "",
         fecha_A_LacheEntera: "",
         registro_A_LacheEntera: "",
+        nombre_B_LacteoAvena: "",
         marca_B_LacteoAvena: "",
         contenido_B_LacteoAvena: "",
         pais_B_LacteoAvena: "",
@@ -1693,6 +1863,7 @@ export default {
         lote_B_LacteoAvena: "",
         fecha_B_LacteoAvena: "",
         registro_B_LacteoAvena: "",
+        nombre_B_LacteoAvenaSaborMaracuya: "",
         marca_B_LacteoAvenaSaborMaracuya: "",
         contenido_B_LacteoAvenaSaborMaracuya: "",
         pais_B_LacteoAvenaSaborMaracuya: "",
@@ -1700,6 +1871,7 @@ export default {
         lote_B_LacteoAvenaSaborMaracuya: "",
         fecha_B_LacteoAvenaSaborMaracuya: "",
         registro_B_LacteoAvenaSaborMaracuya: "",
+        nombre_B_DulceBocadilloGuayaba: "",
         marca_B_DulceBocadilloGuayaba: "",
         contenido_B_DulceBocadilloGuayaba: "",
         pais_B_DulceBocadilloGuayaba: "",

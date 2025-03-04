@@ -43,7 +43,7 @@
               <input
                 type="date"
                 id="fecha"
-                v-model="form.fecha"
+                v-model="form.fecha_visita"
                 class="form-control"
                 required
               />
@@ -221,13 +221,13 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_1" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="6-A">Aceptable (A)</option>
+                      <option value="3-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="6-A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -247,13 +247,13 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_2" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="7-A">Aceptable (A)</option>
+                      <option value="3.5-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="7-A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -283,13 +283,13 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_3" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="7-A">Aceptable (A)</option>
+                      <option value="3.5-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="7-A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -309,13 +309,13 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_4" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="7-A">Aceptable (A)</option>
+                      <option value="3.5-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="7-A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -335,13 +335,13 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_5" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="7-A">Aceptable (A)</option>
+                      <option value="3.5-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="7-A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -360,13 +360,13 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_6" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="7-A">Aceptable (A)</option>
+                      <option value="3.5-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="7-A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -385,13 +385,13 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_7" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="6-A">Aceptable (A)</option>
+                      <option value="3-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="6-A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -412,13 +412,13 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_8" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="7-A">Aceptable (A)</option>
+                      <option value="3.5-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="7-A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -440,13 +440,13 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_9" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="6-A">Aceptable (A)</option>
+                      <option value="3-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="6-A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -466,13 +466,13 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_10" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="7-A">Aceptable (A)</option>
+                      <option value="3.5-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="7-A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -491,13 +491,13 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_11" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="7-A">Aceptable (A)</option>
+                      <option value="3.5-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="7-A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -516,13 +516,13 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_12" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="6-A">Aceptable (A)</option>
+                      <option value="3-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="6-A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -541,13 +541,13 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_13" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="6-A">Aceptable (A)</option>
+                      <option value="3-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="6-A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -566,13 +566,13 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_14" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="7-A">Aceptable (A)</option>
+                      <option value="3.5-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="7-A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -592,13 +592,13 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_15" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="7-A">Aceptable (A)</option>
+                      <option value="3.5-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="7-A-NA">Aceptable-No Aplica (A-NA)</option>
                     </select>
                   </td>
                   <td>
@@ -621,7 +621,7 @@
                       class="form-control"
                       v-model="form.indicador1"
                       step="any"
-                      required
+                      disabled
                     />
                   </td>
                 </tr>
@@ -646,13 +646,15 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_16" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="12-A">Aceptable (A)</option>
+                      <option value="6-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="12-A-NA">
+                        Aceptable-No Aplica (A-NA)
+                      </option>
                     </select>
                   </td>
                   <td>
@@ -672,13 +674,15 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_17" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="11-A">Aceptable (A)</option>
+                      <option value="5.5-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="11-A-NA">
+                        Aceptable-No Aplica (A-NA)
+                      </option>
                     </select>
                   </td>
                   <td>
@@ -697,13 +701,15 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_18" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="14-A">Aceptable (A)</option>
+                      <option value="7-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="14-A-NA">
+                        Aceptable-No Aplica (A-NA)
+                      </option>
                     </select>
                   </td>
                   <td>
@@ -722,13 +728,15 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_19" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="12-A">Aceptable (A)</option>
+                      <option value="6-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="12-A-NA">
+                        Aceptable-No Aplica (A-NA)
+                      </option>
                     </select>
                   </td>
                   <td>
@@ -747,13 +755,15 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_20" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="11-A">Aceptable (A)</option>
+                      <option value="5.5-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="11-A-NA">
+                        Aceptable-No Aplica (A-NA)
+                      </option>
                     </select>
                   </td>
                   <td>
@@ -773,13 +783,15 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_21" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="12-A">Aceptable (A)</option>
+                      <option value="6-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="12-A-NA">
+                        Aceptable-No Aplica (A-NA)
+                      </option>
                     </select>
                   </td>
                   <td>
@@ -795,13 +807,15 @@
                   <td>La aceptabilidad de los alimentos es adecuada.</td>
                   <td>
                     <select class="form-select" v-model="form.pre_22" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="14-A">Aceptable (A)</option>
+                      <option value="7-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="14-A-NA">
+                        Aceptable-No Aplica (A-NA)
+                      </option>
                     </select>
                   </td>
                   <td>
@@ -821,13 +835,15 @@
                   </td>
                   <td>
                     <select class="form-select" v-model="form.pre_23" required>
-                      <option value="A">Aceptable (A)</option>
-                      <option value="AR">
+                      <option value="14-A">Aceptable (A)</option>
+                      <option value="7-AR">
                         Aceptable con Requerimiento (AR)
                       </option>
-                      <option value="I">Inaceptable (I)</option>
-                      <option value="NA">No Aplica (NA)</option>
-                      <option value="A-NA">Aceptable-No Aplica (A-NA)</option>
+                      <option value="0-I">Inaceptable (I)</option>
+                      <option value="0-NA">No Aplica (NA)</option>
+                      <option value="14-A-NA">
+                        Aceptable-No Aplica (A-NA)
+                      </option>
                     </select>
                   </td>
                   <td>
@@ -850,7 +866,7 @@
                       class="form-control"
                       v-model="form.indicador2"
                       step="any"
-                      required
+                      disabled
                     />
                   </td>
                 </tr>
@@ -987,7 +1003,7 @@
                         class="form-control"
                         v-model="form.indicador3"
                         step="any"
-                        required
+                        disabled
                       />
                     </td>
                   </tr>
@@ -1159,6 +1175,7 @@ export default {
         etc: "Norte de Santander",
         municipio: "",
         hora_inicial: "",
+        fecha_visita: "",
         hora_final: "",
         institucion: "",
         sede: "",
@@ -1257,6 +1274,15 @@ export default {
       this.verificado = "";
       this.temperatura = "";
       this.cumplimiento = "";
+      // actualizar indicador de cumplimiento
+      // Calcular el indicador3
+      const totalFilas = this.form.filas.length;
+      const cumpleFilas = this.form.filas.filter(
+        (fila) => fila.cumplimiento === "Cumple"
+      ).length;
+
+      this.form.indicador3 =
+        (totalFilas > 0 ? cumpleFilas / totalFilas : 0) * 100;
     },
     updateFiles(files) {
       // Actualiza la lista de archivos en el formulario
@@ -1266,8 +1292,32 @@ export default {
       // Actualiza dinámicamente la firma en el formulario
       this.form[idFirma] = firma;
     },
+    calcularIndicadores() {
+      let totalIndicador1 = 0;
+      let totalIndicador2 = 0;
+
+      Object.keys(this.form).forEach((key) => {
+        if (key.startsWith("pre_") && this.form[key]) {
+          let numeroPregunta = parseInt(key.replace("pre_", "")); // Extraer número de la pregunta
+          let valorNumerico = parseFloat(this.form[key].split("-")[0]);
+
+          if (!isNaN(valorNumerico)) {
+            if (numeroPregunta >= 1 && numeroPregunta <= 15) {
+              totalIndicador1 += valorNumerico; // Sumar a indicador1
+            } else if (numeroPregunta >= 16 && numeroPregunta <= 23) {
+              totalIndicador2 += valorNumerico; // Sumar a indicador2
+            }
+          }
+        }
+      });
+
+      // Asignar los valores calculados a los indicadores
+      this.form.indicador1 = totalIndicador1.toFixed(2);
+      this.form.indicador2 = totalIndicador2.toFixed(2);
+    },
     guardarFormulario() {
       this.isLoading = true;
+      this.calcularIndicadores();
       // validar municipio, institucion y sede
       if (
         this.form.municipio === "" ||

@@ -68,7 +68,7 @@ export default {
     return {
       email: "",
       password: "",
-      rememberMe: false,
+      rememberMe: true,
       isLoading: false,
       toastMessage: "",
       toastType: "",
