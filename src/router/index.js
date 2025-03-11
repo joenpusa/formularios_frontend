@@ -36,6 +36,8 @@ import FormUsers from "@/views/Users/FormUsers.vue";
 import HomeReportes from "@/views/Reportes/HomeReportes.vue";
 // area de galeria
 import HomeGaleria from "@/views/Galeria/HomeGaleria.vue";
+// area de encuestas
+import EncuestaSatisfaccion from "@/views/encuestas/EncServicio.vue";
 
 const routes = [
   {
@@ -48,6 +50,11 @@ const routes = [
         component: Login,
       },
     ],
+  },
+  {
+    path: "/encuesta/satisfaccion",
+    name: "EncuestaSatisfaccion",
+    component: EncuestaSatisfaccion,
   },
   {
     path: "/home",
@@ -197,9 +204,13 @@ router.beforeEach((to, from, next) => {
   const token =
     localStorage.getItem("authToken") || sessionStorage.getItem("authToken");
 
-  if (!token && to.path !== "/login") {
-    next("/login");
+  // Definir las rutas que son públicas
+  const rutasPublicas = ["/login", "/encuesta/satisfaccion"];
+
+  // Si el usuario no tiene token y la ruta no está en las rutas permitidas, redirige al login
+  if (!token && !rutasPublicas.includes(to.path)) {
     console.log("No hay token, redirigiendo al login");
+    next("/login");
   } else {
     next();
   }

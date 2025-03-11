@@ -50,6 +50,13 @@
             <button type="submit" class="btn btn-primary">Ingresar</button>
           </div>
         </div>
+        <div class="col-12">
+          <router-link
+            to="/encuesta/satisfaccion"
+            class="btn btn-secondary w-100 mt-2"
+            >Encuesta de Satisfacción</router-link
+          >
+        </div>
       </div>
     </form>
   </div>
