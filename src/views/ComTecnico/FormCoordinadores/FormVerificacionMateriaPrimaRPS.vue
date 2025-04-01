@@ -386,6 +386,7 @@
               class="form-control"
               id="observaciones"
               v-model="form.observaciones"
+              required
               rows="3"
             ></textarea>
           </div>

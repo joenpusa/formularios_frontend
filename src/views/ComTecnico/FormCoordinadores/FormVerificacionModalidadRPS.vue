@@ -264,6 +264,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_1_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -290,6 +291,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_2_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -316,6 +318,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_3_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -342,6 +345,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_4_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -369,6 +373,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_5_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -406,6 +411,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_6_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -433,6 +439,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_7_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -460,6 +467,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_8_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -487,6 +495,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_9_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -520,6 +529,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_10_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -532,12 +542,12 @@
                     documentación de empresa fumigadora, fichas técnicas. Se
                     encuentran diligenciadas de forma adecuada y oportuna.
                     <!-- Fecha de la ultima fumigación: -->
-                    <input
+                    <!-- <input
                       type="hidden"
                       class="form-control"
                       v-model="form.fecha_ultima_fumiga"
                       value=""
-                    />
+                    /> -->
                   </td>
                   <td>
                     <select
@@ -560,6 +570,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_11_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -591,6 +602,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_12_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -629,6 +641,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_13_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -662,6 +675,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_14_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -693,6 +707,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_15_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -723,6 +738,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_16_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -753,6 +769,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_17_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -784,6 +801,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_18_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -819,6 +837,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_19_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -855,6 +874,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_20_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -888,6 +908,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_21_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -919,6 +940,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_22_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -950,6 +972,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_23_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -981,6 +1004,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_24_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1013,6 +1037,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_25_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1056,6 +1081,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_26_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1086,6 +1112,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_27_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1118,6 +1145,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_28_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1150,6 +1178,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_29_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1183,6 +1212,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_30_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1213,6 +1243,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_31_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1248,6 +1279,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_32_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1279,6 +1311,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_33_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1311,6 +1344,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_34_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1342,6 +1376,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_35_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1373,6 +1408,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_36_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1403,6 +1439,7 @@
                       class="form-control"
                       placeholder="Observaciones"
                       v-model="form.condi_37_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1436,6 +1473,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_38_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1467,6 +1505,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_39_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1498,6 +1537,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_40_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1531,6 +1571,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_41_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1561,6 +1602,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_42_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1593,6 +1635,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_43_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1622,6 +1665,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_44_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1652,6 +1696,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_45_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1681,6 +1726,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_46_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1714,6 +1760,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_47_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1744,6 +1791,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_48_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1773,6 +1821,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_49_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -2204,6 +2253,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_50_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -2235,6 +2285,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_51_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -2265,6 +2316,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_52_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -2294,6 +2346,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_53_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -2324,6 +2377,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_54_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -2355,6 +2409,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_55_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -2387,6 +2442,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_56_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -2445,6 +2501,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_58_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -2475,6 +2532,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_59_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -2507,6 +2565,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.condi_60_obs"
+                      required
                     />
                   </td>
                 </tr>

@@ -235,6 +235,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_1_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -261,6 +262,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_2_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -297,6 +299,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_3_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -323,6 +326,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_4_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -349,6 +353,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_5_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -374,6 +379,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_6_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -399,6 +405,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_7_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -426,6 +433,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_8_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -454,6 +462,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_9_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -480,6 +489,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_10_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -505,6 +515,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_11_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -530,6 +541,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_12_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -555,6 +567,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_13_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -580,6 +593,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_14_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -606,6 +620,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_15_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -662,6 +677,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_16_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -690,6 +706,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_17_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -717,6 +734,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_18_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -744,6 +762,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_19_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -771,6 +790,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_20_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -799,6 +819,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_21_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -823,6 +844,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_22_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -851,6 +873,7 @@
                       type="text"
                       class="form-control"
                       v-model="form.pre_23_obs"
+                      required
                     />
                   </td>
                 </tr>
@@ -1017,6 +1040,7 @@
             <textarea
               id="observaciones"
               v-model="form.observaciones"
+              required
               class="form-control"
               rows="3"
             ></textarea>

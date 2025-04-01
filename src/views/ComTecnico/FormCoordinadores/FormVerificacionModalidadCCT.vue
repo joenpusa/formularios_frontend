@@ -282,6 +282,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_1_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -313,6 +314,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_2_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -344,6 +346,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_3_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -375,6 +378,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_4_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -407,6 +411,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_5_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -448,6 +453,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_6_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -481,6 +487,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_7_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -513,6 +520,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_8_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -545,6 +553,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_9_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -580,6 +589,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_10_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -621,6 +631,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_11_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -653,6 +664,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_12_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -692,6 +704,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_13_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -726,6 +739,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_14_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -758,6 +772,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_15_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -789,6 +804,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_16_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -821,6 +837,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_17_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -853,6 +870,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_18_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -890,6 +908,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_19_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -927,6 +946,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_20_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -961,6 +981,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_21_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -993,6 +1014,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_22_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1025,6 +1047,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_23_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1057,6 +1080,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_24_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1090,6 +1114,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_25_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1132,6 +1157,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_26_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1163,6 +1189,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_27_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1196,6 +1223,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_28_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1229,6 +1257,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_29_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1263,6 +1292,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_30_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1295,6 +1325,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_31_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1331,6 +1362,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_32_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1363,6 +1395,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_33_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1396,6 +1429,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_34_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1428,6 +1462,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_35_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1460,6 +1495,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_36_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1491,6 +1527,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_37_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1526,6 +1563,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_38_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1560,6 +1598,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_39_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1593,6 +1632,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_40_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1628,6 +1668,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_41_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1660,6 +1701,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_42_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1695,6 +1737,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_43_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1727,6 +1770,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_44_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1759,6 +1803,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_45_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1790,6 +1835,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_46_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1825,6 +1871,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_47_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1858,6 +1905,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_48_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -1889,6 +1937,7 @@
                           type="text"
                           class="form-control"
                           v-model="form.pre_49_obs"
+                          required
                         />
                       </td>
                     </tr>
@@ -2349,6 +2398,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_50_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -2380,6 +2430,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_51_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -2412,6 +2463,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_52_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -2443,6 +2495,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_53_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -2475,6 +2528,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_54_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -2506,6 +2560,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_55_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -2538,6 +2593,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_56_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -2569,6 +2625,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_57_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -2600,6 +2657,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_58_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -2630,6 +2688,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_59_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -2663,6 +2722,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_60_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -3415,6 +3475,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_61_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -3447,6 +3508,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_62_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -3480,6 +3542,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_63_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -3514,6 +3577,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_64_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -3545,6 +3609,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_65_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -3577,6 +3642,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_66_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -3608,6 +3674,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_67_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -3640,6 +3707,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_68_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -3672,6 +3740,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_69_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -3704,6 +3773,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_70_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -3736,6 +3806,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_71_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -3768,6 +3839,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_72_obs"
+                        required
                       />
                     </td>
                   </tr>
@@ -3801,6 +3873,7 @@
                         type="text"
                         class="form-control"
                         v-model="form.pre_73_obs"
+                        required
                       />
                     </td>
                   </tr>

@@ -497,6 +497,7 @@
               v-model="form.observaciones"
               class="form-control"
               rows="3"
+              required
             ></textarea>
           </div>
 

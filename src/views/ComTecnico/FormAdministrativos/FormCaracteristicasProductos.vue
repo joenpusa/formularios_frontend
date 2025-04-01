@@ -1061,6 +1061,7 @@
               class="form-control"
               rows="4"
               v-model="form.observaciones_generales"
+              required
             ></textarea>
           </div>
 
