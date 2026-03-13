@@ -36,6 +36,8 @@ import FormUsers from "@/views/Users/FormUsers.vue";
 import HomeReportes from "@/views/Reportes/HomeReportes.vue";
 // area de galeria
 import HomeGaleria from "@/views/Galeria/HomeGaleria.vue";
+// area de diagnostico
+import FormDiagnostico from "@/views/Diagnostico/FormDiagnostico.vue";
 
 const routes = [
   {
@@ -179,6 +181,12 @@ const routes = [
         path: "/reportes",
         name: "HomeReportes",
         component: HomeReportes,
+      },
+      // Diagnostico
+      {
+        path: "/diagnostico",
+        name: "FormDiagnostico",
+        component: FormDiagnostico,
       },
     ],
   },

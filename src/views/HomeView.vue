@@ -43,6 +43,18 @@
             </router-link>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+            <router-link to="/diagnostico">
+              <div class="card text-dark bg-light border border-warning">
+                <div class="card-body text-center">
+                  <span class="bi bi-images fs-2"></span>
+                  <h4 class="card-title text-dark">
+                    Diagnóstico de infraestructura
+                  </h4>
+                </div>
+              </div>
+            </router-link>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
             <router-link to="/galeria">
               <div class="card text-dark bg-light border border-warning">
                 <div class="card-body text-center">
