@@ -40,6 +40,7 @@
                     class="form-control"
                     v-model="form.etc"
                     required
+                    disabled
                   />
                 </div>
                 <div class="col-md-4">
@@ -315,6 +316,7 @@
                   <select
                     class="form-select"
                     v-model="form.mat_techo_alm"
+                    :disabled="form.esp_almacenamiento === 'No'"
                     required
                   >
                     <option value="" disabled>Seleccione...</option>
@@ -336,6 +338,7 @@
                   <select
                     class="form-select"
                     v-model="form.mat_piso_alm"
+                    :disabled="form.esp_almacenamiento === 'No'"
                     required
                   >
                     <option value="" disabled>Seleccione...</option>
@@ -355,6 +358,7 @@
                   <select
                     class="form-select"
                     v-model="form.mat_paredes_alm"
+                    :disabled="form.esp_almacenamiento === 'No'"
                     required
                   >
                     <option value="" disabled>Seleccione...</option>
@@ -374,6 +378,7 @@
                   <select
                     class="form-select"
                     v-model="form.est_almacenamiento"
+                    :disabled="form.esp_almacenamiento === 'No'"
                     required
                   >
                     <option value="" disabled>Seleccione...</option>
@@ -409,6 +414,7 @@
                   <select
                     class="form-select"
                     v-model="form.mat_techo_prep"
+                    :disabled="form.esp_preparacion === 'No'"
                     required
                   >
                     <option value="" disabled>Seleccione...</option>
@@ -427,6 +433,7 @@
                   <select
                     class="form-select"
                     v-model="form.mat_piso_prep"
+                    :disabled="form.esp_preparacion === 'No'"
                     required
                   >
                     <option value="" disabled>Seleccione...</option>
@@ -446,6 +453,7 @@
                   <select
                     class="form-select"
                     v-model="form.mat_paredes_prep"
+                    :disabled="form.esp_preparacion === 'No'"
                     required
                   >
                     <option value="" disabled>Seleccione...</option>
@@ -463,6 +471,7 @@
                   <select
                     class="form-select"
                     v-model="form.est_preparacion"
+                    :disabled="form.esp_preparacion === 'No'"
                     required
                   >
                     <option value="" disabled>Seleccione...</option>
@@ -772,6 +781,9 @@
                     required
                   >
                     <option value="" disabled>Seleccione...</option>
+                    <option value="No Aplica" v-if="form.cant_neveras === 0">
+                      No Aplica
+                    </option>
                     <option value="Menor a 400 Lt">Menor a 400 Lt</option>
                     <option value="De 400 a 800 Lt">De 400 a 800 Lt</option>
                     <option value="De 1200 a 1600 Lt">De 1200 a 1600 Lt</option>
@@ -812,6 +824,12 @@
                     required
                   >
                     <option value="" disabled>Seleccione...</option>
+                    <option
+                      value="No Aplica"
+                      v-if="form.cant_neveras === 0 || form.cant_conge === 0"
+                    >
+                      No Aplica
+                    </option>
                     <option value="Menor a 400 Lt">Menor a 400 Lt</option>
                     <option value="De 400 a 800 Lt">De 400 a 800 Lt</option>
                     <option value="De 1400 a 1600 Lt">De 1400 a 1600 Lt</option>
@@ -1544,6 +1562,42 @@ export default {
     },
   },
   watch: {
+    "form.esp_almacenamiento"(val) {
+      if (val === "No") {
+        this.form.mat_techo_alm = "";
+        this.form.mat_piso_alm = "";
+        this.form.mat_paredes_alm = "";
+        this.form.est_almacenamiento = "";
+      }
+    },
+    "form.esp_preparacion"(val) {
+      if (val === "No") {
+        this.form.mat_techo_prep = "";
+        this.form.mat_piso_prep = "";
+        this.form.mat_paredes_prep = "";
+        this.form.est_preparacion = "";
+      }
+    },
+    "form.cant_neveras"(val) {
+      if (val === 0) {
+        this.form.tamano_neveras = "No Aplica";
+        this.form.tamano_conge = "No Aplica";
+      } else {
+        if (this.form.tamano_neveras === "No Aplica")
+          this.form.tamano_neveras = "";
+        if (this.form.tamano_conge === "No Aplica") this.form.tamano_conge = "";
+      }
+    },
+    "form.cant_conge"(val) {
+      if (val === 0) {
+        this.form.tamano_conge = "No Aplica";
+      } else if (
+        this.form.tamano_conge === "No Aplica" &&
+        this.form.cant_neveras !== 0
+      ) {
+        this.form.tamano_conge = "";
+      }
+    },
     isIndustrializada(val) {
       if (!val) {
         this.form.ind_area_comedor = "";
