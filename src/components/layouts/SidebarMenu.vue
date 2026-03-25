@@ -139,28 +139,31 @@ export default {
   methods: {
     async logout() {
       try {
-        const response = await axios.post(
+        await axios.post(
           `${process.env.VUE_APP_API_BASE_URL}/logout`,
           {},
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              Authorization: `Bearer ${
+                localStorage.getItem("token") ||
+                localStorage.getItem("authToken")
+              }`,
             },
           }
         );
-
-        if (response.status === 200) {
-          // Elimina los tokens de almacenamiento
-          localStorage.removeItem("authToken");
-          sessionStorage.removeItem("authToken");
-          console.log("Tokens eliminados");
-          // Redirige al usuario a la página de inicio de sesión
-          this.$router.push("/login");
-        } else {
-          console.error("Error al cerrar sesión:", response.statusText);
-        }
       } catch (error) {
-        console.error("Error en la solicitud de cierre de sesión:", error);
+        console.error(
+          "Error en la solicitud de cierre de sesión (probablemente el token ya expiró):",
+          error
+        );
+      } finally {
+        // Siempre eliminar los tokens locales, independientemente de si el backend falla (ej. por 401)
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("token");
+        sessionStorage.removeItem("authToken");
+        console.log("Sesión cerrada localmente");
+        // Redirigir siempre a la pantalla de inicio de sesión
+        this.$router.push("/login");
       }
     },
   },

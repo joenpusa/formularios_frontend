@@ -18,12 +18,15 @@
         </nav>
         <h2>Reportes</h2>
         <hr />
-        <form @submit.prevent="generarReporte">
+        <form @submit.prevent="solicitudReporte">
           <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
               <label class="form-label">Formato a consutar:</label>
               <select class="form-select" v-model="form.tipo_reporte" required>
                 <option value="1">REPORTE DILIGENCIAMENTO PLATAFORMA</option>
+                <option value="10">
+                  REPORTE DIAGNOSTICO POR FECHAS EN EXCEL
+                </option>
                 <!-- <option value="2">REPORTE DIARIO DE VISITAS</option>
                 <option value="3">
                   CONSOLIDADO VISITAS DE VERIFICACIÓN A COMEDORES ESCOLARES CCT
@@ -155,7 +158,7 @@ export default {
     async solicitudReporte() {
       this.isLoading = true;
       // Validar que las fechas sean correctas
-      if (this.form.fecha_incial > this.form.fecha_final) {
+      if (this.form.fecha_inicio > this.form.fecha_fin) {
         this.isLoading = false;
         this.showToast(
           "La fecha inicial no puede ser mayor a la final",
@@ -163,7 +166,7 @@ export default {
         );
         return;
       }
-      if (this.tipo_reporte === "1") {
+      if (this.form.tipo_reporte === "1") {
         this.generarReporte();
       } else {
         this.generarReporteExcel();
@@ -198,23 +201,37 @@ export default {
     async generarReporteExcel() {
       try {
         const apiUrl = process.env.VUE_APP_API_BASE_URL;
-        // Convertir form a Multipart
-        const formData = new FormData();
-        Object.keys(this.form).forEach((key) => {
-          if (key !== "files") {
-            formData.append(key, JSON.stringify(this.form[key] || [])); // Convierte a JSON
-          }
+
+        // Mapear el tipo de reporte ("10" a "diagnosticos") y preparar los datos
+        const payload = {
+          ...this.form,
+          tipo:
+            this.form.tipo_reporte == 10
+              ? "diagnosticos"
+              : this.form.tipo_reporte,
+        };
+
+        const response = await axios.post(`${apiUrl}/reporte/excel`, payload, {
+          responseType: "blob", // Recibir el archivo
         });
 
-        // Enviar datos con una solicitud POST
-        const response = await axios.post(`${apiUrl}/reporte/excel`, formData);
-        console.log(response);
         if (response.status === 200) {
           this.showToast("Reporte generado correctamente", "success");
+
+          // Lógica para descargar el Excel en el navegador
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute(
+            "download",
+            `Reporte_Diagnostico_${new Date().toISOString().split("T")[0]}.xlsx`
+          );
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
         }
-        this.isLoading = false;
       } catch (error) {
-        this.isLoading = false;
+        console.error("Error al generar excel:", error);
         this.showToast("No se pudo generar reporte", "danger");
       } finally {
         this.isLoading = false;
