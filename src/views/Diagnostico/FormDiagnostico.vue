@@ -20,1405 +20,1467 @@
           <h2>DIAGNÓSTICO DE INFRAESTRUCTURA</h2>
           <hr />
         </div>
-        <form @submit.prevent="guardarFormulario">
-          <!-- CATEGORÍA: CONDICIONES GENERALES DE LA OPERACIÓN -->
-          <div class="card mb-4">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">
-                CATEGORÍA: CONDICIONES GENERALES DE LA OPERACIÓN
-              </h5>
+        <form @submit.prevent="guardarFormulario" ref="wizardForm">
+          <div class="card mb-4" v-if="currentStepData">
+            <div
+              class="card-header bg-primary text-white d-flex justify-content-between align-items-center"
+            >
+              <h5 class="mb-0">{{ currentStepData.category }}</h5>
+              <span
+                class="badge bg-light text-primary fs-6"
+                style="min-width: 120px; text-align: center"
+                >Paso {{ currentStep + 1 }} de {{ steps.length }}</span
+              >
             </div>
             <div class="card-body">
-              <h6 class="text-primary border-bottom pb-2">
-                Subcategoría: Identificación de Sede
+              <h6
+                class="text-primary border-bottom pb-2 mb-4"
+                v-if="currentStepData.subcategory"
+              >
+                Subcategoría: {{ currentStepData.subcategory }}
               </h6>
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label class="form-label">ETC:</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    v-model="form.etc"
-                    required
-                    disabled
-                  />
+
+              <!-- STEP 0 -->
+              <div v-show="currentStep === 0" ref="step0">
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label class="form-label">ETC:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="form.etc"
+                      required
+                      disabled
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">Fecha de la Visita:</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      v-model="form.fecha_visita"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">Hora de la Visita:</label>
+                    <input
+                      type="time"
+                      class="form-control"
+                      v-model="form.hora_visita"
+                      required
+                    />
+                  </div>
                 </div>
-                <div class="col-md-4">
-                  <label class="form-label">Fecha de la Visita:</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    v-model="form.fecha_visita"
-                    required
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label">Hora de la Visita:</label>
-                  <input
-                    type="time"
-                    class="form-control"
-                    v-model="form.hora_visita"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label for="municipio" class="form-label">Municipio:</label>
-                  <MunicipioSelect v-model="form.municipio" />
-                </div>
-                <div class="col-md-4">
-                  <label for="institucionEducativa" class="form-label"
-                    >Institución Educativa:</label
-                  >
-                  <InstitucionSelect
-                    v-model="form.institucion"
-                    :municipio-id="form.municipio"
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label for="sedeEducativa" class="form-label"
-                    >Sede Educativa:</label
-                  >
-                  <SedeSelect
-                    v-model="form.sede"
-                    :institucion-id="form.institucion"
-                  />
-                </div>
-              </div>
-              <h6 class="text-primary border-bottom pb-2 mt-4">
-                Subcategoría: Operación Actual
-              </h6>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label class="form-label">4. Zona Geográfica:</label>
-                  <select
-                    class="form-select"
-                    v-model="form.zona_geografica"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Urbana">Urbana</option>
-                    <option value="Rural">Rural</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label"
-                    >5. Modelos de Atención que actualmente se presta:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.modelo_atencion"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="PAE para pueblos indígenas">
-                      PAE para pueblos indígenas
-                    </option>
-                    <option value="PAE convencional">PAE convencional</option>
-                    <option
-                      value="PAE para sedes en zonas rurales de difícil acceso"
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label for="municipio" class="form-label">Municipio:</label>
+                    <MunicipioSelect v-model="form.municipio" />
+                  </div>
+                  <div class="col-md-4">
+                    <label for="institucionEducativa" class="form-label"
+                      >Institución Educativa:</label
                     >
-                      PAE para sedes en zonas rurales de difícil acceso
-                    </option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label class="form-label"
-                    >6. Tipos de Complemento Alimentario:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.tipo_complemento"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Complemento mañana/tarde (CAJM/JT)">
-                      Complemento mañana/tarde (CAJM/JT)
-                    </option>
-                    <option value="Almuerzo">Almuerzo</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label"
-                    >7. Modalidades de Atención del Servicio:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.modalidad_atencion"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Preparada en sitio">
-                      Preparada en sitio
-                    </option>
-                    <option value="Caliente Transportada">
-                      Caliente Transportada
-                    </option>
-                    <option value="Industrializada">Industrializada</option>
-                    <option value="Preparada en sitio y Caliente transportada">
-                      Preparada en sitio y Caliente transportada
-                    </option>
-                    <option value="Preparada en sitio e Industrializada">
-                      Preparada en sitio e Industrializada
-                    </option>
-                    <option value="Caliente Transportada e Industrializada">
-                      Caliente Transportada e Industrializada
-                    </option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="row mb-3 align-items-end">
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >8. Si es industrializada, ¿tiene área para comedor?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.ind_area_comedor"
-                    :disabled="!isIndustrializada"
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >9. Si es industrializada, ¿tiene área para producción
-                    (cocina)?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.ind_area_produccion"
-                    :disabled="!isIndustrializada"
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >10. Si es industrializada, ¿tiene acceso a agua
-                    potable?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.ind_agua_potable"
-                    :disabled="!isIndustrializada"
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- CATEGORÍA: UBICACIÓN Y ACCESO -->
-          <div class="card mb-4">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">CATEGORÍA: UBICACIÓN Y ACCESO</h5>
-            </div>
-            <div class="card-body">
-              <h6 class="text-primary border-bottom pb-2">
-                Subcategoría: Ubicación de la sede
-              </h6>
-              <div class="row mb-3">
-                <div class="col-md-12">
-                  <label class="form-label"
-                    >11. ¿Está cerca de fuentes de contaminación?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.cerca_contaminacion"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-              </div>
-
-              <h6 class="text-primary border-bottom pb-2 mt-4">
-                Subcategoría: Dificultad de acceso por conflicto
-              </h6>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label class="form-label"
-                    >12. ¿Ubicada en zona de conflicto armado?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.zona_conflicto"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label"
-                    >13. ¿Con qué frecuencia el conflicto afecta la
-                    entrega?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.frecuencia_conflicto"
-                    :disabled="form.zona_conflicto !== 'Sí'"
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Muy frecuente">Muy frecuente</option>
-                    <option value="Algo frecuente">Algo frecuente</option>
-                    <option value="poco frecuente">Poco frecuente</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- CATEGORÍA: CONDICIONES DE INFRAESTRUCTURA -->
-          <div class="card mb-4">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">CATEGORÍA: CONDICIONES DE INFRAESTRUCTURA</h5>
-            </div>
-            <div class="card-body">
-              <h6 class="text-primary border-bottom pb-2">
-                Subcategoría: Almacenamiento
-              </h6>
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >14. ¿Tiene espacio dedicado al almacenamiento?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.esp_almacenamiento"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >15. Material predominante del techo:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.mat_techo_alm"
-                    :disabled="form.esp_almacenamiento === 'No'"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Techo de concreto">Techo de concreto</option>
-                    <option value="Techos de metal o acero">
-                      Techos de metal o acero
-                    </option>
-                    <option value="Tejas de barro">Tejas de barro</option>
-                    <option value="Tejas de plástico">Tejas de plástico</option>
-                    <option value="Techo de paja">Techo de paja</option>
-                    <option value="Sin techo">Sin techo</option>
-                    <option value="No Aplica">No Aplica</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >16. Material predominante del piso:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.mat_piso_alm"
-                    :disabled="form.esp_almacenamiento === 'No'"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Baldosa">Baldosa</option>
-                    <option value="Ladrillo">Ladrillo</option>
-                    <option value="Cemento/gravilla">Cemento/gravilla</option>
-                    <option value="Madera">Madera</option>
-                    <option value="Tierra/arena">Tierra/arena</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label class="form-label"
-                    >17. Material predominante de las paredes:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.mat_paredes_alm"
-                    :disabled="form.esp_almacenamiento === 'No'"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Bloque/ladrillo">Bloque/ladrillo</option>
-                    <option value="bahareque/madera">Bahareque/madera</option>
-                    <option value="Material prefabricado">
-                      Material prefabricado
-                    </option>
-                    <option value="Guadua/caña">Guadua/caña</option>
-                    <option value="Sin paredes">Sin paredes</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label"
-                    >18. Estado del espacio de almacenamiento:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.est_almacenamiento"
-                    :disabled="form.esp_almacenamiento === 'No'"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Bueno">Bueno</option>
-                    <option value="Regular">Regular</option>
-                    <option value="Malo">Malo</option>
-                  </select>
-                </div>
-              </div>
-
-              <h6 class="text-primary border-bottom pb-2 mt-4">
-                Subcategoría: Preparación (Cocina)
-              </h6>
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >19. ¿Tiene espacio dedicado a la preparación?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.esp_preparacion"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >20. Material predominante del techo:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.mat_techo_prep"
-                    :disabled="form.esp_preparacion === 'No'"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Concreto">Concreto</option>
-                    <option value="Metal">Metal</option>
-                    <option value="Barro">Barro</option>
-                    <option value="Plástico">Plástico</option>
-                    <option value="Paja">Paja</option>
-                    <option value="Sin techo">Sin techo</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >21. Material predominante del piso:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.mat_piso_prep"
-                    :disabled="form.esp_preparacion === 'No'"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Baldosa">Baldosa</option>
-                    <option value="Ladrillo">Ladrillo</option>
-                    <option value="Cemento">Cemento</option>
-                    <option value="Madera">Madera</option>
-                    <option value="Tierra">Tierra</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label class="form-label"
-                    >22. Material predominante de las paredes:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.mat_paredes_prep"
-                    :disabled="form.esp_preparacion === 'No'"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Bloque">Bloque</option>
-                    <option value="bahareque">Bahareque</option>
-                    <option value="Prefabricado">Prefabricado</option>
-                    <option value="Guadua">Guadua</option>
-                    <option value="Sin paredes">Sin paredes</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label"
-                    >23. Estado del espacio de preparación:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.est_preparacion"
-                    :disabled="form.esp_preparacion === 'No'"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Bueno">Bueno</option>
-                    <option value="Regular">Regular</option>
-                    <option value="Malo">Malo</option>
-                  </select>
-                </div>
-              </div>
-
-              <h6 class="text-primary border-bottom pb-2 mt-4">
-                Subcategoría: Consumo (Comedor)
-              </h6>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label class="form-label"
-                    >24. ¿Cómo es el espacio de consumo?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.esp_consumo"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Espacio sin techo">Espacio sin techo</option>
-                    <option value="Espacio con techo compartido">
-                      Espacio con techo compartido
-                    </option>
-                    <option value="Un salón de clase">Un salón de clase</option>
-                    <option value="Espacio cerrado exclusivo">
-                      Espacio cerrado exclusivo
-                    </option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label"
-                    >25. Estado del área de consumo:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.est_consumo"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Bueno">Bueno</option>
-                    <option value="Regular">Regular</option>
-                    <option value="Malo">Malo</option>
-                  </select>
-                </div>
-              </div>
-
-              <h6 class="text-primary border-bottom pb-2 mt-4">
-                Subcategoría: Disposición de residuos y Áreas sanitarias
-              </h6>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label class="form-label"
-                    >26. ¿Tiene área demarcada para residuos?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.area_residuos"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label"
-                    >27. ¿Baños exclusivos para manipuladores?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.banos_manipuladores"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- CATEGORÍA: ACCESO Y CALIDAD DE SERVICIOS PÚBLICOS -->
-          <div class="card mb-4">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">
-                CATEGORÍA: ACCESO Y CALIDAD DE SERVICIOS PÚBLICOS
-              </h5>
-            </div>
-            <div class="card-body">
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >28. ¿Cuenta con electricidad?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.electricidad"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
-                    <option value="Intermitente">Intermitente</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >29. ¿Cuenta con acceso a agua?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.acceso_agua"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
-                    <option value="Intermitente">Intermitente</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >30. ¿De dónde obtiene el agua para el PAE?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.fuente_agua"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Acueducto">Acueducto</option>
-                    <option value="Agua en botella/bolsa">
-                      Agua en botella/bolsa
-                    </option>
-                    <option value="Carrotanque">Carrotanque</option>
-                    <option value="Pozo">Pozo</option>
-                    <option value="Agua lluvia">Agua lluvia</option>
-                    <option value="Cuerpos de agua (Ríos/quebradas)">
-                      Cuerpos de agua (Ríos/quebradas)
-                    </option>
-                  </select>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >31. ¿Cuenta con alcantarillado?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.alcantarillado"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >32. Combustible utilizado para preparación:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.combustible"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Gas natural/pipeta">
-                      Gas natural/pipeta
-                    </option>
-                    <option value="Leña/madera">Leña/madera</option>
-                    <option value="Petróleo/gasolina">Petróleo/gasolina</option>
-                    <option value="Electricidad">Electricidad</option>
-                    <option value="No Aplica">No Aplica</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >33. ¿Espacio adecuado para pipeta de gas?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.espacio_gas"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
-                    <option value="No Aplica">No Aplica</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-3">
-                  <label class="form-label"
-                    >34. ¿Cuenta con recolección de basuras?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.recoleccion_basura"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label"
-                    >35. Disposición de residuos orgánicos:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.disp_organicos"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Se tiran a río/quebrada">
-                      Se tiran a río/quebrada
-                    </option>
-                    <option value="Patio/lote">Patio/lote</option>
-                    <option value="Quema">Quema</option>
-                    <option value="Entierro">Entierro</option>
-                    <option value="Compost">Compost</option>
-                    <option value="Alimento animales">Alimento animales</option>
-                  </select>
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label"
-                    >36. Disposición de residuos no orgánicos:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.disp_no_organicos"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Río/quebrada">Río/quebrada</option>
-                    <option value="Patio/lote">Patio/lote</option>
-                    <option value="Quema">Quema</option>
-                    <option value="Entierro">Entierro</option>
-                    <option value="Reciclaje">Reciclaje</option>
-                  </select>
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label"
-                    >37. ¿Realizan clasificación de residuos?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.clasi_residuos"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- CATEGORÍA: DOTACIÓN DE EQUIPOS Y MENAJE -->
-          <div class="card mb-4">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">CATEGORÍA: DOTACIÓN DE EQUIPOS Y MENAJE</h5>
-            </div>
-            <div class="card-body">
-              <h6 class="text-primary border-bottom pb-2">
-                Subcategoría: Equipos de Almacenamiento
-              </h6>
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label class="form-label">38. ¿Cuántas neveras tiene?:</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.cant_neveras"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label">39. ¿Cuántas funcionan?:</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.func_neveras"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >40. Tamaño de la mayoría de neveras:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.tamano_neveras"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="No Aplica" v-if="form.cant_neveras === 0">
-                      No Aplica
-                    </option>
-                    <option value="Menor a 400 Lt">Menor a 400 Lt</option>
-                    <option value="De 400 a 800 Lt">De 400 a 800 Lt</option>
-                    <option value="De 1200 a 1600 Lt">De 1200 a 1600 Lt</option>
-                    <option value="De 1600 a 2200 Lt">De 1600 a 2200 Lt</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >41. ¿Cuántos congeladores tiene?:</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.cant_conge"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label">42. ¿Cuántos funcionan?:</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.func_conge"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >43. Tamaño de la mayoría de congeladores:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.tamano_conge"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option
-                      value="No Aplica"
-                      v-if="form.cant_neveras === 0 || form.cant_conge === 0"
+                    <InstitucionSelect
+                      v-model="form.institucion"
+                      :municipio-id="form.municipio"
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label for="sedeEducativa" class="form-label"
+                      >Sede Educativa:</label
                     >
-                      No Aplica
-                    </option>
-                    <option value="Menor a 400 Lt">Menor a 400 Lt</option>
-                    <option value="De 400 a 800 Lt">De 400 a 800 Lt</option>
-                    <option value="De 1400 a 1600 Lt">De 1400 a 1600 Lt</option>
-                  </select>
+                    <SedeSelect
+                      v-model="form.sede"
+                      :institucion-id="form.institucion"
+                    />
+                  </div>
                 </div>
               </div>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label class="form-label">44. ¿Almacena sobre estibas?</label>
-                  <select
-                    class="form-select"
-                    v-model="form.almacena_estibas"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
-                  </select>
+              <!-- STEP 1 -->
+              <div v-show="currentStep === 1" ref="step1">
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label">4. Zona Geográfica:</label>
+                    <select
+                      class="form-select"
+                      v-model="form.zona_geografica"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Urbana">Urbana</option>
+                      <option value="Rural">Rural</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label"
+                      >5. Modelos de Atención que actualmente se presta:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.modelo_atencion"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="PAE para pueblos indígenas">
+                        PAE para pueblos indígenas
+                      </option>
+                      <option value="PAE convencional">PAE convencional</option>
+                    </select>
+                  </div>
                 </div>
-                <div class="col-md-6">
-                  <label class="form-label"
-                    >45. Elementos para almacenamiento:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.elementos_alm"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Estante">Estante</option>
-                    <option value="Canastilla">Canastilla</option>
-                    <option value="Balde">Balde</option>
-                    <option value="Caja">Caja</option>
-                    <option value="Ninguno">Ninguno</option>
-                  </select>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label"
+                      >6. Tipos de Complemento Alimentario:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.tipo_complemento"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Complemento mañana/tarde (CAJM/JT)">
+                        Complemento mañana/tarde (CAJM/JT)
+                      </option>
+                      <option value="Almuerzo">Almuerzo</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label"
+                      >7. Modalidades de Atención del Servicio:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.modalidad_atencion"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Preparada en sitio">
+                        Preparada en sitio
+                      </option>
+                      <option value="Caliente Transportada">
+                        Caliente Transportada
+                      </option>
+                      <option value="Industrializada">Industrializada</option>
+                      <option
+                        value="Preparada en sitio y Caliente transportada"
+                      >
+                        Preparada en sitio y Caliente transportada
+                      </option>
+                      <option value="Preparada en sitio e Industrializada">
+                        Preparada en sitio e Industrializada
+                      </option>
+                      <option value="Caliente Transportada e Industrializada">
+                        Caliente Transportada e Industrializada
+                      </option>
+                    </select>
+                  </div>
                 </div>
+
+                <div class="row mb-3 align-items-end">
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >8. Si es industrializada, ¿tiene área para
+                      comedor?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.ind_area_comedor"
+                      :disabled="!isIndustrializada"
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >9. Si es industrializada, ¿tiene área para producción
+                      (cocina)?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.ind_area_produccion"
+                      :disabled="!isIndustrializada"
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >10. Si es industrializada, ¿tiene acceso a agua
+                      potable?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.ind_agua_potable"
+                      :disabled="!isIndustrializada"
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- STEP 2 -->
+              <div v-show="currentStep === 2" ref="step2">
+                <div class="row mb-3">
+                  <div class="col-md-12">
+                    <label class="form-label"
+                      >11. ¿Está cerca de fuentes de contaminación?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.cerca_contaminacion"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Sí">Sí</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- STEP 3 -->
+              <div v-show="currentStep === 3" ref="step3">
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label"
+                      >12. ¿Ubicada en zona de conflicto armado?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.zona_conflicto"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Sí">Sí</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label"
+                      >13. ¿Con qué frecuencia el conflicto afecta la
+                      entrega?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.frecuencia_conflicto"
+                      :disabled="form.zona_conflicto !== 'Sí'"
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Muy frecuente">Muy frecuente</option>
+                      <option value="Algo frecuente">Algo frecuente</option>
+                      <option value="poco frecuente">Poco frecuente</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- STEP 4 -->
+              <div v-show="currentStep === 4" ref="step4">
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >14. ¿Tiene espacio dedicado al almacenamiento?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.esp_almacenamiento"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Sí">Sí</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >15. Material predominante del techo:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.mat_techo_alm"
+                      :disabled="form.esp_almacenamiento === 'No'"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Techo de concreto">
+                        Techo de concreto
+                      </option>
+                      <option value="Techos de metal o acero">
+                        Techos de metal o acero
+                      </option>
+                      <option value="Tejas de barro">Tejas de barro</option>
+                      <option value="Tejas de plástico">
+                        Tejas de plástico
+                      </option>
+                      <option value="Techo de paja">Techo de paja</option>
+                      <option value="Sin techo">Sin techo</option>
+                      <option value="No Aplica">No Aplica</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >16. Material predominante del piso:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.mat_piso_alm"
+                      :disabled="form.esp_almacenamiento === 'No'"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Baldosa">Baldosa</option>
+                      <option value="Ladrillo">Ladrillo</option>
+                      <option value="Cemento/gravilla">Cemento/gravilla</option>
+                      <option value="Madera">Madera</option>
+                      <option value="Tierra/arena">Tierra/arena</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label"
+                      >17. Material predominante de las paredes:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.mat_paredes_alm"
+                      :disabled="form.esp_almacenamiento === 'No'"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Bloque/ladrillo">Bloque/ladrillo</option>
+                      <option value="bahareque/madera">Bahareque/madera</option>
+                      <option value="Material prefabricado">
+                        Material prefabricado
+                      </option>
+                      <option value="Guadua/caña">Guadua/caña</option>
+                      <option value="Sin paredes">Sin paredes</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label"
+                      >18. Estado del espacio de almacenamiento:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.est_almacenamiento"
+                      :disabled="form.esp_almacenamiento === 'No'"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Bueno">Bueno</option>
+                      <option value="Regular">Regular</option>
+                      <option value="Malo">Malo</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- STEP 5 -->
+              <div v-show="currentStep === 5" ref="step5">
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >19. ¿Tiene espacio dedicado a la preparación?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.esp_preparacion"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Sí">Sí</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >20. Material predominante del techo:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.mat_techo_prep"
+                      :disabled="form.esp_preparacion === 'No'"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Concreto">Concreto</option>
+                      <option value="Metal">Metal</option>
+                      <option value="Barro">Barro</option>
+                      <option value="Plástico">Plástico</option>
+                      <option value="Paja">Paja</option>
+                      <option value="Sin techo">Sin techo</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >21. Material predominante del piso:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.mat_piso_prep"
+                      :disabled="form.esp_preparacion === 'No'"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Baldosa">Baldosa</option>
+                      <option value="Ladrillo">Ladrillo</option>
+                      <option value="Cemento">Cemento</option>
+                      <option value="Madera">Madera</option>
+                      <option value="Tierra">Tierra</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label"
+                      >22. Material predominante de las paredes:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.mat_paredes_prep"
+                      :disabled="form.esp_preparacion === 'No'"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Bloque">Bloque</option>
+                      <option value="bahareque">Bahareque</option>
+                      <option value="Prefabricado">Prefabricado</option>
+                      <option value="Guadua">Guadua</option>
+                      <option value="Sin paredes">Sin paredes</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label"
+                      >23. Estado del espacio de preparación:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.est_preparacion"
+                      :disabled="form.esp_preparacion === 'No'"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Bueno">Bueno</option>
+                      <option value="Regular">Regular</option>
+                      <option value="Malo">Malo</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- STEP 6 -->
+              <div v-show="currentStep === 6" ref="step6">
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label"
+                      >24. ¿Cómo es el espacio de consumo?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.esp_consumo"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Espacio sin techo">
+                        Espacio sin techo
+                      </option>
+                      <option value="Espacio con techo compartido">
+                        Espacio con techo compartido
+                      </option>
+                      <option value="Un salón de clase">
+                        Un salón de clase
+                      </option>
+                      <option value="Espacio cerrado exclusivo">
+                        Espacio cerrado exclusivo
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label"
+                      >25. Estado del área de consumo:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.est_consumo"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Bueno">Bueno</option>
+                      <option value="Regular">Regular</option>
+                      <option value="Malo">Malo</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- STEP 7 -->
+              <div v-show="currentStep === 7" ref="step7">
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label"
+                      >26. ¿Tiene área demarcada para residuos?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.area_residuos"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label"
+                      >27. ¿Baños exclusivos para manipuladores?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.banos_manipuladores"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Sí">Sí</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- STEP 8 -->
+              <div v-show="currentStep === 8" ref="step8">
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >28. ¿Cuenta con electricidad?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.electricidad"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Sí">Sí</option>
+                      <option value="No">No</option>
+                      <option value="Intermitente">Intermitente</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >29. ¿Cuenta con acceso a agua?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.acceso_agua"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Sí">Sí</option>
+                      <option value="No">No</option>
+                      <option value="Intermitente">Intermitente</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >30. ¿De dónde obtiene el agua para el PAE?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.fuente_agua"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Acueducto">Acueducto</option>
+                      <option value="Agua en botella/bolsa">
+                        Agua en botella/bolsa
+                      </option>
+                      <option value="Carrotanque">Carrotanque</option>
+                      <option value="Pozo">Pozo</option>
+                      <option value="Agua lluvia">Agua lluvia</option>
+                      <option value="Cuerpos de agua (Ríos/quebradas)">
+                        Cuerpos de agua (Ríos/quebradas)
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >31. ¿Cuenta con alcantarillado?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.alcantarillado"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Sí">Sí</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >32. Combustible utilizado para preparación:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.combustible"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Gas natural/pipeta">
+                        Gas natural/pipeta
+                      </option>
+                      <option value="Leña/madera">Leña/madera</option>
+                      <option value="Petróleo/gasolina">
+                        Petróleo/gasolina
+                      </option>
+                      <option value="Electricidad">Electricidad</option>
+                      <option value="No Aplica">No Aplica</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >33. ¿Espacio adecuado para pipeta de gas?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.espacio_gas"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Sí">Sí</option>
+                      <option value="No">No</option>
+                      <option value="No Aplica">No Aplica</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-3">
+                    <label class="form-label"
+                      >34. ¿Cuenta con recolección de basuras?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.recoleccion_basura"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Sí">Sí</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label"
+                      >35. Disposición de residuos orgánicos:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.disp_organicos"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Se tiran a río/quebrada">
+                        Se tiran a río/quebrada
+                      </option>
+                      <option value="Patio/lote">Patio/lote</option>
+                      <option value="Quema">Quema</option>
+                      <option value="Entierro">Entierro</option>
+                      <option value="Compost">Compost</option>
+                      <option value="Alimento animales">
+                        Alimento animales
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label"
+                      >36. Disposición de residuos no orgánicos:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.disp_no_organicos"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Río/quebrada">Río/quebrada</option>
+                      <option value="Patio/lote">Patio/lote</option>
+                      <option value="Quema">Quema</option>
+                      <option value="Entierro">Entierro</option>
+                      <option value="Reciclaje">Reciclaje</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label"
+                      >37. ¿Realizan clasificación de residuos?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.clasi_residuos"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Sí">Sí</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- STEP 9 -->
+              <div v-show="currentStep === 9" ref="step9">
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >38. ¿Cuántas neveras tiene?:</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.cant_neveras"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">39. ¿Cuántas funcionan?:</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.func_neveras"
+                      min="0"
+                      :max="form.cant_neveras"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >40. Tamaño de la mayoría de neveras:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.tamano_neveras"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="No Aplica" v-if="form.cant_neveras === 0">
+                        No Aplica
+                      </option>
+                      <option value="Menor a 400 Lt">Menor a 400 Lt</option>
+                      <option value="De 400 a 800 Lt">De 400 a 800 Lt</option>
+                      <option value="De 1200 a 1600 Lt">
+                        De 1200 a 1600 Lt
+                      </option>
+                      <option value="De 1600 a 2200 Lt">
+                        De 1600 a 2200 Lt
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >41. ¿Cuántos congeladores tiene?:</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.cant_conge"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">42. ¿Cuántos funcionan?:</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.func_conge"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >43. Tamaño de la mayoría de congeladores:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.tamano_conge"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option
+                        value="No Aplica"
+                        v-if="form.cant_neveras === 0 || form.cant_conge === 0"
+                      >
+                        No Aplica
+                      </option>
+                      <option value="Menor a 400 Lt">Menor a 400 Lt</option>
+                      <option value="De 400 a 800 Lt">De 400 a 800 Lt</option>
+                      <option value="De 1400 a 1600 Lt">
+                        De 1400 a 1600 Lt
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label"
+                      >44. ¿Almacena sobre estibas?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.almacena_estibas"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Sí">Sí</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label"
+                      >45. Elementos para almacenamiento:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.elementos_alm"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Estante">Estante</option>
+                      <option value="Canastilla">Canastilla</option>
+                      <option value="Balde">Balde</option>
+                      <option value="Caja">Caja</option>
+                      <option value="Ninguno">Ninguno</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- STEP 10 -->
+              <div v-show="currentStep === 10" ref="step10">
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >46. ¿Cuántas básculas tiene?</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.cant_bas"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >47. Capacidad de la báscula:</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.cap_bas"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">48. Unidad de medida:</label>
+                    <select class="form-select" v-model="form.uni_bas" required>
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Kg">Kg</option>
+                      <option value="Gr">Gr</option>
+                      <option value="Oz">Oz</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3 align-items-end">
+                  <div class="col-md-3">
+                    <label class="form-label"
+                      >49. ¿Tiene termómetro funcionando?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.term_fun"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="SI">SI</option>
+                      <option value="NO">NO</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label"
+                      >50. ¿Tiene ollas a presión exclusivas?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.ollas_pre"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="SI">SI</option>
+                      <option value="NO">NO</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label"
+                      >51. Capacidad de ollas a presión:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.cap_ollas_pre"
+                      :disabled="form.ollas_pre === 'NO'"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="No Aplica" v-if="form.ollas_pre === 'NO'">
+                        No Aplica
+                      </option>
+                      <option value="4 Lt">4 Lt</option>
+                      <option value="6 Lt">6 Lt</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label"
+                      >52. ¿Cuántas ollas a presión funcionan?</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.ollas_pre_fun"
+                      min="0"
+                      :disabled="form.ollas_pre === 'NO'"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >53. Cantidad de Ralladores en buen estado:</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.cant_ral"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >54. Cantidad de exprimidores en buen estado:</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.cant_exp"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >55. Cantidad de Tablas de Picar (No madera):</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.cant_tab_pic"
+                      min="0"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >56. ¿Cuántas estufas tiene?</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.cant_estufas"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">57. Total de quemadores:</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.total_quemadores"
+                      min="0"
+                      :disabled="form.cant_estufas === 0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >58. Quemadores que funcionan correctamente:</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.quemadores_fun"
+                      min="0"
+                      :disabled="form.cant_estufas === 0"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >59. ¿Cuántas licuadoras tiene?</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.cant_lic"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >60. Licuadoras que funcionan:</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.lic_fun"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >61. Licuadoras industriales:</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.lic_ind"
+                      min="0"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-3">
+                    <label class="form-label"
+                      >62. ¿Ollas/olletas/pailas exclusivas?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.ollas_exc"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Sí">Sí</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label"
+                      >63. Ollas con buena vida útil:</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.ollas_util"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label"
+                      >64. Pailas con buena vida útil:</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.pailas_util"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label"
+                      >65. Calderos con buena vida útil:</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.calderos_util"
+                      min="0"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >66. Tamaño calderos arroceros:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.tam_calderos"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Pequeño">Pequeño</option>
+                      <option value="Mediano">Mediano</option>
+                      <option value="Grande">Grande</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label">67. ¿Cuchillos exclusivos?</label>
+                    <select
+                      class="form-select"
+                      v-model="form.cuch_exc"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Sí">Sí</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >68. Cuchillos con buena vida útil:</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.cuch_util"
+                      min="0"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label"
+                      >69. ¿Cucharones/cucharas de servir exclusivas?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.cuchara_serv"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Sí">Sí</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- STEP 11 -->
+              <div v-show="currentStep === 11" ref="step11">
+                <div class="row mb-3">
+                  <div class="col-md-3">
+                    <label class="form-label"
+                      >70. Capacidad de niños sentados al tiempo:</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.cap_ninos"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Todos (100%)">Todos (100%)</option>
+                      <option value="75%">75%</option>
+                      <option value="50%">50%</option>
+                      <option value="25%">25%</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label"
+                      >71. ¿Cuántos platos dispone?</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.cant_platos"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label"
+                      >72. Platos llanos en buen estado:</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.pla_lla"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label"
+                      >73. Platos hondos en buen estado:</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.pla_hon"
+                      min="0"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-3">
+                    <label class="form-label">74. Portas en buen estado:</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.portas"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label"
+                      >75. Pocillos/vasos en buen estado:</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.vasos"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label">76. Cantidad de cucharas:</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.cucharas"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label">77. Cantidad de tenedores:</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.tenedores"
+                      min="0"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- STEP 12 -->
+              <div v-show="currentStep === 12" ref="step12">
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >78. Recipientes sanitarios (canecas con tapa):</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model.number="form.recip_sani"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >79. ¿Baños exclusivos para personal?</label
+                    >
+                    <select
+                      class="form-select"
+                      v-model="form.banos_exc"
+                      required
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Sí">Sí</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label"
+                      >80. ¿Lavamanos exclusivos para personal?</label
+                    >
+                    <select class="form-select" v-model="form.lav_exc" required>
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="Sí">Sí</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- STEP 13 -->
+              <div v-show="currentStep === 13" ref="step13">
+                <div class="row mb-3">
+                  <div class="col-md-12">
+                    <label class="form-label"
+                      >MODELO DE ATENCIÓN PAE a implementar:</label
+                    >
+                    <textarea
+                      class="form-control"
+                      rows="4"
+                      v-model="form.modelo_implementar"
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <!-- STEP 14 -->
+              <div v-if="currentStep === 14" ref="step14">
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <h4>Firma equipo PAE / Apoyo a la supervisión</h4>
+                    <div>
+                      <SignaturePad
+                        idFirma="firma1"
+                        :varFirma="form.firma1"
+                        @firmas-updated="actualizarFirmas"
+                      />
+                    </div>
+                    <div>
+                      <label class="form-label">Nombre:</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="nombreEquioPAE"
+                        v-model="form.nombre_apoyo"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label class="form-label">Documento:</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.cedula_apoyo"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label class="form-label">Cargo:</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.cargo_apoyo"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label class="form-label">Teléfono:</label>
+                      <input
+                        type="tel"
+                        class="form-control"
+                        v-model="form.telefono_apoyo"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <h4>Firma quien atiende la visita</h4>
+                    <div>
+                      <SignaturePad
+                        idFirma="firma2"
+                        :varFirma="form.firma2"
+                        @firmas-updated="actualizarFirmas"
+                      />
+                    </div>
+                    <div>
+                      <label class="form-label">Nombre:</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.nombre_atiende"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label class="form-label">Documento:</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.cedula_atiende"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label class="form-label">Cargo:</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="form.cargo_atiende"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label class="form-label">Teléfono:</label>
+                      <input
+                        type="tel"
+                        class="form-control"
+                        v-model="form.telefono_atiende"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <!-- Componente de carga de archivos -->
+                <FileUploader
+                  :files="form.files"
+                  :required-docs="requiredDocs"
+                  @files-updated="updateFiles"
+                />
               </div>
 
-              <h6 class="text-primary border-bottom pb-2 mt-4">
-                Subcategoría: Equipos de Preparación
-              </h6>
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label class="form-label">46. ¿Cuántas básculas tiene?</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.cant_bas"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label">47. Capacidad de la báscula:</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.cap_bas"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label">48. Unidad de medida:</label>
-                  <select class="form-select" v-model="form.uni_bas" required>
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Kg">Kg</option>
-                    <option value="Gr">Gr</option>
-                    <option value="Oz">Oz</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row mb-3 align-items-end">
-                <div class="col-md-3">
-                  <label class="form-label"
-                    >49. ¿Tiene termómetro funcionando?</label
+              <!-- Botones de Navegación del Wizard -->
+              <div class="d-flex justify-content-between mt-4 border-top pt-4">
+                <button
+                  type="button"
+                  class="btn btn-secondary px-4 py-2"
+                  @click="prevStep"
+                  :disabled="currentStep === 0"
+                >
+                  <i class="fas fa-chevron-left me-2"></i> Atrás
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary px-4 py-2"
+                  @click="nextStep"
+                  v-if="currentStep < steps.length - 1"
+                >
+                  Siguiente <i class="fas fa-chevron-right ms-2"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-success px-4 py-2"
+                  @click="submitWizard"
+                  v-if="currentStep === steps.length - 1"
+                  :disabled="isLoading"
+                >
+                  <span v-if="isLoading"
+                    ><i class="fas fa-spinner fa-spin me-2"></i>
+                    Guardando...</span
                   >
-                  <select class="form-select" v-model="form.term_fun" required>
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                  </select>
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label"
-                    >50. ¿Tiene ollas a presión exclusivas?</label
+                  <span v-else
+                    ><i class="fas fa-save me-2"></i> Guardar Diagnóstico</span
                   >
-                  <select class="form-select" v-model="form.ollas_pre" required>
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                  </select>
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label"
-                    >51. Capacidad de ollas a presión:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.cap_ollas_pre"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="4 Lt">4 Lt</option>
-                    <option value="6 Lt">6 Lt</option>
-                  </select>
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label"
-                    >52. ¿Cuántas ollas a presión funcionan?</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.ollas_pre_fun"
-                    min="0"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >53. Cantidad de Ralladores en buen estado:</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.cant_ral"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >54. Cantidad de exprimidores en buen estado:</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.cant_exp"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >55. Cantidad de Tablas de Picar (No madera):</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.cant_tab_pic"
-                    min="0"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label class="form-label">56. ¿Cuántas estufas tiene?</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.cant_estufas"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label">57. Total de quemadores:</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.total_quemadores"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >58. Quemadores que funcionan correctamente:</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.quemadores_fun"
-                    min="0"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >59. ¿Cuántas licuadoras tiene?</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.cant_lic"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >60. Licuadoras que funcionan:</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.lic_fun"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label">61. Licuadoras industriales:</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.lic_ind"
-                    min="0"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-3">
-                  <label class="form-label"
-                    >62. ¿Ollas/olletas/pailas exclusivas?</label
-                  >
-                  <select class="form-select" v-model="form.ollas_exc" required>
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label"
-                    >63. Ollas con buena vida útil:</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.ollas_util"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label"
-                    >64. Pailas con buena vida útil:</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.pailas_util"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label"
-                    >65. Calderos con buena vida útil:</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.calderos_util"
-                    min="0"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >66. Tamaño calderos arroceros:</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.tam_calderos"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Pequeño">Pequeño</option>
-                    <option value="Mediano">Mediano</option>
-                    <option value="Grande">Grande</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label">67. ¿Cuchillos exclusivos?</label>
-                  <select class="form-select" v-model="form.cuch_exc" required>
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >68. Cuchillos con buena vida útil:</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.cuch_util"
-                    min="0"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label class="form-label"
-                    >69. ¿Cucharones/cucharas de servir exclusivas?</label
-                  >
-                  <select
-                    class="form-select"
-                    v-model="form.cuchara_serv"
-                    required
-                  >
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-              </div>
-
-              <h6 class="text-primary border-bottom pb-2 mt-4">
-                Subcategoría: Menaje de Consumo
-              </h6>
-              <div class="row mb-3">
-                <div class="col-md-3">
-                  <label class="form-label"
-                    >70. Capacidad de niños sentados al tiempo:</label
-                  >
-                  <select class="form-select" v-model="form.cap_ninos" required>
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Todos (100%)">Todos (100%)</option>
-                    <option value="75%">75%</option>
-                    <option value="50%">50%</option>
-                    <option value="25%">25%</option>
-                  </select>
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label">71. ¿Cuántos platos dispone?</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.cant_platos"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label"
-                    >72. Platos llanos en buen estado:</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.pla_lla"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label"
-                    >73. Platos hondos en buen estado:</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.pla_hon"
-                    min="0"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-3">
-                  <label class="form-label">74. Portas en buen estado:</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.portas"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label"
-                    >75. Pocillos/vasos en buen estado:</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.vasos"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label">76. Cantidad de cucharas:</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.cucharas"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label">77. Cantidad de tenedores:</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.tenedores"
-                    min="0"
-                    required
-                  />
-                </div>
-              </div>
-
-              <h6 class="text-primary border-bottom pb-2 mt-4">
-                Subcategoría: Higiene y Sanidad
-              </h6>
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >78. Recipientes sanitarios (canecas con tapa):</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    v-model.number="form.recip_sani"
-                    min="0"
-                    required
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >79. ¿Baños exclusivos para personal?</label
-                  >
-                  <select class="form-select" v-model="form.banos_exc" required>
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label"
-                    >80. ¿Lavamanos exclusivos para personal?</label
-                  >
-                  <select class="form-select" v-model="form.lav_exc" required>
-                    <option value="" disabled>Seleccione...</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
+                </button>
               </div>
             </div>
           </div>
-
-          <!-- CATEGORÍA: CONCLUSIÓN DEL DIAGNÓSTICO -->
-          <div class="card mb-4">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">CATEGORÍA: CONCLUSIÓN DEL DIAGNÓSTICO</h5>
-            </div>
-            <div class="card-body">
-              <div class="row mb-3">
-                <div class="col-md-12">
-                  <label class="form-label"
-                    >MODELO DE ATENCIÓN PAE a implementar:</label
-                  >
-                  <textarea
-                    class="form-control"
-                    rows="4"
-                    v-model="form.modelo_implementar"
-                    required
-                  ></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Signatures -->
-          <div class="row mb-3">
-            <div class="col-md-6">
-              <h4>Firma equipo PAE / Apoyo a la supervisión</h4>
-              <div>
-                <SignaturePad
-                  idFirma="firma1"
-                  :varFirma="form.firma1"
-                  @firmas-updated="actualizarFirmas"
-                />
-              </div>
-              <div>
-                <label class="form-label">Nombre:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="nombreEquioPAE"
-                  v-model="form.nombre_apoyo"
-                  required
-                />
-              </div>
-              <div>
-                <label class="form-label">Documento:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  v-model="form.cedula_apoyo"
-                  required
-                />
-              </div>
-              <div>
-                <label class="form-label">Cargo:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  v-model="form.cargo_apoyo"
-                  required
-                />
-              </div>
-              <div>
-                <label class="form-label">Teléfono:</label>
-                <input
-                  type="tel"
-                  class="form-control"
-                  v-model="form.telefono_apoyo"
-                  required
-                />
-              </div>
-            </div>
-            <div class="col-md-6">
-              <h4>Firma quien atiende la visita</h4>
-              <div>
-                <SignaturePad
-                  idFirma="firma2"
-                  :varFirma="form.firma2"
-                  @firmas-updated="actualizarFirmas"
-                />
-              </div>
-              <div>
-                <label class="form-label">Nombre:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  v-model="form.nombre_atiende"
-                  required
-                />
-              </div>
-              <div>
-                <label class="form-label">Documento:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  v-model="form.cedula_atiende"
-                  required
-                />
-              </div>
-              <div>
-                <label class="form-label">Cargo:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  v-model="form.cargo_atiende"
-                  required
-                />
-              </div>
-              <div>
-                <label class="form-label">Teléfono:</label>
-                <input
-                  type="tel"
-                  class="form-control"
-                  v-model="form.telefono_atiende"
-                  required
-                />
-              </div>
-            </div>
-          </div>
-          <!-- Componente de carga de archivos -->
-          <FileUploader :files="form.files" @files-updated="updateFiles" />
-          <button type="submit" class="btn btn-primary btn-lg mt-3 w-100">
-            Guardar Diagnóstico
-          </button>
         </form>
       </div>
     </div>
@@ -1448,6 +1510,57 @@ export default {
   },
   data() {
     return {
+      currentStep: 0,
+      steps: [
+        {
+          category: "CONDICIONES GENERALES DE LA OPERACIÓN",
+          subcategory: "Identificación de Sede",
+        },
+        {
+          category: "CONDICIONES GENERALES DE LA OPERACIÓN",
+          subcategory: "Operación Actual",
+        },
+        { category: "UBICACIÓN Y ACCESO", subcategory: "Ubicación de la sede" },
+        {
+          category: "UBICACIÓN Y ACCESO",
+          subcategory: "Dificultad de acceso por conflicto",
+        },
+        {
+          category: "CONDICIONES DE INFRAESTRUCTURA",
+          subcategory: "Almacenamiento",
+        },
+        {
+          category: "CONDICIONES DE INFRAESTRUCTURA",
+          subcategory: "Preparación (Cocina)",
+        },
+        {
+          category: "CONDICIONES DE INFRAESTRUCTURA",
+          subcategory: "Consumo (Comedor)",
+        },
+        {
+          category: "CONDICIONES DE INFRAESTRUCTURA",
+          subcategory: "Disposición de residuos y Áreas sanitarias",
+        },
+        { category: "ACCESO Y CALIDAD DE SERVICIOS PÚBLICOS", subcategory: "" },
+        {
+          category: "DOTACIÓN DE EQUIPOS Y MENAJE",
+          subcategory: "Equipos de Almacenamiento",
+        },
+        {
+          category: "DOTACIÓN DE EQUIPOS Y MENAJE",
+          subcategory: "Equipos de Preparación",
+        },
+        {
+          category: "DOTACIÓN DE EQUIPOS Y MENAJE",
+          subcategory: "Menaje de Consumo",
+        },
+        {
+          category: "DOTACIÓN DE EQUIPOS Y MENAJE",
+          subcategory: "Higiene y Sanidad",
+        },
+        { category: "CONCLUSIÓN DEL DIAGNÓSTICO", subcategory: "" },
+        { category: "FIRMAS Y ARCHIVOS", subcategory: "" },
+      ],
       isLoading: false,
       toastMessage: "",
       toastType: "",
@@ -1551,6 +1664,9 @@ export default {
     };
   },
   computed: {
+    currentStepData() {
+      return this.steps[this.currentStep];
+    },
     isIndustrializada() {
       return (
         this.form.modalidad_atencion === "Industrializada" ||
@@ -1559,6 +1675,32 @@ export default {
         this.form.modalidad_atencion ===
           "Caliente Transportada e Industrializada"
       );
+    },
+    requiredDocs() {
+      const reqs = [];
+      if (this.form.func_neveras >= 1) reqs.push("Foto de la nevera");
+      if (this.form.func_conge >= 1) reqs.push("Foto del congelador");
+      if (this.form.cant_bas >= 1) reqs.push("Foto de la báscula");
+      if (this.form.ollas_pre === "SI")
+        reqs.push("Foto de la ollas de presion");
+      if (this.form.cant_ral >= 1) reqs.push("Foto rayador");
+      if (this.form.cant_tab_pic >= 1) reqs.push("Foto tabla de picar");
+      if (this.form.cant_estufas >= 1) reqs.push("Foto de estufa");
+      if (this.form.cant_lic >= 1) reqs.push("Foto licuadora");
+      if (this.form.ollas_util >= 1) reqs.push("Foto ollas");
+      if (this.form.pailas_util >= 1) reqs.push("Foto pailas");
+      if (this.form.calderos_util >= 1) reqs.push("Foto calderos");
+      if (this.form.cuch_util >= 1) reqs.push("Foto de cuchillos");
+      // El usuario indicó "foto de cuchillos" para la pregunta 69 aunque corresponde a "cucharas de servir". Usaré "Foto de cucharas de servir" por claridad y evitar conflicto de nombres.
+      if (this.form.cuchara_serv === "Sí")
+        reqs.push("Foto de cucharas de servir");
+      if (this.form.pla_lla >= 1) reqs.push("Foto platos llanos");
+      if (this.form.pla_hon >= 1) reqs.push("Foto platos hondos");
+      if (this.form.portas >= 1) reqs.push("Foto de portas");
+      if (this.form.vasos >= 1) reqs.push("Foto pocillos/vasos");
+      if (this.form.cucharas >= 1) reqs.push("Foto de cucharas");
+
+      return reqs;
     },
   },
   watch: {
@@ -1582,6 +1724,9 @@ export default {
       if (val === 0) {
         this.form.tamano_neveras = "No Aplica";
         this.form.tamano_conge = "No Aplica";
+        this.form.func_neveras = 0;
+        this.form.cant_conge = 0;
+        this.form.func_conge = 0;
       } else {
         if (this.form.tamano_neveras === "No Aplica")
           this.form.tamano_neveras = "";
@@ -1610,8 +1755,56 @@ export default {
         this.form.frecuencia_conflicto = "";
       }
     },
+    "form.ollas_pre"(val) {
+      if (val === "NO") {
+        this.form.cap_ollas_pre = "No Aplica";
+        this.form.ollas_pre_fun = 0;
+      } else if (this.form.cap_ollas_pre === "No Aplica") {
+        this.form.cap_ollas_pre = "";
+      }
+    },
+    "form.cant_estufas"(val) {
+      if (val === 0) {
+        this.form.total_quemadores = 0;
+        this.form.quemadores_fun = 0;
+      }
+    },
   },
   methods: {
+    validateStep() {
+      let isValid = true;
+      const stepContainer = this.$refs[`step${this.currentStep}`];
+      if (stepContainer) {
+        const inputs = stepContainer.querySelectorAll(
+          "input, select, textarea"
+        );
+        for (let input of inputs) {
+          if (!input.checkValidity()) {
+            input.reportValidity(); // Show native tooltip
+            isValid = false;
+            break; // Show one at a time to not overwhelm
+          }
+        }
+      }
+      return isValid;
+    },
+    nextStep() {
+      if (this.validateStep()) {
+        this.currentStep++;
+        window.scrollTo(0, 0);
+      }
+    },
+    prevStep() {
+      if (this.currentStep > 0) {
+        this.currentStep--;
+        window.scrollTo(0, 0);
+      }
+    },
+    submitWizard() {
+      if (this.validateStep()) {
+        this.guardarFormulario();
+      }
+    },
     updateFiles(files) {
       this.form.files = files;
     },
@@ -1641,6 +1834,18 @@ export default {
         this.isLoading = false;
         this.showToast(
           "Faltan archivos. Por favor, complete los campos.",
+          "danger"
+        );
+        return;
+      }
+      // validar archivos requeridos dinámicos
+      const missingDocs = this.requiredDocs.filter(
+        (doc) => !this.form.files.some((f) => f.nombre_archivo.startsWith(doc))
+      );
+      if (missingDocs.length > 0) {
+        this.isLoading = false;
+        this.showToast(
+          `Faltan archivos obligatorios: ${missingDocs.join(", ")}`,
           "danger"
         );
         return;

@@ -45,7 +45,7 @@ export default {
     // Detecta cuando el usuario dibuja en el canvas
     this.signaturePad.onEnd = () => {
       const dataUrl = this.signaturePad.toDataURL("image/png");
-      this.$emit("inputChanged", { idFirma: this.idFirma, firma: dataUrl });
+      this.$emit("firmas-updated", { idFirma: this.idFirma, firma: dataUrl });
     };
 
     if (this.varFirma) {
