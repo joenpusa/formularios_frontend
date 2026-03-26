@@ -197,6 +197,9 @@
                       :disabled="!isIndustrializada"
                     >
                       <option value="" disabled>Seleccione...</option>
+                      <option value="No aplica" v-if="!isIndustrializada">
+                        No aplica
+                      </option>
                       <option value="Si">Si</option>
                       <option value="No">No</option>
                     </select>
@@ -213,6 +216,9 @@
                       :disabled="!isIndustrializada"
                     >
                       <option value="" disabled>Seleccione...</option>
+                      <option value="No aplica" v-if="!isIndustrializada">
+                        No aplica
+                      </option>
                       <option value="Si">Si</option>
                       <option value="No">No</option>
                     </select>
@@ -228,6 +234,9 @@
                       :disabled="!isIndustrializada"
                     >
                       <option value="" disabled>Seleccione...</option>
+                      <option value="No aplica" v-if="!isIndustrializada">
+                        No aplica
+                      </option>
                       <option value="Si">Si</option>
                       <option value="No">No</option>
                     </select>
@@ -285,6 +294,12 @@
                       :disabled="form.zona_conflicto !== 'Sí'"
                     >
                       <option value="" disabled>Seleccione...</option>
+                      <option
+                        value="No aplica"
+                        v-if="form.zona_conflicto !== 'Sí'"
+                      >
+                        No aplica
+                      </option>
                       <option value="Muy frecuente">Muy frecuente</option>
                       <option value="Algo frecuente">Algo frecuente</option>
                       <option value="poco frecuente">Poco frecuente</option>
@@ -338,7 +353,12 @@
                         Techo de paja o madera
                       </option>
                       <option value="Sin techo">Sin techo</option>
-                      <option value="No Aplica">No Aplica</option>
+                      <option
+                        value="No aplica"
+                        v-if="form.esp_almacenamiento === 'No'"
+                      >
+                        No aplica
+                      </option>
                     </select>
                   </div>
                   <div class="col-md-4">
@@ -353,6 +373,12 @@
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
+                      <option
+                        value="No aplica"
+                        v-if="form.esp_almacenamiento === 'No'"
+                      >
+                        No aplica
+                      </option>
                       <option value="Baldosa">Baldosa</option>
                       <option value="Ladrillo">Ladrillo</option>
                       <option value="Cemento, gravilla">
@@ -378,6 +404,12 @@
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
+                      <option
+                        value="No aplica"
+                        v-if="form.esp_almacenamiento === 'No'"
+                      >
+                        No aplica
+                      </option>
                       <option value="Bloque, ladrillo, piedra, adobe">
                         Bloque, ladrillo, piedra, adobe
                       </option>
@@ -408,6 +440,12 @@
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
+                      <option
+                        value="No aplica"
+                        v-if="form.esp_almacenamiento === 'No'"
+                      >
+                        No aplica
+                      </option>
                       <option value="Bueno">Bueno</option>
                       <option value="Regular">Regular</option>
                       <option value="Malo">Malo</option>
@@ -445,6 +483,12 @@
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
+                      <option
+                        value="No aplica"
+                        v-if="form.esp_preparacion === 'No'"
+                      >
+                        No aplica
+                      </option>
                       <option value="Techo de concreto">
                         Techo de concreto
                       </option>
@@ -475,6 +519,12 @@
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
+                      <option
+                        value="No aplica"
+                        v-if="form.esp_preparacion === 'No'"
+                      >
+                        No aplica
+                      </option>
                       <option value="Baldosa">Baldosa</option>
                       <option value="Ladrillo">Ladrillo</option>
                       <option value="Cemento, gravilla">
@@ -500,6 +550,12 @@
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
+                      <option
+                        value="No aplica"
+                        v-if="form.esp_preparacion === 'No'"
+                      >
+                        No aplica
+                      </option>
                       <option value="Bloque, ladrillo, piedra, adobe">
                         Bloque, ladrillo, piedra, adobe
                       </option>
@@ -530,6 +586,12 @@
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
+                      <option
+                        value="No aplica"
+                        v-if="form.esp_preparacion === 'No'"
+                      >
+                        No aplica
+                      </option>
                       <option value="Bueno">Bueno</option>
                       <option value="Regular">Regular</option>
                       <option value="Malo">Malo</option>
@@ -707,7 +769,7 @@
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
-                      <option value="Meteriales de desecho" disabled>
+                      <option value="Meteriales de desecho">
                         Meteriales de desecho
                       </option>
                       <option value="Gas natural o pipeta">
@@ -1002,10 +1064,11 @@
                       peso?:</label
                     >
                     <input
-                      type="number"
+                      :type="form.cant_bas === 0 ? 'text' : 'number'"
                       class="form-control"
                       v-model.number="form.cap_bas"
                       min="0"
+                      :disabled="form.cant_bas === 0"
                       required
                     />
                   </div>
@@ -1013,8 +1076,16 @@
                     <label class="form-label"
                       >48. Unidad de medida del peso o de la báscula:</label
                     >
-                    <select class="form-select" v-model="form.uni_bas" required>
+                    <select
+                      class="form-select"
+                      v-model="form.uni_bas"
+                      :disabled="form.cant_bas === 0"
+                      required
+                    >
                       <option value="" disabled>Seleccione...</option>
+                      <option value="No aplica" v-if="form.cant_bas === 0">
+                        No aplica
+                      </option>
                       <option value="Kg">Kg</option>
                       <option value="Gr">Gr</option>
                       <option value="Oz">Oz</option>
@@ -1142,7 +1213,7 @@
                       estufas?</label
                     >
                     <input
-                      type="number"
+                      :type="form.cant_estufas === 0 ? 'text' : 'number'"
                       class="form-control"
                       v-model.number="form.total_quemadores"
                       min="0"
@@ -1156,7 +1227,7 @@
                       correctamente?</label
                     >
                     <input
-                      type="number"
+                      :type="form.cant_estufas === 0 ? 'text' : 'number'"
                       class="form-control"
                       v-model.number="form.quemadores_fun"
                       min="0"
@@ -1183,10 +1254,11 @@
                       >60. ¿Cuántas de estas licuadoras funcionan?</label
                     >
                     <input
-                      type="number"
+                      :type="form.cant_lic === 0 ? 'text' : 'number'"
                       class="form-control"
                       v-model.number="form.lic_fun"
                       min="0"
+                      :disabled="form.cant_lic === 0"
                       required
                     />
                   </div>
@@ -1196,10 +1268,11 @@
                       industriales?</label
                     >
                     <input
-                      type="number"
+                      :type="form.cant_lic === 0 ? 'text' : 'number'"
                       class="form-control"
                       v-model.number="form.lic_ind"
                       min="0"
+                      :disabled="form.cant_lic === 0"
                       required
                     />
                   </div>
@@ -1226,10 +1299,11 @@
                       útil?</label
                     >
                     <input
-                      type="number"
+                      :type="form.ollas_exc === 'No' ? 'text' : 'number'"
                       class="form-control"
                       v-model.number="form.ollas_util"
                       min="0"
+                      :disabled="form.ollas_exc === 'No'"
                       required
                     />
                   </div>
@@ -1238,10 +1312,11 @@
                       >64. ¿Cuántas pailas presentan buena vida útil?</label
                     >
                     <input
-                      type="number"
+                      :type="form.ollas_exc === 'No' ? 'text' : 'number'"
                       class="form-control"
                       v-model.number="form.pailas_util"
                       min="0"
+                      :disabled="form.ollas_exc === 'No'"
                       required
                     />
                   </div>
@@ -1294,10 +1369,11 @@
                       >68. ¿Cuántos cuchillos presentan buena vida útil?</label
                     >
                     <input
-                      type="number"
+                      :type="form.cuch_exc === 'No' ? 'text' : 'number'"
                       class="form-control"
                       v-model.number="form.cuch_util"
                       min="0"
+                      :disabled="form.cuch_exc === 'No'"
                       required
                     />
                   </div>
@@ -1335,8 +1411,10 @@
                     >
                       <option value="" disabled>Seleccione...</option>
                       <option value="Todos (100%)">Todos (100%)</option>
-                      <option value="75%">Un poco mas de la mitad (75%)</option>
-                      <option value="50%">La mitad (50%)</option>
+                      <option value="Un poco mas de la mitad (75%)">
+                        Un poco mas de la mitad (75%)
+                      </option>
+                      <option value="La mitad (50%)">La mitad (50%)</option>
                     </select>
                   </div>
                   <div class="col-md-3">
@@ -1870,18 +1948,35 @@ export default {
   watch: {
     "form.esp_almacenamiento"(val) {
       if (val === "No") {
-        this.form.mat_techo_alm = "";
-        this.form.mat_piso_alm = "";
-        this.form.mat_paredes_alm = "";
-        this.form.est_almacenamiento = "";
+        this.form.mat_techo_alm = "No aplica";
+        this.form.mat_piso_alm = "No aplica";
+        this.form.mat_paredes_alm = "No aplica";
+        this.form.est_almacenamiento = "No aplica";
+      } else {
+        if (this.form.mat_techo_alm === "No aplica")
+          this.form.mat_techo_alm = "";
+        if (this.form.mat_piso_alm === "No aplica") this.form.mat_piso_alm = "";
+        if (this.form.mat_paredes_alm === "No aplica")
+          this.form.mat_paredes_alm = "";
+        if (this.form.est_almacenamiento === "No aplica")
+          this.form.est_almacenamiento = "";
       }
     },
     "form.esp_preparacion"(val) {
       if (val === "No") {
-        this.form.mat_techo_prep = "";
-        this.form.mat_piso_prep = "";
-        this.form.mat_paredes_prep = "";
-        this.form.est_preparacion = "";
+        this.form.mat_techo_prep = "No aplica";
+        this.form.mat_piso_prep = "No aplica";
+        this.form.mat_paredes_prep = "No aplica";
+        this.form.est_preparacion = "No aplica";
+      } else {
+        if (this.form.mat_techo_prep === "No aplica")
+          this.form.mat_techo_prep = "";
+        if (this.form.mat_piso_prep === "No aplica")
+          this.form.mat_piso_prep = "";
+        if (this.form.mat_paredes_prep === "No aplica")
+          this.form.mat_paredes_prep = "";
+        if (this.form.est_preparacion === "No aplica")
+          this.form.est_preparacion = "";
       }
     },
     "form.cant_neveras"(val) {
@@ -1907,16 +2002,26 @@ export default {
         this.form.tamano_conge = "";
       }
     },
-    isIndustrializada(val) {
-      if (!val) {
-        this.form.ind_area_comedor = "";
-        this.form.ind_area_produccion = "";
-        this.form.ind_agua_potable = "";
+    "form.modalidad_atencion"() {
+      if (!this.isIndustrializada) {
+        this.form.ind_area_comedor = "No aplica";
+        this.form.ind_area_produccion = "No aplica";
+        this.form.ind_agua_potable = "No aplica";
+      } else {
+        if (this.form.ind_area_comedor === "No aplica")
+          this.form.ind_area_comedor = "";
+        if (this.form.ind_area_produccion === "No aplica")
+          this.form.ind_area_produccion = "";
+        if (this.form.ind_agua_potable === "No aplica")
+          this.form.ind_agua_potable = "";
       }
     },
     "form.zona_conflicto"(val) {
       if (val !== "Sí") {
-        this.form.frecuencia_conflicto = "";
+        this.form.frecuencia_conflicto = "No aplica";
+      } else {
+        if (this.form.frecuencia_conflicto === "No aplica")
+          this.form.frecuencia_conflicto = "";
       }
     },
     "form.ollas_pre"(val) {
@@ -1929,8 +2034,47 @@ export default {
     },
     "form.cant_estufas"(val) {
       if (val === 0) {
-        this.form.total_quemadores = 0;
-        this.form.quemadores_fun = 0;
+        this.form.total_quemadores = "No aplica";
+        this.form.quemadores_fun = "No aplica";
+      } else {
+        if (this.form.total_quemadores === "No aplica")
+          this.form.total_quemadores = "";
+        if (this.form.quemadores_fun === "No aplica")
+          this.form.quemadores_fun = "";
+      }
+    },
+    "form.cant_bas"(val) {
+      if (val === 0) {
+        this.form.cap_bas = "No aplica";
+        this.form.uni_bas = "No aplica";
+      } else {
+        if (this.form.cap_bas === "No aplica") this.form.cap_bas = "";
+        if (this.form.uni_bas === "No aplica") this.form.uni_bas = "";
+      }
+    },
+    "form.cant_lic"(val) {
+      if (val === 0) {
+        this.form.lic_fun = "No aplica";
+        this.form.lic_ind = "No aplica";
+      } else {
+        if (this.form.lic_fun === "No aplica") this.form.lic_fun = "";
+        if (this.form.lic_ind === "No aplica") this.form.lic_ind = "";
+      }
+    },
+    "form.ollas_exc"(val) {
+      if (val === "No") {
+        this.form.ollas_util = "No aplica";
+        this.form.pailas_util = "No aplica";
+      } else {
+        if (this.form.ollas_util === "No aplica") this.form.ollas_util = "";
+        if (this.form.pailas_util === "No aplica") this.form.pailas_util = "";
+      }
+    },
+    "form.cuch_exc"(val) {
+      if (val === "No") {
+        this.form.cuch_util = "No aplica";
+      } else {
+        if (this.form.cuch_util === "No aplica") this.form.cuch_util = "";
       }
     },
   },
@@ -2049,10 +2193,29 @@ export default {
         this.guardarOffline();
       }
     },
+    getSanitizedForm() {
+      const sanitized = { ...this.form };
+      const numericFields = [
+        "cap_bas",
+        "total_quemadores",
+        "quemadores_fun",
+        "lic_fun",
+        "lic_ind",
+        "ollas_util",
+        "pailas_util",
+        "cuch_util",
+      ];
+      numericFields.forEach((field) => {
+        if (sanitized[field] === "No aplica") {
+          sanitized[field] = 0;
+        }
+      });
+      return sanitized;
+    },
     guardarOffline() {
       const guardados =
         JSON.parse(localStorage.getItem("formulariosOffline")) || [];
-      guardados.push(this.form);
+      guardados.push(this.getSanitizedForm());
       localStorage.setItem("formulariosOffline", JSON.stringify(guardados));
       this.resetForm();
       this.isLoading = false;
@@ -2062,9 +2225,10 @@ export default {
         const apiUrl = process.env.VUE_APP_API_BASE_URL;
 
         const formData = new FormData();
-        Object.keys(this.form).forEach((key) => {
+        const sanitizedForm = this.getSanitizedForm();
+        Object.keys(sanitizedForm).forEach((key) => {
           if (key !== "files") {
-            formData.append(key, this.form[key]);
+            formData.append(key, sanitizedForm[key]);
           }
         });
 
