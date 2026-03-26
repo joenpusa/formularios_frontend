@@ -141,15 +141,20 @@
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
-                      <option value="Complemento mañana/tarde (CAJM/JT)">
-                        Complemento mañana/tarde (CAJM/JT)
+                      <option
+                        value="Complemento alimentario jornada mañana/tarde (CAJM/JT)"
+                      >
+                        Complemento alimentario jornada mañana/tarde (CAJM/JT)
                       </option>
-                      <option value="Almuerzo">Almuerzo</option>
+                      <option value="Complemento alimentario Almuerzo">
+                        Complemento alimentario Almuerzo
+                      </option>
                     </select>
                   </div>
                   <div class="col-md-6">
                     <label class="form-label"
-                      >7. Modalidades de Atención del Servicio:</label
+                      >7. Modalidades de Atención del Servicio que actualmente
+                      se presta:</label
                     >
                     <select
                       class="form-select"
@@ -165,9 +170,10 @@
                       </option>
                       <option value="Industrializada">Industrializada</option>
                       <option
-                        value="Preparada en sitio y Caliente transportada"
+                        value="Preparada en sitio, Caliente transportada, Industrializada"
                       >
-                        Preparada en sitio y Caliente transportada
+                        Preparada en sitio, Caliente transportada,
+                        Industrializada
                       </option>
                       <option value="Preparada en sitio e Industrializada">
                         Preparada en sitio e Industrializada
@@ -182,8 +188,8 @@
                 <div class="row mb-3 align-items-end">
                   <div class="col-md-4">
                     <label class="form-label"
-                      >8. Si es industrializada, ¿tiene área para
-                      comedor?</label
+                      >8. Si la I.E. o sede es modalidad industrializada, ¿tiene
+                      algún área que se pueda utilizar como comedor?</label
                     >
                     <select
                       class="form-select"
@@ -197,8 +203,9 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >9. Si es industrializada, ¿tiene área para producción
-                      (cocina)?</label
+                      >9. Si la I.E. o sede es modalidad es industrializada,
+                      ¿tiene área que se pueda utilizar para producción
+                      (cocina), con dotación de mesones y lavaplatos?</label
                     >
                     <select
                       class="form-select"
@@ -212,8 +219,8 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >10. Si es industrializada, ¿tiene acceso a agua
-                      potable?</label
+                      >10. Si la I.E. o sede es modalidad es industrializada,
+                      ¿tiene acceso a agua potable?</label
                     >
                     <select
                       class="form-select"
@@ -232,7 +239,9 @@
                 <div class="row mb-3">
                   <div class="col-md-12">
                     <label class="form-label"
-                      >11. ¿Está cerca de fuentes de contaminación?</label
+                      >11. ¿La sede está cerca de potenciales fuentes de
+                      contaminación (basureros, mataderos, pantanos,
+                      etc.)?</label
                     >
                     <select
                       class="form-select"
@@ -251,7 +260,8 @@
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label class="form-label"
-                      >12. ¿Ubicada en zona de conflicto armado?</label
+                      >12. ¿La sede educativa está ubicada en zona de conflicto
+                      armado e inestabilidad social?</label
                     >
                     <select
                       class="form-select"
@@ -265,8 +275,9 @@
                   </div>
                   <div class="col-md-6">
                     <label class="form-label"
-                      >13. ¿Con qué frecuencia el conflicto afecta la
-                      entrega?</label
+                      >13. ¿Con qué frecuencia las dinámicas de conflicto armado
+                      e inestabilidad social afectan la Operación o entrega del
+                      PAE?</label
                     >
                     <select
                       class="form-select"
@@ -286,7 +297,8 @@
                 <div class="row mb-3">
                   <div class="col-md-4">
                     <label class="form-label"
-                      >14. ¿Tiene espacio dedicado al almacenamiento?</label
+                      >14. ¿La sede tiene un espacio dedicado al almacenamiento
+                      de alimentos?</label
                     >
                     <select
                       class="form-select"
@@ -300,7 +312,8 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >15. Material predominante del techo:</label
+                      >15. El material predominante del techo en ese lugar es
+                      (almacenamiento):</label
                     >
                     <select
                       class="form-select"
@@ -315,18 +328,23 @@
                       <option value="Techos de metal o acero">
                         Techos de metal o acero
                       </option>
-                      <option value="Tejas de barro">Tejas de barro</option>
+                      <option value="Tejas de barro o arcilla">
+                        Tejas de barro o arcilla
+                      </option>
                       <option value="Tejas de plástico">
                         Tejas de plástico
                       </option>
-                      <option value="Techo de paja">Techo de paja</option>
+                      <option value="Techo de paja o madera">
+                        Techo de paja o madera
+                      </option>
                       <option value="Sin techo">Sin techo</option>
                       <option value="No Aplica">No Aplica</option>
                     </select>
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >16. Material predominante del piso:</label
+                      >16. El material predominante del piso en ese lugar es
+                      (almacenamiento):</label
                     >
                     <select
                       class="form-select"
@@ -337,16 +355,21 @@
                       <option value="" disabled>Seleccione...</option>
                       <option value="Baldosa">Baldosa</option>
                       <option value="Ladrillo">Ladrillo</option>
-                      <option value="Cemento/gravilla">Cemento/gravilla</option>
-                      <option value="Madera">Madera</option>
-                      <option value="Tierra/arena">Tierra/arena</option>
+                      <option value="Cemento, gravilla">
+                        Cemento, gravilla
+                      </option>
+                      <option value="Madera, Tabla, Tablón">
+                        Madera, Tabla, Tablón
+                      </option>
+                      <option value="Tierra, arena">Tierra, arena</option>
                     </select>
                   </div>
                 </div>
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label class="form-label"
-                      >17. Material predominante de las paredes:</label
+                      >17. El material predominante de las paredes en ese lugar
+                      es (almacenamiento):</label
                     >
                     <select
                       class="form-select"
@@ -355,18 +378,28 @@
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
-                      <option value="Bloque/ladrillo">Bloque/ladrillo</option>
-                      <option value="bahareque/madera">Bahareque/madera</option>
-                      <option value="Material prefabricado">
-                        Material prefabricado
+                      <option value="Bloque, ladrillo, piedra, adobe">
+                        Bloque, ladrillo, piedra, adobe
                       </option>
-                      <option value="Guadua/caña">Guadua/caña</option>
+                      <option value="Bahareque, madera, tabla, tablón">
+                        Bahareque, madera, tabla, tablón
+                      </option>
+                      <option
+                        value="Material prefabricado (drywall, aglomerado, laminas de polietileno)"
+                      >
+                        Material prefabricado (drywall, aglomerado, laminas de
+                        polietileno)
+                      </option>
+                      <option value="Guadua, caña, esterilla, latas">
+                        Guadua, caña, esterilla, latas
+                      </option>
                       <option value="Sin paredes">Sin paredes</option>
                     </select>
                   </div>
                   <div class="col-md-6">
                     <label class="form-label"
-                      >18. Estado del espacio de almacenamiento:</label
+                      >18. ¿En qué estado se encuentra el espacio dedicado al
+                      almacenamiento?</label
                     >
                     <select
                       class="form-select"
@@ -387,7 +420,8 @@
                 <div class="row mb-3">
                   <div class="col-md-4">
                     <label class="form-label"
-                      >19. ¿Tiene espacio dedicado a la preparación?</label
+                      >19. ¿La sede tiene un espacio dedicado a la preparación
+                      de alimentos (cocina)?</label
                     >
                     <select
                       class="form-select"
@@ -401,7 +435,8 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >20. Material predominante del techo:</label
+                      >20. El material predominante del techo en ese lugar es
+                      (preparación):</label
                     >
                     <select
                       class="form-select"
@@ -410,17 +445,28 @@
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
-                      <option value="Concreto">Concreto</option>
-                      <option value="Metal">Metal</option>
-                      <option value="Barro">Barro</option>
-                      <option value="Plástico">Plástico</option>
-                      <option value="Paja">Paja</option>
+                      <option value="Techo de concreto">
+                        Techo de concreto
+                      </option>
+                      <option value="Techos de metal o acero">
+                        Techos de metal o acero
+                      </option>
+                      <option value="Tejas de barro o arcilla">
+                        Tejas de barro o arcilla
+                      </option>
+                      <option value="Tejas de plástico">
+                        Tejas de plástico
+                      </option>
+                      <option value="Techo de paja o madera">
+                        Techo de paja o madera
+                      </option>
                       <option value="Sin techo">Sin techo</option>
                     </select>
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >21. Material predominante del piso:</label
+                      >21. El material predominante del piso en ese lugar es
+                      (preparación):</label
                     >
                     <select
                       class="form-select"
@@ -431,16 +477,21 @@
                       <option value="" disabled>Seleccione...</option>
                       <option value="Baldosa">Baldosa</option>
                       <option value="Ladrillo">Ladrillo</option>
-                      <option value="Cemento">Cemento</option>
-                      <option value="Madera">Madera</option>
-                      <option value="Tierra">Tierra</option>
+                      <option value="Cemento, gravilla">
+                        Cemento, gravilla
+                      </option>
+                      <option value="Madera, Tabla, Tablón">
+                        Madera, Tabla, Tablón
+                      </option>
+                      <option value="Tierra, arena">Tierra, arena</option>
                     </select>
                   </div>
                 </div>
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label class="form-label"
-                      >22. Material predominante de las paredes:</label
+                      >22. El material predominante de las paredes en ese lugar
+                      es (preparación):</label
                     >
                     <select
                       class="form-select"
@@ -449,16 +500,28 @@
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
-                      <option value="Bloque">Bloque</option>
-                      <option value="bahareque">Bahareque</option>
-                      <option value="Prefabricado">Prefabricado</option>
-                      <option value="Guadua">Guadua</option>
+                      <option value="Bloque, ladrillo, piedra, adobe">
+                        Bloque, ladrillo, piedra, adobe
+                      </option>
+                      <option value="Bahareque, madera, tabla, tablón">
+                        Bahareque, madera, tabla, tablón
+                      </option>
+                      <option
+                        value="Material prefabricado (drywall, aglomerado, laminas de polietileno)"
+                      >
+                        Material prefabricado (drywall, aglomerado, laminas de
+                        polietileno)
+                      </option>
+                      <option value="Guadua, caña, esterilla, latas">
+                        Guadua, caña, esterilla, latas
+                      </option>
                       <option value="Sin paredes">Sin paredes</option>
                     </select>
                   </div>
                   <div class="col-md-6">
                     <label class="form-label"
-                      >23. Estado del espacio de preparación:</label
+                      >23. ¿En qué estado se encuentra el espacio dedicado a la
+                      preparación?</label
                     >
                     <select
                       class="form-select"
@@ -479,7 +542,8 @@
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label class="form-label"
-                      >24. ¿Cómo es el espacio de consumo?</label
+                      >24. ¿Cómo es el espacio que se utiliza para el consumo de
+                      alimentos?</label
                     >
                     <select
                       class="form-select"
@@ -487,23 +551,27 @@
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
-                      <option value="Espacio sin techo">
-                        Espacio sin techo
+                      <option value="Un espacio sin techo (a la intemperie)">
+                        Un espacio sin techo (a la intemperie)
                       </option>
-                      <option value="Espacio con techo compartido">
-                        Espacio con techo compartido
+                      <option
+                        value="Un espacio con techo pero compartido con otras areas comunes (biblioteca, sala de computo, etc.)"
+                      >
+                        Un espacio con techo pero compartido con otras areas
+                        comunes (biblioteca, sala de computo, etc.)
                       </option>
                       <option value="Un salón de clase">
                         Un salón de clase
                       </option>
-                      <option value="Espacio cerrado exclusivo">
-                        Espacio cerrado exclusivo
+                      <option value="Un espacio cerrado exclusivo para comedor">
+                        Un espacio cerrado exclusivo para comedor
                       </option>
                     </select>
                   </div>
                   <div class="col-md-6">
                     <label class="form-label"
-                      >25. Estado del área de consumo:</label
+                      >25. ¿En qué estado se encuentra el espacio dedicado al
+                      consumo?</label
                     >
                     <select
                       class="form-select"
@@ -523,7 +591,8 @@
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label class="form-label"
-                      >26. ¿Tiene área demarcada para residuos?</label
+                      >26. ¿La sede tiene un espacio o área demarcada para la
+                      disposición de residuos?</label
                     >
                     <select
                       class="form-select"
@@ -537,7 +606,8 @@
                   </div>
                   <div class="col-md-6">
                     <label class="form-label"
-                      >27. ¿Baños exclusivos para manipuladores?</label
+                      >27. ¿La sede tiene baños de uso exclusivo para el
+                      personal manipulador de alimentos?</label
                     >
                     <select
                       class="form-select"
@@ -556,7 +626,8 @@
                 <div class="row mb-3">
                   <div class="col-md-4">
                     <label class="form-label"
-                      >28. ¿Cuenta con electricidad?</label
+                      >28. ¿La sede cuenta con el servicio de
+                      electricidad?</label
                     >
                     <select
                       class="form-select"
@@ -571,7 +642,7 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >29. ¿Cuenta con acceso a agua?</label
+                      >29. ¿La sede cuenta con acceso a agua?</label
                     >
                     <select
                       class="form-select"
@@ -586,7 +657,8 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >30. ¿De dónde obtiene el agua para el PAE?</label
+                      >30. ¿De dónde obtiene principalmente el agua para el
+                      PAE?</label
                     >
                     <select
                       class="form-select"
@@ -595,14 +667,14 @@
                     >
                       <option value="" disabled>Seleccione...</option>
                       <option value="Acueducto">Acueducto</option>
-                      <option value="Agua en botella/bolsa">
-                        Agua en botella/bolsa
+                      <option value="Agua en botella o bolsa">
+                        Agua en botella o bolsa
                       </option>
                       <option value="Carrotanque">Carrotanque</option>
                       <option value="Pozo">Pozo</option>
                       <option value="Agua lluvia">Agua lluvia</option>
-                      <option value="Cuerpos de agua (Ríos/quebradas)">
-                        Cuerpos de agua (Ríos/quebradas)
+                      <option value="Cuerpos de agua (Ríos, quebradas, etc.)">
+                        Cuerpos de agua (Ríos, quebradas, etc.)
                       </option>
                     </select>
                   </div>
@@ -610,7 +682,8 @@
                 <div class="row mb-3">
                   <div class="col-md-4">
                     <label class="form-label"
-                      >31. ¿Cuenta con alcantarillado?</label
+                      >31. ¿La sede cuenta con el servicio de
+                      alcantarillado?</label
                     >
                     <select
                       class="form-select"
@@ -624,7 +697,9 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >32. Combustible utilizado para preparación:</label
+                      >32. ¿Cuál de los siguientes combustibles se utilizan en
+                      la sede educativa para la preparación de los
+                      alimentos?</label
                     >
                     <select
                       class="form-select"
@@ -632,12 +707,19 @@
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
-                      <option value="Gas natural/pipeta">
-                        Gas natural/pipeta
+                      <option value="Meteriales de desecho" disabled>
+                        Meteriales de desecho
                       </option>
-                      <option value="Leña/madera">Leña/madera</option>
-                      <option value="Petróleo/gasolina">
-                        Petróleo/gasolina
+                      <option value="Gas natural o pipeta">
+                        Gas natural o pipeta
+                      </option>
+                      <option
+                        value="Leña, madera, carbón de leña o carbón mineral"
+                      >
+                        Leña, madera, carbón de leña o carbón mineral
+                      </option>
+                      <option value="Petróleo, gasolina, kerosene o alcohol">
+                        Petróleo, gasolina, kerosene o alcohol
                       </option>
                       <option value="Electricidad">Electricidad</option>
                       <option value="No Aplica">No Aplica</option>
@@ -645,7 +727,8 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >33. ¿Espacio adecuado para pipeta de gas?</label
+                      >33. ¿Cuenta con un espacio adecuado para almacenar la
+                      pipeta de gas?</label
                     >
                     <select
                       class="form-select"
@@ -662,7 +745,8 @@
                 <div class="row mb-3">
                   <div class="col-md-3">
                     <label class="form-label"
-                      >34. ¿Cuenta con recolección de basuras?</label
+                      >34. ¿La sede cuenta con el servicio de recolección de
+                      basuras (aseo)?</label
                     >
                     <select
                       class="form-select"
@@ -676,7 +760,9 @@
                   </div>
                   <div class="col-md-3">
                     <label class="form-label"
-                      >35. Disposición de residuos orgánicos:</label
+                      >35. ¿De qué forma se hace la disposición de residuos
+                      orgánicos (provenientes de la preparación de alimentos)
+                      del PAE en esta sede educativa?</label
                     >
                     <select
                       class="form-select"
@@ -684,21 +770,29 @@
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
-                      <option value="Se tiran a río/quebrada">
-                        Se tiran a río/quebrada
+                      <option
+                        value="La tiran a un río, quebrada, caño, laguna, mar"
+                      >
+                        La tiran a un río, quebrada, caño, laguna, mar
                       </option>
-                      <option value="Patio/lote">Patio/lote</option>
-                      <option value="Quema">Quema</option>
-                      <option value="Entierro">Entierro</option>
-                      <option value="Compost">Compost</option>
-                      <option value="Alimento animales">
-                        Alimento animales
+                      <option value="La tiran a un patio, lote, sanja o baldío">
+                        La tiran a un patio, lote, sanja o baldío
+                      </option>
+                      <option value="Lo queman">Lo queman</option>
+                      <option value="Lo entierran">Lo entierran</option>
+                      <option value="Uso en compost o lombricultura">
+                        Uso en compost o lombricultura
+                      </option>
+                      <option value="Uso como alimento para animales">
+                        Uso como alimento para animales
                       </option>
                     </select>
                   </div>
                   <div class="col-md-3">
                     <label class="form-label"
-                      >36. Disposición de residuos no orgánicos:</label
+                      >36. ¿De qué forma se hace la disposición de residuos no
+                      orgánicos (envases de plástico, metal, vidrio, cartón,
+                      etc.) del PAE en esta sede educativa?</label
                     >
                     <select
                       class="form-select"
@@ -706,16 +800,23 @@
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
-                      <option value="Río/quebrada">Río/quebrada</option>
-                      <option value="Patio/lote">Patio/lote</option>
-                      <option value="Quema">Quema</option>
-                      <option value="Entierro">Entierro</option>
-                      <option value="Reciclaje">Reciclaje</option>
+                      <option
+                        value="Lo tiran a un río, quebrada, caño, laguna, mar"
+                      >
+                        Lo tiran a un río, quebrada, caño, laguna, mar
+                      </option>
+                      <option value="Lo tiran a un patio, lote, sanja o baldío">
+                        Lo tiran a un patio, lote, sanja o baldío
+                      </option>
+                      <option value="Lo queman">Lo queman</option>
+                      <option value="Lo entierran">Lo entierran</option>
+                      <option value="Lo reciclan">Lo reciclan</option>
                     </select>
                   </div>
                   <div class="col-md-3">
                     <label class="form-label"
-                      >37. ¿Realizan clasificación de residuos?</label
+                      >37. ¿Realizan algún tipo de clasificación de residuos
+                      sólidos?</label
                     >
                     <select
                       class="form-select"
@@ -745,7 +846,9 @@
                     />
                   </div>
                   <div class="col-md-4">
-                    <label class="form-label">39. ¿Cuántas funcionan?:</label>
+                    <label class="form-label"
+                      >39. ¿Cuántas de esas funcionan?:</label
+                    >
                     <input
                       type="number"
                       class="form-control"
@@ -757,7 +860,8 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >40. Tamaño de la mayoría de neveras:</label
+                      >40. ¿Cuál de los siguientes tamaños corresponde a la
+                      mayoría de las neveras que funcionan?:</label
                     >
                     <select
                       class="form-select"
@@ -768,13 +872,21 @@
                       <option value="No Aplica" v-if="form.cant_neveras === 0">
                         No Aplica
                       </option>
-                      <option value="Menor a 400 Lt">Menor a 400 Lt</option>
-                      <option value="De 400 a 800 Lt">De 400 a 800 Lt</option>
-                      <option value="De 1200 a 1600 Lt">
-                        De 1200 a 1600 Lt
+                      <option value="Nevera domestica vertical Menor a 400 Lt">
+                        Nevera domestica vertical Menor a 400 Lt
                       </option>
-                      <option value="De 1600 a 2200 Lt">
-                        De 1600 a 2200 Lt
+                      <option value="Nevera domestica vertical De 400 a 800 Lt">
+                        Nevera domestica vertical De 400 a 800 Lt
+                      </option>
+                      <option
+                        value="Nevera domestica vertical De 1200 a 1600 Lt"
+                      >
+                        Nevera domestica vertical De 1200 a 1600 Lt
+                      </option>
+                      <option
+                        value="Nevera domestica vertical De 1600 a 2200 Lt"
+                      >
+                        Nevera domestica vertical De 1600 a 2200 Lt
                       </option>
                     </select>
                   </div>
@@ -793,7 +905,9 @@
                     />
                   </div>
                   <div class="col-md-4">
-                    <label class="form-label">42. ¿Cuántos funcionan?:</label>
+                    <label class="form-label"
+                      >42. ¿Cuántos de estos funcionan?:</label
+                    >
                     <input
                       type="number"
                       class="form-control"
@@ -804,7 +918,8 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >43. Tamaño de la mayoría de congeladores:</label
+                      >43. ¿Cuál de los siguientes tamaños corresponde a la
+                      mayoría de los congeladores que funcionan:</label
                     >
                     <select
                       class="form-select"
@@ -818,10 +933,14 @@
                       >
                         No Aplica
                       </option>
-                      <option value="Menor a 400 Lt">Menor a 400 Lt</option>
-                      <option value="De 400 a 800 Lt">De 400 a 800 Lt</option>
-                      <option value="De 1400 a 1600 Lt">
-                        De 1400 a 1600 Lt
+                      <option value="Congelador pequeño menor a 400 Lt">
+                        Congelador pequeño menor a 400 Lt
+                      </option>
+                      <option value="Congelador mediano de 400 a 800 Lt">
+                        Congelador mediano de 400 a 800 Lt
+                      </option>
+                      <option value="Congelador grande de 1400 a 1600 Lt">
+                        Congelador grande de 1400 a 1600 Lt
                       </option>
                     </select>
                   </div>
@@ -829,7 +948,8 @@
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label class="form-label"
-                      >44. ¿Almacena sobre estibas?</label
+                      >44. ¿Almacena los alimentos en tarimas o estibas de tal
+                      forma que se encuentren elevados del suelo?</label
                     >
                     <select
                       class="form-select"
@@ -843,7 +963,8 @@
                   </div>
                   <div class="col-md-6">
                     <label class="form-label"
-                      >45. Elementos para almacenamiento:</label
+                      >45. ¿Qué elementos utiliza para el almacenamiento de los
+                      alimentos?</label
                     >
                     <select
                       class="form-select"
@@ -851,10 +972,10 @@
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
-                      <option value="Estante">Estante</option>
-                      <option value="Canastilla">Canastilla</option>
-                      <option value="Balde">Balde</option>
-                      <option value="Caja">Caja</option>
+                      <option value="Estante(s)">Estante(s)</option>
+                      <option value="Canastilla(s)">Canastilla(s)</option>
+                      <option value="Balde(s)">Balde(s)</option>
+                      <option value="Caja(s)">Caja(s)</option>
                       <option value="Ninguno">Ninguno</option>
                     </select>
                   </div>
@@ -865,7 +986,7 @@
                 <div class="row mb-3">
                   <div class="col-md-4">
                     <label class="form-label"
-                      >46. ¿Cuántas básculas tiene?</label
+                      >46. ¿Cuántas básculas o pesos tiene (funcionales)?</label
                     >
                     <input
                       type="number"
@@ -877,7 +998,8 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >47. Capacidad de la báscula:</label
+                      >47. ¿Cuánta es la capacidad de la báscula o el
+                      peso?:</label
                     >
                     <input
                       type="number"
@@ -888,7 +1010,9 @@
                     />
                   </div>
                   <div class="col-md-4">
-                    <label class="form-label">48. Unidad de medida:</label>
+                    <label class="form-label"
+                      >48. Unidad de medida del peso o de la báscula:</label
+                    >
                     <select class="form-select" v-model="form.uni_bas" required>
                       <option value="" disabled>Seleccione...</option>
                       <option value="Kg">Kg</option>
@@ -900,7 +1024,8 @@
                 <div class="row mb-3 align-items-end">
                   <div class="col-md-3">
                     <label class="form-label"
-                      >49. ¿Tiene termómetro funcionando?</label
+                      >49. ¿La sede cuenta con termómetro funcionando exclusivo
+                      para el PAE?</label
                     >
                     <select
                       class="form-select"
@@ -914,7 +1039,8 @@
                   </div>
                   <div class="col-md-3">
                     <label class="form-label"
-                      >50. ¿Tiene ollas a presión exclusivas?</label
+                      >50. ¿La sede cuenta con ollas a presión exclusivas para
+                      el uso del PAE?</label
                     >
                     <select
                       class="form-select"
@@ -928,7 +1054,7 @@
                   </div>
                   <div class="col-md-3">
                     <label class="form-label"
-                      >51. Capacidad de ollas a presión:</label
+                      >51. ¿Las ollas a presión son de 4 Lt o 6 Lt?</label
                     >
                     <select
                       class="form-select"
@@ -946,7 +1072,7 @@
                   </div>
                   <div class="col-md-3">
                     <label class="form-label"
-                      >52. ¿Cuántas ollas a presión funcionan?</label
+                      >52. ¿Cuántas de estas ollas a presión funcionan?</label
                     >
                     <input
                       type="number"
@@ -985,7 +1111,8 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >55. Cantidad de Tablas de Picar (No madera):</label
+                      >55. Cantidad de Tablas de Picar en buen estado (No de
+                      madera):</label
                     >
                     <input
                       type="number"
@@ -1010,7 +1137,10 @@
                     />
                   </div>
                   <div class="col-md-4">
-                    <label class="form-label">57. Total de quemadores:</label>
+                    <label class="form-label"
+                      >57. ¿Cuántos quemadores o fogones tienen en total sus
+                      estufas?</label
+                    >
                     <input
                       type="number"
                       class="form-control"
@@ -1022,7 +1152,8 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >58. Quemadores que funcionan correctamente:</label
+                      >58. ¿Cuántos de estos quemadores funcionan
+                      correctamente?</label
                     >
                     <input
                       type="number"
@@ -1049,7 +1180,7 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >60. Licuadoras que funcionan:</label
+                      >60. ¿Cuántas de estas licuadoras funcionan?</label
                     >
                     <input
                       type="number"
@@ -1061,7 +1192,8 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >61. Licuadoras industriales:</label
+                      >61. ¿Cuántas de las licuadoras que funcionan son
+                      industriales?</label
                     >
                     <input
                       type="number"
@@ -1075,7 +1207,8 @@
                 <div class="row mb-3">
                   <div class="col-md-3">
                     <label class="form-label"
-                      >62. ¿Ollas/olletas/pailas exclusivas?</label
+                      >62. ¿La sede cuenta con ollas, olletas o pailas
+                      exclusivas para el PAE?</label
                     >
                     <select
                       class="form-select"
@@ -1089,7 +1222,8 @@
                   </div>
                   <div class="col-md-3">
                     <label class="form-label"
-                      >63. Ollas con buena vida útil:</label
+                      >63. ¿Cuántas ollas u olletas presentan buena vida
+                      útil?</label
                     >
                     <input
                       type="number"
@@ -1101,7 +1235,7 @@
                   </div>
                   <div class="col-md-3">
                     <label class="form-label"
-                      >64. Pailas con buena vida útil:</label
+                      >64. ¿Cuántas pailas presentan buena vida útil?</label
                     >
                     <input
                       type="number"
@@ -1113,7 +1247,7 @@
                   </div>
                   <div class="col-md-3">
                     <label class="form-label"
-                      >65. Calderos con buena vida útil:</label
+                      >65. ¿Cuántos calderos presentan buena vida útil?</label
                     >
                     <input
                       type="number"
@@ -1127,7 +1261,7 @@
                 <div class="row mb-3">
                   <div class="col-md-4">
                     <label class="form-label"
-                      >66. Tamaño calderos arroceros:</label
+                      >66. ¿Qué tamaño son los calderos arroceros?</label
                     >
                     <select
                       class="form-select"
@@ -1141,7 +1275,10 @@
                     </select>
                   </div>
                   <div class="col-md-4">
-                    <label class="form-label">67. ¿Cuchillos exclusivos?</label>
+                    <label class="form-label"
+                      >67. ¿La sede cuenta con cuchillos exclusivos para el uso
+                      del PAE?</label
+                    >
                     <select
                       class="form-select"
                       v-model="form.cuch_exc"
@@ -1154,7 +1291,7 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >68. Cuchillos con buena vida útil:</label
+                      >68. ¿Cuántos cuchillos presentan buena vida útil?</label
                     >
                     <input
                       type="number"
@@ -1168,7 +1305,8 @@
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label class="form-label"
-                      >69. ¿Cucharones/cucharas de servir exclusivas?</label
+                      >69. ¿La sede cuenta con cucharones y cucharas de servir
+                      exclusivas para el uso del PAE?</label
                     >
                     <select
                       class="form-select"
@@ -1187,7 +1325,8 @@
                 <div class="row mb-3">
                   <div class="col-md-3">
                     <label class="form-label"
-                      >70. Capacidad de niños sentados al tiempo:</label
+                      >70. De los niños que reciben PAE ¿Cuántos niños caben
+                      sentados al tiempo?</label
                     >
                     <select
                       class="form-select"
@@ -1196,14 +1335,14 @@
                     >
                       <option value="" disabled>Seleccione...</option>
                       <option value="Todos (100%)">Todos (100%)</option>
-                      <option value="75%">75%</option>
-                      <option value="50%">50%</option>
-                      <option value="25%">25%</option>
+                      <option value="75%">Un poco mas de la mitad (75%)</option>
+                      <option value="50%">La mitad (50%)</option>
                     </select>
                   </div>
                   <div class="col-md-3">
                     <label class="form-label"
-                      >71. ¿Cuántos platos dispone?</label
+                      >71. ¿De cuántos platos dispone para el consumo de
+                      alimentos?</label
                     >
                     <input
                       type="number"
@@ -1215,7 +1354,8 @@
                   </div>
                   <div class="col-md-3">
                     <label class="form-label"
-                      >72. Platos llanos en buen estado:</label
+                      >72. ¿Cuántos de estos platos son llanos y se encuentran
+                      en buen estado?</label
                     >
                     <input
                       type="number"
@@ -1227,7 +1367,8 @@
                   </div>
                   <div class="col-md-3">
                     <label class="form-label"
-                      >73. Platos hondos en buen estado:</label
+                      >73. ¿Cuántos de estos platos son hondos y se encuentran
+                      en buen estado?</label
                     >
                     <input
                       type="number"
@@ -1240,7 +1381,10 @@
                 </div>
                 <div class="row mb-3">
                   <div class="col-md-3">
-                    <label class="form-label">74. Portas en buen estado:</label>
+                    <label class="form-label"
+                      >74. ¿Con cuántos portas en buen estado cuentan para el
+                      consumo de alimentos?:</label
+                    >
                     <input
                       type="number"
                       class="form-control"
@@ -1251,7 +1395,8 @@
                   </div>
                   <div class="col-md-3">
                     <label class="form-label"
-                      >75. Pocillos/vasos en buen estado:</label
+                      >75. ¿De cuántos pocillos o vasos en buen estado cuentan
+                      para el consumo de alimentos?:</label
                     >
                     <input
                       type="number"
@@ -1262,7 +1407,10 @@
                     />
                   </div>
                   <div class="col-md-3">
-                    <label class="form-label">76. Cantidad de cucharas:</label>
+                    <label class="form-label"
+                      >76. ¿De cuántas cucharas dispone para el consumo de
+                      alimentos?:</label
+                    >
                     <input
                       type="number"
                       class="form-control"
@@ -1272,7 +1420,10 @@
                     />
                   </div>
                   <div class="col-md-3">
-                    <label class="form-label">77. Cantidad de tenedores:</label>
+                    <label class="form-label"
+                      >77. ¿De cuántos tenedores dispone para el consumo de
+                      alimentos?:</label
+                    >
                     <input
                       type="number"
                       class="form-control"
@@ -1288,7 +1439,8 @@
                 <div class="row mb-3">
                   <div class="col-md-4">
                     <label class="form-label"
-                      >78. Recipientes sanitarios (canecas con tapa):</label
+                      >78. ¿Cuántos recipientes de material sanitario (canecas)
+                      con tapa y bolsa plástica tiene la sede?:</label
                     >
                     <input
                       type="number"
@@ -1300,7 +1452,8 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >79. ¿Baños exclusivos para personal?</label
+                      >79. ¿Tiene batería sanitaria (tazas o inodoros)
+                      exclusivos para personal manipulador de alimentos?</label
                     >
                     <select
                       class="form-select"
@@ -1314,7 +1467,8 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label"
-                      >80. ¿Lavamanos exclusivos para personal?</label
+                      >80. ¿Tiene lavamanos exclusivos para personal manipulador
+                      de alimentos?</label
                     >
                     <select class="form-select" v-model="form.lav_exc" required>
                       <option value="" disabled>Seleccione...</option>
@@ -1328,15 +1482,31 @@
               <div v-show="currentStep === 13" ref="step13">
                 <div class="row mb-3">
                   <div class="col-md-12">
-                    <label class="form-label"
-                      >MODELO DE ATENCIÓN PAE a implementar:</label
-                    >
-                    <textarea
-                      class="form-control"
-                      rows="4"
+                    <label class="form-label">Conclusión del diagnostico</label>
+                    <p>
+                      De acuerdo al analisis del estado de las condiciones de
+                      infraestruuta, servicios publicos, dotacion y
+                      accesibilidad identificada en el presente diagnostico. Se
+                      detemina que el MODELO DE ATENCION PAE a implementar en
+                      esta SEDE EDUCATIVA es:
+                    </p>
+                    <select
+                      class="form-select"
                       v-model="form.modelo_implementar"
                       required
-                    ></textarea>
+                    >
+                      <option value="" disabled>Seleccione...</option>
+                      <option value="PAE para pueblos indigenas">
+                        PAE para pueblos indigenas
+                      </option>
+                      <option value="PAE convencional">PAE convencional</option>
+                      <option
+                        value="PAE para sedes educativas en zonas rurales de dificil acceso"
+                      >
+                        PAE para sedes educativas en zonas rurales de dificil
+                        acceso
+                      </option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -1668,13 +1838,7 @@ export default {
       return this.steps[this.currentStep];
     },
     isIndustrializada() {
-      return (
-        this.form.modalidad_atencion === "Industrializada" ||
-        this.form.modalidad_atencion ===
-          "Preparada en sitio e Industrializada" ||
-        this.form.modalidad_atencion ===
-          "Caliente Transportada e Industrializada"
-      );
+      return this.form.modalidad_atencion === "Industrializada";
     },
     requiredDocs() {
       const reqs = [];
