@@ -822,9 +822,9 @@
                   </div>
                   <div class="col-md-3">
                     <label class="form-label"
-                      >35. ¿De qué forma se hace la disposición de residuos
-                      orgánicos (provenientes de la preparación de alimentos)
-                      del PAE en esta sede educativa?</label
+                      >35. ¿De qué forma se hace la disposición de los residuos
+                      orgánicos (provenientes de los restos de alimentos) del
+                      PAE en esta sede educativa?</label
                     >
                     <select
                       class="form-select"
@@ -853,8 +853,8 @@
                   <div class="col-md-3">
                     <label class="form-label"
                       >36. ¿De qué forma se hace la disposición de residuos no
-                      orgánicos (envases de plástico, metal, vidrio, cartón,
-                      etc.) del PAE en esta sede educativa?</label
+                      orgánicos (envases de plástico, metal, vidrio, papel,
+                      cartón, etc.) del PAE en esta sede educativa?</label
                     >
                     <select
                       class="form-select"
@@ -1473,8 +1473,8 @@
                   </div>
                   <div class="col-md-3">
                     <label class="form-label"
-                      >75. ¿De cuántos pocillos o vasos en buen estado cuentan
-                      para el consumo de alimentos?:</label
+                      >75. ¿De cuántos pocillos o vasos dispone para el consumo
+                      de alimentos en buen estado?:</label
                     >
                     <input
                       type="number"
@@ -1920,12 +1920,19 @@ export default {
     },
     requiredDocs() {
       const reqs = [];
+
+      reqs.push("Foto de la sede");
+
+      if (this.form.modalidad_atencion === "Preparada en sitio") {
+        reqs.push("Foto del comedor");
+      }
+
       if (this.form.func_neveras >= 1) reqs.push("Foto de la nevera");
       if (this.form.func_conge >= 1) reqs.push("Foto del congelador");
       if (this.form.cant_bas >= 1) reqs.push("Foto de la báscula");
       if (this.form.ollas_pre === "SI")
         reqs.push("Foto de la ollas de presion");
-      if (this.form.cant_ral >= 1) reqs.push("Foto rayador");
+      if (this.form.cant_ral >= 1) reqs.push("Foto rallador");
       if (this.form.cant_tab_pic >= 1) reqs.push("Foto tabla de picar");
       if (this.form.cant_estufas >= 1) reqs.push("Foto de estufa");
       if (this.form.cant_lic >= 1) reqs.push("Foto licuadora");
