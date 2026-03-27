@@ -159,12 +159,12 @@ export default {
     },
     handleSpecificChange(event) {
       this.error = "";
-      const maxSize = 5 * 1024 * 1024; // Aumenté a 5MB por si toman fotos pesadas del celular
+      const maxSize = 2 * 1024 * 1024; // Cambiado a 2MB para empatar limite del servidor
       const file = event.target.files[0];
       if (!file) return;
 
       if (file.size > maxSize) {
-        this.error = `El archivo excede 5 MB.`;
+        this.error = `El archivo excede 2 MB.`;
         event.target.value = "";
         return;
       }
@@ -194,11 +194,11 @@ export default {
     },
     handleFileChange(event) {
       this.error = "";
-      const maxSize = 5 * 1024 * 1024;
+      const maxSize = 2 * 1024 * 1024;
       const newFiles = Array.from(event.target.files)
         .filter((file) => {
           if (file.size > maxSize) {
-            this.error = `El archivo "${file.name}" excede el tamaño máximo de 5 MB.`;
+            this.error = `El archivo "${file.name}" excede el tamaño máximo de 2 MB.`;
             return false;
           }
           return true;

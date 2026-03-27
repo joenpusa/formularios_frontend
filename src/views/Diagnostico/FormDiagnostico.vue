@@ -848,6 +848,9 @@
                       <option value="Uso como alimento para animales">
                         Uso como alimento para animales
                       </option>
+                      <option value="Empresa recolectora de aseo">
+                        Empresa recolectora de aseo
+                      </option>
                     </select>
                   </div>
                   <div class="col-md-3">
@@ -873,6 +876,9 @@
                       <option value="Lo queman">Lo queman</option>
                       <option value="Lo entierran">Lo entierran</option>
                       <option value="Lo reciclan">Lo reciclan</option>
+                      <option value="Empresa recolectora de aseo">
+                        Empresa recolectora de aseo
+                      </option>
                     </select>
                   </div>
                   <div class="col-md-3">
@@ -931,7 +937,12 @@
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
-                      <option value="No Aplica" v-if="form.cant_neveras === 0">
+                      <option
+                        value="No Aplica"
+                        v-if="
+                          form.cant_neveras === 0 || form.func_neveras === 0
+                        "
+                      >
                         No Aplica
                       </option>
                       <option value="Nevera domestica vertical Menor a 400 Lt">
@@ -991,7 +1002,7 @@
                       <option value="" disabled>Seleccione...</option>
                       <option
                         value="No Aplica"
-                        v-if="form.cant_neveras === 0 || form.cant_conge === 0"
+                        v-if="form.func_conge === 0 || form.cant_conge === 0"
                       >
                         No Aplica
                       </option>
@@ -1341,9 +1352,13 @@
                     <select
                       class="form-select"
                       v-model="form.tam_calderos"
+                      :disabled="form.calderos_util === 0"
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
+                      <option value="No aplica" v-if="form.calderos_util === 0">
+                        No aplica
+                      </option>
                       <option value="Pequeño">Pequeño</option>
                       <option value="Mediano">Mediano</option>
                       <option value="Grande">Grande</option>
@@ -1989,24 +2004,25 @@ export default {
     "form.cant_neveras"(val) {
       if (val === 0) {
         this.form.tamano_neveras = "No Aplica";
-        this.form.tamano_conge = "No Aplica";
         this.form.func_neveras = 0;
-        this.form.cant_conge = 0;
-        this.form.func_conge = 0;
       } else {
         if (this.form.tamano_neveras === "No Aplica")
           this.form.tamano_neveras = "";
-        if (this.form.tamano_conge === "No Aplica") this.form.tamano_conge = "";
       }
     },
     "form.cant_conge"(val) {
       if (val === 0) {
         this.form.tamano_conge = "No Aplica";
-      } else if (
-        this.form.tamano_conge === "No Aplica" &&
-        this.form.cant_neveras !== 0
-      ) {
-        this.form.tamano_conge = "";
+        this.form.func_conge = 0;
+      } else {
+        if (this.form.tamano_conge === "No Aplica") this.form.tamano_conge = "";
+      }
+    },
+    "form.calderos_util"(val) {
+      if (val === 0) {
+        this.form.tam_calderos = "No aplica";
+      } else {
+        if (this.form.tam_calderos === "No aplica") this.form.tam_calderos = "";
       }
     },
     "form.modalidad_atencion"() {
