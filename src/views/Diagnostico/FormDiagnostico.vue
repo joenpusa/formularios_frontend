@@ -934,6 +934,9 @@
                     <select
                       class="form-select"
                       v-model="form.tamano_neveras"
+                      :disabled="
+                        form.cant_neveras === 0 || form.func_neveras === 0
+                      "
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
@@ -986,6 +989,7 @@
                       class="form-control"
                       v-model.number="form.func_conge"
                       min="0"
+                      :max="form.cant_conge"
                       required
                     />
                   </div>
@@ -997,6 +1001,7 @@
                     <select
                       class="form-select"
                       v-model="form.tamano_conge"
+                      :disabled="form.func_conge === 0 || form.cant_conge === 0"
                       required
                     >
                       <option value="" disabled>Seleccione...</option>
@@ -1936,7 +1941,7 @@ export default {
     requiredDocs() {
       const reqs = [];
 
-      reqs.push("Foto de la sede");
+      if (this.form.sede != "") reqs.push("Foto de la sede");
 
       if (this.form.modalidad_atencion === "Preparada en sitio") {
         reqs.push("Foto del comedor");
