@@ -12,7 +12,11 @@
           <hr />
         </div>
         <div class="row">
-          <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+          <!-- Componente social -->
+          <div
+            v-if="permisos.chk_social"
+            class="col-sm-6 col-md-4 col-lg-3 mb-3"
+          >
             <router-link to="/comsocial">
               <div class="card text-dark bg-light border border-warning">
                 <div class="card-body text-center">
@@ -22,7 +26,11 @@
               </div>
             </router-link>
           </div>
-          <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+          <!-- Componente técnico -->
+          <div
+            v-if="permisos.chk_tecnico"
+            class="col-sm-6 col-md-4 col-lg-3 mb-3"
+          >
             <router-link to="/comtecnico">
               <div class="card text-dark bg-light border border-warning">
                 <div class="card-body text-center">
@@ -32,7 +40,11 @@
               </div>
             </router-link>
           </div>
-          <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+          <!-- Reportes -->
+          <div
+            v-if="permisos.chk_reportes"
+            class="col-sm-6 col-md-4 col-lg-3 mb-3"
+          >
             <router-link to="/reportes">
               <div class="card text-dark bg-light border border-warning">
                 <div class="card-body text-center">
@@ -42,11 +54,15 @@
               </div>
             </router-link>
           </div>
-          <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+          <!-- Diagnóstico -->
+          <div
+            v-if="permisos.chk_diagnosticos"
+            class="col-sm-6 col-md-4 col-lg-3 mb-3"
+          >
             <router-link to="/diagnostico">
               <div class="card text-dark bg-light border border-warning">
                 <div class="card-body text-center">
-                  <span class="bi bi-images fs-2"></span>
+                  <span class="bi bi-clipboard2-pulse fs-2"></span>
                   <h4 class="card-title text-dark">
                     Diagnóstico de infraestructura
                   </h4>
@@ -54,7 +70,11 @@
               </div>
             </router-link>
           </div>
-          <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+          <!-- Galería -->
+          <div
+            v-if="permisos.chk_galeria"
+            class="col-sm-6 col-md-4 col-lg-3 mb-3"
+          >
             <router-link to="/galeria">
               <div class="card text-dark bg-light border border-warning">
                 <div class="card-body text-center">
@@ -113,4 +133,27 @@
   </div>
 </template>
 
-<script></script>
+<script>
+import { getPermisos, permisosVacios } from "@/utils/permisos";
+
+export default {
+  name: "HomeView",
+  data() {
+    return {
+      permisos: {},
+    };
+  },
+  created() {
+    if (permisosVacios()) {
+      localStorage.removeItem("authToken");
+      localStorage.removeItem("token");
+      localStorage.removeItem("userName");
+      localStorage.removeItem("userPermisos");
+      sessionStorage.removeItem("authToken");
+      this.$router.push("/login");
+      return;
+    }
+    this.permisos = getPermisos();
+  },
+};
+</script>

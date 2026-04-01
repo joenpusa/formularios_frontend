@@ -110,12 +110,16 @@ export default {
         });
 
         const token = response.data.access_token;
+        const userName = response.data.user?.name || "";
+        const permisos = response.data.permisos || {};
         if (token) {
           if (this.rememberMe) {
             localStorage.setItem("authToken", token);
           } else {
             sessionStorage.setItem("authToken", token);
           }
+          localStorage.setItem("userName", userName);
+          localStorage.setItem("userPermisos", JSON.stringify(permisos));
           this.showToast("Inicio de sesión exitoso", "success");
           this.$router.push("/home");
         }

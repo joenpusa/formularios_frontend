@@ -58,11 +58,11 @@
             <div class="form-check form-switch">
               <input
                 class="form-check-input"
-                id="flexSwitchCheckDefault"
+                id="chk_social"
                 type="checkbox"
                 v-model="form.chk_social"
               />
-              <label class="form-check-label" for="flexSwitchCheckDefault"
+              <label class="form-check-label" for="chk_social"
                 >Tiene acceso al componente social</label
               >
             </div>
@@ -71,24 +71,11 @@
             <div class="form-check form-switch">
               <input
                 class="form-check-input"
-                id="flexSwitchCheckDefault"
-                type="checkbox"
-                v-model="form.chk_social_all"
-              />
-              <label class="form-check-label" for="flexSwitchCheckDefault"
-                >Tiene acceso total componente social</label
-              >
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
-            <div class="form-check form-switch">
-              <input
-                class="form-check-input"
-                id="flexSwitchCheckDefault"
+                id="chk_tecnico"
                 type="checkbox"
                 v-model="form.chk_tecnico"
               />
-              <label class="form-check-label" for="flexSwitchCheckDefault"
+              <label class="form-check-label" for="chk_tecnico"
                 >Tiene acceso al componente tecnico</label
               >
             </div>
@@ -97,24 +84,11 @@
             <div class="form-check form-switch">
               <input
                 class="form-check-input"
-                id="flexSwitchCheckDefault"
-                type="checkbox"
-                v-model="form.chk_tecnico_all"
-              />
-              <label class="form-check-label" for="flexSwitchCheckDefault"
-                >Tiene acceso total al componente tecnico</label
-              >
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
-            <div class="form-check form-switch">
-              <input
-                class="form-check-input"
-                id="flexSwitchCheckDefault"
+                id="chk_reportes"
                 type="checkbox"
                 v-model="form.chk_reportes"
               />
-              <label class="form-check-label" for="flexSwitchCheckDefault"
+              <label class="form-check-label" for="chk_reportes"
                 >Tiene acceso a reportes</label
               >
             </div>
@@ -123,24 +97,11 @@
             <div class="form-check form-switch">
               <input
                 class="form-check-input"
-                id="flexSwitchCheckDefault"
-                type="checkbox"
-                v-model="form.chk_reportes_all"
-              />
-              <label class="form-check-label" for="flexSwitchCheckDefault"
-                >Tiene acceso total a reportes</label
-              >
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
-            <div class="form-check form-switch">
-              <input
-                class="form-check-input"
-                id="flexSwitchCheckDefault"
+                id="chk_galeria"
                 type="checkbox"
                 v-model="form.chk_galeria"
               />
-              <label class="form-check-label" for="flexSwitchCheckDefault"
+              <label class="form-check-label" for="chk_galeria"
                 >Tiene acceso a galeria</label
               >
             </div>
@@ -149,12 +110,25 @@
             <div class="form-check form-switch">
               <input
                 class="form-check-input"
-                id="flexSwitchCheckDefault"
+                id="chk_usuarios"
                 type="checkbox"
                 v-model="form.chk_usuarios"
               />
-              <label class="form-check-label" for="flexSwitchCheckDefault"
+              <label class="form-check-label" for="chk_usuarios"
                 >Tiene acceso a usuarios</label
+              >
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-6 mb-1">
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input"
+                id="chk_diagnosticos"
+                type="checkbox"
+                v-model="form.chk_diagnosticos"
+              />
+              <label class="form-check-label" for="chk_diagnosticos"
+                >Tiene acceso a Diagnosticos</label
               >
             </div>
           </div>
@@ -188,13 +162,11 @@ export default {
         name: "",
         email: "",
         chk_social: false,
-        chk_social_all: false,
         chk_tecnico: false,
-        chk_tecnico_all: false,
+        chk_reportes: false,
         chk_usuarios: false,
         chk_galeria: false,
-        chk_reportes: false,
-        chk_reportes_all: false,
+        chk_diagnosticos: false,
         is_active: true,
       },
     };
@@ -211,15 +183,13 @@ export default {
         try {
           const response = await axios.get(`/users/${this.$route.params.id}`);
           this.form = response.data.data;
-          this.form.chk_galeria = response.data.data.chk_galeria === 1;
-          this.form.chk_reportes = response.data.data.chk_reportes === 1;
-          this.form.chk_reportes_all =
-            response.data.data.chk_reportes_all === 1;
           this.form.chk_social = response.data.data.chk_social === 1;
-          this.form.chk_social_all = response.data.data.chk_social_all === 1;
           this.form.chk_tecnico = response.data.data.chk_tecnico === 1;
-          this.form.chk_tecnico_all = response.data.data.chk_tecnico_all === 1;
+          this.form.chk_reportes = response.data.data.chk_reportes === 1;
           this.form.chk_usuarios = response.data.data.chk_usuarios === 1;
+          this.form.chk_galeria = response.data.data.chk_galeria === 1;
+          this.form.chk_diagnosticos =
+            response.data.data.chk_diagnosticos === 1;
         } catch (error) {
           this.toastMessage = "Error al cargar el usuario.";
           this.toastType = "error";

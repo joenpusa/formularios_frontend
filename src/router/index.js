@@ -65,6 +65,7 @@ const routes = [
         path: "/comsocial",
         name: "HomeSocial",
         component: HomeSocial,
+        meta: { permiso: "chk_social" },
       },
       {
         path: "/comsocial/formvisita",
@@ -86,6 +87,7 @@ const routes = [
         path: "/comtecnico",
         name: "HomeTecnico",
         component: HomeTecnico,
+        meta: { permiso: "chk_tecnico" },
       },
       {
         path: "/comtecnico/form-etapa-alistamiento",
@@ -164,29 +166,34 @@ const routes = [
         path: "/usuarios",
         name: "GridUsers",
         component: GridUsers,
+        meta: { permiso: "chk_usuarios" },
       },
       {
         path: "/usuario/edit/:id",
         name: "FormUsers",
         component: FormUsers,
+        meta: { permiso: "chk_usuarios" },
       },
       // Galeria
       {
         path: "/galeria",
         name: "HomeGaleria",
         component: HomeGaleria,
+        meta: { permiso: "chk_galeria" },
       },
       // Reportes
       {
         path: "/reportes",
         name: "HomeReportes",
         component: HomeReportes,
+        meta: { permiso: "chk_reportes" },
       },
       // Diagnostico
       {
         path: "/diagnostico",
         name: "FormDiagnostico",
         component: FormDiagnostico,
+        meta: { permiso: "chk_diagnosticos" },
       },
     ],
   },
@@ -207,10 +214,24 @@ router.beforeEach((to, from, next) => {
 
   if (!token && to.path !== "/login") {
     next("/login");
-    console.log("No hay token, redirigiendo al login");
-  } else {
-    next();
+    return;
   }
+
+  // Validar permisos si la ruta los requiere
+  if (to.meta && to.meta.permiso) {
+    try {
+      const permisos = JSON.parse(localStorage.getItem("userPermisos") || "{}");
+      if (!permisos[to.meta.permiso]) {
+        next("/home");
+        return;
+      }
+    } catch {
+      next("/home");
+      return;
+    }
+  }
+
+  next();
 });
 
 export default router;
