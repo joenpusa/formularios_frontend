@@ -1950,17 +1950,20 @@ export default {
       if (this.form.func_neveras >= 1) reqs.push("Foto de la nevera");
       if (this.form.func_conge >= 1) reqs.push("Foto del congelador");
       if (this.form.cant_bas >= 1) reqs.push("Foto de la báscula");
-      if (this.form.ollas_pre === "SI")
+      if (this.form.ollas_pre === "SI" && this.form.cap_ollas_pre >= 1)
         reqs.push("Foto de la ollas de presion");
       if (this.form.cant_ral >= 1) reqs.push("Foto rallador");
       if (this.form.cant_tab_pic >= 1) reqs.push("Foto tabla de picar");
       if (this.form.cant_estufas >= 1) reqs.push("Foto de estufa");
-      if (this.form.cant_lic >= 1) reqs.push("Foto licuadora");
+      if (
+        this.form.cant_lic >= 1 &&
+        (this.form.lic_fun >= 1 || this.form.lic_ind >= 1)
+      )
+        reqs.push("Foto licuadora");
       if (this.form.ollas_util >= 1) reqs.push("Foto ollas");
       if (this.form.pailas_util >= 1) reqs.push("Foto pailas");
       if (this.form.calderos_util >= 1) reqs.push("Foto calderos");
       if (this.form.cuch_util >= 1) reqs.push("Foto de cuchillos");
-      // El usuario indicó "foto de cuchillos" para la pregunta 69 aunque corresponde a "cucharas de servir". Usaré "Foto de cucharas de servir" por claridad y evitar conflicto de nombres.
       if (this.form.cuchara_serv === "Sí")
         reqs.push("Foto de cucharas de servir");
       if (this.form.pla_lla >= 1) reqs.push("Foto platos llanos");
