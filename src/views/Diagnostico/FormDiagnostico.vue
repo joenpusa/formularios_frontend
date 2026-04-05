@@ -2243,13 +2243,57 @@ export default {
       });
       return sanitized;
     },
-    guardarOffline() {
-      const guardados =
-        JSON.parse(localStorage.getItem("formulariosOffline")) || [];
-      guardados.push(this.getSanitizedForm());
-      localStorage.setItem("formulariosOffline", JSON.stringify(guardados));
-      this.resetForm();
-      this.isLoading = false;
+    /**
+     * Convierte un objeto File a Data URL (base64) usando FileReader.
+     */
+    fileToDataURL(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => resolve(e.target.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    },
+    /**
+     * Guarda el formulario en localStorage para sincronizar después.
+     * Los archivos se convierten a base64 porque los objetos File no son serializables.
+     */
+    async guardarOffline() {
+      try {
+        const sanitized = this.getSanitizedForm();
+
+        // Convertir cada archivo a base64 para poder persistirlo en localStorage
+        const filesConBase64 = await Promise.all(
+          sanitized.files.map(async (fileObj) => ({
+            nombre_archivo: fileObj.nombre_archivo,
+            tipo: fileObj.tipo,
+            // Si ya es un data URL (fue cargado desde localStorage), lo dejamos igual
+            file:
+              fileObj.file instanceof File
+                ? await this.fileToDataURL(fileObj.file)
+                : fileObj.file,
+          }))
+        );
+        sanitized.files = filesConBase64;
+
+        const guardados =
+          JSON.parse(localStorage.getItem("formulariosOffline")) || [];
+        guardados.push(sanitized);
+        localStorage.setItem("formulariosOffline", JSON.stringify(guardados));
+
+        this.showToast(
+          `Formulario guardado sin conexión (${guardados.length} pendiente${
+            guardados.length > 1 ? "s" : ""
+          }). Se enviará automáticamente cuando haya internet.`,
+          "warning"
+        );
+        this.resetForm();
+      } catch (error) {
+        console.error("[guardarOffline] Error:", error);
+        this.showToast("Error al guardar el formulario offline.", "danger");
+      } finally {
+        this.isLoading = false;
+      }
     },
     async enviarFormularioAlServidor() {
       try {
