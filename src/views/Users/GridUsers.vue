@@ -222,8 +222,9 @@ export default {
         const response = await axios.get(apiUrl, {
           params: { search: this.searchQuery },
         });
+        // response.data = { success, message, data: { data: [...], current_page, next_page_url, ... } }
         this.users = response.data.data.data;
-        this.pagination = response.data;
+        this.pagination = response.data.data;
       } catch (error) {
         console.error("Error al cargar usuarios:", error);
         this.users = [];
@@ -231,9 +232,14 @@ export default {
     },
     async fetchUsersByUrl(url) {
       try {
-        const response = await axios.get(url);
-        this.users = response.data.data;
-        this.pagination = response.data;
+        // Conservar el parámetro search al navegar entre páginas
+        const urlObj = new URL(url);
+        if (this.searchQuery) {
+          urlObj.searchParams.set("search", this.searchQuery);
+        }
+        const response = await axios.get(urlObj.toString());
+        this.users = response.data.data.data;
+        this.pagination = response.data.data;
       } catch (error) {
         console.error("Error al cambiar de página:", error);
       }
