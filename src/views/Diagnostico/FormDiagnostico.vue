@@ -23,14 +23,14 @@
         <form @submit.prevent="guardarFormulario" ref="wizardForm">
           <div class="card mb-4" v-if="currentStepData">
             <div
-              class="card-header bg-primary text-white d-flex justify-content-between align-items-center"
+              class="card-header bg-primary text-white d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2"
             >
-              <h5 class="mb-0">{{ currentStepData.category }}</h5>
               <span
                 class="badge bg-light text-primary fs-6"
                 style="min-width: 120px; text-align: center"
                 >Paso {{ currentStep + 1 }} de {{ steps.length }}</span
               >
+              <h5 class="mb-0">{{ currentStepData.category }}</h5>
             </div>
             <div class="card-body">
               <h6
@@ -1943,7 +1943,7 @@ export default {
 
       if (this.form.sede != "") reqs.push("Foto de la sede");
 
-      if (this.form.modalidad_atencion === "Preparada en sitio") {
+      if (this.form.modalidad_atencion?.includes("Preparada en sitio")) {
         reqs.push("Foto del comedor");
       }
 
@@ -1970,7 +1970,10 @@ export default {
       if (this.form.pla_hon >= 1) reqs.push("Foto platos hondos");
       if (this.form.portas >= 1) reqs.push("Foto de portas");
       if (this.form.vasos >= 1) reqs.push("Foto pocillos/vasos");
-      if (this.form.cucharas >= 1) reqs.push("Foto de cucharas");
+      if (this.form.cucharas >= 1) reqs.push("Foto de cucharas para comer");
+      if (this.form.term_fun === "SI") reqs.push("Foto termómetro");
+      if (this.form.cant_exp >= 1) reqs.push("Foto exprimidores");
+      if (this.form.cuchara_serv === "Sí") reqs.push("Foto cucharas de servir");
 
       return reqs;
     },
