@@ -128,12 +128,56 @@
               </router-link>
             </div>
           </li>
+
+          <!-- Elementos de usuario y logout para móvil -->
+          <li class="nav-item d-lg-none">
+            <hr class="my-2 border-secondary opacity-25" />
+          </li>
+          <li class="nav-item d-lg-none">
+            <div class="nav-item-wrapper">
+              <div class="nav-link label-1 pe-none" style="cursor: default">
+                <div class="d-flex align-items-center">
+                  <span class="nav-link-icon">
+                    <div
+                      class="d-flex align-items-center justify-content-center rounded-circle bg-primary text-white flex-shrink-0"
+                      style="width: 28px; height: 28px; font-size: 13px"
+                    >
+                      {{ userInitial }}
+                    </div>
+                  </span>
+                  <span class="nav-link-text-wrapper">
+                    <span class="nav-link-text fw-semibold text-truncate">{{
+                      userName
+                    }}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item d-lg-none">
+            <div class="nav-item-wrapper">
+              <button
+                class="btn nav-link label-1 border-0 w-100 text-start mb-2"
+                style="background: none"
+                @click="logout"
+              >
+                <div class="d-flex align-items-center">
+                  <span class="nav-link-icon">
+                    <span class="bi bi-box-arrow-left"></span>
+                  </span>
+                  <span class="nav-link-text-wrapper">
+                    <span class="nav-link-text">Salir</span>
+                  </span>
+                </div>
+              </button>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
     <!-- Footer: nombre de usuario (arriba) y botón salir (abajo), separados -->
     <div
-      class="navbar-vertical-footer align-items-center pt-1"
+      class="navbar-vertical-footer align-items-center pt-1 d-none d-lg-flex"
       style="flex-direction: column; align-items: stretch; padding: 0"
     >
       <!-- Nombre del usuario — sólo informativo, sin clic -->
