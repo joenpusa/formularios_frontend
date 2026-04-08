@@ -1939,43 +1939,41 @@ export default {
       return this.form.modalidad_atencion === "Industrializada";
     },
     requiredDocs() {
-      const reqs = [];
+      const reqs = new Set();
 
-      if (this.form.sede != "") reqs.push("Foto de la sede");
+      if (this.form.sede != "") reqs.add("Foto de la sede");
 
       if (this.form.modalidad_atencion?.includes("Preparada en sitio")) {
-        reqs.push("Foto del comedor");
+        reqs.add("Foto del comedor");
       }
 
-      if (this.form.func_neveras >= 1) reqs.push("Foto de la nevera");
-      if (this.form.func_conge >= 1) reqs.push("Foto del congelador");
-      if (this.form.cant_bas >= 1) reqs.push("Foto de la báscula");
+      if (this.form.func_neveras >= 1) reqs.add("Foto de la nevera");
+      if (this.form.func_conge >= 1) reqs.add("Foto del congelador");
+      if (this.form.cant_bas >= 1) reqs.add("Foto de la báscula");
       if (this.form.ollas_pre === "SI" && this.form.cap_ollas_pre >= 1)
-        reqs.push("Foto de la ollas de presion");
-      if (this.form.cant_ral >= 1) reqs.push("Foto rallador");
-      if (this.form.cant_tab_pic >= 1) reqs.push("Foto tabla de picar");
-      if (this.form.cant_estufas >= 1) reqs.push("Foto de estufa");
+        reqs.add("Foto de la ollas de presion");
+      if (this.form.cant_ral >= 1) reqs.add("Foto rallador");
+      if (this.form.cant_tab_pic >= 1) reqs.add("Foto tabla de picar");
+      if (this.form.cant_estufas >= 1) reqs.add("Foto de estufa");
       if (
         this.form.cant_lic >= 1 &&
         (this.form.lic_fun >= 1 || this.form.lic_ind >= 1)
       )
-        reqs.push("Foto licuadora");
-      if (this.form.ollas_util >= 1) reqs.push("Foto ollas");
-      if (this.form.pailas_util >= 1) reqs.push("Foto pailas");
-      if (this.form.calderos_util >= 1) reqs.push("Foto calderos");
-      if (this.form.cuch_util >= 1) reqs.push("Foto de cuchillos");
-      if (this.form.cuchara_serv === "Sí")
-        reqs.push("Foto de cucharas de servir");
-      if (this.form.pla_lla >= 1) reqs.push("Foto platos llanos");
-      if (this.form.pla_hon >= 1) reqs.push("Foto platos hondos");
-      if (this.form.portas >= 1) reqs.push("Foto de portas");
-      if (this.form.vasos >= 1) reqs.push("Foto pocillos/vasos");
-      if (this.form.cucharas >= 1) reqs.push("Foto de cucharas para comer");
-      if (this.form.term_fun === "SI") reqs.push("Foto termómetro");
-      if (this.form.cant_exp >= 1) reqs.push("Foto exprimidores");
-      if (this.form.cuchara_serv === "Sí") reqs.push("Foto cucharas de servir");
+        reqs.add("Foto licuadora");
+      if (this.form.ollas_util >= 1) reqs.add("Foto ollas");
+      if (this.form.pailas_util >= 1) reqs.add("Foto pailas");
+      if (this.form.calderos_util >= 1) reqs.add("Foto calderos");
+      if (this.form.cuch_util >= 1) reqs.add("Foto de cuchillos");
+      if (this.form.cuchara_serv === "Sí") reqs.add("Foto cucharas de servir");
+      if (this.form.pla_lla >= 1) reqs.add("Foto platos llanos");
+      if (this.form.pla_hon >= 1) reqs.add("Foto platos hondos");
+      if (this.form.portas >= 1) reqs.add("Foto de portas");
+      if (this.form.vasos >= 1) reqs.add("Foto pocillos/vasos");
+      if (this.form.cucharas >= 1) reqs.add("Foto de cucharas para comer");
+      if (this.form.term_fun === "SI") reqs.add("Foto termómetro");
+      if (this.form.cant_exp >= 1) reqs.add("Foto exprimidores");
 
-      return reqs;
+      return Array.from(reqs);
     },
   },
   watch: {

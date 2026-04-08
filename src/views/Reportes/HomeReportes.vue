@@ -91,6 +91,7 @@
                     <th scope="col">Quien realiza la visita</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Institución</th>
+                    <th scope="col">Sede</th>
                     <th scope="col">Tipo reporte</th>
                     <th scope="col">Opciones</th>
                   </tr>
@@ -101,12 +102,13 @@
                     <td>{{ item.creado_por }}</td>
                     <td>{{ item.fecha_visita }}</td>
                     <td>{{ item.institucion }}</td>
+                    <td>{{ item.sede }}</td>
                     <td>{{ item.tipo_reporte }}</td>
                     <td>
                       <button
                         type="button"
                         class="btn btn-primary"
-                        @click="mostrarDetalle(item.tipo_reporte, item.id)"
+                        @click="mostrarDetalle(item)"
                       >
                         Detalle
                       </button>
@@ -185,7 +187,6 @@ export default {
             },
           }
         );
-        console.log(response);
         if (response.status === 200) {
           this.showToast("Reporte generado correctamente", "success");
           this.table_reportes = response.data;
@@ -231,19 +232,18 @@ export default {
           document.body.removeChild(link);
         }
       } catch (error) {
-        console.error("Error al generar excel:", error);
         this.showToast("No se pudo generar reporte", "danger");
       } finally {
         this.isLoading = false;
       }
     },
-    async mostrarDetalle(tipo_rep, id) {
+    async mostrarDetalle(item) {
       this.isLoading = true;
       try {
         const apiUrl = process.env.VUE_APP_API_BASE_URL;
         const formData = new FormData();
-        formData.append("tipo_reporte", tipo_rep);
-        formData.append("id", id);
+        formData.append("tipo_reporte", item.tipo_reporte);
+        formData.append("id", item.id);
         const response = await axios.post(
           `${apiUrl}/reporte/individual`,
           formData,
@@ -251,14 +251,23 @@ export default {
             responseType: "blob", //Importante: Indica que se recibe un archivo
           }
         );
-        console.log(response);
         if (response.status === 200) {
           const url = window.URL.createObjectURL(
             new Blob([response.data], { type: "application/pdf" })
           );
+
+          let nameParts = [item.tipo_reporte, item.municipio];
+          if (item.institucion && item.institucion !== "NO APLICA") {
+            nameParts.push(item.institucion);
+          }
+          if (item.sede) {
+            nameParts.push(item.sede);
+          }
+          let fileName = nameParts.join("-").replace(/\s+/g, "_") + ".pdf";
+
           const link = document.createElement("a");
           link.href = url;
-          link.setAttribute("download", "reporte.pdf"); // Nombre del archivo
+          link.setAttribute("download", fileName);
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
@@ -266,7 +275,6 @@ export default {
         this.isLoading = false;
       } catch (error) {
         this.isLoading = false;
-        console.error("Error al generar el PDF:", error);
         this.showToast("No se pudo obtener detalle", "danger");
       } finally {
         this.isLoading = false;
