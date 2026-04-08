@@ -112,6 +112,14 @@
                       >
                         Detalle
                       </button>
+                      <button
+                        v-if="canDelete"
+                        type="button"
+                        class="btn btn-danger ms-2"
+                        @click="eliminarRegistro(item)"
+                      >
+                        Eliminar
+                      </button>
                     </td>
                   </tr>
                 </tbody>
@@ -155,6 +163,18 @@ export default {
         institucion: "",
       },
     };
+  },
+  computed: {
+    canDelete() {
+      const email = localStorage.getItem("userEmail");
+      const allowedEmails = [
+        "joenpusa@gmail.com",
+        "tic@nortedesantander.gov.co",
+        "apoyo.ejecalidad@gmail.com",
+        "gestionsocialpaends@gmail.com",
+      ];
+      return allowedEmails.includes(email);
+    },
   },
   methods: {
     async solicitudReporte() {
@@ -276,6 +296,37 @@ export default {
       } catch (error) {
         this.isLoading = false;
         this.showToast("No se pudo obtener detalle", "danger");
+      } finally {
+        this.isLoading = false;
+      }
+    },
+    async eliminarRegistro(item) {
+      if (
+        !confirm(
+          "¿Está seguro que desea eliminar este registro? Esta acción no se puede deshacer y eliminará las imágenes asociadas."
+        )
+      ) {
+        return;
+      }
+      this.isLoading = true;
+      try {
+        const apiUrl = process.env.VUE_APP_API_BASE_URL;
+        const response = await axios.post(`${apiUrl}/reporte/eliminar`, {
+          id: item.id,
+          tipo_reporte: item.tipo_reporte,
+        });
+
+        if (response.status === 200) {
+          this.showToast("Registro eliminado correctamente", "success");
+          this.table_reportes = this.table_reportes.filter(
+            (r) => !(r.id === item.id && r.tipo_reporte === item.tipo_reporte)
+          );
+        }
+      } catch (error) {
+        this.showToast(
+          error.response?.data?.message || "No se pudo eliminar el registro",
+          "danger"
+        );
       } finally {
         this.isLoading = false;
       }

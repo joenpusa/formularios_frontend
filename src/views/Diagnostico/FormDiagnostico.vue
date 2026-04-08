@@ -1950,7 +1950,7 @@ export default {
       if (this.form.func_neveras >= 1) reqs.add("Foto de la nevera");
       if (this.form.func_conge >= 1) reqs.add("Foto del congelador");
       if (this.form.cant_bas >= 1) reqs.add("Foto de la báscula");
-      if (this.form.ollas_pre === "SI" && this.form.cap_ollas_pre >= 1)
+      if (this.form.ollas_pre === "SI" && this.form.ollas_pre_fun >= 1)
         reqs.add("Foto de la ollas de presion");
       if (this.form.cant_ral >= 1) reqs.add("Foto rallador");
       if (this.form.cant_tab_pic >= 1) reqs.add("Foto tabla de picar");

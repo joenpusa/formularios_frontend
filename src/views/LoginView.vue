@@ -120,6 +120,7 @@ export default {
           }
           localStorage.setItem("userName", userName);
           localStorage.setItem("userPermisos", JSON.stringify(permisos));
+          localStorage.setItem("userEmail", this.email);
           this.showToast("Inicio de sesión exitoso", "success");
           this.$router.push("/home");
         }
