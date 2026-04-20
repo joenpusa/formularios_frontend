@@ -486,4 +486,9 @@ export const instituciones = [
     value: "INSTITUCIÓN EDUCATIVA COLEGIO GENERAL SANTANDER",
     mun_key: "39",
   },
+  {
+    key: "232",
+    value: "INSTITUCION EDUCATIVA RURAL VETAS CENTRAL",
+    mun_key: "36",
+  },
 ];
